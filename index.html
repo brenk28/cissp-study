@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CISSP CAT Practice Exam</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #3498db;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --danger: #e74c3c;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            width: 90%;
+            max-width: 800px;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        h1, h2 { color: var(--primary); margin-top: 0; }
+        
+        /* Start Screen */
+        #start-screen { text-align: center; }
+        .btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn:hover { background: #2980b9; }
+
+        /* HUD */
+        #hud {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 10px;
+            font-weight: bold;
+            color: var(--secondary);
+        }
+
+        /* Question */
+        .question-text {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .option {
+            background: var(--light);
+            padding: 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+        .option:hover {
+            border-color: var(--accent);
+            background: #eef6fa;
+        }
+        .option.selected {
+            background: #d6eaf8;
+            border-color: var(--accent);
+        }
+        .option.correct {
+            background: #d4efdf;
+            border-color: var(--success);
+        }
+        .option.incorrect {
+            background: #fadbd8;
+            border-color: var(--danger);
+        }
+        .disabled {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        /* Feedback */
+        #feedback {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f8f9f9;
+            border-left: 4px solid var(--accent);
+            display: none;
+        }
+        #feedback h4 { margin: 0 0 5px 0; }
+
+        /* Controls */
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        /* End Screen */
+        #end-screen { text-align: center; display: none; }
+        .result-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-weight: bold;
+        }
+        .pass { background: var(--success); }
+        .fail { background: var(--danger); }
+        .stats {
+            text-align: left;
+            background: var(--light);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        
+        /* Utilities */
+        .hidden { display: none !important; }
+        .badge {
+            font-size: 0.8rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            background: #ddd;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div id="start-screen">
+        <h1>CISSP Practice Exam (CAT Mode)</h1>
+        <p>This exam simulates the Computerized Adaptive Testing format.</p>
+        <p>The difficulty will adjust based on your performance.</p>
+        <ul>
+            <li><strong>Questions:</strong> 20 (Simulated Short Exam)</li>
+            <li><strong>Adaptive Logic:</strong> Correct answers increase difficulty.</li>
+            <li><strong>Goal:</strong> Demonstrate proficiency in Hard questions.</li>
+        </ul>
+        <button class="btn" onclick="startExam()">Start Exam</button>
+    </div>
+
+    <div id="game-screen" class="hidden">
+        <div id="hud">
+            <span>Question: <span id="q-progress">1/20</span></span>
+            <span>Difficulty: <span id="diff-indicator">Medium</span></span>
+            <span>Score: <span id="score">0</span></span>
+        </div>
+        <div id="question-container">
+            <div class="question-text" id="question-text">Loading...</div>
+            <div class="options" id="options-container"></div>
+        </div>
+        <div id="feedback">
+            <h4 id="feedback-title">Result</h4>
+            <p id="explanation"></p>
+        </div>
+        <div class="controls">
+            <button id="submit-btn" class="btn" onclick="submitAnswer()">Submit Answer</button>
+            <button id="next-btn" class="btn hidden" onclick="nextQuestion()">Next Question</button>
+        </div>
+    </div>
+
+    <div id="end-screen" class="hidden">
+        <div id="final-result-circle" class="result-circle">
+            <span style="font-size: 1.5rem;">RESULT</span>
+            <span id="pass-fail-text" style="font-size: 2rem;">PASS</span>
+        </div>
+        <h2>Exam Complete</h2>
+        <p id="final-message">You have demonstrated strong knowledge.</p>
+        <div class="stats">
+            <p><strong>Questions Answered:</strong> <span id="final-count">0</span></p>
+            <p><strong>Ending Difficulty:</strong> <span id="final-diff">Medium</span></p>
+            <p><strong>Accuracy (Hard):</strong> <span id="acc-hard">0%</span></p>
+            <p><strong>Accuracy (Medium):</strong> <span id="acc-med">0%</span></p>
+            <p><strong>Accuracy (Easy):</strong> <span id="acc-easy">0%</span></p>
+        </div>
+        <br>
+        <button class="btn" onclick="location.reload()">Restart</button>
+    </div>
+</div>
+
+<script>
+    // --- QUESTION BANK --- 
+    // Difficulty: 1=Easy, 2=Medium, 3=Hard
+    const questionBank = [
+        // Easy (1)
+        { 
+            id: 1, 
+            difficulty: 1, 
+            domain: "Security and Risk Management",
+            q: "Which element of the CIA triad ensures that data is not altered by unauthorized people?", 
+            options: ["Confidentiality", "Integrity", "Availability", "Authorization"], 
+            answer: 1, 
+            exp: "Integrity ensures data remains unchanged and authentic. Confidentiality prevents disclosure, Availability ensures access." 
+        },
+        { 
+            id: 2, 
+            difficulty: 1, 
+            domain: "Asset Security",
+            q: "Who is primarily responsible for classifying data?", 
+            options: ["The System Administrator", "The Data Custodian", "The Data Owner", "The Security Officer"], 
+            answer: 2, 
+            exp: "The Data Owner (usually management) knows the value of the data and is responsible for its classification." 
+        },
+        { 
+            id: 3, 
+            difficulty: 1, 
+            domain: "Network Security",
+            q: "Which port is commonly used for standard HTTP traffic?", 
+            options: ["22", "80", "443", "3389"], 
+            answer: 1, 
+            exp: "Port 80 is HTTP. Port 443 is HTTPS. Port 22 is SSH. Port 3389 is RDP." 
+        },
+        {
+            id: 4,
+            difficulty: 1,
+            domain: "IAM",
+            q: "A password is an example of which authentication factor?",
+            options: ["Something you are", "Something you have", "Something you know", "Something you do"],
+            answer: 2,
+            exp: "Passwords are knowledge-based (Something you know). Tokens are 'have', Biometrics are 'are'."
+        },
+        // Medium (2)
+        { 
+            id: 5, 
+            difficulty: 2, 
+            domain: "Security and Risk Management",
+            q: "You are implementing a control to fix a broken server after a crash. What type of control function is this?", 
+            options: ["Preventive", "Detective", "Corrective", "Deterrent"], 
+            answer: 2, 
+            exp: "Corrective controls restore systems to normal after an incident. Detective controls identify the incident, Preventive stops it." 
+        },
+        { 
+            id: 6, 
+            difficulty: 2, 
+            domain: "Security Architecture",
+            q: "Which security model focuses primarily on preventing conflicts of interest?", 
+            options: ["Bell-LaPadula", "Biba", "Brewer-Nash", "Clark-Wilson"], 
+            answer: 2, 
+            exp: "The Brewer-Nash (Chinese Wall) model prevents conflicts of interest by dynamically changing access rights based on user activity." 
+        },
+        { 
+            id: 7, 
+            difficulty: 2, 
+            domain: "IAM",
+            q: "Which error rate in biometrics represents the intersection of FAR and FRR and describes overall accuracy?", 
+            options: ["Crossover Error Rate (CER)", "Type I Error", "Type II Error", "Failure to Enroll Rate"], 
+            answer: 0, 
+            exp: "The CER (or EER) is where the False Acceptance Rate and False Rejection Rate typically intersect. Lower CER means a better system." 
+        },
+        { 
+            id: 8, 
+            difficulty: 2, 
+            domain: "Software Development",
+            q: "Which attack involves injecting malicious script into a trusted website that is then served to other users?", 
+            options: ["SQL Injection", "Cross-Site Scripting (XSS)", "Cross-Site Request Forgery (CSRF)", "Buffer Overflow"], 
+            answer: 1, 
+            exp: "XSS involves client-side scripts injected into web pages. SQLi targets the database." 
+        },
+        {
+            id: 9,
+            difficulty: 2,
+            domain: "Security Operations",
+            q: "During an incident, which phase involves the removal of the threat from the environment?",
+            options: ["Preparation", "Detection and Analysis", "Eradication", "Post-Incident Activity"],
+            answer: 2,
+            exp: "Eradication removes the root cause (e.g., deleting malware, disabling accounts). Containment stops the spread."
+        },
+        {
+            id: 10,
+            difficulty: 2,
+            domain: "Asset Security",
+            q: "Which method is most appropriate for sanitizing a hard drive that will be reused within the same high-security organization?",
+            options: ["Degaussing", "Overwriting", "Physical Destruction", "Formatting"],
+            answer: 1,
+            exp: "Overwriting (clearing) is suitable for reuse. Degaussing and destruction ruin the drive. Formatting is insufficient."
+        },
+        // Hard (3) - Scenario/Analysis based
+        { 
+            id: 11, 
+            difficulty: 3, 
+            domain: "Security Assessment",
+            q: "An organization wants to test their incident response capability without interrupting business operations. They want to simulate a full-scale attack where teams actually perform their response actions in real-time, but on isolated systems. Which test type is this?", 
+            options: ["Tabletop Exercise", "Parallel Test", "Full Interruption Test", "Simulation Test"], 
+            answer: 3, 
+            exp: "A Simulation involves role-playing the response in a realistic manner without hurting production. Tabletop is discussion-only. Parallel runs alternate systems." 
+        },
+        { 
+            id: 12, 
+            difficulty: 3, 
+            domain: "Security Architecture",
+            q: "You are implementing a cryptography solution. You need to ensure that even if the private key of the server is compromised in the future, past sessions cannot be decrypted. What feature must you enable?", 
+            options: ["Digital Signatures", "Perfect Forward Secrecy (PFS)", "Hashed Message Authentication Code (HMAC)", "Elliptic Curve Cryptography (ECC)"], 
+            answer: 1, 
+            exp: "PFS ensures that session keys are not derived from the server's long-term private key, protecting past sessions from future key compromise." 
+        },
+        { 
+            id: 13, 
+            difficulty: 3, 
+            domain: "Security and Risk Management",
+            q: "A company accepts the risk of legacy software because upgrading is too expensive. However, they place the legacy server on an isolated VLAN with strict firewall rules. What type of risk treatment is the VLAN?", 
+            options: ["Risk Transfer", "Risk Avoidance", "Compensating Control", "Corrective Control"], 
+            answer: 2, 
+            exp: "Compensating controls are alternative measures put in place to mitigate a risk when the primary control (upgrading) limits are not feasible." 
+        },
+        {
+            id: 14,
+            difficulty: 3,
+            domain: "Network Security",
+            q: "You observe a high volume of fragmentation attacks on your network firewall. Which specific attack tries to push fragments that overwrite the packet header information to bypass filters?", 
+            options: ["Teardrop", "Ping of Death", "Smurf Attack", "Teardrop"],
+            answer: 0,
+            exp: "Teardrop attacks involve sending overlapping IP fragments to crash the target. (Note: Overwriting headers is specifically related to fragmentation evasion techniques)." 
+        },
+        {
+            id: 15,
+            difficulty: 3,
+            domain: "IAM",
+            q: "In a federated identity system using SAML, user Alice (from Company A) wants to access a resource at Service B. Who generates the SAML assertion?", 
+            options: ["Service B (Service Provider)", "Company A (Identity Provider)", "Alice's Browser (User Agent)", "The LDAP Server"],
+            answer: 1,
+            exp: "The Identity Provider (IdP), Company A, authenticates the user and generates the assertion (token) that is then sent to the Service Provider."
+        },
+        {
+            id: 16,
+            difficulty: 3,
+            domain: "Software Development",
+            q: "Your team is adopting CI/CD. Security leadership mandates that no code can be deployed unless it has passed a static analysis (SAST) check. This creates a bottleneck. What is the BEST approach to resolve this while maintaining security?", 
+            options: ["Remove the SAST check for minor updates.", "Run SAST asynchronously and fail the build only for critical issues.", "Switch to DAST only.", "Perform manual code review instead."],
+            answer: 1,
+            exp: "To balance speed (CI/CD) and security, automated scans should be tuned to block only on critical/high severity findings, or run asynchronously if strict blocking isn't critical for lower tiers."
+        }
+    ];
+
+    // --- GAME STATE ---
+    let currentQuestionIndex = 0;
+    let currentDifficulty = 2; // Start at Medium
+    let score = 0;
+    let correctPerDiff = { 1: 0, 2: 0, 3: 0 };
+    let totalPerDiff = { 1: 0, 2: 0, 3: 0 };
+    let questionHistory = [];
+    const MAX_QUESTIONS = 15;
+    
+    let currentQuestion = null;
+    let isAnswered = false;
+
+    // --- LOGIC ---
+    function startExam() {
+        document.getElementById('start-screen').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        loadQuestion();
+    }
+
+    function getUnusedQuestion(difficulty) {
+        // Filter for difficulty and not already used
+        const candidates = questionBank.filter(q => q.difficulty === difficulty && !questionHistory.includes(q.id));
+        
+        // If run out of current difficulty, try one step down, then up
+        if (candidates.length === 0) {
+            let alt = questionBank.filter(q => q.difficulty === (difficulty - 1) && !questionHistory.includes(q.id));
+            if (alt.length === 0) {
+               alt = questionBank.filter(q => q.difficulty === (difficulty + 1) && !questionHistory.includes(q.id));
+            }
+            // If completely out (rare in full app), just pick random
+            if (alt.length === 0) return null;
+            return alt[Math.floor(Math.random() * alt.length)];
+        }
+        
+        return candidates[Math.floor(Math.random() * candidates.length)];
+    }
+
+    function loadQuestion() {
+        if (currentQuestionIndex >= MAX_QUESTIONS) {
+            endExam();
+            return;
+        }
+
+        currentQuestion = getUnusedQuestion(currentDifficulty);
+        
+        if (!currentQuestion) {
+            // Fallback if difficulty bucket empty
+            endExam(); 
+            return;
+        }
+
+        questionHistory.push(currentQuestion.id);
+
+        // Update HUD
+        document.getElementById('q-progress').innerText = `${currentQuestionIndex + 1}/${MAX_QUESTIONS}`;
+        document.getElementById('score').innerText = score;
+        
+        let diffText = "Medium";
+        if (currentQuestion.difficulty === 1) diffText = "Easy";
+        if (currentQuestion.difficulty === 3) diffText = "Hard";
+        document.getElementById('diff-indicator').innerText = diffText;
+
+        // Render Question
+        document.getElementById('question-text').innerText = currentQuestion.q;
+        const optsContainer = document.getElementById('options-container');
+        optsContainer.innerHTML = '';
+        
+        currentQuestion.options.forEach((opt, idx) => {
+            const div = document.createElement('div');
+            div.className = 'option';
+            div.innerText = opt;
+            div.onclick = () => selectOption(idx);
+            div.id = `opt-${idx}`;
+            optsContainer.appendChild(div);
+        });
+
+        // Reset state
+        isAnswered = false;
+        document.getElementById('feedback').style.display = 'none';
+        document.getElementById('submit-btn').classList.remove('hidden');
+        document.getElementById('next-btn').classList.add('hidden');
+        selectedOptionIndex = -1;
+    }
+
+    let selectedOptionIndex = -1;
+
+    function selectOption(idx) {
+        if (isAnswered) return;
+        
+        // Clear previous selection
+        const opts = document.querySelectorAll('.option');
+        opts.forEach(o => o.classList.remove('selected'));
+        
+        // Select new
+        document.getElementById(`opt-${idx}`).classList.add('selected');
+        selectedOptionIndex = idx;
+    }
+
+    function submitAnswer() {
+        if (selectedOptionIndex === -1) return;
+        
+        isAnswered = true;
+        const isCorrect = (selectedOptionIndex === currentQuestion.answer);
+        
+        // Style options
+        document.getElementById(`opt-${currentQuestion.answer}`).classList.add('correct');
+        if (!isCorrect) {
+            document.getElementById(`opt-${selectedOptionIndex}`).classList.add('incorrect');
+        }
+        
+        // Disable clicks
+        document.querySelectorAll('.option').forEach(o => o.classList.add('disabled'));
+
+        // Logic stats
+        totalPerDiff[currentQuestion.difficulty]++;
+        if (isCorrect) correctPerDiff[currentQuestion.difficulty]++;
+
+        // Adaptive Logic
+        if (isCorrect) {
+            score += (currentQuestion.difficulty * 10);
+            // Increase difficulty if easy/medium
+            if (currentQuestion.difficulty < 3) currentDifficulty++;
+        } else {
+            // Decrease difficulty if hard/medium
+            if (currentQuestion.difficulty > 1) currentDifficulty--;
+        }
+
+        // Show Feedback
+        const feedback = document.getElementById('feedback');
+        feedback.style.display = 'block';
+        document.getElementById('feedback-title').innerText = isCorrect ? "Correct!" : "Incorrect";
+        document.getElementById('feedback-title').style.color = isCorrect ? "var(--success)" : "var(--danger)";
+        document.getElementById('explanation').innerText = currentQuestion.exp;
+
+        // Toggle Buttons
+        document.getElementById('submit-btn').classList.add('hidden');
+        document.getElementById('next-btn').classList.remove('hidden');
+    }
+
+    function nextQuestion() {
+        currentQuestionIndex++;
+        loadQuestion();
+    }
+
+    function endExam() {
+        document.getElementById('game-screen').classList.add('hidden');
+        document.getElementById('end-screen').classList.remove('hidden'); // Fix: remove hidden, not display flex
+
+        // Calculate Hard Accuracy (Primary metric for CISSP)
+        const hardAttempts = totalPerDiff[3];
+        const hardCorrect = correctPerDiff[3];
+        const hardAcc = hardAttempts ? Math.round((hardCorrect / hardAttempts) * 100) : 0;
+        
+        // Pass Logic: Must answer > 50% Hard questions correctly OR > 80% Medium
+        let pass = false;
+        // Simple logic: if you ended on Hard difficulty and have > 50% accuracy there
+        if (currentDifficulty === 3 && hardAcc >= 50) pass = true;
+        // Or if you crushed medium but never got enough hard questions (unlikely in this logic but possible)
+        if (currentDifficulty === 2 && (correctPerDiff[2]/totalPerDiff[2]) > 0.8) pass = true;
+
+        const circle = document.getElementById('final-result-circle');
+        const text = document.getElementById('pass-fail-text');
+        const msg = document.getElementById('final-message');
+
+        if (pass) {
+            circle.classList.add('pass');
+            text.innerText = "PASS";
+            msg.innerText = "Congratulations! You demonstrated proficiency at the required difficulty level.";
+        } else {
+            circle.classList.add('fail');
+            text.innerText = "FAIL";
+            msg.innerText = "You need more practice. Focus on understanding the concepts to tackle harder scenarios.";
+        }
+
+        document.getElementById('final-count').innerText = currentQuestionIndex;
+        document.getElementById('final-diff').innerText = currentDifficulty === 3 ? "Hard" : (currentDifficulty === 2 ? "Medium" : "Easy");
+        
+        document.getElementById('acc-hard').innerText = `${correctPerDiff[3]}/${totalPerDiff[3]} (${hardAttempts ? Math.round((correctPerDiff[3]/hardAttempts)*100) : 0}%)`;
+        document.getElementById('acc-med').innerText = `${correctPerDiff[2]}/${totalPerDiff[2]} (${totalPerDiff[2] ? Math.round((correctPerDiff[2]/totalPerDiff[2])*100) : 0}%)`;
+        document.getElementById('acc-easy').innerText = `${correctPerDiff[1]}/${totalPerDiff[1]} (${totalPerDiff[1] ? Math.round((correctPerDiff[1]/totalPerDiff[1])*100) : 0}%)`;
+        
+        document.getElementById('end-screen').style.display = 'block';
+    }
+</script>
+
+</body>
+</html>

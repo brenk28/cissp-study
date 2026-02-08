@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CISSP Flashcards</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #34495e;
+            --accent: #e67e22;
+            /* Different accent for Flashcards */
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            color: var(--text);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: var(--primary);
+            color: white;
+            width: 100%;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.5rem;
+        }
+
+        .container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            max-width: 600px;
+            perspective: 1000px;
+            /* For 3D flip effect */
+        }
+
+        /* Flashcard Component */
+        .card-container {
+            width: 100%;
+            height: 300px;
+            position: relative;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            margin-bottom: 2rem;
+        }
+
+        .card-container.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            box-sizing: border-box;
+            text-align: center;
+            background: white;
+            border: 1px solid #ddd;
+        }
+
+        .card-front {
+            background: white;
+        }
+
+        .card-back {
+            background: #fff8e1;
+            /* Light yellow for back */
+            transform: rotateY(180deg);
+            border-color: var(--accent);
+        }
+
+        .card-content {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .card-label {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+        }
+
+        .card-domain {
+            position: absolute;
+            bottom: 15px;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            background: #eee;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        /* Controls */
+        .controls {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        #progress {
+            margin-top: 1rem;
+            color: #666;
+            font-weight: bold;
+        }
+
+        .instruction {
+            margin-top: 0.5rem;
+            color: #999;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>CISSP Study Flashcards</h1>
+    </header>
+
+    <div class="container">
+        <div id="progress">Card 1 of 50</div>
+
+        <div class="card-container" id="card" onclick="flipCard()">
+            <div class="card-face card-front">
+                <span class="card-label">Term</span>
+                <div class="card-content" id="front-text">Confidentiality</div>
+                <div class="card-domain" id="domain-text">Domain 1</div>
+            </div>
+            <div class="card-face card-back">
+                <span class="card-label">Definition</span>
+                <div class="card-content" id="back-text" style="font-size: 1.1rem; font-weight: normal;">
+                    Preserving authorized restrictions on information access and disclosure.
+                </div>
+            </div>
+        </div>
+
+        <div class="instruction">(Click card to flip)</div>
+
+        <div class="controls">
+            <button class="btn btn-outline" onclick="prevCard()">← Prev</button>
+            <button class="btn" onclick="randomCard()">Random 🎲</button>
+            <button class="btn btn-outline" onclick="nextCard()">Next →</button>
+        </div>
+    </div>
+
+    <script>
+        // --- FLASHCARD DATA (Parsed from markdown) ---
+        const flashcards = [
+            { id: 1, term: "Confidentiality", def: "Preserving authorized restrictions on information access and disclosure, including means for protecting personal privacy and proprietary information.", domain: "Domain 1: Security & Risk" },
+            { id: 2, term: "Integrity", def: "Guarding against improper information modification or destruction, and includes ensuring information non-repudiation and authenticity.", domain: "Domain 1: Security & Risk" },
+            { id: 3, term: "Availability", def: "Ensuring timely and reliable access to and use of information.", domain: "Domain 1: Security & Risk" },
+            { id: 4, term: "Due Care vs. Due Diligence", def: "Due Care: Acting as a reasonable person would (Prudent Man). Due Diligence: Investigating and verifying risks.", domain: "Domain 1: Security & Risk" },
+            { id: 5, term: "Single Loss Expectancy (SLE)", def: "The monetary loss expected from a single event. Calculated as Asset Value x Exposure Factor (AV x EF).", domain: "Domain 1: Security & Risk" },
+            { id: 6, term: "Annualized Loss Expectancy (ALE)", def: "The expected monetary loss for an asset over one year. Calculated as SLE x ARO.", domain: "Domain 1: Security & Risk" },
+            { id: 7, term: "STRIDE Threat Model", def: "Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege.", domain: "Domain 1: Security & Risk" },
+            { id: 8, term: "Data Remanence", def: "Residual representation of data that remains even after attempts have been made to remove or erase the data.", domain: "Domain 2: Asset Security" },
+            { id: 9, term: "Scoping vs. Tailoring", def: "Scoping: Determining which parts of a standard apply. Tailoring: Modifying controls to fit specific needs.", domain: "Domain 2: Asset Security" },
+            { id: 10, term: "Data Owner", def: "The individual (usually management) ultimately responsible for the data's protection and classification.", domain: "Domain 2: Asset Security" },
+            { id: 11, term: "Data Custodian", def: "The individual (usually IT) responsible for the technical environment and protection of data (backups, patching).", domain: "Domain 2: Asset Security" },
+            { id: 12, term: "Bell-LaPadula Model", def: "Confidentiality model. No Read Up, No Write Down.", domain: "Domain 3: Architecture" },
+            { id: 13, term: "Biba Model", def: "Integrity model. No Read Down, No Write Up.", domain: "Domain 3: Architecture" },
+            { id: 14, term: "Clark-Wilson Model", def: "Integrity model using transactions and separation of duties (TPs/CDIs).", domain: "Domain 3: Architecture" },
+            { id: 15, term: "Brewer-Nash (Chinese Wall)", def: "Prevents conflicts of interest by dynamically changing access based on user activity.", domain: "Domain 3: Architecture" },
+            { id: 16, term: "Common Criteria", def: "ISO 15408. Framework for evaluating security products. Result is an EAL (1-7).", domain: "Domain 3: Architecture" },
+            { id: 17, term: "TPM", def: "Trusted Platform Module. Hardware chip for cryptographic keys and platform integrity.", domain: "Domain 3: Architecture" },
+            { id: 18, term: "Steganography", def: "Hiding the existence of a message, often within images or audio.", domain: "Domain 3: Architecture" },
+            { id: 19, term: "Quantum Key Distribution", def: "Uses quantum mechanics to secure key exchange; eavesdropping changes photon state.", domain: "Domain 3: Architecture" },
+            { id: 20, term: "IPSec", def: "Suite for securing IP. Tunnel vs Transport mode. AH (Integrity) vs ESP (Confidentiality).", domain: "Domain 4: Network Security" },
+            { id: 21, term: "OSI Layer 7 Attacks", def: "Attacks targeting apps (SQLi, XSS). Harder for traditional firewalls to detect.", domain: "Domain 4: Network Security" },
+            { id: 22, term: "Zero Trust", def: "Never trust, always verify. Access based on continuous, contextual verification.", domain: "Domain 4: Network Security" },
+            { id: 23, term: "SD-WAN", def: "Decouples networking hardware from control mechanism for dynamic path selection.", domain: "Domain 4: Network Security" },
+            { id: 24, term: "DDoS", def: "Distributed Denial of Service. Using a botnet to overwhelm a target.", domain: "Domain 4: Network Security" },
+            { id: 25, term: "NAC", def: "Network Access Control. Enforces policy on devices accessing the network.", domain: "Domain 4: Network Security" },
+            { id: 26, term: "Kerberos", def: "Auth protocol using tickets (TGT), KDC, and time limits to prevent replay.", domain: "Domain 5: IAM" },
+            { id: 27, term: "SAML", def: "XML standard for exchanging auth/authz data between IdP and SP.", domain: "Domain 5: IAM" },
+            { id: 28, term: "OIDC", def: "OpenID Connect. Identity layer on top of OAuth 2.0.", domain: "Domain 5: IAM" },
+            { id: 29, term: "DAC", def: "Discretionary Access Control. Owner decides access.", domain: "Domain 5: IAM" },
+            { id: 30, term: "MAC", def: "Mandatory Access Control. OS decides based on labels/clearance.", domain: "Domain 5: IAM" },
+            { id: 31, term: "RBAC", def: "Role-Based Access Control. Access based on job function.", domain: "Domain 5: IAM" },
+            { id: 32, term: "ABAC", def: "Attribute-Based Access Control. Complex rules based on user, resource, env attributes.", domain: "Domain 5: IAM" },
+            { id: 33, term: "Social Engineering", def: "Manipulating people into divulging info (Phishing, Vishing).", domain: "Domain 6: Assessment" },
+            { id: 34, term: "Fuzzing", def: "Sending random data to a program to find crashes/vulnerabilities.", domain: "Domain 6: Assessment" },
+            { id: 35, term: "SOC 2 Types", def: "Type I: Design at a point in time. Type II: Effectiveness over a period of time.", domain: "Domain 6: Assessment" },
+            { id: 36, term: "Honeypot", def: "Decoy system to lure attackers and gather intelligence.", domain: "Domain 7: Operations" },
+            { id: 37, term: "SIEM", def: "Aggregates and analyzes logs for real-time incident detection.", domain: "Domain 7: Operations" },
+            { id: 38, term: "BIA", def: "Business Impact Analysis. Identifies critical functions, RTO, and RPO.", domain: "Domain 7: Operations" },
+            { id: 39, term: "Chain of Custody", def: "Documentation ensuring evidence integrity from seizure to court.", domain: "Domain 7: Operations" },
+            { id: 40, term: "Write Blocker", def: "Forensic tool ensuring data is not modified during acquisition.", domain: "Domain 7: Operations" },
+            { id: 41, term: "Need to Know vs Least Privilege", def: "Need to Know: Do you have a reason? Least Privilege: Minimum permissions needed.", domain: "Domain 7: Operations" },
+            { id: 42, term: "Due Process", def: "Legal requirement to respect rights; fair treatment in investigations.", domain: "Domain 7: Operations" },
+            { id: 43, term: "DevSecOps", def: "Integrating security early in the Dev lifecycle (Shift Left).", domain: "Domain 8: Software Security" },
+            { id: 44, term: "SQL Injection", def: "Malicious SQL in input. Fix: Parameterized Queries.", domain: "Domain 8: Software Security" },
+            { id: 45, term: "XSS", def: "Injecting scripts into trusted sites. Stored, Reflected, DOM.", domain: "Domain 8: Software Security" },
+            { id: 46, term: "CSRF", def: "Forcing user to execute actions on authenticated site. Fix: Tokens.", domain: "Domain 8: Software Security" },
+            { id: 47, term: "Buffer Overflow", def: "Overwriting memory boundaries. Major cause of crashes/execution.", domain: "Domain 8: Software Security" },
+            { id: 48, term: "SCA", def: "Software Composition Analysis. Finding vulnerabilities in open source deps.", domain: "Domain 8: Software Security" },
+            { id: 49, term: "Polyinstantiation", def: "Multiple instances of a record to prevent inference/cover stories.", domain: "Domain 8: Software Security" },
+            { id: 50, term: "Verification vs Validation", def: "Verification: Built it right? (Specs). Validation: Built right thing? (Needs).", domain: "Domain 8: Software Security" }
+        ];
+
+        // --- LOGIC ---
+        let currentIndex = 0;
+        const cardEl = document.getElementById('card');
+        const frontEl = document.getElementById('front-text');
+        const backEl = document.getElementById('back-text');
+        const domainEl = document.getElementById('domain-text');
+        const progressEl = document.getElementById('progress');
+
+        function updateCard() {
+            // Reset flip if flipped
+            if (cardEl.classList.contains('flipped')) {
+                cardEl.classList.remove('flipped');
+                // Wait for flip back before changing text
+                setTimeout(() => setContent(), 300);
+            } else {
+                setContent();
+            }
+        }
+
+        function setContent() {
+            const item = flashcards[currentIndex];
+            frontEl.innerText = item.term;
+            backEl.innerText = item.def;
+            domainEl.innerText = item.domain;
+            progressEl.innerText = `Card ${currentIndex + 1} of ${flashcards.length}`;
+        }
+
+        function flipCard() {
+            cardEl.classList.toggle('flipped');
+        }
+
+        function nextCard() {
+            currentIndex = (currentIndex + 1) % flashcards.length;
+            updateCard();
+        }
+
+        function prevCard() {
+            currentIndex = (currentIndex - 1 + flashcards.length) % flashcards.length;
+            updateCard();
+        }
+
+        function randomCard() {
+            let newIndex = Math.floor(Math.random() * flashcards.length);
+            // Avoid repeating same card
+            if (newIndex === currentIndex) newIndex = (newIndex + 1) % flashcards.length;
+            currentIndex = newIndex;
+            updateCard();
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space' || e.code === 'ArrowUp' || e.code === 'ArrowDown') flipCard();
+            if (e.code === 'ArrowRight') nextCard();
+            if (e.code === 'ArrowLeft') prevCard();
+        });
+
+    </script>
+
+</body>
+
+</html>
