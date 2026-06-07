@@ -13,7 +13,9 @@
             --dark: #2c3e50;
             --success: #27ae60;
             --danger: #e74c3c;
+            --warning: #f39c12;
         }
+        * { box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f4f7f6;
@@ -22,22 +24,26 @@
             margin: 0;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             min-height: 100vh;
+            padding: 20px;
         }
         .container {
             background: white;
             width: 90%;
-            max-width: 800px;
+            max-width: 850px;
             padding: 2rem;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             position: relative;
+            margin-top: 20px;
         }
-        h1, h2 { color: var(--primary); margin-top: 0; }
-        
-        /* Start Screen */
+        h1, h2, h3 { color: var(--primary); margin-top: 0; }
+        h1 { font-size: 1.5rem; }
+
+        /* ── Start Screen ── */
         #start-screen { text-align: center; }
+        #start-screen ul { text-align: left; display: inline-block; }
         .btn {
             background: var(--accent);
             color: white;
@@ -49,23 +55,93 @@
             transition: background 0.2s;
         }
         .btn:hover { background: #2980b9; }
+        .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+        .btn-secondary {
+            background: var(--secondary);
+        }
+        .btn-secondary:hover { background: #4a6274; }
 
-        /* HUD */
+        .mode-selector {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        .mode-card {
+            border: 2px solid var(--light);
+            border-radius: 8px;
+            padding: 16px 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            flex: 1;
+            min-width: 150px;
+            max-width: 200px;
+            text-align: center;
+        }
+        .mode-card:hover { border-color: var(--accent); background: #f0f7fc; }
+        .mode-card.selected { border-color: var(--accent); background: #d6eaf8; }
+        .mode-card h3 { margin: 0 0 4px 0; font-size: 1rem; }
+        .mode-card p { margin: 0; font-size: 0.85rem; color: #666; }
+
+        /* ── HUD ── */
         #hud {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
             border-bottom: 2px solid var(--light);
             padding-bottom: 10px;
             font-weight: bold;
             color: var(--secondary);
+            font-size: 0.9rem;
         }
+        #progress-bar-container {
+            width: 100%;
+            height: 6px;
+            background: var(--light);
+            border-radius: 3px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+        #progress-bar {
+            height: 100%;
+            background: var(--accent);
+            border-radius: 3px;
+            transition: width 0.3s ease;
+            width: 0%;
+        }
+        .diff-indicator {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: white;
+        }
+        .diff-easy { background: var(--success); }
+        .diff-medium { background: var(--warning); }
+        .diff-hard { background: var(--danger); }
 
-        /* Question */
+        /* ── Question ── */
         .question-text {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             margin-bottom: 1.5rem;
         }
+        .question-type-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: white;
+        }
+        .badge-mc { background: var(--accent); }
+        .badge-ms { background: #8e44ad; }
+        .badge-order { background: #e67e22; }
+
         .options {
             display: flex;
             flex-direction: column;
@@ -73,13 +149,14 @@
         }
         .option {
             background: var(--light);
-            padding: 15px;
+            padding: 14px 16px;
             border-radius: 4px;
             cursor: pointer;
             border: 2px solid transparent;
             transition: all 0.2s;
+            user-select: none;
         }
-        .option:hover {
+        .option:hover:not(.disabled) {
             border-color: var(--accent);
             background: #eef6fa;
         }
@@ -95,33 +172,121 @@
             background: #fadbd8;
             border-color: var(--danger);
         }
-        .disabled {
+        .option.disabled {
             pointer-events: none;
             opacity: 0.7;
         }
+        .option .check-indicator {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            border: 2px solid #999;
+            border-radius: 3px;
+            margin-right: 10px;
+            vertical-align: middle;
+            text-align: center;
+            line-height: 14px;
+            font-size: 12px;
+            color: white;
+        }
+        .option.selected .check-indicator {
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+        .option.selected .check-indicator::after { content: "✓"; }
 
-        /* Feedback */
+        /* ── Drag & Drop (Order questions) ── */
+        .order-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .order-item {
+            background: var(--light);
+            padding: 12px 16px;
+            border-radius: 4px;
+            cursor: grab;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            user-select: none;
+        }
+        .order-item:active { cursor: grabbing; }
+        .order-item:hover { border-color: var(--accent); background: #eef6fa; }
+        .order-item.dragging {
+            opacity: 0.5;
+            border-color: var(--accent);
+            background: #d6eaf8;
+        }
+        .order-item .drag-handle {
+            color: #999;
+            font-size: 1.2rem;
+            cursor: grab;
+        }
+        .order-item .order-number {
+            background: var(--accent);
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .order-item.correct-position .order-number { background: var(--success); }
+        .order-item.incorrect-position .order-number { background: var(--danger); }
+
+        /* ── Feedback ── */
         #feedback {
             margin-top: 20px;
             padding: 15px;
             background: #f8f9f9;
             border-left: 4px solid var(--accent);
             display: none;
+            border-radius: 0 4px 4px 0;
         }
         #feedback h4 { margin: 0 0 5px 0; }
 
-        /* Controls */
+        /* ── Controls ── */
         .controls {
             margin-top: 20px;
             display: flex;
             justify-content: flex-end;
+            gap: 10px;
         }
-        
-        /* End Screen */
+
+        /* ── CAT Confidence Meter ── */
+        #cat-meter {
+            margin-top: 12px;
+            padding: 10px;
+            background: #fafafa;
+            border-radius: 4px;
+            border: 1px solid var(--light);
+            font-size: 0.85rem;
+        }
+        #cat-meter .meter-bar {
+            height: 8px;
+            background: var(--light);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 6px;
+        }
+        #cat-meter .meter-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease, background 0.5s;
+        }
+
+        /* ── End Screen ── */
         #end-screen { text-align: center; display: none; }
         .result-circle {
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
             display: flex;
             flex-direction: column;
@@ -140,47 +305,111 @@
             border-radius: 4px;
             margin-top: 20px;
         }
-        
-        /* Utilities */
+        .domain-bar {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            gap: 8px;
+        }
+        .domain-bar .domain-name {
+            width: 240px;
+            font-size: 0.85rem;
+            text-align: right;
+            flex-shrink: 0;
+        }
+        .domain-bar .bar-track {
+            flex: 1;
+            height: 16px;
+            background: #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .domain-bar .bar-fill {
+            height: 100%;
+            border-radius: 8px;
+            transition: width 0.5s;
+        }
+        .domain-bar .bar-pct {
+            width: 50px;
+            font-size: 0.85rem;
+            font-weight: bold;
+        }
+
+        /* ── Utilities ── */
         .hidden { display: none !important; }
         .badge {
             font-size: 0.8rem;
-            padding: 2px 6px;
+            padding: 2px 8px;
             border-radius: 4px;
-            background: #ddd;
+            background: var(--accent);
+            color: white;
             margin-right: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .container { padding: 1rem; }
+            .domain-bar .domain-name { width: 120px; font-size: 0.75rem; }
+            #hud { font-size: 0.8rem; }
+            .mode-card { min-width: 120px; padding: 10px; }
         }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <!-- ════════ START SCREEN ════════ -->
     <div id="start-screen">
         <h1>CISSP Practice Exam (CAT Mode)</h1>
-        <p>This exam simulates the Computerized Adaptive Testing format.</p>
-        <p>The difficulty will adjust based on your performance.</p>
+        <p>This exam simulates the Computerized Adaptive Testing format used in the real CISSP exam.</p>
         <ul>
-            <li><strong>Questions:</strong> 30 (Practice Exam)</li>
-            <li><strong>Adaptive Logic:</strong> Correct answers increase difficulty.</li>
-            <li><strong>Goal:</strong> Demonstrate proficiency in Hard questions.</li>
-            <li><strong>Question Pool:</strong> 56 questions across all 8 CISSP domains</li>
+            <li><strong>Adaptive Logic:</strong> Difficulty adjusts based on your performance.</li>
+            <li><strong>Domain Targeting:</strong> Weak domains are tested more frequently.</li>
+            <li><strong>Question Types:</strong> Multiple choice, select-all-that-apply, and drag-to-order.</li>
+            <li><strong>Question Pool:</strong> <span id="pool-size">0</span> questions across all 8 CISSP domains.</li>
         </ul>
+
+        <h3>Select Exam Mode</h3>
+        <div class="mode-selector">
+            <div class="mode-card" data-mode="quick" onclick="selectMode('quick')">
+                <h3>Quick</h3>
+                <p>30 questions</p>
+            </div>
+            <div class="mode-card selected" data-mode="standard" onclick="selectMode('standard')">
+                <h3>Standard</h3>
+                <p>75 questions</p>
+            </div>
+            <div class="mode-card" data-mode="full" onclick="selectMode('full')">
+                <h3>Full Sim</h3>
+                <p>100–150 Qs<br>(early exit)</p>
+            </div>
+        </div>
         <button class="btn" onclick="startExam()">Start Exam</button>
     </div>
 
+    <!-- ════════ GAME SCREEN ════════ -->
     <div id="game-screen" class="hidden">
         <div id="hud">
-            <span>Question: <span id="q-progress">1/30</span></span>
-            <span>Difficulty: <span id="diff-indicator">Medium</span></span>
-            <span>Score: <span id="score">0</span></span>
+            <span>Q: <span id="q-progress">1/75</span></span>
+            <span>Difficulty: <span id="diff-indicator" class="diff-indicator diff-medium">Medium</span></span>
+            <span>Ability: <span id="ability-score">0</span></span>
         </div>
-        <div style="margin-bottom: 15px; font-size: 0.9rem; color: var(--secondary);">
-            <span class="badge" id="domain-badge" style="background: var(--accent); color: white;">Domain</span>
+        <div id="progress-bar-container"><div id="progress-bar"></div></div>
+
+        <div style="margin-bottom: 12px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+            <span class="badge" id="domain-badge">Domain</span>
+            <span class="question-type-badge badge-mc" id="type-badge">Multiple Choice</span>
         </div>
+
         <div id="question-container">
             <div class="question-text" id="question-text">Loading...</div>
-            <div class="options" id="options-container"></div>
+            <div id="options-container"></div>
         </div>
+
+        <div id="cat-meter">
+            <span id="cat-label">CAT Confidence: Assessing...</span>
+            <div class="meter-bar"><div class="meter-fill" id="cat-fill" style="width: 50%; background: var(--warning);"></div></div>
+        </div>
+
         <div id="feedback">
             <h4 id="feedback-title">Result</h4>
             <p id="explanation"></p>
@@ -191,19 +420,22 @@
         </div>
     </div>
 
+    <!-- ════════ END SCREEN ════════ -->
     <div id="end-screen" class="hidden">
         <div id="final-result-circle" class="result-circle">
-            <span style="font-size: 1.5rem;">RESULT</span>
-            <span id="pass-fail-text" style="font-size: 2rem;">PASS</span>
+            <span style="font-size: 1.2rem;">RESULT</span>
+            <span id="pass-fail-text" style="font-size: 2.2rem;">PASS</span>
         </div>
         <h2>Exam Complete</h2>
-        <p id="final-message">You have demonstrated strong knowledge.</p>
+        <p id="final-message"></p>
         <div class="stats">
             <p><strong>Questions Answered:</strong> <span id="final-count">0</span></p>
             <p><strong>Ending Difficulty:</strong> <span id="final-diff">Medium</span></p>
-            <p><strong>Accuracy (Hard):</strong> <span id="acc-hard">0%</span></p>
-            <p><strong>Accuracy (Medium):</strong> <span id="acc-med">0%</span></p>
-            <p><strong>Accuracy (Easy):</strong> <span id="acc-easy">0%</span></p>
+            <p><strong>Final Ability Estimate:</strong> <span id="final-ability">0</span></p>
+            <p><strong>Accuracy by Difficulty:</strong></p>
+            <p style="margin-left:16px;">Hard: <span id="acc-hard">0%</span></p>
+            <p style="margin-left:16px;">Medium: <span id="acc-med">0%</span></p>
+            <p style="margin-left:16px;">Easy: <span id="acc-easy">0%</span></p>
         </div>
         <div class="stats" style="margin-top: 20px;">
             <h3 style="margin-top: 0;">Performance by Domain</h3>
@@ -214,729 +446,590 @@
     </div>
 </div>
 
+<script src="questions.js"></script>
 <script>
-    // --- QUESTION BANK --- 
-    // Difficulty: 1=Easy, 2=Medium, 3=Hard
-    const questionBank = [
-        // ===== EASY (1) - Foundation Concepts =====
-        {
-            id: 1,
-            difficulty: 1,
-            domain: "Security and Risk Management",
-            q: "Which element of the CIA triad ensures that data is not altered by unauthorized people?",
-            options: ["Confidentiality", "Integrity", "Availability", "Authorization"],
-            answer: 1,
-            exp: "Integrity ensures data remains unchanged and authentic. Confidentiality prevents disclosure, Availability ensures access."
-        },
-        {
-            id: 2,
-            difficulty: 1,
-            domain: "Asset Security",
-            q: "Who is primarily responsible for classifying data?",
-            options: ["The System Administrator", "The Data Custodian", "The Data Owner", "The Security Officer"],
-            answer: 2,
-            exp: "The Data Owner (usually management) knows the value of the data and is responsible for its classification."
-        },
-        {
-            id: 3,
-            difficulty: 1,
-            domain: "Communication and Network Security",
-            q: "Which port is commonly used for standard HTTP traffic?",
-            options: ["22", "80", "443", "3389"],
-            answer: 1,
-            exp: "Port 80 is HTTP. Port 443 is HTTPS. Port 22 is SSH. Port 3389 is RDP."
-        },
-        {
-            id: 4,
-            difficulty: 1,
-            domain: "Identity and Access Management",
-            q: "A password is an example of which authentication factor?",
-            options: ["Something you are", "Something you have", "Something you know", "Something you do"],
-            answer: 2,
-            exp: "Passwords are knowledge-based (Something you know). Tokens are 'have', Biometrics are 'are'."
-        },
-        {
-            id: 5,
-            difficulty: 1,
-            domain: "Security Architecture",
-            q: "Which type of fire suppression system is most suitable for a data center?",
-            options: ["Water sprinklers", "Wet pipe system", "Clean agent (gaseous) system", "Foam-based system"],
-            answer: 2,
-            exp: "Clean agent systems (FM-200, Inergen) don't damage electronic equipment. Water-based systems can destroy servers."
-        },
-        {
-            id: 6,
-            difficulty: 1,
-            domain: "Software Development Security",
-            q: "What is the primary purpose of input validation?",
-            options: ["To improve application performance", "To prevent malicious data from entering the system", "To encrypt user input", "To log all user activities"],
-            answer: 1,
-            exp: "Input validation prevents injection attacks and malformed data from compromising the application."
-        },
-        {
-            id: 7,
-            difficulty: 1,
-            domain: "Security Operations",
-            q: "What is the primary goal of the containment phase in incident response?",
-            options: ["Document lessons learned", "Remove the threat", "Limit the damage and prevent spreading", "Restore systems to normal"],
-            answer: 2,
-            exp: "Containment focuses on isolating the incident to prevent further damage. Eradication removes the threat, Recovery restores systems."
-        },
-        {
-            id: 8,
-            difficulty: 1,
-            domain: "Security and Risk Management",
-            q: "Which document provides management guidance on acceptable risk levels?",
-            options: ["Security Policy", "Risk Appetite Statement", "Standard Operating Procedure", "Baseline Configuration"],
-            answer: 1,
-            exp: "Risk Appetite defines how much risk the organization is willing to accept. Policies define rules, procedures define steps."
-        },
+// ═══════════════════════════════════════════════════════════
+//  CAT ENGINE
+// ═══════════════════════════════════════════════════════════
 
-        // ===== MEDIUM (2) - Application & Analysis =====
-        {
-            id: 9,
-            difficulty: 2,
-            domain: "Security and Risk Management",
-            q: "You are implementing a control to fix a broken server after a crash. What type of control function is this?",
-            options: ["Preventive", "Detective", "Corrective", "Deterrent"],
-            answer: 2,
-            exp: "Corrective controls restore systems to normal after an incident. Detective controls identify the incident, Preventive stops it."
-        },
-        {
-            id: 10,
-            difficulty: 2,
-            domain: "Security Architecture and Engineering",
-            q: "Which security model focuses primarily on preventing conflicts of interest?",
-            options: ["Bell-LaPadula", "Biba", "Brewer-Nash", "Clark-Wilson"],
-            answer: 2,
-            exp: "The Brewer-Nash (Chinese Wall) model prevents conflicts of interest by dynamically changing access rights based on user activity."
-        },
-        {
-            id: 11,
-            difficulty: 2,
-            domain: "Identity and Access Management",
-            q: "Which error rate in biometrics represents the intersection of FAR and FRR and describes overall accuracy?",
-            options: ["Crossover Error Rate (CER)", "Type I Error", "Type II Error", "Failure to Enroll Rate"],
-            answer: 0,
-            exp: "The CER (or EER) is where the False Acceptance Rate and False Rejection Rate typically intersect. Lower CER means a better system."
-        },
-        {
-            id: 12,
-            difficulty: 2,
-            domain: "Software Development Security",
-            q: "Which attack involves injecting malicious script into a trusted website that is then served to other users?",
-            options: ["SQL Injection", "Cross-Site Scripting (XSS)", "Cross-Site Request Forgery (CSRF)", "Buffer Overflow"],
-            answer: 1,
-            exp: "XSS involves client-side scripts injected into web pages. SQLi targets the database."
-        },
-        {
-            id: 13,
-            difficulty: 2,
-            domain: "Security Operations",
-            q: "During an incident, which phase involves the removal of the threat from the environment?",
-            options: ["Preparation", "Detection and Analysis", "Eradication", "Post-Incident Activity"],
-            answer: 2,
-            exp: "Eradication removes the root cause (e.g., deleting malware, disabling accounts). Containment stops the spread."
-        },
-        {
-            id: 14,
-            difficulty: 2,
-            domain: "Asset Security",
-            q: "Which method is most appropriate for sanitizing a hard drive that will be reused within the same high-security organization?",
-            options: ["Degaussing", "Overwriting", "Physical Destruction", "Formatting"],
-            answer: 1,
-            exp: "Overwriting (clearing) is suitable for reuse. Degaussing and destruction ruin the drive. Formatting is insufficient."
-        },
-        {
-            id: 15,
-            difficulty: 2,
-            domain: "Communication and Network Security",
-            q: "Your organization is implementing VLANs. What is the PRIMARY security benefit?",
-            options: ["Increased bandwidth", "Network segmentation and isolation", "Reduced hardware costs", "Faster routing"],
-            answer: 1,
-            exp: "VLANs provide logical segmentation, limiting broadcast domains and isolating traffic to reduce attack surface."
-        },
-        {
-            id: 16,
-            difficulty: 2,
-            domain: "Security Architecture and Engineering",
-            q: "Which cryptographic algorithm is asymmetric?",
-            options: ["AES", "DES", "RSA", "Blowfish"],
-            answer: 2,
-            exp: "RSA is asymmetric (public/private key pair). AES, DES, and Blowfish are symmetric (single shared key)."
-        },
-        {
-            id: 17,
-            difficulty: 2,
-            domain: "Identity and Access Management",
-            q: "What access control model uses labels and clearances to determine access?",
-            options: ["Discretionary Access Control (DAC)", "Mandatory Access Control (MAC)", "Role-Based Access Control (RBAC)", "Rule-Based Access Control"],
-            answer: 1,
-            exp: "MAC uses security labels (classifications) and clearances. DAC is owner-controlled, RBAC uses roles."
-        },
-        {
-            id: 18,
-            difficulty: 2,
-            domain: "Security Assessment and Testing",
-            q: "Which type of penetration test provides the testing team with full knowledge of the environment?",
-            options: ["Black box", "White box", "Gray box", "Red team"],
-            answer: 1,
-            exp: "White box testing provides complete knowledge (architecture, source code, credentials). Black box has none. Gray box has partial."
-        },
-        {
-            id: 19,
-            difficulty: 2,
-            domain: "Software Development Security",
-            q: "In which SDLC phase should security requirements be defined?",
-            options: ["Implementation", "Testing", "Design", "Requirements/Planning"],
-            answer: 3,
-            exp: "Security should be integrated from the beginning during requirements gathering. 'Shift left' means earlier security integration."
-        },
-        {
-            id: 20,
-            difficulty: 2,
-            domain: "Security and Risk Management",
-            q: "What is the formula for calculating Single Loss Expectancy (SLE)?",
-            options: ["AV × ARO", "AV × EF", "ALE / ARO", "EF × ARO"],
-            answer: 1,
-            exp: "SLE = Asset Value (AV) × Exposure Factor (EF). ALE = SLE × ARO (Annual Rate of Occurrence)."
-        },
+const MODES = {
+    quick:    { maxQ: 30,  minQ: 30,  earlyExit: false },
+    standard: { maxQ: 75,  minQ: 75,  earlyExit: false },
+    full:     { maxQ: 150, minQ: 100, earlyExit: true  }
+};
 
-        // ===== HARD (3) - Scenario & Critical Thinking =====
-        {
-            id: 21,
-            difficulty: 3,
-            domain: "Security Assessment and Testing",
-            q: "An organization wants to test their incident response capability without interrupting business operations. They want to simulate a full-scale attack where teams actually perform their response actions in real-time, but on isolated systems. Which test type is this?",
-            options: ["Tabletop Exercise", "Parallel Test", "Full Interruption Test", "Simulation Test"],
-            answer: 3,
-            exp: "A Simulation involves role-playing the response in a realistic manner without hurting production. Tabletop is discussion-only. Parallel runs alternate systems."
-        },
-        {
-            id: 22,
-            difficulty: 3,
-            domain: "Security Architecture and Engineering",
-            q: "You are implementing a cryptography solution. You need to ensure that even if the private key of the server is compromised in the future, past sessions cannot be decrypted. What feature must you enable?",
-            options: ["Digital Signatures", "Perfect Forward Secrecy (PFS)", "Hashed Message Authentication Code (HMAC)", "Elliptic Curve Cryptography (ECC)"],
-            answer: 1,
-            exp: "PFS ensures that session keys are not derived from the server's long-term private key, protecting past sessions from future key compromise."
-        },
-        {
-            id: 23,
-            difficulty: 3,
-            domain: "Security and Risk Management",
-            q: "A company accepts the risk of legacy software because upgrading is too expensive. However, they place the legacy server on an isolated VLAN with strict firewall rules. What type of risk treatment is the VLAN?",
-            options: ["Risk Transfer", "Risk Avoidance", "Compensating Control", "Corrective Control"],
-            answer: 2,
-            exp: "Compensating controls are alternative measures put in place to mitigate a risk when the primary control (upgrading) is not feasible."
-        },
-        {
-            id: 24,
-            difficulty: 3,
-            domain: "Communication and Network Security",
-            q: "During a security assessment, you discover that internal DNS servers are responding to queries from external sources. What should you do FIRST?",
-            options: ["Implement DNSSEC", "Configure split-horizon DNS", "Enable DNS query logging", "Conduct a full network scan"],
-            answer: 1,
-            exp: "Split-horizon DNS separates internal and external DNS views, preventing information disclosure. This addresses the immediate risk. DNSSEC provides integrity but doesn't solve the exposure issue."
-        },
-        {
-            id: 25,
-            difficulty: 3,
-            domain: "Identity and Access Management",
-            q: "In a federated identity system using SAML, user Alice (from Company A) wants to access a resource at Service B. Who generates the SAML assertion?",
-            options: ["Service B (Service Provider)", "Company A (Identity Provider)", "Alice's Browser (User Agent)", "The LDAP Server"],
-            answer: 1,
-            exp: "The Identity Provider (IdP), Company A, authenticates the user and generates the assertion (token) that is then sent to the Service Provider."
-        },
-        {
-            id: 26,
-            difficulty: 3,
-            domain: "Software Development Security",
-            q: "Your team is adopting CI/CD. Security leadership mandates that no code can be deployed unless it has passed a static analysis (SAST) check. This creates a bottleneck. What is the BEST approach to resolve this while maintaining security?",
-            options: ["Remove the SAST check for minor updates", "Run SAST asynchronously and fail the build only for critical issues", "Switch to DAST only", "Perform manual code review instead"],
-            answer: 1,
-            exp: "Balance speed and security by tuning SAST to block only critical/high severity findings. This maintains security gates while enabling DevSecOps velocity."
-        },
-        {
-            id: 27,
-            difficulty: 3,
-            domain: "Security Operations",
-            q: "Your organization experiences a ransomware attack. Backups are encrypted. You discover one air-gapped backup from 3 weeks ago. The business needs to be operational within 24 hours. What should you do FIRST?",
-            options: ["Pay the ransom to recover quickly", "Verify the integrity of the air-gapped backup", "Rebuild systems from scratch", "Contact law enforcement"],
-            answer: 1,
-            exp: "Before committing to recovery, verify the backup is clean and usable. Paying ransom is risky and doesn't guarantee recovery. The backup may be your only option, so validate it first."
-        },
-        {
-            id: 28,
-            difficulty: 3,
-            domain: "Security and Risk Management",
-            q: "A new regulation requires your organization to implement specific security controls. Management states the cost is prohibitive. As the CISO, what is the BEST course of action?",
-            options: ["Implement only the controls you can afford", "Document the decision to accept the risk", "Perform a cost-benefit analysis and present alternatives to management", "Ignore the regulation until audited"],
-            answer: 2,
-            exp: "CISSP emphasizes management involvement. Present a risk-based analysis with options (compensating controls, phased implementation). Management makes the final decision, but you provide informed options."
-        },
-        {
-            id: 29,
-            difficulty: 3,
-            domain: "Asset Security",
-            q: "Your organization handles healthcare data (PHI) and credit card data (PCI). During a data classification review, the DPO wants PHI classified as 'Confidential' while the finance team wants PCI data as 'Restricted' (higher). What should you recommend?",
-            options: ["Use the highest classification (Restricted) for both", "Keep separate classifications as requested", "Classify both as Confidential", "Create a new 'Regulated Data' category"],
-            answer: 0,
-            exp: "When data has multiple sensitivity requirements, use the highest classification level to ensure adequate protection. This prevents under-protection due to classification confusion."
-        },
-        {
-            id: 30,
-            difficulty: 3,
-            domain: "Security Architecture and Engineering",
-            q: "You are designing a secure facility. The building has a reception area, office space, a data center, and a loading dock. Which security zones should have mantrap access?",
-            options: ["Reception only", "Data center only", "Data center and loading dock", "All areas"],
-            answer: 2,
-            exp: "Mantraps prevent tailgating in high-security areas. Data centers contain critical assets; loading docks are vulnerable entry points. Reception and offices typically don't require this level of control."
-        },
-        {
-            id: 31,
-            difficulty: 3,
-            domain: "Communication and Network Security",
-            q: "An attacker sends an ICMP echo request with a spoofed source address of the victim to a network broadcast address. The entire subnet replies to the victim. What attack is this?",
-            options: ["Ping of Death", "Smurf Attack", "Fraggle Attack", "SYN Flood"],
-            answer: 1,
-            exp: "Smurf attack uses ICMP echo to broadcast addresses with a spoofed source. Fraggle uses UDP. Ping of Death uses oversized packets. SYN flood exhausts connection tables."
-        },
-        {
-            id: 32,
-            difficulty: 3,
-            domain: "Identity and Access Management",
-            q: "You are implementing OAuth 2.0 for a mobile app. The app needs to access user data from a third-party API. Which OAuth grant type is MOST appropriate?",
-            options: ["Client Credentials", "Resource Owner Password Credentials", "Authorization Code with PKCE", "Implicit Grant"],
-            answer: 2,
-            exp: "Authorization Code with PKCE (Proof Key for Code Exchange) is recommended for mobile/native apps as it mitigates authorization code interception attacks. Implicit is deprecated for security reasons."
-        },
-        {
-            id: 33,
-            difficulty: 3,
-            domain: "Security Assessment and Testing",
-            q: "During a security audit, you find that developers have sudo access on production servers for troubleshooting. Management says this is necessary for rapid response. What should you recommend FIRST?",
-            options: ["Remove all developer sudo access immediately", "Implement privileged access management (PAM) with session recording", "Require developers to request temporary access each time", "Accept the risk and document it"],
-            answer: 1,
-            exp: "PAM solutions provide controlled, monitored access meeting both security and business needs. Simply removing access may harm operations. PAM with session recording provides accountability and meets compliance requirements."
-        },
-        {
-            id: 34,
-            difficulty: 3,
-            domain: "Software Development Security",
-            q: "A code review reveals that a developer is using MD5 to hash user passwords. What should be your PRIMARY concern?",
-            options: ["MD5 is too slow for production use", "MD5 collisions allow password recovery", "MD5 lacks salt, enabling rainbow table attacks", "MD5 is fast and vulnerable to brute force attacks"],
-            answer: 3,
-            exp: "MD5 is cryptographically broken and computationally cheap, making brute force attacks feasible. While salting helps, the core issue is MD5's speed. Use bcrypt, scrypt, or Argon2 which are deliberately slow."
-        },
-        {
-            id: 35,
-            difficulty: 3,
-            domain: "Security Operations",
-            q: "Your SIEM alerts on lateral movement using stolen credentials. You isolate the compromised account. What should you do NEXT?",
-            options: ["Reset all user passwords", "Conduct a full security audit", "Hunt for persistence mechanisms", "Restore systems from backup"],
-            answer: 2,
-            exp: "After containing the immediate threat (isolating the account), hunt for persistence (backdoors, scheduled tasks, additional compromised accounts). Attackers often establish multiple footholds."
-        },
-        {
-            id: 36,
-            difficulty: 3,
-            domain: "Security and Risk Management",
-            q: "Your company is acquiring a smaller firm. The due diligence reveals significant security deficiencies in their systems. Senior management wants to complete the acquisition quickly. What is your BEST action as CISO?",
-            options: ["Recommend delaying until issues are fixed", "Present the risks to the board with quantified impact and mitigation options", "Accept the risks to meet business timelines", "Insist on terminating the acquisition"],
-            answer: 1,
-            exp: "Present factual risk assessment with business impact and mitigation options to the board. Leadership makes business decisions; your role is to inform them of security implications clearly."
-        },
-        {
-            id: 37,
-            difficulty: 3,
-            domain: "Asset Security",
-            q: "A terminated employee had access to proprietary source code. The departure was contentious. What should be your FIRST priority?",
-            options: ["Disable all accounts and access immediately", "Conduct a data exfiltration investigation", "Inform law enforcement", "Initiate legal action for NDA breach"],
-            answer: 0,
-            exp: "Immediately disable access to prevent further data exfiltration or sabotage. Investigation, legal action, and law enforcement follow after securing the environment."
-        },
-        {
-            id: 38,
-            difficulty: 3,
-            domain: "Security Architecture and Engineering",
-            q: "You are evaluating TPM (Trusted Platform Module) for full disk encryption. What is the PRIMARY security benefit TPM provides over software-based encryption?",
-            options: ["Faster encryption/decryption", "Hardware-based key storage resistant to extraction", "Larger key sizes", "Better algorithm support"],
-            answer: 1,
-            exp: "TPM stores cryptographic keys in tamper-resistant hardware, making extraction significantly harder. Software keys in memory are vulnerable to memory dumps and cold boot attacks."
-        },
-        {
-            id: 39,
-            difficulty: 3,
-            domain: "Communication and Network Security",
-            q: "You need to secure communications between a branch office and headquarters over the Internet. The connection must provide confidentiality, integrity, and authentication. What is the BEST solution?",
-            options: ["TLS", "IPSec VPN", "SSH tunnel", "HTTPS proxy"],
-            answer: 1,
-            exp: "IPSec VPN provides network-layer encryption for site-to-site connectivity with mutual authentication. TLS/HTTPS are application-layer. SSH tunnels aren't designed for full network connectivity."
-        },
-        {
-            id: 40,
-            difficulty: 3,
-            domain: "Identity and Access Management",
-            q: "During an access review, you discover a former contractor still has VPN access 3 months after contract termination. What does this MOST likely indicate?",
-            options: ["A deliberate insider threat", "Inadequate offboarding procedures", "Compromised VPN server", "Social engineering attack"],
-            answer: 1,
-            exp: "While concerning, this most likely indicates process failure rather than malicious intent. The offboarding process should include automatic access revocation. Focus on fixing the process gap."
-        },
-        {
-            id: 41,
-            difficulty: 3,
-            domain: "Security Assessment and Testing",
-            q: "Your penetration test team successfully exploited a SQL injection vulnerability and extracted customer data. Management asks if the system is now 'secure' since you found and fixed the vulnerability. What should you communicate?",
-            options: ["Yes, the system is now secure", "No, more testing is needed to find other vulnerabilities", "The system meets compliance requirements now", "Security testing is never complete"],
-            answer: 1,
-            exp: "Finding one vulnerability doesn't mean no others exist. Emphasize that security is ongoing, and one test provides a snapshot. Recommend continued testing and defense-in-depth."
-        },
-        {
-            id: 42,
-            difficulty: 3,
-            domain: "Software Development Security",
-            q: "A web application allows users to upload profile pictures. What is the MOST critical security control to implement?",
-            options: ["Scan for malware", "Validate file type by extension", "Validate file type by content (magic bytes)", "Restrict file size"],
-            answer: 2,
-            exp: "Validate actual file content (magic bytes/MIME type), not just extension which can be spoofed. Combine with malware scanning, but content validation prevents malicious files disguised with benign extensions."
-        },
-        {
-            id: 43,
-            difficulty: 3,
-            domain: "Security Operations",
-            q: "You are implementing a SOAR platform. What is the PRIMARY benefit over traditional SIEM?",
-            options: ["Better log correlation", "Automated response and orchestration", "Lower cost", "Improved compliance reporting"],
-            answer: 1,
-            exp: "SOAR (Security Orchestration, Automation, and Response) extends SIEM by automating playbooks and response actions, reducing MTTR (Mean Time To Respond) and analyst workload."
-        },
-        {
-            id: 44,
-            difficulty: 3,
-            domain: "Security and Risk Management",
-            q: "Your organization operates in multiple countries. GDPR requires data deletion within 30 days of request, but local law in Country X requires 7-year retention. How should you handle this conflict?",
-            options: ["Follow GDPR as it is stricter", "Follow Country X law as local law takes precedence", "Seek legal counsel to determine jurisdiction-specific requirements", "Store data outside Country X to avoid the conflict"],
-            answer: 2,
-            exp: "Legal conflicts require legal expertise. The answer depends on where data is stored, where the user resides, and specific circumstances. Consult legal counsel rather than making assumptions."
-        },
-        {
-            id: 45,
-            difficulty: 3,
-            domain: "Asset Security",
-            q: "Your organization is moving sensitive data to a cloud provider. The provider offers encryption at rest. What should you verify FIRST to ensure proper data protection?",
-            options: ["Encryption algorithm strength", "Who controls the encryption keys", "Compliance certifications", "Data center physical security"],
-            answer: 1,
-            exp: "Key management is critical. If the provider controls keys, they can access your data. Verify if you can use customer-managed keys (CMK) or bring your own key (BYOK) for sensitive data."
-        },
-        {
-            id: 46,
-            difficulty: 3,
-            domain: "Security Architecture and Engineering",
-            q: "You are implementing defense-in-depth for a web application. The application has a WAF, network firewall, and IDS. Despite this, an SQL injection succeeds. What does this MOST likely indicate?",
-            options: ["All security controls failed", "The attack bypassed network controls through an encrypted channel", "Defense-in-depth doesn't work", "Insufficient security budget"],
-            answer: 1,
-            exp: "If traffic is encrypted (HTTPS), network IDS can't inspect payload, and WAF rules might not catch sophisticated variants. This highlights the need for application-layer controls like input validation and parameterized queries."
-        },
-        {
-            id: 47,
-            difficulty: 3,
-            domain: "Communication and Network Security",
-            q: "Your organization implements network segmentation. Database servers are on VLAN 10, application servers on VLAN 20, and user workstations on VLAN 30. What firewall rule set is MOST secure?",
-            options: ["Allow VLAN 20 → VLAN 10, deny all other traffic between VLANs", "Allow VLAN 30 → VLAN 20 → VLAN 10 in sequence", "Allow VLAN 20 → VLAN 10 on required ports only, deny all else", "Default deny all, explicit allow based on business need"],
-            answer: 3,
-            exp: "Default deny (implicit deny) with explicit, least-privilege allow rules is the most secure approach. This forces justification for each connection and prevents unauthorized lateral movement."
-        },
-        {
-            id: 48,
-            difficulty: 3,
-            domain: "Identity and Access Management",
-            q: "You implement MFA using SMS for token delivery. Security auditors flag this as insufficient. What is the PRIMARY concern with SMS-based MFA?",
-            options: ["SMS is not encrypted", "SMS can be intercepted via SIM swapping or SS7 attacks", "SMS has delivery delays", "Users may not have cell service"],
-            answer: 1,
-            exp: "SMS is vulnerable to SIM swapping, SS7 protocol exploits, and interception. NIST deprecated SMS-based MFA in SP 800-63B. Use authenticator apps or hardware tokens instead."
-        },
-        {
-            id: 49,
-            difficulty: 3,
-            domain: "Security Assessment and Testing",
-            q: "A vulnerability scan identifies OpenSSL Heartbleed on a web server. The server is scheduled for decommissioning in 2 weeks. What should you do?",
-            options: ["Patch immediately", "Accept the risk since decommissioning is imminent", "Isolate the server until decommissioning", "Accelerate the decommissioning timeline"],
-            answer: 2,
-            exp: "Heartbleed allows memory disclosure, potentially exposing keys and credentials. Isolation limits exposure while maintaining business continuity until decommissioning. Don't leave critical vulnerabilities exposed, even temporarily."
-        },
-        {
-            id: 50,
-            difficulty: 3,
-            domain: "Software Development Security",
-            q: "Your organization adopts microservices architecture. Each service needs to authenticate to others. What is the BEST approach for service-to-service authentication?",
-            options: ["Shared API keys stored in code", "Mutual TLS (mTLS) with certificate-based authentication", "Username and password for each service", "No authentication since services are internal"],
-            answer: 1,
-            exp: "mTLS provides strong authentication using certificates, ensuring both parties verify identity. It's ideal for zero-trust architectures. API keys in code risk exposure; passwords don't scale; no auth violates zero-trust."
-        },
-        {
-            id: 51,
-            difficulty: 3,
-            domain: "Security Operations",
-            q: "During incident response, you discover that an attacker has been in your network for 8 months (advanced persistent threat). What should be your PRIMARY focus?",
-            options: ["Immediate eradication of all attacker access", "Comprehensive scope assessment to identify all compromised systems", "Forensic evidence collection", "Restoring systems from backups"],
-            answer: 1,
-            exp: "With APT, attackers have deep access and multiple footholds. Before eradication, understand the full scope to ensure complete removal. Premature eradication alerts attackers and they may escalate or hide deeper."
-        },
-        {
-            id: 52,
-            difficulty: 3,
-            domain: "Security and Risk Management",
-            q: "Your company develops a mobile app that will be used by millions. A security review reveals a moderate vulnerability that would take 6 months to fix properly. Marketing wants to launch in 1 month. What should you recommend?",
-            options: ["Delay launch until the issue is fixed", "Launch with the vulnerability and fix it in the next release", "Implement compensating controls and launch with enhanced monitoring", "Remove the vulnerable feature entirely"],
-            answer: 2,
-            exp: "Balance risk and business need. If compensating controls and monitoring can reduce risk to acceptable levels, launch may proceed. Document the decision, monitor closely, and prioritize the fix. Pure security or pure business views aren't practical."
-        },
-        {
-            id: 53,
-            difficulty: 3,
-            domain: "Asset Security",
-            q: "An employee reports their laptop was stolen from their car. The laptop has full disk encryption and is configured to require login. What should be your FIRST action?",
-            options: ["File a police report", "Remotely wipe the device if possible", "Change the user's credentials", "Assess what data was on the device"],
-            answer: 1,
-            exp: "If remote wipe capability exists (MDM), use it immediately to eliminate risk. Even with FDE, there are attack vectors (evil maid, memory forensics). After wiping, revoke credentials and assess data exposure."
-        },
-        {
-            id: 54,
-            difficulty: 3,
-            domain: "Security Architecture and Engineering",
-            q: "You are selecting a hash algorithm for integrity verification of software downloads. Which hash function should you choose?",
-            options: ["MD5", "SHA-1", "SHA-256", "CRC32"],
-            answer: 2,
-            exp: "SHA-256 (or SHA-2 family) is cryptographically secure. MD5 and SHA-1 have known collision vulnerabilities. CRC32 is for error detection, not cryptographic security."
-        },
-        {
-            id: 55,
-            difficulty: 3,
-            domain: "Communication and Network Security",
-            q: "Your organization implements a new wireless network. You need to provide secure guest access without exposing the corporate network. What is the BEST solution?",
-            options: ["WPA2-PSK with a long passphrase", "Separate guest SSID on the same VLAN with firewall rules", "Separate guest SSID on isolated VLAN with internet-only access", "Open network with captive portal authentication"],
-            answer: 2,
-            exp: "Separate guest SSID on an isolated VLAN with no access to corporate resources provides segmentation. Internet-only access meets guest needs without corporate network exposure."
-        },
-        {
-            id: 56,
-            difficulty: 3,
-            domain: "Identity and Access Management",
-            q: "You are implementing least privilege. A database administrator (DBA) needs to perform daily maintenance but also has emergency access to production data. How should you structure access?",
-            options: ["Grant full DBA rights permanently", "Use two accounts: standard for maintenance, elevated for emergencies with logging", "Use role-based access that changes based on time of day", "Require manager approval for all database access"],
-            answer: 1,
-            exp: "Separate privileged accounts (sometimes called 'break-glass' accounts) for emergency use, with comprehensive logging and monitoring. Normal tasks use standard accounts with minimal necessary rights."
+const DOMAINS = [
+    "Security and Risk Management",
+    "Asset Security",
+    "Security Architecture and Engineering",
+    "Communication and Network Security",
+    "Identity and Access Management",
+    "Security Assessment and Testing",
+    "Security Operations",
+    "Software Development Security"
+];
+
+let selectedMode = "standard";
+let mode = MODES.standard;
+
+let questionIndex = 0;
+let abilityEstimate = 0;        // IRT-style ability (-3 to +3 scale)
+let currentDifficulty = 2;      // 1=Easy, 2=Medium, 3=Hard
+let questionHistory = [];
+let isAnswered = false;
+let currentQuestion = null;
+let selectedIndices = [];        // for mc and ms
+let orderItems = [];             // for order questions
+let dragSrcIndex = null;
+
+// Stats
+let correctPerDiff = { 1: 0, 2: 0, 3: 0 };
+let totalPerDiff   = { 1: 0, 2: 0, 3: 0 };
+let domainStats = {};
+let consecutiveHard = 0;
+let consecutiveCorrect = 0;
+let consecutiveIncorrect = 0;
+let recentWindow = [];           // last N answers for adaptive logic
+
+// Confidence tracking for early exit
+let passConfidence = 0.5;
+
+// ── Init ──
+document.getElementById('pool-size').textContent = questionBank.length;
+
+function selectMode(m) {
+    selectedMode = m;
+    document.querySelectorAll('.mode-card').forEach(c => c.classList.remove('selected'));
+    document.querySelector(`.mode-card[data-mode="${m}"]`).classList.add('selected');
+}
+
+// ═══════════════════════════════════════════════════════════
+//  ADAPTIVE QUESTION SELECTION
+// ═══════════════════════════════════════════════════════════
+
+function getDomainWeaknesses() {
+    const weights = {};
+    DOMAINS.forEach(d => {
+        const s = domainStats[d];
+        if (!s || s.total === 0) {
+            weights[d] = 1.5; // untested domains get higher weight
+        } else {
+            const acc = s.correct / s.total;
+            weights[d] = acc < 0.5 ? 2.0 : acc < 0.7 ? 1.3 : 0.7;
         }
-    ];
+    });
+    return weights;
+}
 
-    // --- GAME STATE ---
-    let currentQuestionIndex = 0;
-    let currentDifficulty = 2; // Start at Medium
-    let score = 0;
-    let correctPerDiff = { 1: 0, 2: 0, 3: 0 };
-    let totalPerDiff = { 1: 0, 2: 0, 3: 0 };
-    let domainStats = {}; // Track performance by domain
-    let questionHistory = [];
-    const MAX_QUESTIONS = 30;
+function selectQuestion() {
+    const domainWeights = getDomainWeaknesses();
+    const candidates = questionBank.filter(q =>
+        q.difficulty === currentDifficulty && !questionHistory.includes(q.id)
+    );
 
-    let currentQuestion = null;
-    let isAnswered = false;
-
-    // --- LOGIC ---
-    function startExam() {
-        document.getElementById('start-screen').classList.add('hidden');
-        document.getElementById('game-screen').classList.remove('hidden');
-        loadQuestion();
+    if (candidates.length === 0) {
+        // Try adjacent difficulties
+        let alt = questionBank.filter(q =>
+            Math.abs(q.difficulty - currentDifficulty) === 1 && !questionHistory.includes(q.id)
+        );
+        if (alt.length === 0) {
+            alt = questionBank.filter(q => !questionHistory.includes(q.id));
+        }
+        if (alt.length === 0) return null;
+        return weightedPick(alt, domainWeights);
     }
 
-    function getUnusedQuestion(difficulty) {
-        // Filter for difficulty and not already used
-        const candidates = questionBank.filter(q => q.difficulty === difficulty && !questionHistory.includes(q.id));
-        
-        // If run out of current difficulty, try one step down, then up
-        if (candidates.length === 0) {
-            let alt = questionBank.filter(q => q.difficulty === (difficulty - 1) && !questionHistory.includes(q.id));
-            if (alt.length === 0) {
-               alt = questionBank.filter(q => q.difficulty === (difficulty + 1) && !questionHistory.includes(q.id));
-            }
-            // If completely out (rare in full app), just pick random
-            if (alt.length === 0) return null;
-            return alt[Math.floor(Math.random() * alt.length)];
-        }
-        
-        return candidates[Math.floor(Math.random() * candidates.length)];
-    }
+    return weightedPick(candidates, domainWeights);
+}
 
-    function loadQuestion() {
-        if (currentQuestionIndex >= MAX_QUESTIONS) {
+function weightedPick(candidates, domainWeights) {
+    const weighted = candidates.map(q => ({
+        q,
+        weight: domainWeights[q.domain] || 1
+    }));
+    const totalWeight = weighted.reduce((sum, w) => sum + w.weight, 0);
+    let r = Math.random() * totalWeight;
+    for (const w of weighted) {
+        r -= w.weight;
+        if (r <= 0) return w.q;
+    }
+    return weighted[weighted.length - 1].q;
+}
+
+// ═══════════════════════════════════════════════════════════
+//  EXAM FLOW
+// ═══════════════════════════════════════════════════════════
+
+function startExam() {
+    mode = MODES[selectedMode];
+    document.getElementById('start-screen').classList.add('hidden');
+    document.getElementById('game-screen').classList.remove('hidden');
+    DOMAINS.forEach(d => domainStats[d] = { correct: 0, total: 0 });
+    loadQuestion();
+}
+
+function loadQuestion() {
+    if (questionIndex >= mode.maxQ) { endExam(); return; }
+
+    // Early exit check (full sim mode only)
+    if (mode.earlyExit && questionIndex >= mode.minQ) {
+        if (passConfidence > 0.85 || passConfidence < 0.15) {
             endExam();
             return;
         }
+    }
 
-        currentQuestion = getUnusedQuestion(currentDifficulty);
-        
-        if (!currentQuestion) {
-            // Fallback if difficulty bucket empty
-            endExam(); 
-            return;
+    currentQuestion = selectQuestion();
+    if (!currentQuestion) { endExam(); return; }
+
+    questionHistory.push(currentQuestion.id);
+
+    // Update HUD
+    document.getElementById('q-progress').textContent = `${questionIndex + 1}/${mode.maxQ}`;
+    document.getElementById('progress-bar').style.width = `${((questionIndex) / mode.maxQ) * 100}%`;
+    document.getElementById('ability-score').textContent =
+        (abilityEstimate >= 0 ? '+' : '') + abilityEstimate.toFixed(1);
+
+    const diffMap = { 1: ['Easy','diff-easy'], 2: ['Medium','diff-medium'], 3: ['Hard','diff-hard'] };
+    const [diffText, diffClass] = diffMap[currentQuestion.difficulty];
+    const diffEl = document.getElementById('diff-indicator');
+    diffEl.textContent = diffText;
+    diffEl.className = 'diff-indicator ' + diffClass;
+
+    document.getElementById('domain-badge').textContent = currentQuestion.domain;
+
+    // Type badge
+    const typeBadge = document.getElementById('type-badge');
+    const qType = currentQuestion.type || 'mc';
+    if (qType === 'ms') {
+        typeBadge.textContent = 'Select All That Apply';
+        typeBadge.className = 'question-type-badge badge-ms';
+    } else if (qType === 'order') {
+        typeBadge.textContent = 'Drag to Order';
+        typeBadge.className = 'question-type-badge badge-order';
+    } else {
+        typeBadge.textContent = 'Multiple Choice';
+        typeBadge.className = 'question-type-badge badge-mc';
+    }
+
+    // Render question
+    document.getElementById('question-text').textContent = currentQuestion.q;
+    const container = document.getElementById('options-container');
+    container.innerHTML = '';
+    container.className = '';
+
+    if (qType === 'order') {
+        renderOrderQuestion(container);
+    } else if (qType === 'ms') {
+        renderMultiSelectQuestion(container);
+    } else {
+        renderMCQuestion(container);
+    }
+
+    // Reset state
+    isAnswered = false;
+    selectedIndices = [];
+    document.getElementById('feedback').style.display = 'none';
+    document.getElementById('submit-btn').classList.remove('hidden');
+    document.getElementById('next-btn').classList.add('hidden');
+
+    updateCATMeter();
+}
+
+// ── Render: Multiple Choice ──
+function renderMCQuestion(container) {
+    container.className = 'options';
+    currentQuestion.options.forEach((opt, idx) => {
+        const div = document.createElement('div');
+        div.className = 'option';
+        div.textContent = opt;
+        div.onclick = () => selectMCOption(idx);
+        div.id = `opt-${idx}`;
+        container.appendChild(div);
+    });
+}
+
+function selectMCOption(idx) {
+    if (isAnswered) return;
+    document.querySelectorAll('#options-container .option').forEach(o => o.classList.remove('selected'));
+    document.getElementById(`opt-${idx}`).classList.add('selected');
+    selectedIndices = [idx];
+}
+
+// ── Render: Multi-Select ──
+function renderMultiSelectQuestion(container) {
+    container.className = 'options';
+    currentQuestion.options.forEach((opt, idx) => {
+        const div = document.createElement('div');
+        div.className = 'option';
+        div.innerHTML = `<span class="check-indicator"></span>${opt}`;
+        div.onclick = () => toggleMSOption(idx);
+        div.id = `opt-${idx}`;
+        container.appendChild(div);
+    });
+}
+
+function toggleMSOption(idx) {
+    if (isAnswered) return;
+    const el = document.getElementById(`opt-${idx}`);
+    if (selectedIndices.includes(idx)) {
+        selectedIndices = selectedIndices.filter(i => i !== idx);
+        el.classList.remove('selected');
+    } else {
+        selectedIndices.push(idx);
+        el.classList.add('selected');
+    }
+}
+
+// ── Render: Ordering ──
+function renderOrderQuestion(container) {
+    container.className = 'order-list';
+    // Shuffle the items for display
+    orderItems = currentQuestion.items.map((text, origIdx) => ({ text, origIdx }));
+    shuffleArray(orderItems);
+    renderOrderItems(container);
+}
+
+function renderOrderItems(container) {
+    container.innerHTML = '';
+    orderItems.forEach((item, displayIdx) => {
+        const div = document.createElement('div');
+        div.className = 'order-item';
+        div.draggable = true;
+        div.dataset.index = displayIdx;
+        div.innerHTML = `
+            <span class="drag-handle">☰</span>
+            <span class="order-number">${displayIdx + 1}</span>
+            <span>${item.text}</span>
+        `;
+        div.addEventListener('dragstart', handleDragStart);
+        div.addEventListener('dragover', handleDragOver);
+        div.addEventListener('drop', handleDrop);
+        div.addEventListener('dragend', handleDragEnd);
+        // Touch support
+        div.addEventListener('touchstart', handleTouchStart, { passive: false });
+        div.addEventListener('touchmove', handleTouchMove, { passive: false });
+        div.addEventListener('touchend', handleTouchEnd);
+        container.appendChild(div);
+    });
+}
+
+function handleDragStart(e) {
+    if (isAnswered) return;
+    dragSrcIndex = parseInt(e.target.closest('.order-item').dataset.index);
+    e.target.closest('.order-item').classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+}
+
+function handleDragOver(e) {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+}
+
+function handleDrop(e) {
+    e.preventDefault();
+    if (isAnswered) return;
+    const targetIndex = parseInt(e.target.closest('.order-item').dataset.index);
+    if (dragSrcIndex !== null && dragSrcIndex !== targetIndex) {
+        const moved = orderItems.splice(dragSrcIndex, 1)[0];
+        orderItems.splice(targetIndex, 0, moved);
+        renderOrderItems(document.getElementById('options-container'));
+    }
+}
+
+function handleDragEnd(e) {
+    document.querySelectorAll('.order-item').forEach(el => el.classList.remove('dragging'));
+    dragSrcIndex = null;
+}
+
+// Touch drag support
+let touchStartY = 0;
+let touchItem = null;
+
+function handleTouchStart(e) {
+    if (isAnswered) return;
+    touchItem = e.target.closest('.order-item');
+    touchStartY = e.touches[0].clientY;
+    dragSrcIndex = parseInt(touchItem.dataset.index);
+    touchItem.classList.add('dragging');
+}
+
+function handleTouchMove(e) {
+    e.preventDefault();
+}
+
+function handleTouchEnd(e) {
+    if (!touchItem || isAnswered) return;
+    const touchEndY = e.changedTouches[0].clientY;
+    const items = document.querySelectorAll('.order-item');
+    let targetIndex = dragSrcIndex;
+
+    items.forEach((item, idx) => {
+        const rect = item.getBoundingClientRect();
+        if (touchEndY >= rect.top && touchEndY <= rect.bottom) {
+            targetIndex = idx;
         }
+    });
 
-        questionHistory.push(currentQuestion.id);
-
-        // Update HUD
-        document.getElementById('q-progress').innerText = `${currentQuestionIndex + 1}/${MAX_QUESTIONS}`;
-        document.getElementById('score').innerText = score;
-
-        let diffText = "Medium";
-        if (currentQuestion.difficulty === 1) diffText = "Easy";
-        if (currentQuestion.difficulty === 3) diffText = "Hard";
-        document.getElementById('diff-indicator').innerText = diffText;
-
-        // Update domain badge
-        document.getElementById('domain-badge').innerText = currentQuestion.domain;
-
-        // Render Question
-        document.getElementById('question-text').innerText = currentQuestion.q;
-        const optsContainer = document.getElementById('options-container');
-        optsContainer.innerHTML = '';
-        
-        currentQuestion.options.forEach((opt, idx) => {
-            const div = document.createElement('div');
-            div.className = 'option';
-            div.innerText = opt;
-            div.onclick = () => selectOption(idx);
-            div.id = `opt-${idx}`;
-            optsContainer.appendChild(div);
-        });
-
-        // Reset state
-        isAnswered = false;
-        document.getElementById('feedback').style.display = 'none';
-        document.getElementById('submit-btn').classList.remove('hidden');
-        document.getElementById('next-btn').classList.add('hidden');
-        selectedOptionIndex = -1;
+    if (dragSrcIndex !== null && dragSrcIndex !== targetIndex) {
+        const moved = orderItems.splice(dragSrcIndex, 1)[0];
+        orderItems.splice(targetIndex, 0, moved);
+        renderOrderItems(document.getElementById('options-container'));
     }
 
-    let selectedOptionIndex = -1;
+    touchItem.classList.remove('dragging');
+    touchItem = null;
+    dragSrcIndex = null;
+}
 
-    function selectOption(idx) {
-        if (isAnswered) return;
-        
-        // Clear previous selection
-        const opts = document.querySelectorAll('.option');
-        opts.forEach(o => o.classList.remove('selected'));
-        
-        // Select new
-        document.getElementById(`opt-${idx}`).classList.add('selected');
-        selectedOptionIndex = idx;
+// ═══════════════════════════════════════════════════════════
+//  SUBMIT & SCORING
+// ═══════════════════════════════════════════════════════════
+
+function submitAnswer() {
+    const qType = currentQuestion.type || 'mc';
+
+    if (qType === 'mc') {
+        if (selectedIndices.length === 0) return;
+    } else if (qType === 'ms') {
+        if (selectedIndices.length === 0) return;
     }
+    // order always has a valid state
 
-    function submitAnswer() {
-        if (selectedOptionIndex === -1) return;
-        
-        isAnswered = true;
-        const isCorrect = (selectedOptionIndex === currentQuestion.answer);
-        
-        // Style options
+    isAnswered = true;
+    let isCorrect = false;
+
+    if (qType === 'mc') {
+        isCorrect = selectedIndices[0] === currentQuestion.answer;
         document.getElementById(`opt-${currentQuestion.answer}`).classList.add('correct');
         if (!isCorrect) {
-            document.getElementById(`opt-${selectedOptionIndex}`).classList.add('incorrect');
+            document.getElementById(`opt-${selectedIndices[0]}`).classList.add('incorrect');
         }
-        
-        // Disable clicks
-        document.querySelectorAll('.option').forEach(o => o.classList.add('disabled'));
+        document.querySelectorAll('#options-container .option').forEach(o => o.classList.add('disabled'));
 
-        // Logic stats
-        totalPerDiff[currentQuestion.difficulty]++;
-        if (isCorrect) correctPerDiff[currentQuestion.difficulty]++;
+    } else if (qType === 'ms') {
+        const correctSet = new Set(currentQuestion.answers);
+        const selectedSet = new Set(selectedIndices);
+        isCorrect = correctSet.size === selectedSet.size &&
+                    [...correctSet].every(v => selectedSet.has(v));
 
-        // Track domain stats
-        const domain = currentQuestion.domain;
-        if (!domainStats[domain]) {
-            domainStats[domain] = { correct: 0, total: 0 };
-        }
-        domainStats[domain].total++;
-        if (isCorrect) domainStats[domain].correct++;
-
-        // Adaptive Logic
-        if (isCorrect) {
-            score += (currentQuestion.difficulty * 10);
-            // Increase difficulty if easy/medium
-            if (currentQuestion.difficulty < 3) currentDifficulty++;
-        } else {
-            // Decrease difficulty if hard/medium
-            if (currentQuestion.difficulty > 1) currentDifficulty--;
-        }
-
-        // Show Feedback
-        const feedback = document.getElementById('feedback');
-        feedback.style.display = 'block';
-        document.getElementById('feedback-title').innerText = isCorrect ? "Correct!" : "Incorrect";
-        document.getElementById('feedback-title').style.color = isCorrect ? "var(--success)" : "var(--danger)";
-        document.getElementById('explanation').innerText = currentQuestion.exp;
-
-        // Toggle Buttons
-        document.getElementById('submit-btn').classList.add('hidden');
-        document.getElementById('next-btn').classList.remove('hidden');
-    }
-
-    function nextQuestion() {
-        currentQuestionIndex++;
-        loadQuestion();
-    }
-
-    function endExam() {
-        document.getElementById('game-screen').classList.add('hidden');
-        document.getElementById('end-screen').classList.remove('hidden'); // Fix: remove hidden, not display flex
-
-        // Calculate Hard Accuracy (Primary metric for CISSP)
-        const hardAttempts = totalPerDiff[3];
-        const hardCorrect = correctPerDiff[3];
-        const hardAcc = hardAttempts ? Math.round((hardCorrect / hardAttempts) * 100) : 0;
-        
-        // Pass Logic: Must answer > 50% Hard questions correctly OR > 80% Medium
-        let pass = false;
-        // Simple logic: if you ended on Hard difficulty and have > 50% accuracy there
-        if (currentDifficulty === 3 && hardAcc >= 50) pass = true;
-        // Or if you crushed medium but never got enough hard questions (unlikely in this logic but possible)
-        if (currentDifficulty === 2 && (correctPerDiff[2]/totalPerDiff[2]) > 0.8) pass = true;
-
-        const circle = document.getElementById('final-result-circle');
-        const text = document.getElementById('pass-fail-text');
-        const msg = document.getElementById('final-message');
-
-        if (pass) {
-            circle.classList.add('pass');
-            text.innerText = "PASS";
-            msg.innerText = "Congratulations! You demonstrated proficiency at the required difficulty level.";
-        } else {
-            circle.classList.add('fail');
-            text.innerText = "FAIL";
-            msg.innerText = "You need more practice. Focus on understanding the concepts to tackle harder scenarios.";
-        }
-
-        document.getElementById('final-count').innerText = currentQuestionIndex;
-        document.getElementById('final-diff').innerText = currentDifficulty === 3 ? "Hard" : (currentDifficulty === 2 ? "Medium" : "Easy");
-        
-        document.getElementById('acc-hard').innerText = `${correctPerDiff[3]}/${totalPerDiff[3]} (${hardAttempts ? Math.round((correctPerDiff[3]/hardAttempts)*100) : 0}%)`;
-        document.getElementById('acc-med').innerText = `${correctPerDiff[2]}/${totalPerDiff[2]} (${totalPerDiff[2] ? Math.round((correctPerDiff[2]/totalPerDiff[2])*100) : 0}%)`;
-        document.getElementById('acc-easy').innerText = `${correctPerDiff[1]}/${totalPerDiff[1]} (${totalPerDiff[1] ? Math.round((correctPerDiff[1]/totalPerDiff[1])*100) : 0}%)`;
-
-        // Display domain breakdown
-        const domainBreakdown = document.getElementById('domain-breakdown');
-        domainBreakdown.innerHTML = '';
-        Object.keys(domainStats).sort().forEach(domain => {
-            const stats = domainStats[domain];
-            const percentage = Math.round((stats.correct / stats.total) * 100);
-            const color = percentage >= 70 ? 'var(--success)' : (percentage >= 50 ? '#f39c12' : 'var(--danger)');
-            domainBreakdown.innerHTML += `
-                <p><strong>${domain}:</strong> ${stats.correct}/${stats.total}
-                <span style="color: ${color}; font-weight: bold;">(${percentage}%)</span></p>
-            `;
+        currentQuestion.options.forEach((_, idx) => {
+            const el = document.getElementById(`opt-${idx}`);
+            if (correctSet.has(idx)) {
+                el.classList.add('correct');
+            } else if (selectedSet.has(idx) && !correctSet.has(idx)) {
+                el.classList.add('incorrect');
+            }
+            el.classList.add('disabled');
         });
 
-        document.getElementById('end-screen').style.display = 'block';
+    } else if (qType === 'order') {
+        const userOrder = orderItems.map(item => item.origIdx);
+        isCorrect = JSON.stringify(userOrder) === JSON.stringify(currentQuestion.correctOrder);
+
+        document.querySelectorAll('.order-item').forEach((el, idx) => {
+            const item = orderItems[idx];
+            const correctPos = currentQuestion.correctOrder.indexOf(item.origIdx);
+            if (idx === correctPos) {
+                el.classList.add('correct-position');
+            } else {
+                el.classList.add('incorrect-position');
+            }
+        });
+
+        // Show correct order in feedback
+        if (!isCorrect) {
+            const correctOrderText = currentQuestion.correctOrder
+                .map((origIdx, pos) => `${pos + 1}. ${currentQuestion.items[origIdx]}`)
+                .join('\n');
+            currentQuestion._orderFeedback = correctOrderText;
+        }
     }
+
+    // ── Update Stats ──
+    totalPerDiff[currentQuestion.difficulty]++;
+    if (isCorrect) correctPerDiff[currentQuestion.difficulty]++;
+
+    const domain = currentQuestion.domain;
+    if (!domainStats[domain]) domainStats[domain] = { correct: 0, total: 0 };
+    domainStats[domain].total++;
+    if (isCorrect) domainStats[domain].correct++;
+
+    // ── Adaptive Difficulty ──
+    recentWindow.push(isCorrect ? 1 : 0);
+    if (recentWindow.length > 10) recentWindow.shift();
+
+    if (isCorrect) {
+        consecutiveCorrect++;
+        consecutiveIncorrect = 0;
+        // IRT-like ability update
+        const step = currentQuestion.difficulty === 3 ? 0.4 : currentQuestion.difficulty === 2 ? 0.25 : 0.1;
+        abilityEstimate = Math.min(3, abilityEstimate + step);
+
+        if (consecutiveCorrect >= 2 && currentDifficulty < 3) {
+            currentDifficulty++;
+            consecutiveCorrect = 0;
+        }
+        if (currentQuestion.difficulty === 3) consecutiveHard++;
+    } else {
+        consecutiveIncorrect++;
+        consecutiveCorrect = 0;
+        consecutiveHard = 0;
+        const step = currentQuestion.difficulty === 1 ? -0.4 : currentQuestion.difficulty === 2 ? -0.25 : -0.15;
+        abilityEstimate = Math.max(-3, abilityEstimate + step);
+
+        if (consecutiveIncorrect >= 2 && currentDifficulty > 1) {
+            currentDifficulty--;
+            consecutiveIncorrect = 0;
+        }
+    }
+
+    // ── Pass Confidence Update ──
+    updatePassConfidence();
+
+    // ── Show Feedback ──
+    const feedback = document.getElementById('feedback');
+    feedback.style.display = 'block';
+    const title = document.getElementById('feedback-title');
+    title.textContent = isCorrect ? "Correct!" : "Incorrect";
+    title.style.color = isCorrect ? "var(--success)" : "var(--danger)";
+
+    let expText = currentQuestion.exp;
+    if (qType === 'order' && !isCorrect && currentQuestion._orderFeedback) {
+        expText = "Correct order:\n" + currentQuestion._orderFeedback + "\n\n" + expText;
+    }
+    document.getElementById('explanation').textContent = expText;
+
+    document.getElementById('submit-btn').classList.add('hidden');
+    document.getElementById('next-btn').classList.remove('hidden');
+
+    updateCATMeter();
+}
+
+function nextQuestion() {
+    questionIndex++;
+    loadQuestion();
+}
+
+// ═══════════════════════════════════════════════════════════
+//  CONFIDENCE / CAT METER
+// ═══════════════════════════════════════════════════════════
+
+function updatePassConfidence() {
+    // Weighted by difficulty: hard answers matter most
+    const hardAcc = totalPerDiff[3] > 0 ? correctPerDiff[3] / totalPerDiff[3] : 0.5;
+    const medAcc  = totalPerDiff[2] > 0 ? correctPerDiff[2] / totalPerDiff[2] : 0.5;
+    const totalAnswered = questionIndex + 1;
+
+    // Blend of ability estimate and hard accuracy
+    const normalizedAbility = (abilityEstimate + 3) / 6; // 0 to 1
+    const progressFactor = Math.min(totalAnswered / mode.minQ, 1); // how far into exam
+
+    passConfidence = (normalizedAbility * 0.4 + hardAcc * 0.4 + medAcc * 0.2);
+    passConfidence = Math.max(0, Math.min(1, passConfidence));
+}
+
+function updateCATMeter() {
+    const fill = document.getElementById('cat-fill');
+    const label = document.getElementById('cat-label');
+    const pct = Math.round(passConfidence * 100);
+    fill.style.width = pct + '%';
+
+    if (passConfidence > 0.7) {
+        fill.style.background = 'var(--success)';
+        label.textContent = `CAT Confidence: Trending Pass (${pct}%)`;
+    } else if (passConfidence > 0.4) {
+        fill.style.background = 'var(--warning)';
+        label.textContent = `CAT Confidence: Borderline (${pct}%)`;
+    } else {
+        fill.style.background = 'var(--danger)';
+        label.textContent = `CAT Confidence: Trending Fail (${pct}%)`;
+    }
+
+    if (mode.earlyExit && questionIndex >= mode.minQ) {
+        label.textContent += ' — Early exit eligible';
+    }
+}
+
+// ═══════════════════════════════════════════════════════════
+//  END EXAM
+// ═══════════════════════════════════════════════════════════
+
+function endExam() {
+    document.getElementById('game-screen').classList.add('hidden');
+    document.getElementById('end-screen').classList.remove('hidden');
+    document.getElementById('end-screen').style.display = 'block';
+
+    const hardAttempts = totalPerDiff[3];
+    const hardCorrect = correctPerDiff[3];
+    const hardAcc = hardAttempts ? Math.round((hardCorrect / hardAttempts) * 100) : 0;
+
+    // Pass logic
+    const pass = passConfidence >= 0.55 && abilityEstimate > 0;
+
+    const circle = document.getElementById('final-result-circle');
+    const text = document.getElementById('pass-fail-text');
+    const msg = document.getElementById('final-message');
+
+    circle.classList.remove('pass', 'fail');
+    if (pass) {
+        circle.classList.add('pass');
+        text.textContent = "PASS";
+        msg.textContent = "Congratulations! You demonstrated proficiency at the required difficulty level.";
+    } else {
+        circle.classList.add('fail');
+        text.textContent = "FAIL";
+        msg.textContent = "You need more practice. Focus on your weak domains and aim to consistently answer Hard questions correctly.";
+    }
+
+    document.getElementById('final-count').textContent = questionIndex;
+    const diffNames = { 1: 'Easy', 2: 'Medium', 3: 'Hard' };
+    document.getElementById('final-diff').textContent = diffNames[currentDifficulty];
+    document.getElementById('final-ability').textContent =
+        (abilityEstimate >= 0 ? '+' : '') + abilityEstimate.toFixed(2);
+
+    document.getElementById('acc-hard').textContent = fmtAcc(3);
+    document.getElementById('acc-med').textContent = fmtAcc(2);
+    document.getElementById('acc-easy').textContent = fmtAcc(1);
+
+    renderDomainBreakdown();
+}
+
+function fmtAcc(diff) {
+    const t = totalPerDiff[diff], c = correctPerDiff[diff];
+    return `${c}/${t} (${t ? Math.round((c/t)*100) : 0}%)`;
+}
+
+function renderDomainBreakdown() {
+    const container = document.getElementById('domain-breakdown');
+    container.innerHTML = '';
+    DOMAINS.forEach(domain => {
+        const s = domainStats[domain];
+        if (!s || s.total === 0) return;
+        const pct = Math.round((s.correct / s.total) * 100);
+        const color = pct >= 70 ? 'var(--success)' : pct >= 50 ? 'var(--warning)' : 'var(--danger)';
+        container.innerHTML += `
+            <div class="domain-bar">
+                <span class="domain-name">${domain}</span>
+                <div class="bar-track">
+                    <div class="bar-fill" style="width: ${pct}%; background: ${color};"></div>
+                </div>
+                <span class="bar-pct" style="color: ${color};">${pct}%</span>
+            </div>
+        `;
+    });
+}
+
+// ═══════════════════════════════════════════════════════════
+//  UTILITIES
+// ═══════════════════════════════════════════════════════════
+
+function shuffleArray(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+}
 </script>
 
 </body>
