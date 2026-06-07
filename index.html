@@ -282,6 +282,47 @@
             transition: width 0.5s ease, background 0.5s;
         }
 
+        /* ── Review Mode ── */
+        #review-section { display: none; margin-top: 20px; }
+        .review-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-left: 4px solid var(--danger);
+            border-radius: 4px;
+            padding: 16px;
+            margin-bottom: 16px;
+            text-align: left;
+        }
+        .review-card .review-q {
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+        .review-card .review-domain {
+            font-size: 0.75rem;
+            color: #666;
+            margin-bottom: 6px;
+        }
+        .review-card .review-answers {
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+        .review-card .review-answers .your-answer { color: var(--danger); }
+        .review-card .review-answers .correct-answer { color: var(--success); }
+        .review-card .review-exp {
+            font-size: 0.85rem;
+            color: #555;
+            padding: 8px;
+            background: #f8f9f9;
+            border-radius: 4px;
+        }
+        .review-card .review-ref {
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-top: 6px;
+            font-style: italic;
+        }
+
         /* ── End Screen ── */
         #end-screen { text-align: center; display: none; }
         .result-circle {
@@ -442,7 +483,15 @@
             <div id="domain-breakdown"></div>
         </div>
         <br>
-        <button class="btn" onclick="location.reload()">Restart</button>
+        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+            <button class="btn" onclick="toggleReview()">Review Missed Questions</button>
+            <button class="btn btn-secondary" onclick="location.reload()">Restart</button>
+        </div>
+
+        <div id="review-section">
+            <h3 style="text-align: left;">Missed Questions Review</h3>
+            <div id="review-container"></div>
+        </div>
     </div>
 </div>
 
@@ -469,6 +518,18 @@ const DOMAINS = [
     "Software Development Security"
 ];
 
+// Study guide reference map (domain → section reference)
+const STUDY_GUIDE_REF = {
+    "Security and Risk Management": "study_guide.md — Domain 1: Security and Risk Management (CIA Triad, Risk Management, Legal & Compliance)",
+    "Asset Security": "study_guide.md — Domain 2: Asset Security (Data Classification, Data Lifecycle)",
+    "Security Architecture and Engineering": "study_guide.md — Domain 3: Security Architecture and Engineering (Security Models, Cryptography, Physical Security)",
+    "Communication and Network Security": "study_guide.md — Domain 4: Communication and Network Security (OSI Model, Secure Protocols)",
+    "Identity and Access Management": "study_guide.md — Domain 5: Identity and Access Management (Authentication, MFA, SSO)",
+    "Security Assessment and Testing": "study_guide.md — Domain 6: Security Assessment and Testing (Testing Types, Auditing)",
+    "Security Operations": "study_guide.md — Domain 7: Security Operations (Incident Response, DR/BCP, Forensics)",
+    "Software Development Security": "study_guide.md — Domain 8: Software Development Security (Database Security, Web Attacks, Dev Methods)"
+};
+
 let selectedMode = "standard";
 let mode = MODES.standard;
 
@@ -493,6 +554,9 @@ let recentWindow = [];           // last N answers for adaptive logic
 
 // Confidence tracking for early exit
 let passConfidence = 0.5;
+
+// Review mode: track missed questions
+let missedQuestions = [];
 
 // ── Init ──
 document.getElementById('pool-size').textContent = questionBank.length;
@@ -855,18 +919,25 @@ function submitAnswer() {
     domainStats[domain].total++;
     if (isCorrect) domainStats[domain].correct++;
 
-    // ── Adaptive Difficulty ──
+    // ── Adaptive Difficulty (aggressive, closer to real CAT) ──
     recentWindow.push(isCorrect ? 1 : 0);
     if (recentWindow.length > 10) recentWindow.shift();
 
     if (isCorrect) {
         consecutiveCorrect++;
         consecutiveIncorrect = 0;
-        // IRT-like ability update
-        const step = currentQuestion.difficulty === 3 ? 0.4 : currentQuestion.difficulty === 2 ? 0.25 : 0.1;
+
+        // Ability step: Hard correct is worth much more
+        const step = currentQuestion.difficulty === 3 ? 0.55
+                   : currentQuestion.difficulty === 2 ? 0.3
+                   : 0.1;
         abilityEstimate = Math.min(3, abilityEstimate + step);
 
-        if (consecutiveCorrect >= 2 && currentDifficulty < 3) {
+        // Difficulty promotion: single Hard correct moves up immediately
+        // Medium/Easy still needs 2 consecutive to move up
+        if (currentQuestion.difficulty === 3 && currentDifficulty < 3) {
+            currentDifficulty = 3;
+        } else if (consecutiveCorrect >= 2 && currentDifficulty < 3) {
             currentDifficulty++;
             consecutiveCorrect = 0;
         }
@@ -875,13 +946,27 @@ function submitAnswer() {
         consecutiveIncorrect++;
         consecutiveCorrect = 0;
         consecutiveHard = 0;
-        const step = currentQuestion.difficulty === 1 ? -0.4 : currentQuestion.difficulty === 2 ? -0.25 : -0.15;
+
+        // Ability penalty: Easy incorrect is harsh, Hard incorrect is mild
+        const step = currentQuestion.difficulty === 1 ? -0.5
+                   : currentQuestion.difficulty === 2 ? -0.3
+                   : -0.15;
         abilityEstimate = Math.max(-3, abilityEstimate + step);
 
-        if (consecutiveIncorrect >= 2 && currentDifficulty > 1) {
+        // Difficulty demotion: single Easy incorrect drops immediately
+        // Hard/Medium incorrect needs 2 consecutive to drop
+        if (currentQuestion.difficulty === 1 && currentDifficulty > 1) {
+            currentDifficulty--;
+        } else if (consecutiveIncorrect >= 2 && currentDifficulty > 1) {
             currentDifficulty--;
             consecutiveIncorrect = 0;
         }
+
+        // Track missed question for review
+        missedQuestions.push({
+            question: currentQuestion,
+            userAnswer: qType === 'order' ? orderItems.map(i => i.origIdx) : [...selectedIndices]
+        });
     }
 
     // ── Pass Confidence Update ──
@@ -897,6 +982,11 @@ function submitAnswer() {
     let expText = currentQuestion.exp;
     if (qType === 'order' && !isCorrect && currentQuestion._orderFeedback) {
         expText = "Correct order:\n" + currentQuestion._orderFeedback + "\n\n" + expText;
+    }
+    // Append study guide reference
+    const ref = STUDY_GUIDE_REF[currentQuestion.domain];
+    if (ref) {
+        expText += "\n\n📖 " + ref;
     }
     document.getElementById('explanation').textContent = expText;
 
@@ -1029,6 +1119,65 @@ function shuffleArray(arr) {
         const j = Math.floor(Math.random() * (i + 1));
         [arr[i], arr[j]] = [arr[j], arr[i]];
     }
+}
+
+// ═══════════════════════════════════════════════════════════
+//  REVIEW MODE
+// ═══════════════════════════════════════════════════════════
+
+function toggleReview() {
+    const section = document.getElementById('review-section');
+    if (section.style.display === 'block') {
+        section.style.display = 'none';
+        return;
+    }
+    section.style.display = 'block';
+    renderReview();
+}
+
+function renderReview() {
+    const container = document.getElementById('review-container');
+    if (missedQuestions.length === 0) {
+        container.innerHTML = '<p style="text-align:center; color: var(--success); font-weight:bold;">No missed questions — perfect score!</p>';
+        return;
+    }
+
+    container.innerHTML = `<p style="margin-bottom:16px;"><strong>${missedQuestions.length}</strong> question${missedQuestions.length > 1 ? 's' : ''} missed:</p>`;
+
+    missedQuestions.forEach((entry, idx) => {
+        const q = entry.question;
+        const qType = q.type || 'mc';
+        const ref = STUDY_GUIDE_REF[q.domain] || '';
+
+        let yourAnswerText = '';
+        let correctAnswerText = '';
+
+        if (qType === 'mc') {
+            yourAnswerText = q.options[entry.userAnswer[0]] || 'None selected';
+            correctAnswerText = q.options[q.answer];
+        } else if (qType === 'ms') {
+            yourAnswerText = entry.userAnswer.map(i => q.options[i]).join(', ') || 'None selected';
+            correctAnswerText = q.answers.map(i => q.options[i]).join(', ');
+        } else if (qType === 'order') {
+            yourAnswerText = entry.userAnswer.map((origIdx, pos) => `${pos+1}. ${q.items[origIdx]}`).join('; ');
+            correctAnswerText = q.correctOrder.map((origIdx, pos) => `${pos+1}. ${q.items[origIdx]}`).join('; ');
+        }
+
+        const diffLabel = q.difficulty === 3 ? 'Hard' : q.difficulty === 2 ? 'Medium' : 'Easy';
+
+        container.innerHTML += `
+            <div class="review-card">
+                <div class="review-domain">${q.domain} | ${diffLabel}</div>
+                <div class="review-q">${idx + 1}. ${q.q}</div>
+                <div class="review-answers">
+                    <span class="your-answer">Your answer: ${yourAnswerText}</span><br>
+                    <span class="correct-answer">Correct: ${correctAnswerText}</span>
+                </div>
+                <div class="review-exp">${q.exp}</div>
+                ${ref ? `<div class="review-ref">📖 ${ref}</div>` : ''}
+            </div>
+        `;
+    });
 }
 </script>
 
