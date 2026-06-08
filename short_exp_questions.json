@@ -1,0 +1,1000 @@
+[
+  {
+    "id": 2,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security and Risk Management",
+    "q": "Which document provides management guidance on acceptable risk levels?",
+    "options": [
+      "Standard Operating Procedure",
+      "Baseline Configuration Guide",
+      "Risk Appetite Statement",
+      "Security Architecture Plan"
+    ],
+    "answer": 2,
+    "exp": "Risk Appetite defines how much risk the organization is willing to accept."
+  },
+  {
+    "id": 7,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security and Risk Management",
+    "q": "What is the formula for calculating Single Loss Expectancy (SLE)?",
+    "options": [
+      "EF x ARO",
+      "AV x ARO",
+      "ALE / EF",
+      "AV x EF"
+    ],
+    "answer": 3,
+    "exp": "SLE = Asset Value (AV) x Exposure Factor (EF). ALE = SLE x ARO."
+  },
+  {
+    "id": 13,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security and Risk Management",
+    "q": "What type of law deals with wrongs committed against society as a whole?",
+    "options": [
+      "Administrative law",
+      "Civil law",
+      "Common law",
+      "Criminal law"
+    ],
+    "answer": 3,
+    "exp": "Criminal law addresses wrongs against society (prosecution by the state)."
+  },
+  {
+    "id": 23,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Asset Security",
+    "q": "Who is primarily responsible for classifying data?",
+    "options": [
+      "The Security Officer",
+      "The System Administrator",
+      "The Data Custodian",
+      "The Data Owner"
+    ],
+    "answer": 3,
+    "exp": "The Data Owner (usually management) is responsible for its classification."
+  },
+  {
+    "id": 31,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Asset Security",
+    "q": "Which role is responsible for determining who can access specific data?",
+    "options": [
+      "System administrator",
+      "Data custodian",
+      "Data owner",
+      "Data processor"
+    ],
+    "answer": 2,
+    "exp": "The data owner determines access rights based on business needs."
+  },
+  {
+    "id": 38,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Architecture and Engineering",
+    "q": "Which fire suppression system is most suitable for a data center?",
+    "options": [
+      "Foam-based suppression system",
+      "Clean agent (gaseous) system",
+      "Water-based sprinkler system",
+      "Wet pipe suppression system"
+    ],
+    "answer": 1,
+    "exp": "Clean agent systems (FM-200, Inergen) don't damage electronic equipment."
+  },
+  {
+    "id": 40,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Architecture and Engineering",
+    "q": "Which principle states a system should fail in a secure state?",
+    "options": [
+      "Separation of duties",
+      "Fail-secure",
+      "Least privilege",
+      "Defense in depth"
+    ],
+    "answer": 1,
+    "exp": "Fail-secure ensures that when a system fails, it defaults to a secure state."
+  },
+  {
+    "id": 43,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Architecture and Engineering",
+    "q": "Which cryptographic algorithm is asymmetric?",
+    "options": [
+      "DES",
+      "AES",
+      "RSA",
+      "Blowfish"
+    ],
+    "answer": 2,
+    "exp": "RSA is asymmetric. AES, DES, and Blowfish are symmetric."
+  },
+  {
+    "id": 44,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Architecture and Engineering",
+    "q": "The Bell-LaPadula model enforces which property?",
+    "options": [
+      "Confidentiality via no read up, no write down",
+      "Availability via redundancy requirements",
+      "Integrity via no read up, no write down",
+      "Non-repudiation via mandatory logging"
+    ],
+    "answer": 0,
+    "exp": "Bell-LaPadula enforces confidentiality: no read up and no write down."
+  },
+  {
+    "id": 45,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Architecture and Engineering",
+    "q": "The Biba model is the inverse of Bell-LaPadula. What does Biba protect?",
+    "options": [
+      "Availability of critical systems",
+      "Confidentiality of classified data",
+      "Authentication of user identities",
+      "Integrity of trusted data objects"
+    ],
+    "answer": 3,
+    "exp": "Biba protects integrity: no read down and no write up."
+  },
+  {
+    "id": 56,
+    "type": "order",
+    "difficulty": 1,
+    "domain": "Security Architecture and Engineering",
+    "q": "Order the following from WEAKEST to STRONGEST encryption:",
+    "items": [
+      "DES (56-bit)",
+      "3DES (168-bit)",
+      "AES-128",
+      "AES-256"
+    ],
+    "correctOrder": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "exp": "DES is weakest, then 3DES, then AES-128, then AES-256."
+  },
+  {
+    "id": 57,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Communication and Network Security",
+    "q": "Which port is commonly used for HTTP traffic?",
+    "options": [
+      "3389",
+      "80",
+      "443",
+      "22"
+    ],
+    "answer": 1,
+    "exp": "Port 80 is HTTP. Port 443 is HTTPS. Port 22 is SSH. Port 3389 is RDP."
+  },
+  {
+    "id": 60,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Communication and Network Security",
+    "q": "Which protocol provides secure web browsing?",
+    "options": [
+      "HTTPS",
+      "FTP",
+      "HTTP",
+      "Telnet"
+    ],
+    "answer": 0,
+    "exp": "HTTPS uses TLS to encrypt HTTP traffic."
+  },
+  {
+    "id": 72,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Communication and Network Security",
+    "q": "What is the PRIMARY advantage of SSL VPN over IPSec VPN for remote access?",
+    "options": [
+      "Traverses most firewalls and NAT easily",
+      "Stronger encryption algorithm support",
+      "Better overall throughput performance",
+      "Significantly lower licensing costs"
+    ],
+    "answer": 0,
+    "exp": "SSL VPN uses port 443, which is typically allowed through firewalls and NAT."
+  },
+  {
+    "id": 74,
+    "type": "order",
+    "difficulty": 1,
+    "domain": "Communication and Network Security",
+    "q": "Order the OSI model layers from BOTTOM (Layer 1) to TOP (Layer 7):",
+    "items": [
+      "Physical",
+      "Data Link",
+      "Network",
+      "Transport",
+      "Session",
+      "Presentation",
+      "Application"
+    ],
+    "correctOrder": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "exp": "Physical, Data Link, Network, Transport, Session, Presentation, Application."
+  },
+  {
+    "id": 75,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Identity and Access Management",
+    "q": "A password is an example of which authentication factor?",
+    "options": [
+      "Something you do",
+      "Something you know",
+      "Something you have",
+      "Something you are"
+    ],
+    "answer": 1,
+    "exp": "Passwords are 'Something you know.' Tokens are 'have,' biometrics are 'are.'"
+  },
+  {
+    "id": 76,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Identity and Access Management",
+    "q": "What is the purpose of multi-factor authentication?",
+    "options": [
+      "To require multiple passwords",
+      "To require two or more different factor types",
+      "To speed up the login process",
+      "To encrypt authentication traffic"
+    ],
+    "answer": 1,
+    "exp": "MFA requires factors from two or more categories (know, have, are)."
+  },
+  {
+    "id": 79,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Identity and Access Management",
+    "q": "Which biometric rate is the point where FAR and FRR intersect?",
+    "options": [
+      "Type I Error Rate",
+      "Crossover Error Rate (CER)",
+      "Failure to Enroll Rate",
+      "Type II Error Rate"
+    ],
+    "answer": 1,
+    "exp": "CER (or EER) is where False Acceptance Rate and False Rejection Rate intersect."
+  },
+  {
+    "id": 80,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Identity and Access Management",
+    "q": "Which access control model uses labels and clearances?",
+    "options": [
+      "MAC",
+      "Rule-Based",
+      "RBAC",
+      "DAC"
+    ],
+    "answer": 0,
+    "exp": "MAC uses security labels and clearances. DAC is owner-controlled."
+  },
+  {
+    "id": 81,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Identity and Access Management",
+    "q": "What is the difference between identification and authentication?",
+    "options": [
+      "They are the same process",
+      "Identification claims identity; authentication proves it",
+      "Identification is for users; authentication for systems",
+      "Authentication always precedes identification"
+    ],
+    "answer": 1,
+    "exp": "Identification is claiming who you are. Authentication is proving it."
+  },
+  {
+    "id": 82,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Identity and Access Management",
+    "q": "In RBAC, access is determined by what?",
+    "options": [
+      "The time of day and location",
+      "The user's job function or role",
+      "The user's department name",
+      "Data sensitivity labels"
+    ],
+    "answer": 1,
+    "exp": "RBAC assigns permissions to roles based on job function."
+  },
+  {
+    "id": 84,
+    "type": "ms",
+    "difficulty": 1,
+    "domain": "Identity and Access Management",
+    "q": "Which of the following are authentication factors? (Select ALL that apply)",
+    "options": [
+      "Something you know",
+      "Somewhere you are",
+      "Something you have",
+      "Something you are"
+    ],
+    "answers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "exp": "Know (password), Have (token), Are (biometric), Somewhere (location)."
+  },
+  {
+    "id": 85,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Identity and Access Management",
+    "q": "In SAML-based federation, who generates the SAML assertion?",
+    "options": [
+      "The Identity Provider (IdP)",
+      "The Service Provider (SP)",
+      "The user's browser client",
+      "The backend LDAP directory"
+    ],
+    "answer": 0,
+    "exp": "The IdP authenticates the user and generates the assertion sent to the SP."
+  },
+  {
+    "id": 93,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Assessment and Testing",
+    "q": "What is the primary difference between a vulnerability scan and a pen test?",
+    "options": [
+      "Scans are automated; pen tests are manual",
+      "Pen tests only target web applications",
+      "Scans identify weaknesses; pen tests exploit them",
+      "Scans are more thorough than pen tests"
+    ],
+    "answer": 2,
+    "exp": "Vulnerability scans identify; pen tests actively exploit to assess real impact."
+  },
+  {
+    "id": 94,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Assessment and Testing",
+    "q": "What does a SOC 2 Type II report evaluate?",
+    "options": [
+      "Financial statement accuracy",
+      "Control design and effectiveness over a period",
+      "Employee background check compliance",
+      "Network architecture documentation"
+    ],
+    "answer": 1,
+    "exp": "SOC 2 Type II evaluates design and operating effectiveness over 6-12 months."
+  },
+  {
+    "id": 96,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Assessment and Testing",
+    "q": "What is a false positive in vulnerability scanning?",
+    "options": [
+      "A real vulnerability the scanner missed",
+      "A correctly identified real vulnerability",
+      "A scan that failed to complete fully",
+      "A reported vulnerability that doesn't exist"
+    ],
+    "answer": 3,
+    "exp": "A false positive reports a vulnerability that doesn't actually exist."
+  },
+  {
+    "id": 98,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Assessment and Testing",
+    "q": "A SAST tool reports SQL injection. What type of testing is SAST?",
+    "options": [
+      "Runtime monitoring of production systems",
+      "Static analysis of source code without execution",
+      "Manual penetration testing by analysts",
+      "Dynamic testing of running applications"
+    ],
+    "answer": 1,
+    "exp": "SAST analyzes source code without executing the application."
+  },
+  {
+    "id": 106,
+    "type": "order",
+    "difficulty": 1,
+    "domain": "Security Assessment and Testing",
+    "q": "Place penetration testing phases in the correct order:",
+    "items": [
+      "Planning and Reconnaissance",
+      "Scanning and Enumeration",
+      "Exploitation",
+      "Post-Exploitation and Pivoting",
+      "Reporting"
+    ],
+    "correctOrder": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "exp": "Plan/Recon, Scan/Enumerate, Exploit, Post-Exploit/Pivot, Report."
+  },
+  {
+    "id": 107,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Operations",
+    "q": "What is the primary goal of containment in incident response?",
+    "options": [
+      "Limit damage and prevent spreading",
+      "Restore systems to normal",
+      "Document lessons learned",
+      "Remove the root cause entirely"
+    ],
+    "answer": 0,
+    "exp": "Containment isolates the incident to prevent further damage."
+  },
+  {
+    "id": 108,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Operations",
+    "q": "What does RAID stand for?",
+    "options": [
+      "Random Access Integrated Disk",
+      "Redundant Array of Independent Disks",
+      "Redundant Application Information Database",
+      "Rapid Application Infrastructure Deployment"
+    ],
+    "answer": 1,
+    "exp": "RAID combines multiple disks for redundancy and/or performance."
+  },
+  {
+    "id": 111,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Operations",
+    "q": "Which IR phase involves removing the root cause?",
+    "options": [
+      "Post-Incident Activity",
+      "Detection and Analysis",
+      "Eradication",
+      "Preparation"
+    ],
+    "answer": 2,
+    "exp": "Eradication removes the root cause. Containment stops the spread."
+  },
+  {
+    "id": 112,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Operations",
+    "q": "What distinguishes hot, warm, and cold sites?",
+    "options": [
+      "Cost varies but recovery capability is identical",
+      "They are different vendor names for the same thing",
+      "Hot is operational; warm needs data; cold has only space/power",
+      "Hot has no equipment; cold is fully equipped"
+    ],
+    "answer": 2,
+    "exp": "Hot: fastest recovery. Warm: needs data. Cold: longest recovery, only facility."
+  },
+  {
+    "id": 114,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Operations",
+    "q": "What RAID level provides disk mirroring?",
+    "options": [
+      "RAID 1",
+      "RAID 0",
+      "RAID 5",
+      "RAID 10"
+    ],
+    "answer": 0,
+    "exp": "RAID 1 mirrors data. RAID 0 is striping. RAID 5 is striping with parity."
+  },
+  {
+    "id": 116,
+    "type": "ms",
+    "difficulty": 1,
+    "domain": "Security Operations",
+    "q": "Which are phases of the NIST IR lifecycle? (Select ALL that apply)",
+    "options": [
+      "Preparation",
+      "Detection and Analysis",
+      "Containment, Eradication, and Recovery",
+      "Post-Incident Activity",
+      "Risk Assessment"
+    ],
+    "answers": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "exp": "NIST SP 800-61 has four phases. Risk Assessment is a separate process."
+  },
+  {
+    "id": 120,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Operations",
+    "q": "What is the PRIMARY benefit of SOAR over traditional SIEM?",
+    "options": [
+      "Improved compliance reporting features",
+      "Superior log correlation capabilities",
+      "Lower total cost of ownership",
+      "Automated response and workflow orchestration"
+    ],
+    "answer": 3,
+    "exp": "SOAR extends SIEM by automating playbooks and response actions."
+  },
+  {
+    "id": 127,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Software Development Security",
+    "q": "What does SDLC stand for?",
+    "options": [
+      "Security Data Lifecycle Control",
+      "Secure Delivery Logging Configuration",
+      "System Design and Launch Criteria",
+      "Software Development Life Cycle"
+    ],
+    "answer": 3,
+    "exp": "Software Development Life Cycle defines the phases for building software."
+  },
+  {
+    "id": 128,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Software Development Security",
+    "q": "Which SDLC methodology delivers working software in short iterations?",
+    "options": [
+      "Big Bang",
+      "Waterfall",
+      "Agile",
+      "V-Model"
+    ],
+    "answer": 2,
+    "exp": "Agile delivers working software in short iterations (sprints)."
+  },
+  {
+    "id": 129,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Software Development Security",
+    "q": "Which attack injects script into a trusted website served to other users?",
+    "options": [
+      "Cross-Site Request Forgery",
+      "Cross-Site Scripting (XSS)",
+      "SQL Injection",
+      "Buffer Overflow"
+    ],
+    "answer": 1,
+    "exp": "XSS involves scripts injected into web pages. SQLi targets databases."
+  },
+  {
+    "id": 132,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Software Development Security",
+    "q": "What is the primary defense against SQL injection?",
+    "options": [
+      "HTTPS encryption for connections",
+      "Web application firewall rules",
+      "Parameterized queries (prepared statements)",
+      "Input field length restrictions"
+    ],
+    "answer": 2,
+    "exp": "Parameterized queries separate SQL code from data."
+  },
+  {
+    "id": 134,
+    "type": "ms",
+    "difficulty": 1,
+    "domain": "Software Development Security",
+    "q": "Which are OWASP Top 10 categories? (Select ALL that apply)",
+    "options": [
+      "Injection",
+      "Broken Access Control",
+      "Cryptographic Failures",
+      "Physical Security"
+    ],
+    "answers": [
+      0,
+      1,
+      2
+    ],
+    "exp": "Injection, Broken Access Control, and Cryptographic Failures are OWASP Top 10."
+  },
+  {
+    "id": 143,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security and Risk Management",
+    "q": "What is the primary purpose of a security awareness program?",
+    "options": [
+      "Satisfy ISO 27001 certification only",
+      "Train employees as penetration testers",
+      "Replace the need for technical controls",
+      "Change employee behavior regarding security"
+    ],
+    "answer": 3,
+    "exp": "Awareness programs change behavior and create a security-conscious culture."
+  },
+  {
+    "id": 149,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Communication and Network Security",
+    "q": "What does ARP do?",
+    "options": [
+      "Assign IP addresses dynamically",
+      "Route traffic between networks",
+      "Resolve IP addresses to MAC addresses",
+      "Encrypt local network traffic"
+    ],
+    "answer": 2,
+    "exp": "ARP maps IP addresses to MAC addresses on a local network segment."
+  },
+  {
+    "id": 151,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Identity and Access Management",
+    "q": "What does an access control matrix define?",
+    "options": [
+      "How to monitor network traffic flows",
+      "How to encrypt access credentials",
+      "Which subjects can do what to which objects",
+      "How to classify data by sensitivity"
+    ],
+    "answer": 2,
+    "exp": "An access control matrix maps subjects to objects with specific permissions."
+  },
+  {
+    "id": 164,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Software Development Security",
+    "q": "A developer asks why CSP headers are needed. What is the PRIMARY benefit?",
+    "options": [
+      "Compliance with PCI DSS requirements",
+      "Mitigation of XSS by controlling content sources",
+      "Faster page load performance",
+      "Better search engine rankings"
+    ],
+    "answer": 1,
+    "exp": "CSP headers control which sources can load content, reducing XSS impact."
+  },
+  {
+    "id": 165,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security and Risk Management",
+    "q": "How do standards differ from guidelines in security governance?",
+    "options": [
+      "Standards are technical; guidelines are managerial",
+      "Standards are mandatory; guidelines are recommended",
+      "Standards come from management; guidelines from IT",
+      "They are identical in authority and scope"
+    ],
+    "answer": 1,
+    "exp": "Standards are mandatory requirements. Guidelines are recommended practices."
+  },
+  {
+    "id": 166,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Asset Security",
+    "q": "Where should DLP be deployed for comprehensive coverage?",
+    "options": [
+      "Email gateway only",
+      "Network perimeter only",
+      "Endpoints only",
+      "Network, endpoints, and cloud applications"
+    ],
+    "answer": 3,
+    "exp": "Comprehensive DLP requires coverage at network, endpoint, and cloud layers."
+  },
+  {
+    "id": 169,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Identity and Access Management",
+    "q": "How does TACACS+ differ from RADIUS?",
+    "options": [
+      "RADIUS is newer technology than TACACS+",
+      "TACACS+ encrypts the full payload; RADIUS only the password",
+      "RADIUS encrypts the full payload; TACACS+ does not",
+      "Both provide identical security functionality"
+    ],
+    "answer": 1,
+    "exp": "TACACS+ encrypts the full payload and separates AAA functions."
+  },
+  {
+    "id": 176,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Operations",
+    "q": "How do DRP and BCP differ?",
+    "options": [
+      "DRP restores IT systems; BCP covers entire business",
+      "BCP is a subset of the DRP scope",
+      "They are identical plans",
+      "DRP is for natural disasters; BCP for cyber only"
+    ],
+    "answer": 0,
+    "exp": "DRP focuses on IT recovery. BCP is broader, covering all business functions."
+  },
+  {
+    "id": 177,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Asset Security",
+    "q": "Under PCI DSS, which data element must NEVER be stored after authorization?",
+    "options": [
+      "Cardholder name",
+      "CVV/CVC verification value",
+      "Primary Account Number",
+      "Card expiration date"
+    ],
+    "answer": 1,
+    "exp": "PCI DSS prohibits storage of CVV/CVC and full track data after authorization."
+  },
+  {
+    "id": 204,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Communication and Network Security",
+    "q": "What does DNS do?",
+    "options": [
+      "Encrypts data across networks",
+      "Stores files on remote servers",
+      "Translates domain names to IP addresses",
+      "Provides internet connectivity directly"
+    ],
+    "answer": 2,
+    "exp": "DNS translates domain names to IP addresses."
+  },
+  {
+    "id": 217,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Operations",
+    "q": "What is the PRIMARY value of operational threat intelligence?",
+    "options": [
+      "Understanding attacker strategic motivations",
+      "Vendor product evaluation criteria",
+      "Actionable IOCs and TTPs for security tools",
+      "High-level geopolitical risk assessments"
+    ],
+    "answer": 2,
+    "exp": "Operational threat intel provides IOCs and TTPs for immediate detection."
+  },
+  {
+    "id": 218,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Software Development Security",
+    "q": "Where should application secrets (API keys, passwords) NEVER be stored?",
+    "options": [
+      "In source code repositories",
+      "In deployment platform environment variables",
+      "In a dedicated secrets vault",
+      "In encrypted configuration files"
+    ],
+    "answer": 0,
+    "exp": "Secrets must never be in source code repos\u00e2\u20ac\u201dthey persist in version history."
+  },
+  {
+    "id": 220,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Architecture and Engineering",
+    "q": "What randomness source should you use for cryptographic key generation?",
+    "options": [
+      "A fixed seed for reproducible results",
+      "A standard pseudorandom generator (PRNG)",
+      "Math.random() or equivalent",
+      "A cryptographically secure PRNG (CSPRNG)"
+    ],
+    "answer": 3,
+    "exp": "CSPRNGs are required. Standard PRNGs are predictable and unsuitable."
+  },
+  {
+    "id": 226,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security and Risk Management",
+    "q": "How does a threat agent differ from a threat?",
+    "options": [
+      "Threat agents refer only to insiders",
+      "They are identical concepts",
+      "A threat is more specific than an agent",
+      "A threat agent carries out the threat; a threat is the potential danger"
+    ],
+    "answer": 3,
+    "exp": "A threat is potential harm. A threat agent is the entity that carries it out."
+  },
+  {
+    "id": 228,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Architecture and Engineering",
+    "q": "What does a Trusted Execution Environment (TEE) provide?",
+    "options": [
+      "Network-level traffic encryption",
+      "A specialized firewall appliance",
+      "Hardware-isolated processing protected from the host OS",
+      "A virtual machine with enhanced security"
+    ],
+    "answer": 2,
+    "exp": "TEEs create hardware-isolated enclaves protected even from a compromised OS."
+  },
+  {
+    "id": 229,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Communication and Network Security",
+    "q": "What is the primary security concern with IoT on corporate networks?",
+    "options": [
+      "Vendor lock-in for proprietary devices",
+      "Weak security controls expanding the attack surface",
+      "Excessive bandwidth consumption",
+      "Excessively high hardware costs"
+    ],
+    "answer": 1,
+    "exp": "IoT often has weak credentials, infrequent patches, and limited encryption."
+  },
+  {
+    "id": 238,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Identity and Access Management",
+    "q": "What is the PRIMARY benefit of Privileged Access Workstations (PAWs)?",
+    "options": [
+      "Faster administrative task completion",
+      "Lower hardware procurement costs",
+      "Easier remote access for administrators",
+      "Isolated, hardened workstations reducing credential exposure"
+    ],
+    "answer": 3,
+    "exp": "PAWs isolate privileged activities from general-purpose workstations."
+  },
+  {
+    "id": 243,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Asset Security",
+    "q": "What distinguishes data at rest, in transit, and in use?",
+    "options": [
+      "They are stages of data deletion",
+      "They refer to data in different time zones",
+      "At rest is encrypted; in transit is plaintext",
+      "At rest is stored; in transit is transmitted; in use is in memory"
+    ],
+    "answer": 3,
+    "exp": "Each data state requires different protection mechanisms."
+  },
+  {
+    "id": 247,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Assessment and Testing",
+    "q": "In biometrics, what are Type I and Type II errors?",
+    "options": [
+      "Type I is false acceptance; Type II is false rejection",
+      "Type I is false rejection; Type II is false acceptance",
+      "Both are identical types of error",
+      "Type I is for fingerprints; Type II for iris scans"
+    ],
+    "answer": 1,
+    "exp": "Type I (FRR): rejecting legitimate users. Type II (FAR): accepting impostors."
+  },
+  {
+    "id": 318,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Operations",
+    "q": "What is the difference between a hot site, warm site, and cold site?",
+    "options": [
+      "Temperature ratings for data center cooling",
+      "Hot: new construction; Warm: renovated; Cold: abandoned",
+      "Hot: real-time ready; Warm: equipment but needs data; Cold: empty facility",
+      "They represent network speed tiers"
+    ],
+    "answer": 2,
+    "exp": "Hot sites have RTO of minutes. Warm sites: hours to days. Cold sites: weeks."
+  },
+  {
+    "id": 333,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Architecture and Engineering",
+    "q": "What security principle does sandboxing implement?",
+    "options": [
+      "Non-repudiation of all transactions",
+      "Isolation\u00e2\u20ac\u201drestricting code to a contained environment",
+      "Availability through redundant processing",
+      "Defense in depth only"
+    ],
+    "answer": 1,
+    "exp": "Sandboxing isolates untrusted code so it cannot affect the broader system."
+  },
+  {
+    "id": 392,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security and Risk Management",
+    "q": "What is the difference between preventive, detective, and corrective controls?",
+    "options": [
+      "Preventive stops threats; detective identifies them; corrective fixes damage",
+      "Corrective controls prevent future incidents",
+      "They refer to three types of firewalls",
+      "Detective controls are always automated"
+    ],
+    "answer": 0,
+    "exp": "Each control type serves a different phase: before, during, or after an event."
+  },
+  {
+    "id": 421,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security Operations",
+    "q": "What is the difference between MTTD and MTTR in security?",
+    "options": [
+      "MTTD is for hardware; MTTR is for software",
+      "They measure the same thing",
+      "MTTD: time to detect a breach; MTTR: time to respond and recover",
+      "MTTR always equals twice the MTTD"
+    ],
+    "answer": 2,
+    "exp": "Lower MTTD = faster detection. Lower MTTR = faster containment and recovery."
+  },
+  {
+    "id": 424,
+    "type": "mc",
+    "difficulty": 1,
+    "domain": "Security and Risk Management",
+    "q": "What is the purpose of an acceptable use policy (AUP)?",
+    "options": [
+      "Define network bandwidth allocation per user",
+      "Document server hardware specifications",
+      "Define permitted and prohibited use of organizational resources",
+      "List all software installed on company systems"
+    ],
+    "answer": 2,
+    "exp": "AUP sets expectations for appropriate use of company technology and data."
+  }
+]

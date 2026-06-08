@@ -1,0 +1,452 @@
+[
+  {
+    "id": 10151,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A financial institution is implementing a mobile banking application that must authenticate users without transmitting their actual passwords over the network or storing a verifiable hash on the authentication server. Which cryptographic protocol is BEST suited to satisfy this requirement?",
+    "options": [
+      "Secure Remote Password (SRP) protocol",
+      "Kerberos Version 5",
+      "Challenge-Handshake Authentication Protocol (CHAP)",
+      "Time-based One-Time Password (TOTP)"
+    ],
+    "answer": 0,
+    "exp": "The Secure Remote Password (SRP) protocol is an augmented password-authenticated key agreement (PAKA) protocol, which allows a client to authenticate to a server using a zero-knowledge proof mechanism. The password never leaves the client, and the server does not store a hash that could be subjected to a dictionary attack. Kerberos uses symmetric cryptography and relies on a trusted third party (KDC), but the user's secret key (derived from the password) is subject to offline attacks if the AS_REP is captured. CHAP sends a challenge and requires the client to respond with a hash of the challenge and the secret, but the server must still store the plaintext secret or an equivalent to verify. TOTP generates ephemeral codes based on a shared secret, requiring the server to know the secret seed."
+  },
+  {
+    "id": 10152,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A manufacturer is designing smart industrial sensors with highly constrained processing power and battery life. They must secure communications with the central controller using asymmetric cryptography for key exchange. Which of the following algorithms provides the highest security per bit of key length, minimizing computational overhead?",
+    "options": [
+      "RSA-2048",
+      "Diffie-Hellman Ephemeral (DHE)",
+      "Elliptic Curve Cryptography (ECC)",
+      "Advanced Encryption Standard (AES-256)"
+    ],
+    "answer": 2,
+    "exp": "Elliptic Curve Cryptography (ECC) provides the highest security per bit among common asymmetric algorithms, requiring much shorter key lengths compared to RSA or standard Diffie-Hellman. For example, a 256-bit ECC key offers comparable security to a 3072-bit RSA key, making it ideal for constrained devices like IoT sensors. RSA-2048 and DHE require large key sizes and greater computational power, rapidly draining batteries. AES-256 is a symmetric encryption algorithm, not an asymmetric key exchange algorithm, failing the scenario's requirement."
+  },
+  {
+    "id": 10153,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "An organization is updating its enterprise encryption strategy to protect intellectual property on local workstations. Management dictates that if an employee unexpectedly leaves the company, an authorized committee must be able to decrypt their files without involving external third parties. Which architectural mechanism is appropriate?",
+    "options": [
+      "Key escrow with a trusted third-party",
+      "Multi-party computation (MPC)",
+      "Key recovery system utilizing an M-of-N control",
+      "Perfect Forward Secrecy (PFS)"
+    ],
+    "answer": 2,
+    "exp": "A Key Recovery system managed internally using M-of-N control (e.g., Shamir's Secret Sharing) allows the organization to recover the decryption key independently, requiring a quorum of authorized committee members to prevent unilateral misuse. Key escrow typically involves storing the key with a trusted third party, which violates the requirement to not involve external third parties. Multi-party computation (MPC) is used for jointly computing functions over private inputs without revealing them, rather than recovering data keys. Perfect Forward Secrecy ensures that compromised long-term keys do not compromise past session keys, which is irrelevant to local file decryption."
+  },
+  {
+    "id": 10154,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "Given the future threat of cryptographically relevant quantum computers (CRQCs) breaking current asymmetric algorithms using Shor's algorithm, which type of cryptographic algorithm is currently being standardized by NIST to resist quantum attacks?",
+    "options": [
+      "Lattice-based cryptography",
+      "Elliptic Curve Digital Signature Algorithm (ECDSA)",
+      "Rivest-Shamir-Adleman (RSA)",
+      "Symmetric cryptography using 128-bit keys"
+    ],
+    "answer": 0,
+    "exp": "Lattice-based cryptography forms the foundation of many Post-Quantum Cryptography (PQC) standards selected by NIST (e.g., CRYSTALS-Kyber, CRYSTALS-Dilithium), as it relies on mathematical problems that remain hard for both classical and quantum computers. ECDSA and RSA rely on integer factorization and discrete logarithms, both of which are broken by Shor's algorithm on a quantum computer. Symmetric cryptography is impacted by Grover's algorithm, which halves the effective key length; thus, a 128-bit key would be reduced to 64-bit equivalent security, requiring an upgrade to 256-bit keys rather than being a post-quantum asymmetric solution."
+  },
+  {
+    "id": 10155,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "An e-commerce platform requires that electronic purchase orders submitted by partners are authentic, have not been altered in transit, and cannot be repudiated. Which of the following implementations correctly satisfies ALL these requirements?",
+    "options": [
+      "The partner encrypts a hash of the purchase order with the platform's public key.",
+      "The partner encrypts a hash of the purchase order with their own private key.",
+      "The partner computes an HMAC using a pre-shared symmetric key.",
+      "The partner encrypts the purchase order using AES-GCM."
+    ],
+    "answer": 1,
+    "exp": "Encrypting the hash of a message with the sender's private key creates a digital signature. This provides authenticity (only the sender has the private key), integrity (the hash ensures it hasn't been altered), and non-repudiation (the sender cannot deny signing it). Encrypting a hash with the platform's public key provides confidentiality for the hash, but no authentication or non-repudiation, as anyone can access the public key. HMAC provides authenticity and integrity but cannot provide non-repudiation because both parties share the same symmetric key. AES-GCM provides confidentiality and integrity (authenticated encryption) but uses a symmetric key, thus failing to provide non-repudiation."
+  },
+  {
+    "id": 10156,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A security architect is selecting a block cipher mode of operation for encrypting a highly latent and noisy satellite communication link. The chosen mode must support parallel processing and must NOT propagate bit errors to subsequent blocks if a single bit is flipped in ciphertext during transmission. Which mode is BEST?",
+    "options": [
+      "Cipher Block Chaining (CBC)",
+      "Galois/Counter Mode (GCM)",
+      "Counter (CTR)",
+      "Cipher Feedback (CFB)"
+    ],
+    "answer": 2,
+    "exp": "Counter (CTR) mode turns a block cipher into a stream cipher. It allows for parallel processing (encryption and decryption) and has no error propagation; a flipped bit in the ciphertext only affects the corresponding bit in the plaintext. While GCM is built on CTR and provides authenticated encryption, a single flipped bit in GCM will cause the authentication tag check to fail, resulting in the entire message being dropped, which is highly problematic over noisy links unless error correction is handled appropriately. CBC does not support parallel encryption and propagates a single bit error in the ciphertext to the corresponding plaintext block and one bit in the subsequent plaintext block. CFB also propagates errors."
+  },
+  {
+    "id": 10157,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "Two competing pharmaceutical companies wish to collaborate on identifying overlapping genetic markers in their proprietary datasets without exposing their actual genomic data to each other or a third party. Which cryptographic technique is specifically designed for this scenario?",
+    "options": [
+      "Fully Homomorphic Encryption (FHE)",
+      "Secure Multiparty Computation (SMPC)",
+      "Zero-Knowledge Proofs (ZKP)",
+      "Format-Preserving Encryption (FPE)"
+    ],
+    "answer": 1,
+    "exp": "Secure Multiparty Computation (SMPC) allows multiple parties to jointly compute a function over their inputs while keeping those inputs private from each other. Fully Homomorphic Encryption (FHE) allows operations on encrypted data without decrypting it, typically used when outsourcing computation to an untrusted cloud, not inherently for joint computation between mutually distrustful parties without a central aggregator. Zero-Knowledge Proofs (ZKP) allow a party to prove a statement is true without revealing the underlying data, but does not calculate a joint function. Format-Preserving Encryption (FPE) retains the length and format of plaintext, mainly used in legacy databases."
+  },
+  {
+    "id": 10158,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A forensic analyst is examining high-resolution JPEG images exfiltrated by an insider. The analyst suspects data is hidden within the images using Least Significant Bit (LSB) steganography. Why is LSB insertion typically difficult to detect in noisy carrier files like digital photographs?",
+    "options": [
+      "LSB modifies the file header, which is automatically ignored by standard image viewers.",
+      "The change in pixel color is visually imperceptible to the human eye.",
+      "LSB encrypts the hidden payload, masking statistical anomalies.",
+      "LSB compression algorithms reduce the overall file size, offsetting the payload."
+    ],
+    "answer": 1,
+    "exp": "In LSB steganography, the least significant bit of a pixel's color value is altered to embed the secret payload. Because the change is only by a value of 1 in a color channel (e.g., an RGB value of 255 becomes 254), the difference is visually imperceptible to the human eye, especially in high-resolution, noisy photographs. LSB modifies the payload data within the file body, not the header. While the payload may be encrypted prior to embedding, encryption itself doesn't hide the statistical anomaly; in fact, high entropy from encryption can sometimes aid steganalysis. LSB does not inherently compress the file; it replaces existing data bits."
+  },
+  {
+    "id": 10159,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "An enterprise web server infrastructure relies heavily on TLS for secure communications. The security team wants to improve client connection latency and enhance client privacy by eliminating the need for clients to query the Certificate Authority directly to check certificate revocation status. Which technology should be implemented?",
+    "options": [
+      "Certificate Revocation List (CRL)",
+      "Online Certificate Status Protocol (OCSP)",
+      "OCSP Stapling",
+      "Public Key Pinning (HPKP)"
+    ],
+    "answer": 2,
+    "exp": "OCSP Stapling allows the web server to query the OCSP responder directly at regular intervals and cache the digitally signed response. The server then 'staples' this response to the TLS handshake when a client connects. This reduces client latency (since the client doesn't make a separate DNS/HTTP request to the CA) and improves privacy (the CA no longer sees the client's IP address or browsing habits). Standard OCSP requires the client to contact the CA directly. CRL requires downloading large lists, which increases latency. HPKP (now deprecated) was used to prevent MITM attacks by pinning specific certificates, not for revocation status."
+  },
+  {
+    "id": 10160,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "During a cryptographic architecture review, an engineer insists on enabling Perfect Forward Secrecy (PFS) for all VPN gateways. What specific risk is the engineer attempting to mitigate?",
+    "options": [
+      "The compromise of a session key leading to the exposure of the long-term private key.",
+      "Man-in-the-Middle (MitM) attacks during the initial key exchange.",
+      "The future decryption of captured ciphertext if the server's long-term private key is compromised.",
+      "Downgrade attacks to weaker encryption algorithms during the handshake."
+    ],
+    "answer": 2,
+    "exp": "Perfect Forward Secrecy (PFS), implemented using ephemeral key exchanges (like DHE or ECDHE), ensures that the session keys used for encrypting data are not deterministically derived from the server's long-term public/private key pair. Therefore, if the server's long-term private key is compromised in the future, attackers cannot use it to decrypt past captured traffic. PFS does not protect the long-term key from being derived from a session key (which is mathematically infeasible anyway). It does not inherently prevent MitM attacks; authenticity of the exchange is still required via digital signatures. It also does not protect against downgrade attacks, which are mitigated by secure protocol versions and cipher suite restrictions."
+  },
+  {
+    "id": 10161,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A new corporate headquarters is designed using Crime Prevention Through Environmental Design (CPTED) principles. The landscape architect places low, thorny bushes beneath ground-floor windows and installs highly visible, decorative fencing around the property perimeter. These elements primarily represent which CPTED concept?",
+    "options": [
+      "Natural Surveillance",
+      "Territorial Reinforcement",
+      "Natural Access Control",
+      "Target Hardening"
+    ],
+    "answer": 2,
+    "exp": "Natural Access Control uses environmental elements such as walkways, lighting, fences, and landscaping (like thorny bushes under windows) to physically guide people and deter access to restricted areas. Territorial Reinforcement uses physical attributes (like signage or changes in pavement) to express ownership. Natural Surveillance involves designing spaces to maximize visibility (e.g., clear lines of sight, avoiding tall bushes). Target Hardening is a traditional physical security approach (locks, thick glass) rather than a CPTED core principle, although it complements it."
+  },
+  {
+    "id": 10162,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A data center manager is configuring the HVAC system for a new facility. The relative humidity is currently set to 20%, and the internal air pressure is configured to be negative relative to the outside hallways. Which of the following describes the PRIMARY physical security risks associated with this configuration?",
+    "options": [
+      "Condensation on equipment and dust ingress from hallways.",
+      "Static electricity buildup and dust ingress from hallways.",
+      "Condensation on equipment and outward expulsion of cooled air.",
+      "Static electricity buildup and outward expulsion of cooled air."
+    ],
+    "answer": 1,
+    "exp": "A relative humidity of 20% is too low (standard recommendation is 40-60%), which significantly increases the risk of static electricity buildup and electrostatic discharge (ESD), potentially damaging sensitive components. Additionally, negative air pressure in the data center means air from the outside hallways (which contains dust and contaminants) will be sucked into the room when doors are opened. A positive pressure environment is required to push dust out. Condensation is a risk when humidity is too high, not too low. Outward expulsion of cooled air occurs with positive pressure, not negative."
+  },
+  {
+    "id": 10163,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A museum's server room contains both highly sensitive IT equipment and irreplaceable historical paper archives. The organization requires a fire suppression system that minimizes the risk of accidental water discharge due to a single sensor failure or pipe leak, while effectively suppressing fire without leaving chemical residue. Which system is MOST appropriate?",
+    "options": [
+      "Wet pipe sprinkler system",
+      "Pre-action sprinkler system",
+      "Clean agent gas suppression system",
+      "Deluge sprinkler system"
+    ],
+    "answer": 2,
+    "exp": "A Clean agent gas suppression system (such as FM-200, Novec 1230, or Inergen) suppresses fire without using water, leaving no residue, which is critical for protecting both IT equipment and irreplaceable paper archives. While a Pre-action system reduces the risk of accidental water discharge (requiring both a sensor to trigger and a fusible link to melt), it still uses water, which would severely damage the historical paper archives and potentially the IT equipment. Wet pipe systems hold water constantly and are prone to leak damage. Deluge systems release massive amounts of water simultaneously."
+  },
+  {
+    "id": 10164,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A military installation is upgrading its perimeter intrusion detection systems (PIDS) in an area known for heavy fog, high winds, and frequent wildlife movement. The system must monitor the physical fence line for climbing or cutting. Which type of sensor is the BEST choice to minimize false positives in this environment?",
+    "options": [
+      "Passive Infrared (PIR) volumetric sensors",
+      "Microwave motion detectors",
+      "Time Domain Reflectometry (TDR) coaxial cable strain sensors",
+      "CCTV with standard video motion detection"
+    ],
+    "answer": 2,
+    "exp": "Time Domain Reflectometry (TDR) coaxial cable sensors (a type of electromechanical or strain sensor attached directly to the fence) detect the specific vibrations or strains caused by climbing or cutting the fence. They can be tuned to ignore wind and weather, making them ideal for the physical fence line. PIR sensors detect heat and are highly susceptible to wildlife and extreme weather. Microwave sensors are volumetric and can be triggered by wildlife or heavy environmental conditions. Standard CCTV video motion detection in heavy fog and wind (moving vegetation) will generate excessive false positives."
+  },
+  {
+    "id": 10165,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "Which physical security control prevents the scenario where an attacker disables the primary power to a facility, causing magnetic locks (maglocks) to lose power and open, thereby allowing unauthorized access?",
+    "options": [
+      "Configuring the locks to be 'fail-safe'.",
+      "Configuring the locks to be 'fail-secure'.",
+      "Installing an Uninterruptible Power Supply (UPS) in standby mode.",
+      "Implementing an optical turnstile with biometric authentication."
+    ],
+    "answer": 1,
+    "exp": "A 'fail-secure' configuration ensures that if power is lost, the lock remains locked, preventing unauthorized access (prioritizing security over life safety/egress, though physical overrides like crash bars are typically required from the inside). 'fail-safe' means the lock opens when power is lost, which is the exact scenario the attacker is exploiting (prioritizing life safety over security). While a UPS provides backup power, it does not dictate the physical state of the lock if the UPS itself fails or is depleted. An optical turnstile only detects tailgating and relies on its own locking mechanisms."
+  },
+  {
+    "id": 10166,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "An intelligence agency mandates that a specific room processing classified information be protected against Van Eck phreaking. Which of the following solutions directly mitigates this specific threat?",
+    "options": [
+      "Acoustic masking systems (white noise generators)",
+      "Faraday cage and TEMPEST-certified equipment",
+      "Positive pressure HVAC with HEPA filtration",
+      "Dual-factor authentication biometric access controls"
+    ],
+    "answer": 1,
+    "exp": "Van Eck phreaking is a form of eavesdropping that intercepts electromagnetic emissions from electronic devices (like monitors and cables). A Faraday cage blocks electromagnetic fields, and TEMPEST-certified equipment is specifically designed to minimize these emanations, effectively neutralizing the threat. Acoustic masking (white noise) prevents audio eavesdropping, not electromagnetic interception. HVAC controls environmental quality. Biometric access controls prevent physical entry but do not stop remote electromagnetic signal capture."
+  },
+  {
+    "id": 10167,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "During a physical penetration test, an assessor successfully enters a secure facility by closely following an authorized employee who swipes their badge, without the employee noticing. The facility utilizes badge readers on standard doors. Which physical security control is MOST effective at preventing this specific attack vector?",
+    "options": [
+      "A mantrap with weight sensors",
+      "Security guards conducting roving patrols",
+      "High-definition CCTV with facial recognition",
+      "Requiring PIN entry alongside badge swipe"
+    ],
+    "answer": 0,
+    "exp": "The scenario describes 'tailgating' (or piggybacking). A mantrap (or security vestibule) with weight sensors or floor treadles ensures only one person can pass through the double-door system at a time, completely preventing tailgating. Roving patrols cannot continuously monitor all doors. CCTV acts as a deterrent and a detective control but does not physically prevent the tailgating. Requiring a PIN (two-factor authentication) authenticates the authorized user but does not stop a second person from slipping through the open door behind them."
+  },
+  {
+    "id": 10168,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A critical healthcare database server frequently crashes due to micro-second power sags and brownouts caused by heavy machinery in the adjacent hospital wing. The facility has an emergency diesel generator, but it takes 15 seconds to spin up. Which device is REQUIRED to bridge this gap and provide completely clean, uninterrupted power?",
+    "options": [
+      "Standby UPS",
+      "Line-interactive UPS",
+      "Online (Double-Conversion) UPS",
+      "Surge protector"
+    ],
+    "answer": 2,
+    "exp": "An Online (Double-Conversion) UPS continuously converts AC power to DC to charge the battery, and then inverts it back to clean AC power for the equipment. This provides zero transfer time and completely isolates the equipment from sags, brownouts, and surges, making it ideal for highly sensitive equipment. A Standby UPS switches to battery only when power drops, incurring a slight transfer time (milliseconds) that can crash sensitive servers. A Line-interactive UPS handles brownouts better than standby but still has a small transfer time. A surge protector only protects against voltage spikes, not sags or complete power loss."
+  },
+  {
+    "id": 10169,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A government agency is decommissioning a fleet of laptops equipped with NVMe Solid State Drives (SSDs) containing Top Secret information. According to NIST SP 800-88 guidelines, which physical destruction method is the ONLY acceptable way to guarantee data irretrievability on these specific devices?",
+    "options": [
+      "Degaussing with a magnetic field strength of at least 10,000 Oersteds.",
+      "Overwriting all addressable locations with a pseudo-random pattern three times.",
+      "Disintegration or pulverization into particles smaller than 2 millimeters.",
+      "Crypto-erasing the drive by deleting the Storage Root Key."
+    ],
+    "answer": 2,
+    "exp": "SSDs use flash memory chips, not magnetic platters. Therefore, degaussing (which relies on magnetic fields) is entirely ineffective against SSDs. To physically destroy an SSD and ensure data irretrievability for highly classified data, the chips must be disintegrated, pulverized, or shredded into very fine particles (typically less than 2mm) to destroy the underlying integrated circuits. Overwriting (clearing) is not a physical destruction method and is unreliable on SSDs due to wear-leveling controllers. Crypto-erase is a logical sanitization method, not physical destruction, and may not meet requirements for Top Secret data destruction."
+  },
+  {
+    "id": 10170,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "An organization utilizes a Master Key system where one physical key opens multiple differently keyed office doors. An attacker acquires a sub-master key and files down specific cuts to create a functional Master Key. What is the name of the mechanical components manipulated inside a standard pin-tumbler lock that enables master keying, and which also increases vulnerability to picking?",
+    "options": [
+      "Wards",
+      "Master wafers / Master pins",
+      "Tension wrenches",
+      "Shear lines"
+    ],
+    "answer": 1,
+    "exp": "Master keying in pin-tumbler locks is achieved by adding extra pins, called 'master pins' or 'master wafers', into the pin stacks. This creates multiple shear lines within the cylinder, allowing different keys (the change key and the master key) to operate the lock. However, these additional shear lines make the lock significantly easier to pick or bump, as there are more opportunities for the pins to align at a shear line. Wards are fixed obstructions inside warded locks, not pin-tumbler locks. A tension wrench is a tool used by lockpickers. The shear line is the gap between the plug and the cylinder, not a component added for master keying."
+  },
+  {
+    "id": 10171,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A startup is migrating its customer-facing web application to a Platform as a Service (PaaS) environment provided by a public cloud vendor. According to the cloud shared responsibility model, which of the following security tasks is the EXCLUSIVE responsibility of the startup?",
+    "options": [
+      "Patching the host operating system of the underlying hypervisor.",
+      "Securing the application logic and managing application-level RBAC.",
+      "Configuring the physical network switches in the cloud data center.",
+      "Updating the runtime environment (e.g., Node.js or Python version) maintained by the platform."
+    ],
+    "answer": 1,
+    "exp": "In a PaaS model, the cloud service provider manages the underlying infrastructure, including physical servers, networking, hypervisors, operating systems, and typically the application runtime environment. The customer (the startup) is responsible for the application code, logic, data, and user access controls (RBAC) configured within the application itself. Patching the hypervisor and physical network are IaaS/PaaS provider responsibilities. Updating the provided runtime environment is the provider's responsibility in PaaS, though the customer chooses when to adopt newer runtimes if options are provided."
+  },
+  {
+    "id": 10172,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "An enterprise relies on a SaaS CRM application. The security team must implement a Cloud Access Security Broker (CASB) to enforce Data Loss Prevention (DLP) policies for unmanaged (BYOD) devices accessing the CRM from off-network locations. Which CASB deployment architecture is REQUIRED to intercept this traffic without installing an agent on the user's device?",
+    "options": [
+      "API-based (Out-of-band)",
+      "Forward Proxy",
+      "Reverse Proxy",
+      "Network Tap / SPAN port"
+    ],
+    "answer": 2,
+    "exp": "A Reverse Proxy CASB deployment integrates with the identity provider (IdP) to route traffic through the CASB when a user authenticates to the cloud application. This works seamlessly for unmanaged devices (BYOD) because it does not require an agent or endpoint configuration; the traffic to the SaaS app is automatically redirected through the proxy. A Forward Proxy requires traffic to be routed from the endpoint (via agent, PAC file, or VPN), which is unfeasible on unmanaged BYOD devices. API-based CASBs monitor data at rest and asynchronous events within the SaaS app, but cannot block traffic inline in real-time. Network Taps only capture traffic on the corporate network."
+  },
+  {
+    "id": 10173,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A financial services firm is adopting a multi-cloud strategy. Regulatory compliance mandates that the firm must maintain absolute, cryptographic control over the encryption keys used to protect data at rest in the cloud. The cloud provider must NEVER have access to the unencrypted keys. Which key management strategy is mandatory?",
+    "options": [
+      "Provider-Managed Keys",
+      "Bring Your Own Key (BYOK)",
+      "Hold Your Own Key (HYOK) / Keep Your Own Key (KYOK)",
+      "Hardware Security Module (HSM) as a Service provided by the Cloud Vendor"
+    ],
+    "answer": 2,
+    "exp": "Hold Your Own Key (HYOK) or Keep Your Own Key (KYOK) ensures that the encryption keys are generated, stored, and managed entirely outside the cloud provider's environment (e.g., in an on-premises HSM). The cloud provider never possesses the key. Bring Your Own Key (BYOK) allows the customer to generate the key, but the key is then imported into the cloud provider's Key Management Service (KMS), meaning the provider technically has access to it. Provider-Managed Keys grant full control to the provider. Cloud HSMs still place the hardware within the provider's data center, which may not meet absolute strict non-access mandates if the provider administers the physical HSM."
+  },
+  {
+    "id": 10174,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A software engineering team is refactoring a monolithic application into a microservices architecture hosted in a Kubernetes cluster. To enforce zero-trust network principles, mutual TLS (mTLS) must be established between all microservices without rewriting the application code. Which architectural pattern should the security engineer recommend?",
+    "options": [
+      "Implementing a Service Mesh with Sidecar Proxies",
+      "Deploying a Web Application Firewall (WAF) at the ingress controller",
+      "Utilizing API Gateways for all internal pod-to-pod communication",
+      "Modifying the Container Network Interface (CNI) to mandate IPsec"
+    ],
+    "answer": 0,
+    "exp": "A Service Mesh (like Istio or Linkerd) uses the Sidecar Proxy pattern to intercept all network traffic entering and leaving a microservice container. The sidecar handles mTLS encryption, authentication, and traffic routing transparently, requiring zero changes to the underlying application code. A WAF at the ingress only protects external traffic entering the cluster, not east-west pod-to-pod traffic. API Gateways are typically used for north-south traffic and are too heavy for ubiquitous east-west microservice communication. IPsec at the CNI level encrypts node-to-node or pod-to-pod traffic but lacks the granular Layer 7 identity, observability, and routing capabilities required in modern microservice architectures."
+  },
+  {
+    "id": 10175,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A media company uses Cloud Object Storage (e.g., AWS S3, Azure Blob) to store petabytes of public video assets. A junior administrator accidentally modifies the bucket policy, causing a data breach of pre-release, confidential videos. Which inherent characteristic of Object Storage access models contributed to this widespread exposure?",
+    "options": [
+      "Object storage relies on hierarchical POSIX file permissions which are difficult to audit.",
+      "Object storage volumes can be easily mounted to multiple virtual machines simultaneously via iSCSI.",
+      "Object storage uses flat namespaces controlled by IAM and resource policies, where a single misconfiguration can expose the entire bucket to the public internet.",
+      "Object storage automatically replicates data to geographically dispersed regions regardless of policy."
+    ],
+    "answer": 2,
+    "exp": "Object storage (like AWS S3) uses a flat namespace (no true directory hierarchy) accessed via HTTP/REST APIs. Access is controlled via Identity and Access Management (IAM) policies and bucket/resource policies. Because it is directly accessible over the internet via URLs, a single misconfiguration in a bucket policy can instantly expose millions of objects to anonymous public access. POSIX file permissions are used in File Storage (like NFS/EFS), not Object Storage. iSCSI is used for Block Storage (like EBS/SAN), not Object Storage. Geographic replication is a feature, but it does not dictate public access exposure; the policy misconfiguration does."
+  },
+  {
+    "id": 10176,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "In a cloud environment utilizing hardware-assisted virtualization, a sophisticated attacker exploits a vulnerability in a guest operating system. The attacker subsequently executes code directly on the host hypervisor, bypassing isolation boundaries. What is this attack commonly known as?",
+    "options": [
+      "Cross-Site Scripting (XSS)",
+      "Virtual Machine Escape",
+      "Hypervisor Sprawling",
+      "Side-Channel Attack"
+    ],
+    "answer": 1,
+    "exp": "A Virtual Machine (VM) Escape occurs when an attacker breaks out of the isolated environment of a guest virtual machine to interact directly with the hypervisor or the host operating system. This is a critical vulnerability in cloud environments as it can lead to the compromise of other tenants' VMs on the same physical hardware. XSS is a web application vulnerability. VM Sprawl refers to the unmanaged proliferation of VMs, leading to resource exhaustion and patch management issues, not a direct exploit. A Side-Channel attack involves inferring data (like cryptographic keys) based on shared hardware resource usage (e.g., CPU cache timing), but does not necessarily involve executing code on the hypervisor."
+  },
+  {
+    "id": 10177,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "An enterprise requires seamless Single Sign-On (SSO) for its employees to access multiple external SaaS applications. The identity architecture must delegate authentication to the enterprise's Active Directory and pass authorization claims to the SaaS providers via the browser using XML-based assertions. Which protocol is being described?",
+    "options": [
+      "OAuth 2.0",
+      "Security Assertion Markup Language (SAML) 2.0",
+      "OpenID Connect (OIDC)",
+      "Remote Authentication Dial-In User Service (RADIUS)"
+    ],
+    "answer": 1,
+    "exp": "SAML 2.0 is an XML-based framework used for exchanging authentication and authorization data (assertions) between an Identity Provider (IdP, e.g., Active Directory Federation Services) and a Service Provider (SP, e.g., the SaaS app). It is heavily used for enterprise web-based SSO. OAuth 2.0 is an authorization framework (not authentication) that uses JSON and tokens. OpenID Connect (OIDC) provides authentication on top of OAuth 2.0 using JSON Web Tokens (JWTs), not XML. RADIUS is a network protocol used for centralized AAA management, typically for VPNs and network access, not web-based SaaS SSO."
+  },
+  {
+    "id": 10178,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A cloud architect is designing a Serverless (Function as a Service - FaaS) application. Which of the following introduces a unique security vulnerability specific to the ephemeral nature of serverless execution environments?",
+    "options": [
+      "Over-provisioned IAM execution roles assigned to the function.",
+      "Data remnants left in the /tmp directory reused across warm invocations of the container.",
+      "Hardcoded API keys embedded directly within the function's source code.",
+      "Injections attacks via malicious input passed through the API Gateway."
+    ],
+    "answer": 1,
+    "exp": "In serverless architectures (like AWS Lambda), while the environment is ephemeral, cloud providers heavily utilize 'warm starts' to improve performance. This means the underlying container and its local storage (e.g., the /tmp directory) may be reused for subsequent invocations of the same function. If a function writes sensitive data to /tmp and fails to securely delete it, a subsequent invocation (potentially triggered by a different user or context) could access that residual data. Over-provisioned IAM roles, hardcoded keys, and injection attacks are serious vulnerabilities, but they are common to traditional servers and containers as well; they are not unique to the ephemeral execution lifecycle of FaaS."
+  },
+  {
+    "id": 10179,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "To establish a secure, multi-tenant network architecture within an Infrastructure as a Service (IaaS) environment, a cloud engineer implements a Virtual Private Cloud (VPC). To ensure that compromised instances in the Web subnet cannot initiate connections to the Database subnet, while still allowing the Database subnet to reply to inbound requests, which stateful control should be applied?",
+    "options": [
+      "Network Access Control Lists (NACLs)",
+      "Security Groups (SGs)",
+      "VPC Peering",
+      "Transit Gateway"
+    ],
+    "answer": 1,
+    "exp": "Security Groups (SGs) operate at the virtual network interface (ENI) level and are stateful. This means if an inbound request is allowed, the return traffic is automatically allowed, regardless of outbound rules. This is ideal for allowing the Database to respond to legitimate Web traffic while explicitly denying the Web subnet from initiating new, unauthorized connections to the Database. Network Access Control Lists (NACLs) operate at the subnet level and are stateless; return traffic must be explicitly allowed. VPC Peering connects two different VPCs. A Transit Gateway acts as a central hub for routing traffic between multiple VPCs and on-premises networks."
+  },
+  {
+    "id": 10180,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "An organization is evaluating cryptographic implementations for securing data at rest in a public cloud environment. They need to ensure that an attacker with a snapshot of the physical storage volume cannot mount and read the file system, while keeping application modifications to zero. Which layer of encryption should they implement?",
+    "options": [
+      "Application-level encryption",
+      "Database column-level encryption",
+      "Transparent Data Encryption (TDE)",
+      "Full Disk Encryption (FDE) / Block-level volume encryption"
+    ],
+    "answer": 3,
+    "exp": "Full Disk Encryption (FDE) or Block-level volume encryption (like AWS EBS encryption or Azure Disk Encryption) encrypts the entire storage volume. If an attacker steals a snapshot of the volume, they cannot mount or read the file system without the KMS key. Because encryption occurs at the hypervisor or OS block storage layer, it is completely transparent to the application and the database, requiring zero modifications. Application-level and Database-level encryption require significant configuration and code changes. TDE encrypts the database files, but the OS file system metadata remains unencrypted, though it requires less modification than column-level encryption."
+  }
+]

@@ -1,0 +1,452 @@
+[
+  {
+    "id": 10061,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "A healthcare provider wants to allow patients to access a third-party telehealth application using their existing patient portal credentials. The telehealth application is a modern Single Page Application (SPA) built with React and uses RESTful APIs heavily. Which identity federation protocol is most appropriate and why?",
+    "options": [
+      "OIDC, because it uses lightweight JSON Web Tokens (JWT) which are easily consumed by SPAs and REST APIs.",
+      "SAML 2.0, because it provides robust XML-based assertions required for healthcare compliance.",
+      "OAuth 2.0, because it provides both authentication and authorization required for patient portals.",
+      "RADIUS, because it natively supports modern RESTful web architectures."
+    ],
+    "answer": 0,
+    "exp": "OIDC (OpenID Connect) is an identity layer built on top of OAuth 2.0. It uses JSON Web Tokens (JWT) and is designed to work well with modern web applications like SPAs and REST APIs. SAML 2.0 uses heavier XML assertions and is typically better suited for traditional enterprise web applications, not modern SPAs. OAuth 2.0 is an authorization framework, not an authentication protocol, so it alone doesn't provide the identity of the user. RADIUS is an AAA protocol typically used for network access, not web applications."
+  },
+  {
+    "id": 10062,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "An organization is implementing a Zero Trust Architecture and wants to ensure that access decisions are dynamically evaluated for every single request based on user context, device health, and resource sensitivity. In the NIST SP 800-207 logical architecture, which component is primarily responsible for calculating these trust scores and deciding whether to grant access?",
+    "options": [
+      "Policy Enforcement Point (PEP)",
+      "Policy Administrator (PA)",
+      "Policy Engine (PE)",
+      "Continuous Diagnostics and Mitigation (CDM) system"
+    ],
+    "answer": 2,
+    "exp": "In the NIST Zero Trust Architecture, the Policy Engine (PE) is the core component responsible for the ultimate decision to grant, deny, or revoke access to a resource based on enterprise policy and input from external sources (trust algorithms). The Policy Enforcement Point (PEP) is responsible for enabling, monitoring, and eventually terminating connections, acting on the decisions made by the PE. The Policy Administrator (PA) executes the PE's decisions by signaling the PEP. The CDM system provides input to the PE but does not make the access decisions itself."
+  },
+  {
+    "id": 10063,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "During a SAML 2.0 Service Provider (SP) initiated Single Sign-On (SSO) flow, a user attempts to access a protected resource on the SP and is redirected to the Identity Provider (IdP). Which of the following bindings is most commonly used for sending the initial SAML AuthnRequest from the SP to the IdP via the user's browser, and why?",
+    "options": [
+      "HTTP POST Binding, because it ensures the AuthnRequest is encrypted during transit.",
+      "HTTP Redirect Binding, because the AuthnRequest is relatively small and can be easily base64-encoded and appended as a URL query parameter.",
+      "SOAP Binding, because it provides a direct, synchronous connection between the SP and IdP, bypassing the browser.",
+      "HTTP Artifact Binding, because it prevents the user from tampering with the authentication request."
+    ],
+    "answer": 1,
+    "exp": "The HTTP Redirect binding is most commonly used for sending the initial SAML AuthnRequest from the SP to the IdP because the request is typically small enough to be base64-encoded, compressed, and sent as a URL parameter via an HTTP 302 redirect through the user's browser. The HTTP POST binding is usually used for sending the larger SAML Assertion back from the IdP to the SP. SOAP binding is a back-channel communication method, not typically used for the browser-mediated AuthnRequest. Artifact binding is used when avoiding passing the message directly through the browser, but Redirect is the most common standard for the initial request."
+  },
+  {
+    "id": 10064,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "A developer is building a mobile application that needs to access a user's cloud storage account to upload photos. The application cannot securely store a client secret. According to current best practices (OAuth 2.0 for Native Apps), which authorization flow should be implemented to securely obtain an access token?",
+    "options": [
+      "Implicit Flow",
+      "Resource Owner Password Credentials Flow",
+      "Authorization Code Flow with Proof Key for Code Exchange (PKCE)",
+      "Client Credentials Flow"
+    ],
+    "answer": 2,
+    "exp": "For public clients like native mobile applications or Single Page Applications (SPAs) that cannot securely store a client secret, the Authorization Code Flow with PKCE (Proof Key for Code Exchange) is the recommended best practice. PKCE mitigates the authorization code interception attack. The Implicit Flow is now deprecated for these use cases due to security vulnerabilities (tokens exposed in the URL). The Resource Owner Password Credentials flow requires the user to give their raw password to the app, which violates the principle of delegated authorization. The Client Credentials flow is for machine-to-machine communication where the app is accessing its own resources, not a user's."
+  },
+  {
+    "id": 10065,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "A financial institution has implemented a Zero Trust model. An employee successfully logs into the HR system from their corporate laptop at the office. Later that day, the same user attempts to download a massive database extract from a coffee shop using the same laptop. The download is immediately blocked. Which core Zero Trust principle does this action primarily demonstrate?",
+    "options": [
+      "Least Privilege Access",
+      "Continuous Authentication and Context-Aware Authorization",
+      "Micro-segmentation",
+      "Multi-Factor Authentication (MFA)"
+    ],
+    "answer": 1,
+    "exp": "The scenario demonstrates Continuous Authentication and Context-Aware Authorization. In Zero Trust, trust is never assumed, even after an initial successful authentication. The system continuously evaluates the context of the request (location change from office to coffee shop, abnormal behavior of downloading a massive database) and dynamically adjusts authorization, blocking the risky request. Least privilege is about the baseline permissions. Micro-segmentation separates networks. MFA is an authentication method, not the continuous evaluation of context itself."
+  },
+  {
+    "id": 10066,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "Two competing aerospace companies establish a joint venture. They need to share highly sensitive engineering documents hosted in a web application managed by Company A. Company B's engineers must access this application using their existing Company B credentials. Company A insists that they do not want to manage user accounts for Company B's employees. Which of the following is the BEST approach to satisfy these requirements?",
+    "options": [
+      "Implement an LDAP synchronization script to copy Company B's users into Company A's Active Directory.",
+      "Establish a federated identity relationship where Company A acts as the Identity Provider (IdP) and Company B acts as the Service Provider (SP).",
+      "Set up a mutual trust relationship between their respective Active Directory domains using forest trusts.",
+      "Establish a federated identity relationship where Company B acts as the Identity Provider (IdP) and Company A acts as the Service Provider (SP)."
+    ],
+    "answer": 3,
+    "exp": "In this scenario, Company B's employees need to authenticate, so Company B holds the identities and acts as the Identity Provider (IdP). Company A hosts the application (the service), so Company A acts as the Service Provider (SP). Establishing a federated relationship in this manner allows Company B's users to log in with their own credentials without Company A having to manage those accounts. Synchronizing LDAP or using forest trusts creates tight coupling and expands the attack surface, whereas federation provides loose coupling and better isolation, which is preferred for joint ventures between distinct entities."
+  },
+  {
+    "id": 10067,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "In an OpenID Connect (OIDC) implementation, a client application receives both an ID Token and an Access Token after a successful authentication flow. What is the primary difference in the intended audience and usage of these two tokens?",
+    "options": [
+      "The ID Token is intended for the client application to read the user's identity, while the Access Token is intended to be sent to a resource server to access APIs.",
+      "The Access Token is intended for the client application to read user profile data, while the ID Token is used as a session cookie.",
+      "The ID Token is used for authorization to external APIs, while the Access Token is used strictly for local authentication within the client application.",
+      "Both tokens serve the exact same purpose, but the ID Token uses XML format while the Access Token uses JSON Web Token (JWT) format."
+    ],
+    "answer": 0,
+    "exp": "In OIDC, the ID Token is a JWT specifically designed to be read by the client application (the Relying Party) to verify the user's identity and obtain basic profile information. The Access Token (inherited from OAuth 2.0) is treated as an opaque string by the client; it is intended to be presented to a Resource Server (API) to authorize access to protected resources. The client application should not try to parse or rely on the contents of the Access Token for identity purposes."
+  },
+  {
+    "id": 10068,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "An organization is building a Zero Trust architecture based on the Software Defined Perimeter (SDP) model. Before a user's device is allowed to establish a network connection to a protected application, it must first authenticate and be authorized by a central controller. Which of the following best describes this controller's role in the SDP architecture?",
+    "options": [
+      "It acts as the SDP Gateway, terminating the user's VPN connection.",
+      "It acts as the SDP Controller, authenticating the user and device, and then instructing the SDP Gateway to allow a connection.",
+      "It acts as a Reverse Proxy, inspecting all traffic for malicious payloads.",
+      "It acts as an Identity Provider (IdP), issuing SAML assertions directly to the application."
+    ],
+    "answer": 1,
+    "exp": "In a Software Defined Perimeter (SDP) architecture, the SDP Controller acts as the control plane. It is responsible for authenticating the user and assessing the device's posture. Once trust is established, the SDP Controller communicates with the SDP Gateway (the data plane) to dynamically open a secure, point-to-point connection between the user's device and the protected resource. The Controller does not handle the actual data traffic (unlike a gateway or reverse proxy), and while it integrates with an IdP, its primary role is to control network access based on identity."
+  },
+  {
+    "id": 10069,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "A security analyst is reviewing a SAML implementation and discovers that the Service Provider (SP) validates the digital signature on the entire SAML Response, but fails to independently validate the signature on the individual SAML Assertion contained within the response. Which of the following attacks is the application most vulnerable to?",
+    "options": [
+      "Cross-Site Request Forgery (CSRF) on the logout endpoint.",
+      "XML External Entity (XXE) injection within the AuthnRequest.",
+      "SAML Assertion Wrapper (Signature Wrapping) attack.",
+      "Replay attack using an expired SAML assertion."
+    ],
+    "answer": 2,
+    "exp": "If a Service Provider only checks the signature of the outer SAML Response but not the inner SAML Assertion, it is highly vulnerable to XML Signature Wrapping (XSW) attacks. An attacker can intercept a valid SAML response, move the valid, signed assertion to a different part of the XML document, and insert a malicious, unsigned assertion in the expected location. The SP verifies the outer signature (which is still mathematically valid for the moved content) and then incorrectly processes the malicious assertion."
+  },
+  {
+    "id": 10070,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "Under the principles of Zero Trust Architecture, how does the concept of identity lifecycle management fundamentally shift compared to a traditional perimeter-based security model?",
+    "options": [
+      "Identity lifecycle management becomes less critical because the network is inherently untrusted, relying primarily on endpoint security instead.",
+      "Provisioning and de-provisioning are replaced by mandatory biometric authentication for all access requests.",
+      "Identity attributes and context become the primary perimeter, requiring continuous, automated updates to user state and privileges rather than static, point-in-time provisioning.",
+      "Role-Based Access Control (RBAC) is entirely abandoned in favor of Discretionary Access Control (DAC) managed by resource owners."
+    ],
+    "answer": 2,
+    "exp": "In a Zero Trust Architecture (ZTA), the network perimeter dissolves, and identity becomes the new control plane. Therefore, identity lifecycle management must evolve from a static, slow-moving process (e.g., granting roles at onboarding) to a highly dynamic system. User attributes, device health, and context must be continuously updated and evaluated in real-time. If an employee's risk score increases or their role changes, their access must be automatically and immediately adjusted across all resources. ZTA relies heavily on Attribute-Based Access Control (ABAC) rather than static RBAC, but it does not abandon identity management; it elevates its importance."
+  },
+  {
+    "id": 10071,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "A company is developing an ecosystem of microservices. Service A needs to make API calls to Service B on its own behalf, without any user interaction or user context. Which OAuth 2.0 grant type is the standard and most secure method for this machine-to-machine communication?",
+    "options": [
+      "Authorization Code Flow",
+      "Implicit Flow",
+      "Client Credentials Flow",
+      "Device Authorization Flow"
+    ],
+    "answer": 2,
+    "exp": "The Client Credentials grant type is specifically designed for machine-to-machine (M2M) communication where the application (Service A) is the resource owner acting on its own behalf, rather than on behalf of a human user. Service A authenticates with the authorization server using its client ID and secret to obtain an access token, which it then uses to access Service B. The Authorization Code and Implicit flows are for user delegation, and the Device Authorization flow is for devices with limited input capabilities (like smart TVs)."
+  },
+  {
+    "id": 10072,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "When configuring a SAML 2.0 identity federation, an administrator decides to encrypt the SAML Assertion. What is the primary security objective achieved by this configuration, and which key is used to perform the encryption?",
+    "options": [
+      "It prevents the user from intercepting and reading the attributes in the assertion; it is encrypted using the Identity Provider's (IdP) public key.",
+      "It prevents the user from modifying the assertion; it is encrypted using the Service Provider's (SP) private key.",
+      "It prevents the user and other intermediaries from reading sensitive attributes in the assertion; it is encrypted using the Service Provider's (SP) public key.",
+      "It guarantees the authenticity of the assertion; it is encrypted using the Identity Provider's (IdP) private key."
+    ],
+    "answer": 2,
+    "exp": "Encrypting the SAML Assertion ensures confidentiality, preventing the user (via their browser) or any intermediaries from reading sensitive user attributes contained within the XML. To accomplish this, the Identity Provider (IdP) encrypts the assertion using the Service Provider's (SP) public key. Only the SP, possessing the corresponding private key, can decrypt it. Authenticity and integrity (preventing modification) are achieved via digital signatures (signed with the IdP's private key), not encryption."
+  },
+  {
+    "id": 10073,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "In a Zero Trust environment, a Trust Algorithm (TA) evaluates various inputs to make access decisions. Which of the following is considered an 'implicit' or 'behavioral' input to a Trust Algorithm, rather than a deterministic or static input?",
+    "options": [
+      "The user's membership in the 'Finance' Active Directory group.",
+      "The presence of a valid client certificate on the endpoint device.",
+      "The user's typing speed and mouse movement patterns compared to their historical baseline.",
+      "The geographical location of the IP address requesting access."
+    ],
+    "answer": 2,
+    "exp": "User and Entity Behavior Analytics (UEBA) plays a crucial role in modern Zero Trust trust algorithms. Keystroke dynamics and mouse movement patterns are implicit, behavioral biometric inputs that help continuously verify the user's identity without friction. Active Directory group membership, client certificates, and IP geolocation are explicit, deterministic attributes. Behavioral inputs are key to continuous authentication, a core tenet of ZTA."
+  },
+  {
+    "id": 10074,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "An organization needs to implement federated identity across several web applications. They want a solution that uses RESTful APIs, supports modern web and mobile applications, uses JSON for data exchange, and allows clients to request specific sets of user profile information using 'scopes'. Which technology best fits these requirements?",
+    "options": [
+      "SAML 2.0",
+      "WS-Federation",
+      "OpenID Connect (OIDC)",
+      "Kerberos"
+    ],
+    "answer": 2,
+    "exp": "OpenID Connect (OIDC) is an identity layer built on OAuth 2.0. It uses RESTful JSON APIs, relies on JSON Web Tokens (JWT), is specifically designed for modern web (SPAs) and mobile applications, and uses OAuth 2.0 'scopes' to request specific sets of claims (user profile information). SAML 2.0 and WS-Federation rely on heavier XML and SOAP-based architectures. Kerberos is a network authentication protocol for Active Directory environments, not a web federation protocol."
+  },
+  {
+    "id": 10075,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "A global enterprise is moving to a Zero Trust architecture. They have resources in AWS, Azure, and on-premises data centers. To effectively implement the Policy Enforcement Point (PEP) and Policy Engine (PE) across this hybrid environment, what is the most critical architectural requirement for their IAM system?",
+    "options": [
+      "Deploying a unified Active Directory forest across all cloud providers and on-premises networks.",
+      "Utilizing a centralized identity provider (IdP) that integrates with context-aware access gateways deployed across all environments.",
+      "Implementing site-to-site VPNs to route all cloud traffic back to the on-premises firewall for inspection.",
+      "Using RADIUS for all user authentication requests regardless of the target resource location."
+    ],
+    "answer": 1,
+    "exp": "In a hybrid, multi-cloud Zero Trust architecture, the most effective approach is a centralized control plane (Policy Engine / IdP) that evaluates context and identity, which then signals distributed Policy Enforcement Points (access gateways, proxies, or cloud-native controls) located near the resources in each environment. This ensures consistent policy application without hair-pinning traffic. Relying on a single AD forest or routing all traffic back to an on-premises firewall defeats the purpose of cloud agility and violates Zero Trust principles of distributing enforcement close to the resource. RADIUS is insufficient for modern web/cloud application authorization."
+  },
+  {
+    "id": 10076,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "In an OAuth 2.0 implementation using the Authorization Code flow, a client application receives a short-lived Access Token and a long-lived Refresh Token. The client stores the Refresh Token securely. What is the primary security benefit of using this Access Token / Refresh Token architecture instead of issuing a single, long-lived Access Token?",
+    "options": [
+      "It reduces the load on the Authorization Server because the client no longer needs to communicate with it.",
+      "It limits the window of opportunity for an attacker if the Access Token is compromised, while maintaining a seamless user experience.",
+      "It allows the Resource Server to validate the token without needing to connect to the Authorization Server.",
+      "It prevents the client application from accessing resources if the user changes their password."
+    ],
+    "answer": 1,
+    "exp": "The primary benefit of using a short-lived access token alongside a refresh token is limiting the exposure if the access token is stolen. Because the access token expires quickly (e.g., 15 minutes), the attacker's window to use it is small. The refresh token, which is stored securely and only sent to the Authorization Server (not the Resource Server), is used to silently get a new access token, preserving the user experience. If a token is revoked (e.g., due to a password change), the authorization server will reject the refresh token when the next access token is requested."
+  },
+  {
+    "id": 10077,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "In an OpenID Connect (OIDC) ecosystem with multiple Relying Parties (RPs) and a single Identity Provider (IdP), a user clicks \"Logout\" on one of the RP applications. To ensure a secure Zero Trust posture, the administrator wants to implement a mechanism where logging out of this RP simultaneously terminates the user's session at the IdP and all other RPs they have accessed. What OIDC mechanism handles this complex scenario?",
+    "options": [
+      "Front-Channel Logout",
+      "Back-Channel Logout",
+      "Token Revocation Endpoint",
+      "Proof Key for Code Exchange (PKCE)"
+    ],
+    "answer": 1,
+    "exp": "OIDC Back-Channel Logout allows the IdP to send an HTTP POST request directly to a registered logout endpoint on all Relying Parties (RPs) where the user has an active session. This server-to-server communication is highly reliable and does not depend on the user's browser, ensuring that all sessions are proactively terminated. Front-Channel logout relies on invisible iframes in the user's browser, which can be blocked by modern browser privacy features. Token Revocation only revokes specific tokens, not the overall sessions. PKCE is for secure token issuance, not session termination."
+  },
+  {
+    "id": 10078,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "A SaaS provider supports both IdP-initiated and SP-initiated SAML SSO. A security assessment recommends disabling IdP-initiated SSO. What is the primary security justification for this recommendation?",
+    "options": [
+      "IdP-initiated SSO requires the user to memorize the specific URL of the Identity Provider.",
+      "IdP-initiated SSO passes the SAML assertion as a cleartext URL parameter.",
+      "IdP-initiated SSO is highly susceptible to Cross-Site Request Forgery (CSRF) and Login CSRF attacks.",
+      "IdP-initiated SSO cannot support multi-factor authentication (MFA)."
+    ],
+    "answer": 2,
+    "exp": "IdP-initiated SSO is inherently vulnerable to Login CSRF (Cross-Site Request Forgery) because the Service Provider (SP) receives an unsolicited SAML Response without a prior AuthnRequest and state parameter. An attacker can generate a valid SAML response for their own account at the IdP and trick a victim into submitting it to the SP, forcing the victim to be logged in as the attacker. SP-initiated SSO mitigates this by using the `RelayState` or `InResponseTo` parameters to link the SAML Response to a specific request initiated by the victim's browser."
+  },
+  {
+    "id": 10079,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "A company is replacing its traditional remote access VPN with a Zero Trust Network Access (ZTNA) solution. Under the ZTNA model, how is the routing of user traffic fundamentally different from a traditional VPN?",
+    "options": [
+      "ZTNA connects the user's device directly to the corporate LAN, assigning an internal IP address to the remote endpoint.",
+      "ZTNA establishes a point-to-point micro-tunnel directly to the specific authorized application, entirely shielding the rest of the internal network.",
+      "ZTNA routes all internet-bound traffic through the corporate data center for DLP inspection before sending it to the application.",
+      "ZTNA relies exclusively on IPsec to encrypt all traffic between the user's home router and the corporate firewall."
+    ],
+    "answer": 1,
+    "exp": "A core principle of ZTNA is granting access to specific applications, not the underlying network. Unlike a traditional VPN, which typically connects a user to a network segment (granting broad lateral access), ZTNA creates a secure, point-to-point logical tunnel (micro-tunnel) connecting the user exclusively to the specific application they are authorized to access. This prevents lateral movement. The application is hidden from the public internet (and often from the internal network itself) behind a broker or gateway."
+  },
+  {
+    "id": 10080,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "In the context of federated identity, what is a \"claim,\" and how does it facilitate Attribute-Based Access Control (ABAC)?",
+    "options": [
+      "A claim is a cryptographic algorithm used to sign the SAML assertion, ensuring its integrity for ABAC policies.",
+      "A claim is a statement about an entity (like a user), asserted by an Identity Provider, which the Service Provider uses as variables to evaluate dynamic ABAC rules.",
+      "A claim is the legal agreement between the Identity Provider and Service Provider that defines the liability in case of a data breach.",
+      "A claim is a request made by the user to the Policy Enforcement Point to access a specific network segment."
+    ],
+    "answer": 1,
+    "exp": "In identity federation (SAML, OIDC, etc.), a claim is a piece of information or a statement about a user (e.g., email address, role, department, clearance level, age) asserted by the Identity Provider (IdP). In an Attribute-Based Access Control (ABAC) model, the Service Provider (SP) consumes these claims as \"attributes.\" The SP's Policy Engine evaluates these attributes against defined rules (e.g., \"Allow access IF department equals 'HR' AND clearance equals 'Top Secret'\") to make granular, dynamic authorization decisions."
+  },
+  {
+    "id": 10081,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "An enterprise is using OpenID Connect (OIDC) for internal web applications. An attacker manages to steal a valid JWT Access Token from a user's browser session. However, when the attacker attempts to replay the token from their own machine, the Resource Server rejects it. Which advanced token binding mechanism prevents this replay attack?",
+    "options": [
+      "Mutual TLS (mTLS) Sender-Constrained Tokens",
+      "JSON Web Encryption (JWE)",
+      "JWT Expiration (`exp`) claim validation",
+      "HTTP Strict Transport Security (HSTS)"
+    ],
+    "answer": 0,
+    "exp": "Mutual TLS (mTLS) for OAuth 2.0 (RFC 8705) binds the issued access token to the client's specific X.509 certificate. When the client makes a request to the Resource Server, it must present both the token and prove possession of the private key corresponding to the certificate used during the TLS handshake. This creates a \"sender-constrained\" token. If an attacker steals the token, they cannot use it because they do not possess the corresponding private key for the TLS connection, preventing the replay attack."
+  },
+  {
+    "id": 10082,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "Which of the following best describes the role of micro-segmentation in supporting a Zero Trust Architecture within a cloud data center?",
+    "options": [
+      "It replaces the need for robust IAM policies by physically isolating servers into separate racks.",
+      "It places a perimeter firewall at the edge of the data center to block inbound threats.",
+      "It applies logical security controls and policies at the workload or application level, preventing lateral movement even if an attacker breaches the network.",
+      "It segments the network using traditional VLANs based on IP address subnets to simplify routing."
+    ],
+    "answer": 2,
+    "exp": "Micro-segmentation is a key enabler of Zero Trust inside the data center or cloud environment. It moves beyond traditional network-level segmentation (VLANs) by applying granular security policies (often software-defined) directly at the individual workload, virtual machine, or container level. If an attacker compromises one workload, micro-segmentation prevents them from moving laterally to other workloads within the same network segment, adhering to the Zero Trust principle of \"assume breach.\""
+  },
+  {
+    "id": 10083,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "A modern enterprise application requires a user to authenticate via their corporate Active Directory, but the application relies heavily on modern REST APIs that require OAuth 2.0 Access Tokens for authorization. How is this interoperability typically achieved?",
+    "options": [
+      "The application uses the OAuth 2.0 SAML Extension Grant, exchanging a SAML assertion received from the IdP for an OAuth access token at the Authorization Server.",
+      "The application parses the SAML XML assertion and manually converts the elements into a JSON Web Token (JWT) before calling the APIs.",
+      "Active Directory directly issues OAuth 2.0 access tokens via LDAP queries.",
+      "The application forces the user to log in twice: once via SAML for the web interface, and once via OAuth for the APIs."
+    ],
+    "answer": 0,
+    "exp": "The OAuth 2.0 SAML Bearer Assertion Grant (RFC 7522) allows a client to exchange an existing, valid SAML 2.0 assertion for an OAuth 2.0 access token. The user authenticates once via SAML to the web application. The application then presents the SAML assertion to the OAuth Authorization Server, which validates the SAML signature and issues an OAuth access token. This bridges the gap between legacy SAML identity providers and modern OAuth/REST-based microservices seamlessly."
+  },
+  {
+    "id": 10084,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "An organization wants to implement Zero Trust but has a significant amount of legacy, monolithic applications that do not support SAML, OIDC, or API-based access controls. What is the most effective approach to integrate these legacy systems into a Zero Trust Architecture?",
+    "options": [
+      "Rewrite the legacy applications to support native OpenID Connect before attempting any Zero Trust initiatives.",
+      "Deploy an Identity-Aware Proxy (IAP) in front of the legacy applications to handle authentication, authorization, and context evaluation before traffic reaches the app.",
+      "Rely strictly on network firewalls and VPNs to protect the legacy applications, exempting them from the Zero Trust policy.",
+      "Use a synchronization script to copy the legacy application's local user database into the centralized cloud Identity Provider."
+    ],
+    "answer": 1,
+    "exp": "An Identity-Aware Proxy (IAP) or a Zero Trust Network Access (ZTNA) gateway is the standard method for bringing legacy applications into a Zero Trust framework. The proxy acts as the Policy Enforcement Point (PEP). It sits in front of the legacy application, intercepts all traffic, and enforces modern authentication (MFA, SSO) and context-based authorization rules (device health, location) before proxying the connection to the legacy app. This provides a Zero Trust wrapper without requiring complex code rewrites."
+  },
+  {
+    "id": 10085,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "In an OpenID Connect (OIDC) implementation, a Relying Party (RP) requests the `profile` and `email` scopes. However, the user only wishes to share their email address and actively unchecks the \"profile information\" box on the Identity Provider's consent screen. How does the OIDC protocol handle this user-centric privacy decision?",
+    "options": [
+      "The IdP rejects the authentication request entirely because all requested scopes are mandatory.",
+      "The IdP issues an Access Token, but when the RP queries the UserInfo endpoint, the IdP only returns the email claim, omitting the profile claims.",
+      "The IdP issues an ID Token containing all profile information but encrypts the fields the user did not consent to share.",
+      "The RP forces the user to log in again until they accept all requested scopes."
+    ],
+    "answer": 1,
+    "exp": "OAuth 2.0 and OIDC support granular user consent. When a user denies a specific scope (like `profile`), the IdP issues the tokens based only on the granted scopes (in this case, `email`). When the Relying Party (RP) uses the Access Token to call the OIDC UserInfo endpoint, the IdP dynamically filters the response, returning only the claims associated with the granted scopes (the email address). This adheres to privacy by design and data minimization principles."
+  },
+  {
+    "id": 10086,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "In a high-security environment, an architect specifies the use of the SAML HTTP Artifact binding instead of the standard HTTP POST binding for transmitting the SAML Assertion from the IdP to the SP. What specific threat does the Artifact binding mitigate that POST binding does not?",
+    "options": [
+      "It prevents the assertion from being intercepted in transit by encrypting it with AES-256.",
+      "It prevents the user's browser from ever handling or having visibility into the actual SAML Assertion.",
+      "It prevents replay attacks by adding a timestamp to the assertion.",
+      "It prevents Man-in-the-Middle (MitM) attacks by forcing mutual TLS between the browser and the SP."
+    ],
+    "answer": 1,
+    "exp": "In the SAML HTTP Artifact binding, the IdP does not send the large XML Assertion through the user's browser. Instead, it sends a small, opaque reference token (the \"artifact\") via the browser. The SP receives the artifact and makes a direct, back-channel, server-to-server SOAP call to the IdP to exchange the artifact for the actual SAML Assertion. Because the browser only sees the artifact, the user (and any malware in the browser) cannot view, tamper with, or copy the actual assertion, providing a higher level of security for sensitive data."
+  },
+  {
+    "id": 10087,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "In a Zero Trust Architecture (ZTA), device posture is a critical input for the Policy Engine. If an employee attempts to access a medium-sensitivity internal application from an unmanaged, personal device (BYOD) that lacks the corporate Mobile Device Management (MDM) profile, what is the most appropriate Zero Trust response according to NIST guidelines?",
+    "options": [
+      "Deny access completely because the device is unmanaged.",
+      "Grant full access, but log the activity for security review.",
+      "Grant access via a secure, isolated Virtual Desktop Infrastructure (VDI) session with restricted clipboard and file transfer capabilities.",
+      "Force the user to install the MDM profile immediately before granting direct network access."
+    ],
+    "answer": 2,
+    "exp": "Zero Trust is not just binary (allow/deny); it is about dynamic risk mitigation. If a user needs to work from an unmanaged device (a common reality), denying access completely hinders productivity. Granting full access is too risky. The best approach is to adjust the access method based on the risk. Providing access through a controlled VDI or remote browser isolation (RBI) session allows the user to view the application securely without exposing the corporate network to the unmanaged device or allowing data exfiltration, perfectly aligning with ZTA principles of context-aware access."
+  },
+  {
+    "id": 10088,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "Which specific vulnerability in the standard OAuth 2.0 Authorization Code flow for public clients does the Proof Key for Code Exchange (PKCE) extension address?",
+    "options": [
+      "Cross-Site Scripting (XSS) attacks on the Authorization Server's login page.",
+      "Interception of the Authorization Code by a malicious application installed on the same device.",
+      "Brute-force attacks against the user's password.",
+      "Token replay attacks caused by lack of TLS encryption."
+    ],
+    "answer": 1,
+    "exp": "PKCE (RFC 7636) was specifically designed to mitigate the Authorization Code Interception Attack. On mobile devices, malicious apps can register the same custom URI scheme as a legitimate app. If the malicious app intercepts the Authorization Code returned by the Authorization Server, it could exchange it for an Access Token. PKCE prevents this by requiring the client to generate a dynamic secret (`code_verifier`) and send a hash of it (`code_challenge`) with the initial request. The malicious app cannot exchange the intercepted code because it does not know the original `code_verifier`."
+  },
+  {
+    "id": 10089,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "A complex enterprise portal acts as a SAML Service Provider (SP) and integrates with a primary Identity Provider (IdP). The portal also embeds iframes containing sub-applications that rely on the same IdP. When a user initiates a Single Logout (SLO) from the main portal, some sub-applications remain logged in. What is the most likely cause of this issue within the SAML SLO implementation?",
+    "options": [
+      "The IdP is using HTTP-Redirect binding for SLO instead of SOAP binding.",
+      "The user's browser is blocking third-party cookies, causing the IdP's front-channel logout requests within the iframes to fail.",
+      "The SP failed to sign the LogoutRequest sent to the IdP.",
+      "The IdP's certificate has expired, preventing the validation of the logout response."
+    ],
+    "answer": 1,
+    "exp": "In SAML Single Logout (SLO), particularly when relying on front-channel bindings (HTTP-Redirect or HTTP-POST) to log out multiple SPs, the IdP typically renders invisible iframes or redirects to clear the session cookies for each participating SP. If modern browsers block third-party cookies (which is increasingly common for privacy reasons), the IdP cannot clear the session cookies of the SPs loaded in those iframes, leading to \"orphan sessions\" where the user remains logged into some applications despite initiating a logout. Back-channel SLO (SOAP binding) mitigates this but is harder to implement."
+  },
+  {
+    "id": 10090,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 5: Identity and Access Management (IAM)",
+    "q": "According to the NIST SP 800-207 Zero Trust Architecture framework, which of the following best differentiates the \"Continuous Diagnostics and Mitigation (CDM) System\" from the \"Threat Intelligence\" component when providing input to the Policy Engine?",
+    "options": [
+      "The CDM system provides external indicators of compromise (IoCs), while Threat Intelligence provides internal asset status.",
+      "The CDM system provides internal data about enterprise asset state, vulnerability posture, and software versions, while Threat Intelligence provides external data about newly discovered attacks and malicious IPs.",
+      "The CDM system actively enforces policies on network switches, while Threat Intelligence acts passively.",
+      "The CDM system manages user identities and passwords, while Threat Intelligence manages network firewall rules."
+    ],
+    "answer": 1,
+    "exp": "In the NIST ZTA logical architecture, the Continuous Diagnostics and Mitigation (CDM) system gathers internal information about the enterprise's assets—such as device health, patching levels, OS versions, and configuration compliance. Threat Intelligence feeds provide external information from security vendors or government agencies about newly discovered vulnerabilities, malicious IP addresses, zero-day exploits, and active threat actor campaigns. Both feed into the Policy Engine to make contextual access decisions."
+  }
+]

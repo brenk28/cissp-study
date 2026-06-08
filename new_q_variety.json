@@ -1,0 +1,462 @@
+[
+  {
+    "id": 10201,
+    "type": "ms",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "When implementing a Risk Management Framework (RMF), which of the following activities are primarily performed during the 'Categorize' step? (Select two)",
+    "options": [
+      "Identifying the information types processed by the system",
+      "Selecting baseline security controls",
+      "Determining the potential impact of loss of confidentiality, integrity, and availability",
+      "Authorizing the system for operation"
+    ],
+    "answers": [0, 2],
+    "exp": "The correct answers are A and C. During the Categorize step of the NIST RMF, organizations identify the information types (Option A) and determine the potential impact of security breaches based on confidentiality, integrity, and availability (Option C). Option B is incorrect because selecting baseline controls occurs in the 'Select' step. Option D is incorrect because authorizing the system occurs in the 'Authorize' step."
+  },
+  {
+    "id": 10202,
+    "type": "ms",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "Which of the following elements are essential components of a Business Impact Analysis (BIA)? (Select two)",
+    "options": [
+      "Identification of critical business functions",
+      "Implementation of backup and recovery solutions",
+      "Determination of the Maximum Tolerable Downtime (MTD)",
+      "Execution of a full interruption disaster recovery test"
+    ],
+    "answers": [0, 2],
+    "exp": "The correct answers are A and C. A BIA identifies critical business functions (Option A) and determines their MTD (Option C) to prioritize recovery efforts. Option B is incorrect because implementing solutions is part of the recovery strategy implementation phase, not the BIA. Option D is incorrect as testing occurs much later in the Business Continuity Planning process, not during the BIA."
+  },
+  {
+    "id": 10203,
+    "type": "ms",
+    "difficulty": 2,
+    "domain": "Asset Security",
+    "q": "According to the General Data Protection Regulation (GDPR), which of the following are rights granted to data subjects? (Select two)",
+    "options": [
+      "Right to continuous data monetization",
+      "Right to data portability",
+      "Right to erasure (right to be forgotten)",
+      "Right to unlimited data storage"
+    ],
+    "answers": [1, 2],
+    "exp": "The correct answers are B and C. GDPR grants data subjects the right to data portability (Option B), allowing them to receive their data in a structured format, and the right to erasure (Option C), allowing them to request data deletion. Option A is incorrect as continuous data monetization is not a recognized right under GDPR. Option D is incorrect because unlimited data storage is not a GDPR right; in fact, GDPR encourages data minimization."
+  },
+  {
+    "id": 10204,
+    "type": "ms",
+    "difficulty": 3,
+    "domain": "Asset Security",
+    "q": "Which of the following roles are directly responsible for defining the classification and access requirements of data within an organization? (Select two)",
+    "options": [
+      "Data Custodian",
+      "Data Owner",
+      "System Administrator",
+      "Information Owner"
+    ],
+    "answers": [1, 3],
+    "exp": "The correct answers are B and D. The Data Owner (Option B) and Information Owner (Option D) are typically senior managers responsible for defining data classification, access requirements, and overall data protection strategies. Option A is incorrect because the Data Custodian implements the controls mandated by the owner, rather than defining the requirements. Option C is incorrect as System Administrators perform technical operational duties rather than defining classification and access policies."
+  },
+  {
+    "id": 10205,
+    "type": "ms",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "Which of the following cryptographic algorithms are considered asymmetric? (Select two)",
+    "options": [
+      "Advanced Encryption Standard (AES)",
+      "Rivest-Shamir-Adleman (RSA)",
+      "Elliptic Curve Cryptography (ECC)",
+      "Data Encryption Standard (DES)"
+    ],
+    "answers": [1, 2],
+    "exp": "The correct answers are B and C. RSA (Option B) and ECC (Option C) are both asymmetric (public key) algorithms used for secure key exchange, digital signatures, and encryption. Option A is incorrect because AES is a symmetric algorithm used for bulk data encryption. Option D is incorrect because DES is also a symmetric algorithm (and is considered obsolete)."
+  },
+  {
+    "id": 10206,
+    "type": "ms",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "When securing a facility, which of the following are considered physical security administrative controls? (Select two)",
+    "options": [
+      "Facility access request procedures",
+      "Closed-Circuit Television (CCTV) cameras",
+      "Pre-employment background checks",
+      "Turnstiles and mantraps"
+    ],
+    "answers": [0, 2],
+    "exp": "The correct answers are A and C. Facility access request procedures (Option A) and pre-employment background checks (Option C) are policies and procedures, making them administrative controls. Option B is incorrect because CCTV cameras are physical/technical controls used for monitoring. Option D is incorrect because turnstiles and mantraps are physical security hardware devices used to control physical movement."
+  },
+  {
+    "id": 10207,
+    "type": "ms",
+    "difficulty": 2,
+    "domain": "Communication and Network Security",
+    "q": "Which of the following protocols operate at the Network Layer (Layer 3) of the OSI model? (Select two)",
+    "options": [
+      "Internet Protocol (IP)",
+      "Transmission Control Protocol (TCP)",
+      "Internet Control Message Protocol (ICMP)",
+      "User Datagram Protocol (UDP)"
+    ],
+    "answers": [0, 2],
+    "exp": "The correct answers are A and C. IP (Option A) and ICMP (Option C) function at the Network Layer to handle logical addressing and routing/diagnostics. Option B is incorrect because TCP is a Transport Layer (Layer 4) protocol that ensures reliable delivery. Option D is incorrect because UDP is also a Transport Layer (Layer 4) protocol used for connectionless communication."
+  },
+  {
+    "id": 10208,
+    "type": "ms",
+    "difficulty": 3,
+    "domain": "Communication and Network Security",
+    "q": "Which of the following security mechanisms are provided by the WPA3 wireless security standard? (Select two)",
+    "options": [
+      "Simultaneous Authentication of Equals (SAE)",
+      "Temporal Key Integrity Protocol (TKIP)",
+      "Perfect Forward Secrecy (PFS)",
+      "Wired Equivalent Privacy (WEP)"
+    ],
+    "answers": [0, 2],
+    "exp": "The correct answers are A and C. WPA3 replaces the Pre-Shared Key (PSK) with SAE (Option A) to protect against dictionary attacks, and it supports Perfect Forward Secrecy (Option C) to ensure that session keys remain secure even if long-term keys are compromised. Option B is incorrect because TKIP was used in WPA and has been deprecated due to vulnerabilities. Option D is incorrect because WEP is highly vulnerable and obsolete."
+  },
+  {
+    "id": 10209,
+    "type": "ms",
+    "difficulty": 3,
+    "domain": "Identity and Access Management",
+    "q": "In the context of biometric access control, which of the following metrics indicate a system that is overly strict and may deny authorized users? (Select two)",
+    "options": [
+      "High False Rejection Rate (FRR)",
+      "High False Acceptance Rate (FAR)",
+      "Type I Error",
+      "Type II Error"
+    ],
+    "answers": [0, 2],
+    "exp": "The correct answers are A and C. The False Rejection Rate (FRR) (Option A), also known as a Type I Error (Option C), measures how often authorized users are incorrectly denied access. Option B is incorrect because FAR measures unauthorized users being incorrectly admitted (indicating an overly loose system). Option D is incorrect because a Type II Error is synonymous with FAR, representing an acceptance of an imposter."
+  },
+  {
+    "id": 10210,
+    "type": "ms",
+    "difficulty": 3,
+    "domain": "Identity and Access Management",
+    "q": "Which of the following are core components or protocols commonly used in federated identity systems? (Select two)",
+    "options": [
+      "Security Assertion Markup Language (SAML)",
+      "Remote Authentication Dial-In User Service (RADIUS)",
+      "OpenID Connect (OIDC)",
+      "Terminal Access Controller Access-Control System Plus (TACACS+)"
+    ],
+    "answers": [0, 2],
+    "exp": "The correct answers are A and C. SAML (Option A) and OIDC (Option C) are standard protocols used for implementing single sign-on and federated identity across distinct organizational domains. Option B is incorrect because RADIUS is used for network access authentication, not typically federation. Option D is incorrect because TACACS+ is used for device administration authentication, not identity federation."
+  },
+  {
+    "id": 10211,
+    "type": "ms",
+    "difficulty": 2,
+    "domain": "Security Assessment and Testing",
+    "q": "Which of the following testing methodologies provide the tester with full knowledge of the internal architecture and source code? (Select two)",
+    "options": [
+      "Black-box testing",
+      "White-box testing",
+      "Clear-box testing",
+      "Blind testing"
+    ],
+    "answers": [1, 2],
+    "exp": "The correct answers are B and C. White-box testing (Option B) and Clear-box testing (Option C) are synonymous terms describing tests where the tester has complete knowledge of the internal workings, source code, and architecture. Option A is incorrect because black-box testing involves no internal knowledge prior to the test. Option D is incorrect because blind testing is a black-box approach where the organization is aware of the test but the tester has no prior information."
+  },
+  {
+    "id": 10212,
+    "type": "ms",
+    "difficulty": 3,
+    "domain": "Security Assessment and Testing",
+    "q": "Regarding Service Organization Control (SOC) reports, which of the following statements are true about a SOC 2 Type II report? (Select two)",
+    "options": [
+      "It evaluates the operational effectiveness of controls over a period of time.",
+      "It only assesses the design of controls at a specific point in time.",
+      "It is based on the Trust Services Criteria (TSC).",
+      "It focuses strictly on internal controls over financial reporting (ICFR)."
+    ],
+    "answers": [0, 2],
+    "exp": "The correct answers are A and C. A SOC 2 Type II report assesses both the design and the operational effectiveness of controls over a specified period (Option A) and is based on the Trust Services Criteria (Option C). Option B is incorrect because a Type I report assesses design at a point in time, not Type II. Option D is incorrect because SOC 1 reports focus on financial reporting (ICFR), whereas SOC 2 focuses on security, availability, processing integrity, confidentiality, and privacy."
+  },
+  {
+    "id": 10213,
+    "type": "ms",
+    "difficulty": 2,
+    "domain": "Security Operations",
+    "q": "During the incident response process, which of the following activities are part of the Containment phase? (Select two)",
+    "options": [
+      "Disconnecting an infected workstation from the network",
+      "Identifying the root cause of the vulnerability",
+      "Changing passwords for compromised administrative accounts",
+      "Restoring systems from clean backups"
+    ],
+    "answers": [0, 2],
+    "exp": "The correct answers are A and C. Disconnecting systems (Option A) and revoking or changing compromised credentials (Option C) are containment steps designed to prevent further damage. Option B is incorrect because root cause analysis typically occurs in the Eradication or Lessons Learned phases. Option D is incorrect because restoring from backups is part of the Recovery phase."
+  },
+  {
+    "id": 10214,
+    "type": "ms",
+    "difficulty": 3,
+    "domain": "Security Operations",
+    "q": "Which of the following backup types require the last full backup and the most recent iteration of this backup type to perform a complete restoration? (Select two)",
+    "options": [
+      "Differential backup",
+      "Incremental backup",
+      "Cumulative backup",
+      "Full backup"
+    ],
+    "answers": [0, 2],
+    "exp": "The correct answers are A and C. A differential backup (Option A) and a cumulative backup (Option C) copy all changes made since the last full backup. To restore, you only need the last full backup and the most recent differential/cumulative backup. Option B is incorrect because incremental backups require the full backup and all subsequent incremental backups in order. Option D is incorrect because a full backup is a standalone copy requiring no other backups."
+  },
+  {
+    "id": 10215,
+    "type": "ms",
+    "difficulty": 2,
+    "domain": "Software Development Security",
+    "q": "Which of the following are common mitigations against Cross-Site Scripting (XSS) attacks? (Select two)",
+    "options": [
+      "Input validation and sanitization",
+      "Output encoding",
+      "Implementing parameterized queries",
+      "Using encryption for data at rest"
+    ],
+    "answers": [0, 1],
+    "exp": "The correct answers are A and B. Input validation (Option A) prevents malicious scripts from being stored or processed, while output encoding (Option B) ensures that any untrusted data sent to the browser is treated as content rather than executable code. Option C is incorrect because parameterized queries are used to prevent SQL Injection, not XSS. Option D is incorrect because encryption at rest protects stored data from unauthorized access but does not prevent the browser from executing a malicious script."
+  },
+  {
+    "id": 10216,
+    "type": "ms",
+    "difficulty": 2,
+    "domain": "Software Development Security",
+    "q": "Which of the following are key characteristics of the Agile software development methodology? (Select two)",
+    "options": [
+      "Iterative and incremental delivery",
+      "Strict, sequential phases with no overlapping",
+      "Continuous integration and regular feedback",
+      "Comprehensive documentation over working software"
+    ],
+    "answers": [0, 2],
+    "exp": "The correct answers are A and C. Agile emphasizes iterative cycles known as sprints (Option A) and relies heavily on continuous integration, stakeholder feedback, and adaptability (Option C). Option B is incorrect as it describes the Waterfall methodology, which is sequential. Option D is incorrect because the Agile Manifesto specifically values working software over comprehensive documentation."
+  },
+  {
+    "id": 10217,
+    "type": "ms",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "When defining an organization's security policy, which of the following are characteristics of a 'Standard'? (Select two)",
+    "options": [
+      "It provides high-level statements of management intent.",
+      "It establishes mandatory requirements for hardware and software.",
+      "It offers step-by-step instructions for executing a task.",
+      "It specifies exact parameters, such as a minimum password length of 12 characters."
+    ],
+    "answers": [1, 3],
+    "exp": "The correct answers are B and D. Standards dictate mandatory, specific requirements, such as exact hardware specifications (Option B) and precise configuration parameters like password lengths (Option D). Option A is incorrect because high-level management intent is defined by a Policy. Option C is incorrect because step-by-step instructions describe a Procedure, not a Standard."
+  },
+  {
+    "id": 10218,
+    "type": "ms",
+    "difficulty": 3,
+    "domain": "Security Architecture and Engineering",
+    "q": "Which of the following models are designed to prevent conflicts of interest by strictly controlling information flow between competing business segments? (Select two)",
+    "options": [
+      "Biba Model",
+      "Bell-LaPadula Model",
+      "Brewer-Nash Model",
+      "Chinese Wall Model"
+    ],
+    "answers": [2, 3],
+    "exp": "The correct answers are C and D. The Brewer-Nash Model (Option C) is explicitly designed to prevent conflicts of interest by dynamically restricting access, and it is also commonly referred to as the Chinese Wall Model (Option D). Option A is incorrect because Biba focuses strictly on data integrity. Option B is incorrect because Bell-LaPadula focuses on data confidentiality through mandatory access controls, not specifically on horizontal conflict of interest."
+  },
+  {
+    "id": 10219,
+    "type": "ms",
+    "difficulty": 3,
+    "domain": "Communication and Network Security",
+    "q": "Which of the following characteristics differentiate a Next-Generation Firewall (NGFW) from a traditional stateful inspection firewall? (Select two)",
+    "options": [
+      "Deep Packet Inspection (DPI)",
+      "Port and IP address blocking",
+      "Application-level awareness and control",
+      "Connection state tracking"
+    ],
+    "answers": [0, 2],
+    "exp": "The correct answers are A and C. NGFWs perform Deep Packet Inspection (Option A) and have application-level awareness (Option C), allowing them to block specific application behaviors rather than just ports. Option B is incorrect because port and IP blocking is a feature of traditional packet filtering firewalls. Option D is incorrect because connection state tracking is the defining feature of a traditional stateful firewall, not the differentiating feature of an NGFW."
+  },
+  {
+    "id": 10220,
+    "type": "ms",
+    "difficulty": 3,
+    "domain": "Identity and Access Management",
+    "q": "Which of the following access control models enforce access rights based on the subject's clearance level and the object's classification label? (Select two)",
+    "options": [
+      "Role-Based Access Control (RBAC)",
+      "Discretionary Access Control (DAC)",
+      "Mandatory Access Control (MAC)",
+      "Lattice-Based Access Control (LBAC)"
+    ],
+    "answers": [2, 3],
+    "exp": "The correct answers are C and D. Mandatory Access Control (Option C) strictly enforces access based on subject clearances and object labels, and it relies heavily on Lattice-Based Access Control mechanisms (Option D) to define upper and lower bounds for information flow. Option A is incorrect because RBAC relies on user roles or job functions rather than clearances. Option B is incorrect because DAC allows the data owner to dictate access at their discretion."
+  },
+  {
+    "id": 10221,
+    "type": "order",
+    "difficulty": 3,
+    "domain": "Security and Risk Management",
+    "q": "Place the phases of the Business Continuity Planning (BCP) process in the correct chronological order, from first to last.",
+    "items": [
+      "Project Initiation and Management",
+      "Business Impact Analysis (BIA)",
+      "Recovery Strategy Development",
+      "Plan Design and Development",
+      "Testing, Maintenance, Awareness, and Training"
+    ],
+    "correctOrder": [0, 1, 2, 3, 4],
+    "exp": "The correct order is Project Initiation, BIA, Strategy Development, Plan Development, and Testing/Maintenance. Project Initiation defines the scope. The BIA identifies critical functions. Strategy Development determines how to recover them. Plan Design drafts the procedures. Testing and Maintenance ensure viability over time. Any other order fails because each step produces critical inputs required for the subsequent step."
+  },
+  {
+    "id": 10222,
+    "type": "order",
+    "difficulty": 3,
+    "domain": "Asset Security",
+    "q": "Arrange the phases of the data lifecycle in the standard order of execution.",
+    "items": [
+      "Create",
+      "Store",
+      "Use",
+      "Archive",
+      "Destroy"
+    ],
+    "correctOrder": [0, 1, 2, 3, 4],
+    "exp": "The correct order is Create, Store, Use, Archive, and Destroy. Data is first created or captured. It is immediately stored. Authorized users then use it. Once it is no longer actively needed but must be retained for compliance, it is archived. Finally, at the end of its retention period, it is securely destroyed. Ordering them otherwise violates the logical progression of data management and retention policies."
+  },
+  {
+    "id": 10223,
+    "type": "order",
+    "difficulty": 3,
+    "domain": "Security Architecture and Engineering",
+    "q": "Order the stages of the cryptographic key lifecycle from inception to retirement.",
+    "items": [
+      "Key Distribution",
+      "Key Destruction",
+      "Key Usage",
+      "Key Generation",
+      "Key Archival"
+    ],
+    "correctOrder": [3, 0, 2, 4, 1],
+    "exp": "The correct sequence is Key Generation, Distribution, Usage, Archival, and Destruction. Keys must first be securely generated. Next, they are distributed to the authorized parties. They are then put into active usage for encryption/decryption. When they expire or are rotated out, they may be placed in key archival for recovering old data. Finally, they undergo key destruction to prevent unauthorized recovery. Ordering them otherwise breaks the logical and secure flow of key management."
+  },
+  {
+    "id": 10224,
+    "type": "order",
+    "difficulty": 3,
+    "domain": "Communication and Network Security",
+    "q": "Place the top 5 layers of the OSI model in order from Layer 7 down to Layer 3.",
+    "items": [
+      "Session Layer",
+      "Transport Layer",
+      "Application Layer",
+      "Network Layer",
+      "Presentation Layer"
+    ],
+    "correctOrder": [2, 4, 0, 1, 3],
+    "exp": "The correct top-down order is Application (Layer 7), Presentation (Layer 6), Session (Layer 5), Transport (Layer 4), and Network (Layer 3). The Application layer interacts directly with software, Presentation formats data, Session maintains connections, Transport ensures reliability, and the Network layer handles routing. Reversing or scrambling this order contradicts the standardized OSI communication model hierarchy."
+  },
+  {
+    "id": 10225,
+    "type": "order",
+    "difficulty": 3,
+    "domain": "Identity and Access Management",
+    "q": "Arrange the typical Identity and Access Management (IAM) lifecycle phases in the correct chronological sequence.",
+    "items": [
+      "Identity Provisioning",
+      "Access Review and Auditing",
+      "Authentication and Authorization",
+      "Identity Deprovisioning",
+      "Identity Proofing and Registration"
+    ],
+    "correctOrder": [4, 0, 2, 1, 3],
+    "exp": "The correct sequence is Identity Proofing and Registration, Provisioning, Authentication/Authorization, Access Review, and Deprovisioning. First, the user's identity is verified (Registration). Second, an account is created (Provisioning). Third, the user logs in and is granted rights (Authentication/Authorization). Fourth, their access is periodically reviewed (Auditing). Finally, when they leave, their account is terminated (Deprovisioning). Incorrect orders violate the logical establishment and termination of identities."
+  },
+  {
+    "id": 10226,
+    "type": "order",
+    "difficulty": 3,
+    "domain": "Security Assessment and Testing",
+    "q": "Place the phases of a standard Penetration Testing methodology in the correct order of execution.",
+    "items": [
+      "Vulnerability Analysis",
+      "Exploitation",
+      "Reporting",
+      "Planning and Reconnaissance",
+      "Post-Exploitation"
+    ],
+    "correctOrder": [3, 0, 1, 4, 2],
+    "exp": "The correct sequence is Planning and Reconnaissance, Vulnerability Analysis, Exploitation, Post-Exploitation, and Reporting. The tester first defines scope and gathers intel (Reconnaissance). Next, they scan for weaknesses (Vulnerability Analysis). They then breach the system (Exploitation), followed by maintaining access or pivoting (Post-Exploitation). Finally, they document their findings (Reporting). Any other order violates standard penetration testing frameworks."
+  },
+  {
+    "id": 10227,
+    "type": "order",
+    "difficulty": 3,
+    "domain": "Security Operations",
+    "q": "According to the NIST Incident Response Life Cycle, arrange the phases in their correct sequence.",
+    "items": [
+      "Detection and Analysis",
+      "Containment",
+      "Preparation",
+      "Post-Incident Activity",
+      "Eradication and Recovery"
+    ],
+    "correctOrder": [2, 0, 1, 4, 3],
+    "exp": "The correct sequence is Preparation, Detection and Analysis, Containment, Eradication and Recovery, and Post-Incident Activity. Before an incident, policies must be ready (Preparation). An event is then identified (Detection/Analysis). The threat is isolated (Containment) to prevent spread, after which it is removed and systems restored (Eradication/Recovery). Finally, lessons learned are documented (Post-Incident Activity). Reversing or skipping steps compromises incident handling efficacy."
+  },
+  {
+    "id": 10228,
+    "type": "order",
+    "difficulty": 3,
+    "domain": "Security Operations",
+    "q": "Place the steps of the digital forensics process in the correct procedural order.",
+    "items": [
+      "Examination",
+      "Collection",
+      "Identification",
+      "Reporting",
+      "Analysis"
+    ],
+    "correctOrder": [2, 1, 0, 4, 3],
+    "exp": "The correct order is Identification, Collection, Examination, Analysis, and Reporting. First, potential evidence is recognized (Identification). Then it is acquired while maintaining the chain of custody (Collection). The data is prepared and extracted (Examination), followed by interpreting the findings (Analysis). Finally, the results are presented in a legally admissible format (Reporting). Deviating from this exact order compromises forensic integrity and legal admissibility."
+  },
+  {
+    "id": 10229,
+    "type": "order",
+    "difficulty": 2,
+    "domain": "Software Development Security",
+    "q": "Arrange the traditional System Development Life Cycle (SDLC) phases in their correct chronological order.",
+    "items": [
+      "Operations and Maintenance",
+      "Requirements Gathering",
+      "Design",
+      "Testing",
+      "Implementation/Coding"
+    ],
+    "correctOrder": [1, 2, 4, 3, 0],
+    "exp": "The correct sequence is Requirements Gathering, Design, Implementation/Coding, Testing, and Operations/Maintenance. First, the needs are defined (Requirements). Next, the architecture is planned (Design). Then, the software is written (Implementation). After writing, it is evaluated for defects (Testing). Finally, it is deployed and supported (Operations/Maintenance). Any other sequence represents an illogical software development approach."
+  },
+  {
+    "id": 10230,
+    "type": "order",
+    "difficulty": 3,
+    "domain": "Security and Risk Management",
+    "q": "Place the first five steps of the NIST Risk Management Framework (RMF) in the correct execution order.",
+    "items": [
+      "Assess Security Controls",
+      "Implement Security Controls",
+      "Categorize Information System",
+      "Authorize Information System",
+      "Select Security Controls"
+    ],
+    "correctOrder": [2, 4, 1, 0, 3],
+    "exp": "The correct sequence is Categorize, Select, Implement, Assess, and Authorize. First, the system and data are categorized based on impact (Categorize). Next, a baseline of controls is chosen (Select). These controls are then built into the system (Implement). Their effectiveness is evaluated (Assess). Finally, management formally accepts the risk (Authorize). Attempting these out of order would lead to implementing inappropriate controls or assessing controls before they exist."
+  }
+]

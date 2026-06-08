@@ -1,0 +1,452 @@
+[
+  {
+    "id": 10121,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "An organization is deploying a highly sensitive communication link between two data centers and wants to ensure that any eavesdropping attempts are immediately detectable. They decide to implement Quantum Key Distribution (QKD). Which of the following best describes the underlying principle that makes QKD effective for this purpose?",
+    "options": [
+      "Measuring a quantum state disturbs it, alerting the communicating parties to the presence of an eavesdropper.",
+      "Quantum entanglement allows keys to be transmitted faster than the speed of light.",
+      "QKD uses mathematical complexity that is resistant to quantum computing attacks.",
+      "It relies on homomorphic encryption to ensure data is never decrypted during transmission."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Measuring a quantum state disturbs it, alerting the communicating parties to the presence of an eavesdropper.' QKD relies on the principles of quantum mechanics, specifically Heisenberg's Uncertainty Principle, where the act of observing or measuring a quantum state alters it. This allows the sender and receiver to detect any interception or eavesdropping. 'Quantum entanglement allows keys to be transmitted faster than the speed of light' is incorrect because while entanglement is a quantum property, QKD does not transmit data faster than light; it transmits quantum states (photons) over fiber or free space. 'QKD uses mathematical complexity that is resistant to quantum computing attacks' is incorrect; it describes post-quantum cryptography, which uses mathematics, whereas QKD relies on physics. 'It relies on homomorphic encryption to ensure data is never decrypted during transmission' is incorrect; homomorphic encryption allows computation on ciphertexts, which is unrelated to the key distribution mechanism of QKD."
+  },
+  {
+    "id": 10122,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A manufacturer of IoT devices with limited processing power and memory is selecting an asymmetric algorithm to secure communications. They need the highest security per bit of key length. Which of the following algorithms is the most appropriate choice?",
+    "options": [
+      "Elliptic Curve Cryptography (ECC)",
+      "Rivest-Shamir-Adleman (RSA)",
+      "Advanced Encryption Standard (AES)",
+      "Diffie-Hellman (DH)"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Elliptic Curve Cryptography (ECC)'. ECC provides high cryptographic strength with much shorter key lengths compared to RSA, making it highly efficient and ideal for constrained environments like IoT devices, mobile phones, and smart cards. A 256-bit ECC key is roughly equivalent to a 3072-bit RSA key. 'Rivest-Shamir-Adleman (RSA)' is incorrect because RSA requires significantly larger key sizes to achieve the same level of security, consuming more processing power and memory. 'Advanced Encryption Standard (AES)' is incorrect because AES is a symmetric encryption algorithm, not an asymmetric one. 'Diffie-Hellman (DH)' is incorrect because traditional Diffie-Hellman requires larger keys similar to RSA; while ECDH (Elliptic Curve Diffie-Hellman) exists, ECC is the broader category representing the correct mathematical approach."
+  },
+  {
+    "id": 10123,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A security engineer is analyzing a network packet capture of a TLS session and notices that if the server's long-term private key is compromised in the future, the captured session data cannot be decrypted. Which cryptographic concept is responsible for this protection?",
+    "options": [
+      "Perfect Forward Secrecy (PFS)",
+      "Certificate Revocation",
+      "Key Escrow",
+      "Homomorphic Encryption"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Perfect Forward Secrecy (PFS)'. Perfect Forward Secrecy (PFS) ensures that the compromise of a long-term private key does not compromise past session keys. It achieves this by using ephemeral key exchanges (like Ephemeral Diffie-Hellman, DHE or ECDHE) to generate unique session keys for every communication session. 'Certificate Revocation' is incorrect because certificate revocation (like CRLs or OCSP) invalidates a compromised certificate but does not retroactively protect past sessions. 'Key Escrow' is incorrect because Key Escrow involves storing keys with a trusted third party, which actually increases the risk of past communications being decrypted if the escrowed key is compromised. 'Homomorphic Encryption' is incorrect as homomorphic encryption relates to performing computations on encrypted data."
+  },
+  {
+    "id": 10124,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A financial institution is implementing a high-speed data link and requires an encryption mode that provides both confidentiality and data authenticity (integrity) simultaneously. Which block cipher mode of operation should be selected?",
+    "options": [
+      "Galois/Counter Mode (GCM)",
+      "Cipher Block Chaining (CBC)",
+      "Electronic Codebook (ECB)",
+      "Cipher Feedback (CFB)"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Galois/Counter Mode (GCM)'. Galois/Counter Mode (GCM) is an authenticated encryption with associated data (AEAD) mode that provides both confidentiality and data origin authentication (integrity) efficiently. It is widely used in high-speed network links. 'Cipher Block Chaining (CBC)' is incorrect because CBC provides confidentiality but does not inherently provide data integrity or authenticity without an additional MAC (Message Authentication Code). 'Electronic Codebook (ECB)' is incorrect because ECB is the weakest mode, exposing patterns in the ciphertext, and does not provide integrity. 'Cipher Feedback (CFB)' is incorrect because CFB provides confidentiality by turning a block cipher into a stream cipher but lacks built-in authentication."
+  },
+  {
+    "id": 10125,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "To establish non-repudiation and integrity for a digitally signed software update, what is the correct sequence of cryptographic operations performed by the sender?",
+    "options": [
+      "The sender generates a hash of the software update and encrypts the hash using their private key.",
+      "The sender generates a hash of the software update and encrypts the hash using the receiver's public key.",
+      "The sender encrypts the software update with their private key and hashes the resulting ciphertext.",
+      "The sender encrypts the software update using a symmetric key, and encrypts the symmetric key with their private key."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'The sender generates a hash of the software update and encrypts the hash using their private key.' To create a digital signature, the sender first computes a cryptographic hash of the message (the software update) to ensure integrity. The sender then encrypts this hash value using their own private key, which provides non-repudiation and authentication since only the sender has the private key. 'The sender generates a hash of the software update and encrypts the hash using the receiver's public key' is incorrect because encrypting with the receiver's public key would provide confidentiality for the hash, but not non-repudiation of the sender. 'The sender encrypts the software update with their private key and hashes the resulting ciphertext' is incorrect because asymmetric encryption of an entire software update is computationally prohibitive, and hashing the ciphertext doesn't create a valid signature. 'The sender encrypts the software update using a symmetric key, and encrypts the symmetric key with their private key' is incorrect as encrypting a symmetric key with a private key doesn't prove the integrity of the software update itself."
+  },
+  {
+    "id": 10126,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A healthcare provider wants to outsource predictive analytics on patient data to a cloud service provider without ever exposing the patient records in plaintext to the cloud provider. Which cryptographic technology is best suited for this requirement?",
+    "options": [
+      "Homomorphic Encryption",
+      "Format-Preserving Encryption",
+      "Transport Layer Security (TLS)",
+      "Steganography"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Homomorphic Encryption'. Homomorphic encryption allows computations to be performed directly on encrypted data (ciphertext) without requiring it to be decrypted first. The result of the computation is also encrypted and, when decrypted by the data owner, matches the result of the operations as if they were performed on plaintext. 'Format-Preserving Encryption' is incorrect; Format-Preserving Encryption encrypts data such that the output retains the format of the input (e.g., a 16-digit credit card number stays 16 digits), but it must be decrypted for processing. 'Transport Layer Security (TLS)' is incorrect; TLS secures data in transit, but the data would need to be decrypted at the cloud provider for processing. 'Steganography' is incorrect; steganography hides the existence of data, which is not applicable here."
+  },
+  {
+    "id": 10127,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "An attacker places a highly sensitive oscilloscope near a cryptographic module to measure fluctuations in electrical consumption during encryption operations. The goal is to deduce the cryptographic key being used. Which type of attack is this?",
+    "options": [
+      "Side-Channel Attack",
+      "Chosen-Ciphertext Attack",
+      "Birthday Attack",
+      "Meet-in-the-Middle Attack"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Side-Channel Attack'. A side-channel attack targets the physical implementation of a cryptosystem rather than its theoretical algorithms. By monitoring physical emissions like power consumption (Simple Power Analysis or Differential Power Analysis), electromagnetic leaks, or timing variations, an attacker can deduce cryptographic keys. 'Chosen-Ciphertext Attack' is incorrect; a chosen-ciphertext attack involves the attacker choosing ciphertexts to be decrypted to gather information about the key. 'Birthday Attack' is incorrect; a birthday attack exploits the mathematics of hash collisions. 'Meet-in-the-Middle Attack' is incorrect; a meet-in-the-middle attack targets multiple encryption schemes (like Double DES) by encrypting from one end and decrypting from the other to find matching keys."
+  },
+  {
+    "id": 10128,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "An authentication system is designed so that a user can prove their identity to a server by demonstrating knowledge of a secret password, but the server never learns the password itself and no information about the password is transmitted over the network. This is an application of:",
+    "options": [
+      "Zero-Knowledge Proofs",
+      "Key Escrow",
+      "Public Key Infrastructure (PKI)",
+      "Symmetric Key Cryptography"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Zero-Knowledge Proofs'. A Zero-Knowledge Proof (ZKP) is a cryptographic method by which one party (the prover) can prove to another party (the verifier) that a given statement is true (e.g., 'I know the password') without conveying any information apart from the fact that the statement is indeed true. 'Key Escrow' is incorrect; Key Escrow involves entrusting cryptographic keys to a third party. 'Public Key Infrastructure (PKI)' is incorrect; PKI involves digital certificates and public/private key pairs for authentication, not strictly proving knowledge without transmission. 'Symmetric Key Cryptography' is incorrect; symmetric cryptography involves sharing the same secret key."
+  },
+  {
+    "id": 10129,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A corporation has implemented a key escrow system for its encrypted hard drives. What is the primary business reason for utilizing key escrow?",
+    "options": [
+      "To ensure that encrypted data can be recovered if an employee loses their key or leaves the organization unexpectedly.",
+      "To reduce the processing overhead required to generate new cryptographic keys.",
+      "To prevent side-channel attacks on hardware security modules.",
+      "To establish perfect forward secrecy for encrypted data at rest."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'To ensure that encrypted data can be recovered if an employee loses their key or leaves the organization unexpectedly.' Key escrow involves storing a copy of cryptographic keys with a trusted third party or a specialized internal system. The primary business driver is data availability and recovery—ensuring the organization can access encrypted data if the original key holder is unavailable, loses the key, or turns malicious. 'To reduce the processing overhead required to generate new cryptographic keys' is incorrect; escrow does not reduce processing overhead for key generation. 'To prevent side-channel attacks on hardware security modules' is incorrect; escrow does not mitigate physical attacks like side-channel attacks. 'To establish perfect forward secrecy for encrypted data at rest' is incorrect; perfect forward secrecy relates to ephemeral keys in transit and is contrary to the concept of storing long-term keys in escrow."
+  },
+  {
+    "id": 10130,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "In a Public Key Infrastructure (PKI), an application uses the Online Certificate Status Protocol (OCSP) to verify if a digital certificate is valid. To reduce the burden on the Certificate Authority's OCSP responder and improve client privacy, the web server periodically queries the responder and provides the signed response directly to the client during the TLS handshake. This technique is known as:",
+    "options": [
+      "OCSP Stapling",
+      "Certificate Pinning",
+      "Certificate Revocation List (CRL) Distribution",
+      "Key Escrow"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'OCSP Stapling'. OCSP stapling allows the web server holding the certificate to query the OCSP responder itself, cache the time-stamped and digitally signed response, and 'staple' it to the TLS handshake. This reduces traffic to the CA, speeds up the connection for the client, and protects client privacy since the client doesn't directly contact the CA. 'Certificate Pinning' is incorrect; certificate pinning involves the client explicitly trusting only specific certificates or public keys for a domain. 'Certificate Revocation List (CRL) Distribution' is incorrect; a CRL is a static list of revoked certificates downloaded by the client, which can be inefficient and slow. 'Key Escrow' is incorrect; key escrow is storing keys for recovery purposes."
+  },
+  {
+    "id": 10131,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A facility manager decides to plant thorny bushes beneath ground-floor windows and install clearly defined pathways with low-level lighting leading to the main entrance. These measures are an application of which security concept?",
+    "options": [
+      "Crime Prevention Through Environmental Design (CPTED)",
+      "Defense in Depth",
+      "Emanation Security (TEMPEST)",
+      "Logical Access Controls"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Crime Prevention Through Environmental Design (CPTED)'. Crime Prevention Through Environmental Design (CPTED) uses physical environment design to deter criminal behavior. Thorny bushes (natural access control) and well-lit pathways (territorial reinforcement and natural surveillance) are classic CPTED strategies. 'Defense in Depth' is incorrect; while these are layers of defense, CPTED is the specific discipline describing the use of the environment for security. 'Emanation Security (TEMPEST)' is incorrect; TEMPEST deals with electromagnetic emanations, not landscaping. 'Logical Access Controls' is incorrect; logical access controls refer to technical controls like passwords and firewalls, not physical bushes and paths."
+  },
+  {
+    "id": 10132,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "To protect a critical data center from the ingress of smoke, dust, or toxic gases from a fire in an adjacent office area, how should the data center's HVAC system be configured relative to the surrounding spaces?",
+    "options": [
+      "The data center should maintain positive pressure.",
+      "The data center should maintain negative pressure.",
+      "The data center should maintain neutral pressure with the outside environment.",
+      "The data center's HVAC should be disabled to prevent air circulation."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'The data center should maintain positive pressure.' Maintaining positive air pressure inside the data center ensures that when a door is opened, air flows outward into the surrounding areas, preventing the entry of smoke, dust, or airborne contaminants from adjacent spaces. 'The data center should maintain negative pressure' is incorrect because negative pressure would draw outside air and contaminants into the data center. 'The data center should maintain neutral pressure with the outside environment' is incorrect as neutral pressure provides no barrier to airborne contaminants. 'The data center's HVAC should be disabled to prevent air circulation' is incorrect because disabling HVAC would lead to rapid overheating of critical IT equipment."
+  },
+  {
+    "id": 10133,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A highly sensitive server room needs a fire suppression system. To minimize the risk of accidental water damage to the equipment while still providing effective suppression, which type of sprinkler system is most appropriate?",
+    "options": [
+      "Pre-action dry pipe system",
+      "Wet pipe system",
+      "Deluge system",
+      "Class K portable extinguishers"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Pre-action dry pipe system'. A pre-action system requires two separate triggers (e.g., a smoke detector activation and the bursting of a thermal link in the sprinkler head) before water is released. The pipes are dry until the first trigger opens a valve to fill them with water, drastically reducing the risk of accidental discharge and water damage. 'Wet pipe system' is incorrect because wet pipe systems always contain water, meaning a leak or accidental breakage immediately damages equipment. 'Deluge system' is incorrect because a deluge system opens all sprinkler heads simultaneously when triggered, causing massive water damage. 'Class K portable extinguishers' is incorrect; Class K extinguishers are for commercial kitchens (cooking oils), not electrical fires (Class C)."
+  },
+  {
+    "id": 10134,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "An organization wants to prevent tailgating (piggybacking) into a highly restricted research laboratory. The control must ensure that only one authorized individual enters at a time and strictly prevents a second person from following them. Which of the following physical controls is the most effective?",
+    "options": [
+      "A mantrap (access control vestibule) with a weight sensor",
+      "A turnstile with an optical sensor",
+      "Proximity card readers on both sides of the door",
+      "A visible security camera monitoring the entrance"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'A mantrap (access control vestibule) with a weight sensor'. A mantrap with a weight sensor (or floor sensor) ensures that only one person is inside the vestibule at a time. If the weight exceeds the threshold for a single person, the inner door will not open, effectively neutralizing tailgating and piggybacking. 'A turnstile with an optical sensor' is incorrect; while turnstiles deter tailgating, optical turnstiles can sometimes be bypassed or jumped, making them less effective than a strict mantrap for a highly restricted area. 'Proximity card readers on both sides of the door' is incorrect; requiring cards on both sides (anti-passback) deters sharing badges but does not physically stop two people walking through an open door together. 'A visible security camera monitoring the entrance' is incorrect; a camera acts as a deterrent and detective control, not a strict preventive physical control."
+  },
+  {
+    "id": 10135,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A critical infrastructure facility is installing a perimeter fence to deter and delay intruders. Security standards mandate a fence that is difficult to climb and highly resistant to cutting. Which specification is the most appropriate?",
+    "options": [
+      "8-foot high, 9-gauge chain link fence with a 3-strand barbed wire top angled outward",
+      "4-foot high, 11-gauge chain link fence with a smooth top rail",
+      "6-foot high wooden privacy fence with no top guard",
+      "8-foot high, 14-gauge chain link fence with a single strand of barbed wire angled inward"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is '8-foot high, 9-gauge chain link fence with a 3-strand barbed wire top angled outward'. According to physical security standards, an 8-foot high fence with 9-gauge wire (which is thicker and harder to cut than higher gauge numbers like 11 or 14) combined with a 3-strand barbed wire top angled outward provides a significant deterrent and delay mechanism against climbers. '4-foot high, 11-gauge chain link fence with a smooth top rail' is incorrect; a 4-foot fence is easily bypassed and only serves to establish a boundary, not deter intruders. '6-foot high wooden privacy fence with no top guard' is incorrect; wooden fences provide privacy (concealment) but are relatively easy to climb or break and impede natural surveillance. '8-foot high, 14-gauge chain link fence with a single strand of barbed wire angled inward' is incorrect; 14-gauge wire is thin and easily cut, and angling the wire inward makes climbing from the outside easier."
+  },
+  {
+    "id": 10136,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A hospital data center requires uninterrupted power during catastrophic grid failures. To ensure continuous operation without a drop in power, what is the proper configuration of power backup systems?",
+    "options": [
+      "An Uninterruptible Power Supply (UPS) handles the immediate power drop until an onsite diesel generator starts and assumes the load.",
+      "An onsite diesel generator detects the power failure and starts immediately to handle the power drop, supplemented by a UPS for cooling.",
+      "Dual utility feeds from the same substation are used to provide immediate failover without the need for generators.",
+      "A power distribution unit (PDU) is configured to switch automatically to solar panels during an outage."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'An Uninterruptible Power Supply (UPS) handles the immediate power drop until an onsite diesel generator starts and assumes the load.' A UPS provides instantaneous battery-backed power to bridge the gap during the initial milliseconds/seconds of a power failure. This keeps systems running smoothly while the onsite diesel generator takes several seconds to start up, stabilize, and take over the load for the duration of the outage. 'An onsite diesel generator detects the power failure and starts immediately to handle the power drop, supplemented by a UPS for cooling' is incorrect because generators cannot start instantaneously; systems would crash during the delay. 'Dual utility feeds from the same substation are used to provide immediate failover without the need for generators' is incorrect; dual feeds from the same substation do not protect against a substation or grid failure. 'A power distribution unit (PDU) is configured to switch automatically to solar panels during an outage' is incorrect; solar panels cannot instantly provide the stable, continuous high-capacity power required for a data center during a sudden outage."
+  },
+  {
+    "id": 10137,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A military intelligence unit processes highly classified information in a facility located near public roads. They are concerned that adversaries might capture electromagnetic emanations from monitors and cables to reconstruct data. Which of the following is the most effective control to mitigate this risk?",
+    "options": [
+      "Installing a Faraday cage around the processing room",
+      "Implementing WPA3 encryption on the wireless network",
+      "Using single-mode fiber optic cables for exterior communications",
+      "Applying a screen privacy filter on all monitors"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Installing a Faraday cage around the processing room'. A Faraday cage consists of conductive material designed to block external and internal electromagnetic fields (TEMPEST emanations), effectively preventing attackers from capturing electronic emissions to reconstruct data. 'Implementing WPA3 encryption on the wireless network' is incorrect; WPA3 encrypts wireless network traffic but does not stop physical emanations from monitors, CPUs, or wired keyboards. 'Using single-mode fiber optic cables for exterior communications' is incorrect; while fiber optics do not emit electromagnetic signals, replacing exterior cables does not protect emanations from the devices inside the room. 'Applying a screen privacy filter on all monitors' is incorrect; privacy filters prevent visual shoulder-surfing but do nothing to block electromagnetic emanations."
+  },
+  {
+    "id": 10138,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A museum requires a perimeter intrusion detection system for its exterior fencing. They need a system that detects attempts to climb or cut the fence but minimizes false alarms caused by wind or small animals. Which technology is best suited?",
+    "options": [
+      "Time Domain Reflectometry (TDR) coaxial cable sensors attached to the fence",
+      "Photoelectric beam sensors placed 10 feet inside the fence line",
+      "Ultrasonic motion sensors mounted on the fence posts",
+      "Passive Infrared (PIR) sensors pointed at the fence"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Time Domain Reflectometry (TDR) coaxial cable sensors attached to the fence'. Coaxial cable sensors utilizing Time Domain Reflectometry (TDR) or microphonic cables detect the specific vibrations and frequencies caused by cutting or climbing a fence. Advanced processors filter out the signatures of wind or small animals, reducing false alarms. 'Photoelectric beam sensors placed 10 feet inside the fence line' is incorrect; photoelectric beams are line-of-sight and can be easily triggered by debris, birds, or bypassed by jumping over them. 'Ultrasonic motion sensors mounted on the fence posts' is incorrect; ultrasonic sensors measure sound waves in enclosed spaces and are completely ineffective outdoors due to wind and environmental noise. 'Passive Infrared (PIR) sensors pointed at the fence' is incorrect; PIR detects heat movement and would generate numerous false alarms outside due to wildlife, sunlight changes, and vegetation movement."
+  },
+  {
+    "id": 10139,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "An enterprise is decommissioning a batch of solid-state drives (SSDs) containing top-secret proprietary data. Which physical destruction method ensures the data is completely irretrievable and complies with stringent security standards?",
+    "options": [
+      "Shredding the SSDs into particles of 2 mm or smaller",
+      "Degaussing the SSDs using a high-energy magnetic field",
+      "Drilling a single hole through the center of the SSD casing",
+      "Performing a single-pass zero-fill cryptographic wipe"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Shredding the SSDs into particles of 2 mm or smaller'. For solid-state drives (SSDs), physical pulverization or shredding into minute particles (often 2 mm or smaller) is required to ensure that individual NAND flash memory chips are completely destroyed. 'Degaussing the SSDs using a high-energy magnetic field' is incorrect; degaussing destroys magnetic media (like hard disk drives or tapes) but has zero effect on the flash memory chips used in SSDs. 'Drilling a single hole through the center of the SSD casing' is incorrect; drilling a hole might destroy one or two chips but leaves the remaining memory chips intact and data recoverable. 'Performing a single-pass zero-fill cryptographic wipe' is incorrect; a single-pass wipe is a logical sanitization method, not a physical destruction method, and may leave data in over-provisioned sectors of the SSD."
+  },
+  {
+    "id": 10140,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "When designing exterior security lighting for a facility's perimeter, the security engineer specifies the use of overlapping lighting zones and Fresnel lenses. What is the primary objective of this lighting design?",
+    "options": [
+      "To eliminate dark spots and direct glare outward toward potential intruders, blinding them while protecting security guards' night vision.",
+      "To reduce energy consumption by focusing light only directly downwards onto the pathways.",
+      "To mimic natural daylight to support the growth of natural access control vegetation (CPTED).",
+      "To allow the use of low-resolution black-and-white CCTV cameras."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'To eliminate dark spots and direct glare outward toward potential intruders, blinding them while protecting security guards' night vision.' Overlapping lighting eliminates shadows and dark spots (blind spots). Fresnel lenses are used in security lighting to direct the beam outward, creating a glare that blinds potential intruders while keeping the guards and the facility in the shadows. 'To reduce energy consumption by focusing light only directly downwards onto the pathways' is incorrect; focusing light downwards does not project glare toward intruders. 'To mimic natural daylight to support the growth of natural access control vegetation (CPTED)' is incorrect; security lighting is not designed for agricultural purposes. 'To allow the use of low-resolution black-and-white CCTV cameras' is incorrect; while lighting supports CCTV, the specific use of outward-directed lenses is for psychological deterrence and blinding intruders, not merely basic camera support."
+  },
+  {
+    "id": 10141,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A company is migrating its customer-facing web application to a Platform as a Service (PaaS) environment. Under the cloud shared responsibility model, which of the following is the company solely responsible for securing?",
+    "options": [
+      "The application code and customer data",
+      "The underlying operating system of the virtual machines",
+      "The physical security of the cloud data center",
+      "The hypervisor and virtualization layer"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'The application code and customer data'. In a Platform as a Service (PaaS) model, the cloud provider manages the underlying infrastructure, including the physical data center, virtualization layer, and operating systems. The customer (tenant) retains responsibility for the applications they develop and deploy, as well as the data processed by those applications. 'The underlying operating system of the virtual machines' is incorrect; managing the OS is the provider's responsibility in PaaS (though it is the customer's responsibility in IaaS). 'The physical security of the cloud data center' and 'The hypervisor and virtualization layer' are incorrect; physical security and the hypervisor are always the responsibility of the cloud provider across IaaS, PaaS, and SaaS models."
+  },
+  {
+    "id": 10142,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "An enterprise wants to enforce data loss prevention (DLP) policies and monitor user activity across multiple unauthorized and authorized Software as a Service (SaaS) applications accessed by mobile employees. Which technology is specifically designed to provide this visibility and control?",
+    "options": [
+      "Cloud Access Security Broker (CASB)",
+      "Web Application Firewall (WAF)",
+      "Intrusion Prevention System (IPS)",
+      "Virtual Private Network (VPN)"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Cloud Access Security Broker (CASB)'. A Cloud Access Security Broker (CASB) is a policy enforcement point positioned between cloud service consumers and cloud service providers. It is specifically designed to provide visibility into 'Shadow IT' (unauthorized SaaS), enforce data security policies (DLP), implement access controls, and monitor user behavior across cloud applications. 'Web Application Firewall (WAF)' is incorrect; a WAF protects web applications from inbound layer 7 attacks, but doesn't monitor employee outbound SaaS usage. 'Intrusion Prevention System (IPS)' is incorrect; an IPS monitors network traffic for exploits but lacks the API integrations and specific cloud context needed to govern SaaS usage. 'Virtual Private Network (VPN)' is incorrect; a VPN encrypts traffic to a corporate network but does not enforce SaaS application-level DLP or policies."
+  },
+  {
+    "id": 10143,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "In a multi-tenant cloud environment, what is the most severe vulnerability that could allow an attacker residing on one virtual machine to access the memory, processes, or data of another tenant's virtual machine on the same physical host?",
+    "options": [
+      "Hypervisor Escape",
+      "Cross-Site Scripting (XSS)",
+      "Distributed Denial of Service (DDoS)",
+      "Server-Side Request Forgery (SSRF)"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Hypervisor Escape'. Hypervisor escape occurs when an attacker breaks out of a guest virtual machine and gains access to the underlying hypervisor. This completely compromises the isolation between tenants, allowing the attacker to interact with, observe, or manipulate other virtual machines running on the same physical hardware. 'Cross-Site Scripting (XSS)' is incorrect; XSS is a web application vulnerability affecting user browsers. 'Distributed Denial of Service (DDoS)' is incorrect; DDoS affects availability by overwhelming resources, not by breaking tenant isolation to access memory. 'Server-Side Request Forgery (SSRF)' is incorrect; SSRF allows an attacker to force a server to make requests on their behalf, but does not represent a breakdown of virtualization isolation at the hardware/memory level."
+  },
+  {
+    "id": 10144,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A financial organization moving to a public cloud requires strict control over its cryptographic keys used to encrypt sensitive data. They mandate that the cloud provider must never have access to the plain text keys under any circumstances. Which key management model satisfies this requirement?",
+    "options": [
+      "Hold Your Own Key (HYOK)",
+      "Bring Your Own Key (BYOK)",
+      "Cloud-native Key Management Service (KMS)",
+      "Key Escrow with the Cloud Provider"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Hold Your Own Key (HYOK)'. In a Hold Your Own Key (HYOK) model, the cryptographic keys are generated and managed completely within the customer's on-premises environment (usually in a Hardware Security Module). The cloud provider never sees or holds the key, ensuring maximum control. Data is encrypted before going to the cloud. 'Bring Your Own Key (BYOK)' is incorrect; in BYOK, the customer generates the key but securely transfers it to the cloud provider's KMS, meaning the provider technically holds the key to perform encryption/decryption operations. 'Cloud-native Key Management Service (KMS)' is incorrect; cloud-native KMS means the provider generates and manages the keys. 'Key Escrow with the Cloud Provider' is incorrect; escrowing keys with the provider directly violates the requirement."
+  },
+  {
+    "id": 10145,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A development team is deploying microservices using Docker containers. The security architect needs to ensure that one compromised container cannot exhaust the CPU and memory resources of the host, thereby causing a denial of service for other containers. Which Linux kernel feature should be configured?",
+    "options": [
+      "Control Groups (cgroups)",
+      "Namespaces",
+      "Secure Shell (SSH)",
+      "iptables"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Control Groups (cgroups)'. Control Groups (cgroups) are a Linux kernel feature used to limit, account for, and isolate the resource usage (CPU, memory, disk I/O, network) of a collection of processes. In container security, configuring cgroups prevents a single container from consuming all host resources and starving others (preventing 'noisy neighbor' or DoS attacks). 'Namespaces' is incorrect; Namespaces provide process-level isolation (visibility of processes, network interfaces, mount points) but do not restrict resource consumption. 'Secure Shell (SSH)' is incorrect; SSH is a protocol for secure remote access. 'iptables' is incorrect; iptables is used for network packet filtering, not CPU/memory resource limiting."
+  },
+  {
+    "id": 10146,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "An organization wants its employees to seamlessly access a third-party cloud HR application using their existing corporate Active Directory credentials. The organization wants to send authentication assertions to the cloud provider without exposing user passwords. Which standard is most appropriate for this federated Single Sign-On (SSO) scenario?",
+    "options": [
+      "Security Assertion Markup Language (SAML)",
+      "Remote Authentication Dial-In User Service (RADIUS)",
+      "Lightweight Directory Access Protocol (LDAP)",
+      "Terminal Access Controller Access-Control System Plus (TACACS+)"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Security Assertion Markup Language (SAML)'. SAML (Security Assertion Markup Language) is an XML-based open standard for exchanging authentication and authorization data between an identity provider (the organization's AD/SSO solution) and a service provider (the cloud HR application). It allows the user to authenticate locally, and the identity provider sends a signed 'assertion' of identity to the cloud app, meaning the password is never shared. 'Remote Authentication Dial-In User Service (RADIUS)', 'Lightweight Directory Access Protocol (LDAP)', and 'Terminal Access Controller Access-Control System Plus (TACACS+)' are incorrect because RADIUS, LDAP, and TACACS+ are network/directory authentication protocols typically used within a traditional enterprise perimeter or for network device access, not for cross-domain web-based federation to cloud providers."
+  },
+  {
+    "id": 10147,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "An autonomous vehicle company relies on real-time processing of sensor data to make immediate driving decisions, utilizing compute nodes located on the vehicles and at cell towers rather than a centralized cloud data center. What is the primary security challenge introduced by this Edge/Fog computing architecture?",
+    "options": [
+      "Increased physical attack surface and physical tampering of distributed nodes",
+      "The inability to use symmetric encryption",
+      "Latency introduced by centralized identity access management",
+      "Complete reliance on virtual machine hypervisors"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Increased physical attack surface and physical tampering of distributed nodes'. Edge and Fog computing push processing power and data storage away from centralized, highly secure data centers and closer to the data source (vehicles, IoT devices, cell towers). This significantly increases the physical attack surface, as these distributed nodes are often located in uncontrolled, public, or easily accessible environments where they are vulnerable to theft, physical tampering, and local side-channel attacks. 'The inability to use symmetric encryption' is incorrect; symmetric encryption can and is used in edge computing. 'Latency introduced by centralized identity access management' is incorrect; the purpose of edge computing is to reduce latency, not increase it. 'Complete reliance on virtual machine hypervisors' is incorrect; edge devices often run bare-metal or containerized workloads, not necessarily heavy VM hypervisors."
+  },
+  {
+    "id": 10148,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A company is heavily utilizing serverless architecture (Function as a Service) in AWS Lambda. Since there are no traditional operating systems to patch or manage, which of the following represents the most significant security concern for the customer?",
+    "options": [
+      "Over-privileged Identity and Access Management (IAM) execution roles assigned to the functions",
+      "Failure of the cloud provider to patch the underlying hypervisor",
+      "Inadequate physical security of the serverless hardware cluster",
+      "The inability to configure BGP routing protocols"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Over-privileged Identity and Access Management (IAM) execution roles assigned to the functions'. In a serverless/FaaS environment, the application is broken down into numerous small functions. If these functions are assigned overly permissive IAM roles (e.g., a function that only needs to read from one database is given admin access to all storage), an attacker exploiting a vulnerability in the code can leverage those permissions to pivot and escalate privileges. Because the customer doesn't manage the OS, IAM and application code become the primary perimeter. 'Failure of the cloud provider to patch the underlying hypervisor' and 'Inadequate physical security of the serverless hardware cluster' are incorrect because hypervisor patching and physical security are the sole responsibility of the cloud provider in a serverless model. 'The inability to configure BGP routing protocols' is incorrect; serverless abstracts away underlying network routing protocols like BGP."
+  },
+  {
+    "id": 10149,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A multinational corporation utilizes a multi-cloud strategy. During an audit, it is discovered that European citizen data backed up to an AWS bucket was automatically replicated to a disaster recovery region in the United States. This violates the GDPR. Which concept did the cloud architecture fail to enforce?",
+    "options": [
+      "Data Sovereignty",
+      "Data Masking",
+      "Non-repudiation",
+      "Infrastructure as Code (IaC)"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Data Sovereignty'. Data sovereignty refers to the legal and regulatory requirement that digital data is subject to the laws and governance structures of the nation or region in which it is physically located. By allowing European citizen data to replicate to the US without adequate legal frameworks, the architecture failed to enforce data localization and sovereignty requirements mandated by GDPR. 'Data Masking' is incorrect; data masking hides data, but doesn't solve the geographic location requirement. 'Non-repudiation' is incorrect; non-repudiation ensures a party cannot deny an action. 'Infrastructure as Code (IaC)' is incorrect; IaC is a method of provisioning infrastructure, which could have been misconfigured to cause this, but the concept violated is sovereignty."
+  },
+  {
+    "id": 10150,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 3: Security Architecture and Engineering",
+    "q": "A security analyst investigating a potential data exfiltration event within an AWS Virtual Private Cloud (VPC) needs to review historical IP traffic going to and from network interfaces without installing packet capturing agents on the virtual machines. Which native cloud feature should the analyst consult?",
+    "options": [
+      "VPC Flow Logs",
+      "CloudTrail",
+      "AWS WAF Access Logs",
+      "Identity and Access Management (IAM) Logs"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'VPC Flow Logs'. VPC Flow Logs (or equivalent features in Azure/GCP) capture information about the IP traffic going to and from network interfaces in a cloud virtual network. It provides visibility into network flows (source/destination IP, ports, protocol, accept/reject status) without needing agent-based packet sniffers on the instances. 'CloudTrail' is incorrect; CloudTrail logs API calls and management events in the AWS account, not data-plane network packet flows. 'AWS WAF Access Logs' is incorrect; WAF logs show HTTP/HTTPS requests to web applications, not raw IP flow data at the network interface level. 'Identity and Access Management (IAM) Logs' is incorrect; IAM logs track authentication and authorization events, not network traffic."
+  }
+]
