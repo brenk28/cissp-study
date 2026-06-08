@@ -1,0 +1,674 @@
+[
+  {
+    "id": 272,
+    "type": "scenario",
+    "difficulty": 3,
+    "domain": "Security Operations",
+    "scenario": "A SOC analyst notices a spike in failed authentication attempts against the VPN gateway from 500 different IP addresses over 2 hours. Each IP attempts only 3 logins before moving to the next account. No single account has more than 5 failures.",
+    "questions": [
+      {
+        "q": "What attack technique is being used?",
+        "options": [
+          "Man-in-the-middle credential interception",
+          "Brute force against a single account",
+          "Password spraying across multiple accounts",
+          "Denial of service against the VPN gateway"
+        ],
+        "answer": 2,
+        "exp": "Password spraying (Option 2) involves attempting a small number of commonly used passwords across a large number of accounts to avoid triggering account lockouts. Man-in-the-middle (Option 0) intercepts communication, which does not match the login failure pattern. Brute force against a single account (Option 1) would generate many failures for one account, but the scenario specifies no single account has more than 5 failures. Denial of service (Option 3) aims to disrupt availability rather than authenticate."
+      },
+      {
+        "q": "Why didn't existing account lockout policies trigger?",
+        "options": [
+          "The lockout policy is completely broken",
+          "Account lockout only works during business hours",
+          "Attempts per account stayed below the lockout threshold",
+          "The attacker disabled the lockout policy remotely"
+        ],
+        "answer": 2,
+        "exp": "The attacker deliberately kept the number of failed attempts per account (max 5) below typical lockout thresholds (Option 2). There is no evidence the policy is completely broken (Option 0) or disabled (Option 3). Account lockout policies are not generally restricted by business hours (Option 1)."
+      },
+      {
+        "q": "What detection improvement would catch this earlier?",
+        "options": [
+          "Only allow logins during business hours",
+          "Correlate failed logins across accounts by time window",
+          "Disable all VPN access permanently",
+          "Increase the lockout threshold to 100 attempts"
+        ],
+        "answer": 1,
+        "exp": "Correlating failed logins across multiple accounts over a specific time window (Option 1) detects distributed attacks like password spraying that evade per-account thresholds. Restricting logins to business hours (Option 0) or disabling VPN access (Option 2) harms business operations. Increasing the lockout threshold (Option 3) would make the system more vulnerable to brute force, not help detect password spraying."
+      }
+    ]
+  },
+  {
+    "id": 273,
+    "type": "scenario",
+    "difficulty": 3,
+    "domain": "Security and Risk Management",
+    "scenario": "An organization's BIA identifies the payment processing system as the most critical function with an RTO of 1 hour and RPO of 5 minutes. Current DR capabilities provide RTO of 6 hours and RPO of 1 hour. Budget allows improvement to only one metric.",
+    "questions": [
+      {
+        "q": "Which metric gap poses the GREATER business risk?",
+        "options": [
+          "RTO gap (6 hours vs 1 hour required)",
+          "Neither gap matters significantly",
+          "Both gaps are equally critical",
+          "RPO gap (1 hour vs 5 minutes required)"
+        ],
+        "answer": 0,
+        "exp": "The RTO gap (Option 0) means 5 extra hours of complete payment outage, causing immediate business interruption and lost sales. The RPO gap (Option 3) loses 55 minutes of transactions, which might be recoverable through other means. The gaps are not equally critical (Option 2) nor insignificant (Option 1)."
+      },
+      {
+        "q": "What technology BEST addresses the RTO gap for payment processing?",
+        "options": [
+          "Manual runbook for server rebuilds",
+          "Daily tape backups stored offsite",
+          "Weekly full system imaging to cold storage",
+          "Active-active clustering with automatic failover"
+        ],
+        "answer": 3,
+        "exp": "Active-active clustering (Option 3) provides near-instant automatic failover, achieving a sub-hour RTO. Manual runbook rebuilds (Option 0) or backups/imaging (Options 1 and 2) would take hours or days, failing to meet the 1-hour RTO requirement."
+      },
+      {
+        "q": "How should the remaining gap be communicated to leadership?",
+        "options": [
+          "Hide the gap to avoid alarming the board",
+          "Blame the IT team for budget constraints",
+          "Formally document as accepted risk with business impact",
+          "State that the remaining gap cannot be fixed ever"
+        ],
+        "answer": 2,
+        "exp": "Formally documenting the residual risk (Option 2) ensures leadership is aware and can officially accept the risk. Hiding the gap (Option 0) is unethical and dangerous. Blaming IT (Option 1) is unprofessional and unproductive. Stating it can never be fixed (Option 3) ignores potential future technological or budget changes."
+      }
+    ]
+  },
+  {
+    "id": 274,
+    "type": "scenario",
+    "difficulty": 3,
+    "domain": "Asset Security",
+    "scenario": "A data classification review reveals that 40% of documents marked 'Internal' actually contain customer PII that should be classified 'Confidential.' The misclassification has persisted for 2 years across 3 million documents.",
+    "questions": [
+      {
+        "q": "What is the MOST significant risk created by this misclassification?",
+        "options": [
+          "Employee confusion about classification labels",
+          "PII may lack appropriate access controls and handling procedures",
+          "The classification system has too many levels",
+          "Documents take up too much storage space"
+        ],
+        "answer": 1,
+        "exp": "Misclassifying PII as 'Internal' (Option 1) means it lacks the stringent access controls and encryption required for 'Confidential' data, increasing the risk of unauthorized access or data breaches. Employee confusion (Option 0) and storage space (Option 3) are minor operational issues, not the primary security risk. The number of classification levels (Option 2) is irrelevant to the specific misclassification of PII."
+      },
+      {
+        "q": "What is the MOST practical remediation approach?",
+        "options": [
+          "Deploy automated DLP to scan and reclassify based on content",
+          "Delete all misclassified documents immediately",
+          "Reclassify all 3 million documents manually",
+          "Lower the classification of all PII to Internal"
+        ],
+        "answer": 0,
+        "exp": "Automated Data Loss Prevention (DLP) (Option 0) can scan and reclassify millions of documents at scale based on their content. Manual reclassification (Option 2) of 3 million documents is practically infeasible. Deleting all documents (Option 1) destroys potentially critical business data. Lowering PII classification (Option 3) violates privacy regulations and fundamental security principles."
+      },
+      {
+        "q": "What preventive control should be implemented?",
+        "options": [
+          "Automated classification at creation based on content analysis",
+          "Require CEO approval for every document created",
+          "Reduce the number of classification levels to one",
+          "Remove all classification labels going forward"
+        ],
+        "answer": 0,
+        "exp": "Automated classification upon creation based on content analysis (Option 0) stops misclassification at the source. CEO approval for every document (Option 1) is a massive administrative bottleneck. Reducing classification levels (Option 2) or removing them entirely (Option 3) undermines the entire data security strategy."
+      }
+    ]
+  },
+  {
+    "id": 275,
+    "type": "scenario",
+    "difficulty": 3,
+    "domain": "Security Architecture and Engineering",
+    "scenario": "A zero-day vulnerability is published for the organization's edge firewall. The vendor estimates a patch in 7 days. The vulnerability allows unauthenticated remote code execution. Taking the firewall offline is not operationally viable.",
+    "questions": [
+      {
+        "q": "What is the BEST immediate compensating control?",
+        "options": [
+          "Ignore the vulnerability until the patch arrives",
+          "Place an additional filtering device in front of the firewall",
+          "Downgrade the firewall firmware to an older version",
+          "Disable the firewall and rely on host-based controls"
+        ],
+        "answer": 1,
+        "exp": "Placing an upstream filter like an IPS or router ACL (Option 1) can block malicious traffic exploiting the RCE without taking the firewall offline. Ignoring the vulnerability (Option 0) leaves the organization exposed. Downgrading firmware (Option 2) does not fix the zero-day vulnerability. Relying solely on host-based controls (Option 3) exposes the internal network and removes edge protection."
+      },
+      {
+        "q": "What additional monitoring should be implemented?",
+        "options": [
+          "Reduce logging to avoid alert fatigue",
+          "Disable all alerting until the patch is applied",
+          "Enhanced monitoring of firewall management interfaces",
+          "Only monitor during business hours"
+        ],
+        "answer": 2,
+        "exp": "Enhanced monitoring of management interfaces (Option 2) is critical because RCE exploits often target these administrative entry points. Reducing logging (Option 0) or disabling alerting (Option 1) blinds the security team. Monitoring only during business hours (Option 3) ignores the 24/7 nature of cyber threats."
+      },
+      {
+        "q": "After patching, what validation is required?",
+        "options": [
+          "Wait for the next scheduled pentest in 6 months",
+          "Only check if users report problems",
+          "No validation needed if the vendor says it's fixed",
+          "Verify the patch applied correctly and test for the vulnerability"
+        ],
+        "answer": 3,
+        "exp": "You must verify that the patch was installed correctly and actively test to ensure the vulnerability is remediated (Option 3). Waiting for a pentest (Option 0) leaves an unacceptable verification gap. Relying on user reports (Option 1) or vendor assurances (Option 2) without independent verification is negligent."
+      }
+    ]
+  },
+  {
+    "id": 276,
+    "type": "scenario",
+    "difficulty": 3,
+    "domain": "Communication and Network Security",
+    "scenario": "A retail company processes card payments across 200 stores connected via IPSec VPN to headquarters. PCI DSS assessment reveals that flat store networks allow POS terminals, employee workstations, and security cameras to communicate freely.",
+    "questions": [
+      {
+        "q": "What PCI DSS requirement does this flat network violate?",
+        "options": [
+          "Network segmentation to isolate cardholder data",
+          "Requirement for security awareness training",
+          "Requirement for antivirus on all systems",
+          "Requirement for annual penetration testing"
+        ],
+        "answer": 0,
+        "exp": "A flat network violates the principle of network segmentation (Option 0), which is required to isolate the Cardholder Data Environment (CDE) and reduce PCI scope. While awareness training (Option 1), antivirus (Option 2), and pentesting (Option 3) are PCI DSS requirements, they do not directly address the flat network architecture issue described."
+      },
+      {
+        "q": "What is the MOST effective segmentation approach for 200 stores?",
+        "options": [
+          "VLAN segmentation with ACLs managed via centralized template",
+          "Physical separation with dedicated cabling per store",
+          "Separate ISP connections for each device type",
+          "Air-gap all POS terminals from any network"
+        ],
+        "answer": 0,
+        "exp": "VLANs with centralized ACL templates (Option 0) allow logical isolation of the CDE across all 200 stores efficiently. Physical separation (Option 1) or separate ISPs (Option 2) are cost-prohibitive and extremely difficult to manage. Air-gapping POS terminals (Option 3) would prevent them from processing payments."
+      },
+      {
+        "q": "What does proper segmentation achieve for PCI scope?",
+        "options": [
+          "Requires all 200 stores to be assessed individually",
+          "Eliminates the need for PCI compliance entirely",
+          "Makes the assessment more expensive",
+          "Reduces scope to only the CDE segment per store"
+        ],
+        "answer": 3,
+        "exp": "Validated network segmentation restricts the PCI DSS assessment scope to only the CDE segment (Option 3), significantly reducing compliance cost and effort. It does not eliminate compliance needs entirely (Option 1) or require individual store assessments if managed centrally (Option 0). It reduces, rather than increases, assessment expense (Option 2)."
+      }
+    ]
+  },
+  {
+    "id": 277,
+    "type": "scenario",
+    "difficulty": 3,
+    "domain": "Identity and Access Management (IAM)",
+    "scenario": "A cloud-native company uses OAuth 2.0 for API authorization. A security audit reveals that access tokens have a 24-hour lifetime, refresh tokens never expire, and token revocation is not implemented. An employee's laptop is stolen.",
+    "questions": [
+      {
+        "q": "What is the MOST immediate risk from the stolen laptop?",
+        "options": [
+          "Cached tokens provide API access until they expire or are revoked",
+          "The employee loses their personal files",
+          "The company's WiFi password is exposed",
+          "The laptop hardware is expensive"
+        ],
+        "answer": 0,
+        "exp": "Because access tokens are long-lived (24 hours) and refresh tokens never expire, the cached tokens on the stolen laptop provide immediate, persistent API access (Option 0). The loss of personal files (Option 1) or hardware cost (Option 3) are secondary concerns. WiFi exposure (Option 2) is less critical than direct API access to core cloud resources."
+      },
+      {
+        "q": "What is the MOST critical gap in the token architecture?",
+        "options": [
+          "Tokens should be stored in cookies only",
+          "OAuth 2.0 is fundamentally insecure",
+          "Lack of token revocation capability",
+          "Tokens should use XML instead of JSON"
+        ],
+        "answer": 2,
+        "exp": "The inability to revoke tokens (Option 2) means the organization cannot stop the attacker from using the stolen refresh tokens, allowing persistent access. Storing tokens only in cookies (Option 0) or using XML (Option 3) doesn't fix the architectural flaw. OAuth 2.0 is not fundamentally insecure (Option 1) if implemented correctly."
+      },
+      {
+        "q": "What token policy changes are MOST appropriate?",
+        "options": [
+          "Make tokens longer to include more security data",
+          "Eliminate all tokens and use passwords only",
+          "Shorten token lifetime, add revocation, expire refresh tokens",
+          "Only issue tokens during business hours"
+        ],
+        "answer": 2,
+        "exp": "Shortening access token lifetimes, implementing revocation, and expiring refresh tokens (Option 2) directly mitigate the risk of stolen credentials. Adding more data to tokens (Option 0) or using only passwords (Option 1) does not solve the session management issue. Restricting to business hours (Option 3) impacts legitimate service availability."
+      }
+    ]
+  },
+  {
+    "id": 278,
+    "type": "scenario",
+    "difficulty": 3,
+    "domain": "Security Assessment and Testing",
+    "scenario": "A purple team exercise reveals that the security team can detect lateral movement but takes an average of 4 hours to contain it. The red team achieves their objective (domain admin) in 90 minutes. The dwell time gap means attackers win the race.",
+    "questions": [
+      {
+        "q": "What metric does this exercise highlight as deficient?",
+        "options": [
+          "Annual penetration test frequency",
+          "Mean Time to Detect (MTTD)",
+          "Mean Time to Contain (MTTC)",
+          "Number of security staff hired"
+        ],
+        "answer": 2,
+        "exp": "The scenario explicitly states containment takes 4 hours, which is the Mean Time to Contain (MTTC) (Option 2). Detection is working (they see it), so MTTD (Option 1) is not the primary issue here. Pentest frequency (Option 0) and staff numbers (Option 3) are not direct metrics for containment speed."
+      },
+      {
+        "q": "What improvement would MOST reduce the containment time?",
+        "options": [
+          "Conduct more frequent purple team exercises",
+          "Hire more SOC analysts for manual response",
+          "Implement automated containment playbooks (SOAR)",
+          "Upgrade SIEM hardware for faster searches"
+        ],
+        "answer": 2,
+        "exp": "SOAR platforms automate containment actions (Option 2), reducing MTTC from hours to seconds or minutes. Hiring more analysts (Option 1) helps with investigation but manual containment is still slow. More exercises (Option 0) just identify the problem again. Faster SIEM hardware (Option 3) improves detection, not containment."
+      },
+      {
+        "q": "What should the next purple team exercise specifically test?",
+        "options": [
+          "A completely different attack scenario",
+          "The same scenario without telling the blue team",
+          "Physical security controls at all office locations",
+          "Whether automated containment reduces MTTC effectively"
+        ],
+        "answer": 3,
+        "exp": "The next exercise should specifically validate whether the implemented improvements (like SOAR) successfully reduced the MTTC gap (Option 3). Testing a different scenario (Option 0) or physical controls (Option 2) ignores the known weakness. Hiding the scenario from the blue team (Option 1) turns it into a red team test, defeating the collaborative nature of a purple team exercise."
+      }
+    ]
+  },
+  {
+    "id": 279,
+    "type": "scenario",
+    "difficulty": 3,
+    "domain": "Software Development Security",
+    "scenario": "A microservices architecture has 40 services communicating via REST APIs. No service-to-service authentication exists\u00e2\u20ac\u201dany service can call any other service's API. A single compromised service can access all other services' data.",
+    "questions": [
+      {
+        "q": "What is this architectural weakness called?",
+        "options": [
+          "Insufficient input validation",
+          "Lack of east-west traffic authentication",
+          "Missing north-south encryption",
+          "Inadequate database normalization"
+        ],
+        "answer": 1,
+        "exp": "The lack of authentication between internal services is a failure of east-west traffic security (Option 1), allowing unrestricted lateral movement. Input validation (Option 0) and database normalization (Option 3) are unrelated to service authentication. North-south encryption (Option 2) deals with external traffic entering the network, not internal service communication."
+      },
+      {
+        "q": "What is the MOST appropriate authentication mechanism?",
+        "options": [
+          "IP address allowlisting only",
+          "A single API key shared across all services",
+          "Shared plaintext passwords between services",
+          "Mutual TLS (mTLS) with per-service certificates"
+        ],
+        "answer": 3,
+        "exp": "Mutual TLS (mTLS) (Option 3) provides strong, cryptographic mutual authentication between services, ensuring both sides verify each other's identity. IP allowlisting (Option 0) is weak and easily spoofed. Shared API keys (Option 1) or plaintext passwords (Option 2) do not provide granular, per-service authentication and are inherently insecure."
+      },
+      {
+        "q": "What additional control limits blast radius if a service is compromised?",
+        "options": [
+          "Give every service access to all other services",
+          "Deploy all services on a single server",
+          "Remove API documentation entirely",
+          "Per-service authorization policies (service mesh)"
+        ],
+        "answer": 3,
+        "exp": "Implementing per-service authorization policies via a service mesh (Option 3) enforces least privilege, restricting which services can interact and limiting lateral movement. Giving all services full access (Option 0) maximizes the blast radius. Consolidating servers (Option 1) or hiding documentation (Option 2) do not enforce access control boundaries."
+      }
+    ]
+  },
+  {
+    "id": 280,
+    "type": "scenario",
+    "difficulty": 3,
+    "domain": "Security Operations",
+    "scenario": "A threat intelligence feed reports that a specific APT group is actively targeting organizations in your industry using a novel supply chain attack via compromised npm packages. Your organization uses 2,000 npm dependencies.",
+    "questions": [
+      {
+        "q": "What is the FIRST proactive step?",
+        "options": [
+          "Ignore it since your organization hasn't been hit yet",
+          "Switch all development to a different language",
+          "Audit current dependencies against known compromised packages",
+          "Remove all npm dependencies immediately"
+        ],
+        "answer": 2,
+        "exp": "Auditing current dependencies (Option 2) immediately identifies if any known compromised packages are already in your environment. Ignoring the threat (Option 0) is negligent. Switching languages (Option 1) or removing all dependencies (Option 3) are extreme, business-disrupting overreactions."
+      },
+      {
+        "q": "What ongoing control BEST mitigates supply chain risk?",
+        "options": [
+          "Manually read the source code of all 2000 packages",
+          "Only use packages with over 1 million downloads",
+          "Implement dependency pinning, lockfiles, and integrity verification",
+          "Avoid using any open source software entirely"
+        ],
+        "answer": 2,
+        "exp": "Pinning versions, using lockfiles, and verifying integrity hashes (Option 2) ensure that only explicitly approved and unmodified package versions are installed. Manually reading all code (Option 0) is impossible to scale. Relying on download counts (Option 1) does not prevent malicious updates. Avoiding open source entirely (Option 3) is generally impractical."
+      },
+      {
+        "q": "What architectural control limits impact if a dependency is compromised?",
+        "options": [
+          "Allow packages to execute any system commands",
+          "Sandbox build processes with minimal network and filesystem access",
+          "Run all code with administrator privileges",
+          "Disable all security scanning to speed builds"
+        ],
+        "answer": 1,
+        "exp": "Sandboxing the build environment with restricted network and filesystem access (Option 1) prevents malicious install scripts in compromised packages from exfiltrating data or moving laterally. Allowing system commands (Option 0) or admin privileges (Option 2) facilitates the attack. Disabling security scanning (Option 3) increases risk."
+      }
+    ]
+  },
+  {
+    "id": 281,
+    "type": "scenario",
+    "difficulty": 3,
+    "domain": "Security and Risk Management",
+    "scenario": "During a tabletop exercise, the team discovers that the incident response plan hasn't been updated in 3 years. Key personnel listed have left the company, phone numbers are wrong, and the plan references decommissioned systems.",
+    "questions": [
+      {
+        "q": "What is the MOST significant risk revealed?",
+        "options": [
+          "Tabletop exercises take too long to conduct",
+          "The plan is operationally useless during an actual incident",
+          "The plan document is too many pages long",
+          "Phone numbers are harder to remember than emails"
+        ],
+        "answer": 1,
+        "exp": "An outdated plan with wrong contacts and decommissioned systems cannot effectively guide a response during an actual crisis (Option 1), resulting in paralysis. While document length (Option 2) or exercise duration (Option 0) might be administrative issues, operational paralysis during an incident is the primary risk. Phone vs email (Option 3) is a minor preference detail."
+      },
+      {
+        "q": "What immediate action is required?",
+        "options": [
+          "Conduct another tabletop exercise immediately",
+          "Disband the incident response team entirely",
+          "Wait for the annual review cycle to make changes",
+          "Update the plan with current personnel, contacts, and systems"
+        ],
+        "answer": 3,
+        "exp": "The plan must be immediately updated with accurate contacts and current systems (Option 3) to restore its operational readiness. Conducting another exercise (Option 0) with a broken plan is useless. Disbanding the team (Option 1) eliminates your response capability. Waiting for an annual review (Option 2) leaves the organization vulnerable in the interim."
+      },
+      {
+        "q": "What process prevents this from recurring?",
+        "options": [
+          "Only update the plan after a real incident occurs",
+          "Review the plan once every five years",
+          "Scheduled quarterly reviews triggered by change events",
+          "Assign plan maintenance to a departing employee"
+        ],
+        "answer": 2,
+        "exp": "Implementing regular reviews (e.g., quarterly) combined with trigger-based updates for major changes like personnel departures or system decommissioning (Option 2) ensures continuous accuracy. Waiting for real incidents (Option 0) or reviewing every five years (Option 1) guarantees the plan will become obsolete. Assigning maintenance to a departing employee (Option 3) is illogical."
+      }
+    ]
+  },
+  {
+    "id": 282,
+    "type": "scenario",
+    "difficulty": 3,
+    "domain": "Asset Security",
+    "scenario": "A company's DLP system alerts that an engineer has been emailing proprietary source code to a personal email address over the past month. The engineer is a top performer with access to the company's most valuable IP. No policy explicitly prohibits using personal email for work.",
+    "questions": [
+      {
+        "q": "What is the FIRST step before confronting the engineer?",
+        "options": [
+          "Publicly announce the situation to the engineering team",
+          "Immediately terminate the engineer's employment",
+          "Consult legal and HR to determine if a policy violation occurred",
+          "Delete the engineer's email account without notice"
+        ],
+        "answer": 2,
+        "exp": "Without a clear policy, intent is ambiguous. Consulting legal and HR (Option 2) is essential to determine if a violation occurred and ensure any action is legally defensible and adheres to company protocols. Terminating immediately (Option 1) or making a public announcement (Option 0) without policy backing invites legal liability. Deleting the account (Option 3) destroys potential evidence."
+      },
+      {
+        "q": "What does the lack of a clear policy indicate?",
+        "options": [
+          "DLP systems should be disabled since no policy exists",
+          "A gap in acceptable use policy and data handling procedures",
+          "The engineer is definitely acting maliciously",
+          "Personal email use should always be encouraged"
+        ],
+        "answer": 1,
+        "exp": "The absence of an explicit rule highlights a gap in the Acceptable Use Policy (AUP) and data handling procedures (Option 1). It does not prove the engineer is malicious (Option 2) or that DLP should be disabled (Option 0). Personal email use for sensitive IP should generally be restricted, not encouraged (Option 3)."
+      },
+      {
+        "q": "What controls should be implemented regardless of this engineer's intent?",
+        "options": [
+          "Disable internet access during working hours",
+          "Block all external email for every employee",
+          "Remove all engineers' code repository access",
+          "Explicit acceptable use policy plus DLP blocking rules for source code"
+        ],
+        "answer": 3,
+        "exp": "An explicit acceptable use policy combined with technical enforcement via DLP blocking rules (Option 3) prevents future ambiguity and stops unauthorized exfiltration regardless of employee intent. Disabling internet (Option 0) or external email entirely (Option 1) cripples productivity. Removing repository access (Option 2) prevents engineers from doing their jobs."
+      }
+    ]
+  },
+  {
+    "id": 283,
+    "type": "scenario",
+    "difficulty": 3,
+    "domain": "Security Architecture and Engineering",
+    "scenario": "A container orchestration platform runs 500 microservices. A vulnerability scan reveals that 60% of container images use base images with known critical CVEs. The development teams argue that patching breaks their applications.",
+    "questions": [
+      {
+        "q": "What is the root cause of widespread vulnerable base images?",
+        "options": [
+          "Development teams are intentionally using insecure images",
+          "The vulnerability scanner is producing false positives",
+          "Containers are inherently insecure technology",
+          "No governance process for approved, maintained base images"
+        ],
+        "answer": 3,
+        "exp": "The widespread use of vulnerable images points to a systemic lack of governance and failure to provide secure, maintained \"golden\" base images (Option 3). There's no evidence developers are intentionally malicious (Option 0) or that the scanner is wrong (Option 1). Containers are not inherently insecure if properly managed (Option 2)."
+      },
+      {
+        "q": "What is the BEST organizational approach to resolve this?",
+        "options": [
+          "Ignore vulnerabilities in internal-only containers",
+          "Ban all container usage immediately",
+          "Provide hardened, regularly-updated base images teams must use",
+          "Let each team manage their own base images indefinitely"
+        ],
+        "answer": 2,
+        "exp": "A dedicated team providing hardened, continuously updated base images (Option 2) gives developers a secure foundation without requiring them to manage OS-level patching. Ignoring vulnerabilities (Option 0) or letting teams manage their own (Option 3) perpetuates the risk. Banning containers (Option 1) halts modern software development."
+      },
+      {
+        "q": "How should the pipeline enforce base image compliance?",
+        "options": [
+          "Trust developers to choose correctly every time",
+          "Block deployment of containers not using approved base images",
+          "Only scan images after they reach production",
+          "Remove all automated scanning from the pipeline"
+        ],
+        "answer": 1,
+        "exp": "Implementing admission control in the CI/CD pipeline to block the deployment of images not built from approved bases (Option 1) enforces compliance automatically. Trusting developers without verification (Option 0) fails at scale. Scanning only in production (Option 2) is too late. Removing scanning (Option 3) eliminates visibility."
+      }
+    ]
+  },
+  {
+    "id": 284,
+    "type": "scenario",
+    "difficulty": 3,
+    "domain": "Security Operations",
+    "scenario": "A company's SIEM generates 50,000 alerts per day. The SOC team of 5 analysts can investigate 200 alerts daily. 99.5% of alerts are false positives. The team is experiencing burnout and critical alerts are being missed.",
+    "questions": [
+      {
+        "q": "What is the PRIMARY problem described?",
+        "options": [
+          "Alert fatigue from excessive false positives",
+          "The SOC team needs more office space",
+          "Analysts need faster computers",
+          "The SIEM software is too expensive"
+        ],
+        "answer": 0,
+        "exp": "A 99.5% false positive rate generating 50,000 alerts causes severe alert fatigue (Option 0), overwhelming analysts and causing them to miss real incidents. Office space (Option 1), computer speed (Option 2), or SIEM cost (Option 3) are not the root issues affecting incident detection in this scenario."
+      },
+      {
+        "q": "What is the MOST effective technical solution?",
+        "options": [
+          "Implement alert correlation and tuning to reduce false positives",
+          "Only generate alerts during business hours",
+          "Disable the SIEM to eliminate all alerts",
+          "Hire 250 more analysts to cover all alerts"
+        ],
+        "answer": 0,
+        "exp": "Alert correlation, tuning, and suppression directly reduce the volume of false positives (Option 0), making the alert queue manageable for the existing team. Generating alerts only during business hours (Option 1) or disabling the SIEM (Option 2) completely ignores off-hours threats. Hiring 250 analysts (Option 3) is a massive, unrealistic expense to handle noise."
+      },
+      {
+        "q": "What metric should track improvement?",
+        "options": [
+          "Total SIEM storage consumption in terabytes",
+          "Number of SIEM rules created",
+          "True positive rate and mean time to investigate",
+          "Total number of alerts generated per day"
+        ],
+        "answer": 2,
+        "exp": "An increasing true positive rate and decreasing mean time to investigate (Option 2) indicate that tuning efforts are successfully reducing noise and allowing analysts to focus efficiently on real threats. Total storage (Option 0), rule count (Option 1), or sheer alert volume (Option 3) do not measure the quality or effectiveness of the SOC's response."
+      }
+    ]
+  },
+  {
+    "id": 9001,
+    "type": "scenario",
+    "difficulty": 3,
+    "domain": "Security and Risk Management",
+    "scenario": "You are the CISO of a multinational logistics company preparing for a merger with a European competitor. During due diligence, you discover the target company has a history of unreported minor data breaches, uses an outdated on-premises Exchange server, and has no formal data classification policy. The Board wants to finalize the merger in 14 days and demands full network integration immediately upon signing.",
+    "questions": [
+      {
+        "q": "What is your BEST immediate recommendation to the Board regarding the network integration?",
+        "options": [
+          "Halt the merger entirely due to the unacceptable security risks.",
+          "Proceed with the merger but establish a strict zero-trust gateway and defer full network routing until a comprehensive risk assessment is completed.",
+          "Integrate the networks but immediately deploy your company's endpoint detection agents to all of their servers.",
+          "Accept the risk to meet the 14-day deadline, but require the target company to upgrade their Exchange server first."
+        ],
+        "answer": 1,
+        "exp": "Deferring full network routing via a strict zero-trust gateway (Option 1) balances the Board's business requirement for speed with the need to mitigate immediate lateral movement risks from unknown vulnerabilities. Halting the merger (Option 0) ignores business realities. Immediately deploying EDR (Option 2) or accepting risk to meet deadlines (Option 3) leaves the network exposed to lateral spread before defenses are fully operational."
+      },
+      {
+        "q": "Regarding the unreported minor data breaches under European jurisdiction, what is the PRIMARY concern?",
+        "options": [
+          "The technical methods the attackers used to breach the network.",
+          "Inherited liability and potential GDPR fines for failure to notify the Supervisory Authority.",
+          "The cost of providing credit monitoring to the affected European citizens.",
+          "Whether the target company's cyber insurance policy will cover the incident."
+        ],
+        "answer": 1,
+        "exp": "In a merger, the acquiring company inherits the target's legal and regulatory liabilities. Unreported breaches in Europe strongly suggest violations of GDPR's 72-hour notification requirement, risking massive fines (Option 1). Technical methods (Option 0) or credit monitoring costs (Option 2) are secondary to the severe regulatory penalty. Insurance coverage (Option 3) may be voided by the target's failure to report."
+      },
+      {
+        "q": "How should you address the lack of a formal data classification policy in the target organization?",
+        "options": [
+          "Map their existing data repositories to your organization's classification matrix during the integration phase.",
+          "Automatically classify all of their data as 'Confidential' to be safe.",
+          "Fire their data owners for negligence.",
+          "Run an automated data discovery tool and classify based on the file extensions."
+        ],
+        "answer": 0,
+        "exp": "The most effective and systematic approach is to map the target's data repositories into your organization's established classification matrix and governance framework during integration (Option 0). Automatically classifying everything as Confidential (Option 1) or relying solely on file extensions (Option 3) will result in inaccurate controls. Firing data owners (Option 2) doesn't solve the immediate technical challenge."
+      }
+    ]
+  },
+  {
+    "id": 9002,
+    "type": "scenario",
+    "difficulty": 3,
+    "domain": "Security Operations",
+    "scenario": "At 9:00 AM on Monday, the SOC detects beaconing traffic from a critical database server to a known malicious IP address. Ten minutes later, the database administrator reports that the main customer database is offline and a ransom note has appeared on the server desktop. The company has a cyber insurance policy and backups from Sunday night.",
+    "questions": [
+      {
+        "q": "According to the Incident Response lifecycle, what is the FIRST action the team should take?",
+        "options": [
+          "Begin restoring the database from the Sunday night backup.",
+          "Disconnect the database server from the network to prevent lateral movement.",
+          "Contact the cyber insurance provider to authorize paying the ransom.",
+          "Reimage the database server completely to eradicate the malware."
+        ],
+        "answer": 1,
+        "exp": "According to standard incident response procedures, containment is the immediate priority to stop the active threat. Disconnecting the server from the network (Option 1) prevents further lateral movement and data exfiltration. Restoration (Option 0) and eradication/reimaging (Option 3) occur later in the lifecycle. Contacting insurance (Option 2) is a later coordination step, not an immediate technical response."
+      },
+      {
+        "q": "The legal department asks the forensics team to preserve the server for potential civil litigation against the attacker. What should the forensics team do BEFORE powering down the server?",
+        "options": [
+          "Run a full anti-virus scan on the hard drive.",
+          "Capture a forensic image of the physical hard drive using a write-blocker.",
+          "Dump the system RAM and capture network connection states.",
+          "Copy the ransom note to a USB drive for evidence."
+        ],
+        "answer": 2,
+        "exp": "The Order of Volatility dictates that the most volatile data must be captured first. System RAM and active network connections (Option 2) will be permanently lost if the server is powered down. Anti-virus scans (Option 0) alter the filesystem. Forensic hard drive imaging (Option 1) is crucial but should happen after capturing volatile data. Copying the note (Option 3) is insufficient for forensics."
+      },
+      {
+        "q": "After containing the incident, you discover the backup from Sunday is corrupted. The CEO insists on paying the ransom to get the business back online. What is the STRONGEST argument against paying?",
+        "options": [
+          "Paying the ransom is illegal under all international laws.",
+          "The decryption key provided by the attackers rarely works perfectly, and paying funds criminal organizations.",
+          "Cyber insurance policies explicitly forbid paying ransoms.",
+          "It is cheaper to simply rebuild the database from scratch."
+        ],
+        "answer": 1,
+        "exp": "The strongest argument is practical and ethical: paying does not guarantee data recovery (decryption tools often fail) and directly funds criminal enterprises (Option 1). Ransom payments are not universally illegal (Option 0), though they may violate specific sanctions. Cyber insurance often does cover payments (Option 2). Rebuilding from scratch is rarely cheaper or faster than a successful restore (Option 3)."
+      }
+    ]
+  },
+  {
+    "id": 9003,
+    "type": "scenario",
+    "difficulty": 3,
+    "domain": "Security Architecture and Engineering",
+    "scenario": "A government agency is designing a new classified communication system. The system must ensure that users with 'Secret' clearance cannot read 'Top Secret' documents, and users with 'Top Secret' clearance cannot accidentally leak information by writing it into a 'Secret' document.",
+    "questions": [
+      {
+        "q": "Which security model MUST be implemented to satisfy these requirements?",
+        "options": [
+          "The Biba Integrity Model",
+          "The Clark-Wilson Model",
+          "The Bell-LaPadula Confidentiality Model",
+          "The Brewer-Nash (Chinese Wall) Model"
+        ],
+        "answer": 2,
+        "exp": "The Bell-LaPadula model (Option 2) explicitly focuses on confidentiality, using the 'No Read Up' (Simple Security) and 'No Write Down' (*-Property) rules, perfectly matching the agency's requirements. Biba (Option 0) focuses on integrity. Clark-Wilson (Option 1) focuses on commercial integrity and separation of duties. Brewer-Nash (Option 3) prevents conflicts of interest."
+      },
+      {
+        "q": "To protect the data in transit, the agency requires an encryption standard that provides Perfect Forward Secrecy (PFS). Which key exchange mechanism should they mandate?",
+        "options": [
+          "RSA key exchange",
+          "Diffie-Hellman Ephemeral (DHE) or Elliptic Curve DHE (ECDHE)",
+          "AES-256 in CBC mode",
+          "Digital Signature Algorithm (DSA)"
+        ],
+        "answer": 1,
+        "exp": "Perfect Forward Secrecy (PFS) ensures that the compromise of a long-term key does not compromise past session keys. Diffie-Hellman Ephemeral (DHE) or Elliptic Curve DHE (ECDHE) (Option 1) generate unique, temporary session keys for every exchange, providing PFS. RSA (Option 0), AES (Option 2), and DSA (Option 3) do not inherently provide PFS."
+      },
+      {
+        "q": "The agency wants to ensure that no single administrator can compromise the entire system's cryptographic keys. Which principle should be applied?",
+        "options": [
+          "Defense in Depth",
+          "Split Knowledge and Dual Control",
+          "Security by Obscurity",
+          "Mandatory Access Control"
+        ],
+        "answer": 1,
+        "exp": "Split knowledge (Option 1) divides the key material among multiple individuals, and dual control requires those individuals to act together to perform a sensitive operation, ensuring no single administrator has unilateral power. Defense in Depth (Option 0) is a general layering concept. Security by Obscurity (Option 2) is a flawed practice. Mandatory Access Control (Option 3) restricts access based on clearance but doesn't specifically address administrative separation of duties for cryptographic keys."
+      }
+    ]
+  }
+]

@@ -1,0 +1,402 @@
+[
+  {
+    "id": 11001,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "An organization is evaluating the quantitative risk of a critical database server. The server's asset value (AV) is $500,000. The exposure factor (EF) from a complete ransomware lockout is 80%. Historical data suggests such an event occurs once every 5 years. A proposed control costs $60,000 annually and reduces the ARO to once every 20 years, but introduces a new EF of 10% due to potential performance degradation. What is the Return on Security Investment (ROSI) for the first year?",
+    "options": {
+      "A": "$2,500",
+      "B": "$15,000",
+      "C": "$17,500",
+      "D": "-$40,000"
+    },
+    "correct_answer": "C",
+    "exp": "Current ALE = AV * EF * ARO = $500,000 * 0.8 * 0.2 = $80,000. Mitigated ALE = AV * EF_new * ARO_new = $500,000 * 0.1 * 0.05 = $2,500. Annual savings = Current ALE - Mitigated ALE = $80,000 - $2,500 = $77,500. ROSI = Annual savings - Control cost = $77,500 - $60,000 = $17,500."
+  },
+  {
+    "id": 11002,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "A multinational corporation uses a legacy application with an asset value of $2,000,000. A specific vulnerability could lead to a data breach. The risk management team estimates an ARO of 0.5. They implement a mitigating control costing $150,000 per year, which brings the modified ARO down to 0.1 and the modified EF to 5%. If the ROSI is precisely zero, what was the original Exposure Factor (EF) before the control was implemented?",
+    "options": {
+      "A": "10%",
+      "B": "16%",
+      "C": "20%",
+      "D": "25%"
+    },
+    "correct_answer": "B",
+    "exp": "ROSI = (Current ALE - Mitigated ALE) - Control Cost. If ROSI = 0, then Current ALE - Mitigated ALE = Control Cost. Mitigated ALE = $2,000,000 * 0.05 * 0.1 = $10,000. Control Cost = $150,000. Therefore, Current ALE = $160,000. Current ALE = AV * EF * ARO. $160,000 = $2,000,000 * EF * 0.5. EF = $160,000 / $1,000,000 = 0.16 or 16%."
+  },
+  {
+    "id": 11003,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "When presenting a risk assessment to the Board of Directors, a CISO uses Monte Carlo simulations. The primary advantage of utilizing Monte Carlo simulations over traditional ALE calculations in this context is that it:",
+    "options": {
+      "A": "Provides a single, deterministic ALE figure that is easier for non-technical board members to understand and budget against.",
+      "B": "Accounts for the uncertainty and variability in inputs (like AV, EF, and ARO) by outputting a probability distribution of potential losses.",
+      "C": "Automatically aligns quantitative financial risks with qualitative risk appetite statements without requiring manual mapping.",
+      "D": "Eliminates the need to calculate Exposure Factor (EF) by relying solely on historical breach frequency data."
+    },
+    "correct_answer": "B",
+    "exp": "Monte Carlo simulations use random sampling and statistical modeling to account for uncertainty in risk inputs, providing a range of possible outcomes and their probabilities, rather than a single deterministic ALE value. This is highly valuable for realistic risk modeling."
+  },
+  {
+    "id": 11004,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "A US-based cloud service provider (CSP) hosts data for an EU-based healthcare client. The US government issues a subpoena under the CLOUD Act demanding access to the client's data due to a criminal investigation. Concurrently, the EU client asserts that releasing the data violates the GDPR and local healthcare privacy laws. From a governance and risk perspective, what is the MOST appropriate initial action for the CSP?",
+    "options": {
+      "A": "Immediately comply with the US subpoena to avoid criminal contempt charges against the CSP's executive officers.",
+      "B": "Deny the subpoena outright, citing GDPR primacy and the potential for massive regulatory fines in the EU.",
+      "C": "Initiate a legal challenge to quash or modify the subpoena based on the comity analysis provisions within the CLOUD Act.",
+      "D": "Transfer the requested data to a third-party escrow agent located in a non-extradition jurisdiction until the conflict is resolved."
+    },
+    "correct_answer": "C",
+    "exp": "The CLOUD Act includes provisions for providers to challenge requests if compliance would violate the laws of a qualifying foreign government (comity analysis). The most appropriate initial legal and governance step is to challenge the subpoena through proper legal channels, balancing both jurisdictions' requirements."
+  },
+  {
+    "id": 11005,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "A financial institution is evaluating the cost-benefit of a new DLP solution. The Value of Information (VoI) protected is $10M. The Annualized Loss Expectancy without the DLP is $800k. The DLP solution costs $300k to acquire, $50k annually to maintain, and requires 2 FTEs at $100k/year each to operate. It reduces the ALE to $200k. What is the total cost of ownership (TCO) for the first three years, and is the investment justified based purely on a 3-year ROSI?",
+    "options": {
+      "A": "TCO = $550k; Justified, ROSI is positive.",
+      "B": "TCO = $1.05M; Justified, 3-year savings ($1.8M) exceed TCO.",
+      "C": "TCO = $1.05M; Not justified, TCO exceeds 3-year savings.",
+      "D": "TCO = $300k; Justified, ROSI is $300k per year."
+    },
+    "correct_answer": "B",
+    "exp": "TCO for 3 years = Acquisition ($300k) + 3 * Maintenance ($50k) + 3 * FTEs (2 * $100k) = $300k + $150k + $600k = $1.05M. Annual savings = $800k - $200k = $600k/year. 3-year savings = $1.8M. Since $1.8M (savings) > $1.05M (TCO), the investment is justified."
+  },
+  {
+    "id": 11006,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "In the context of corporate governance, which of the following scenarios best differentiates a failure of 'Due Care' from a failure of 'Due Diligence' by the Board of Directors?",
+    "options": {
+      "A": "The Board implements a comprehensive security policy (Due Care) but fails to continuously monitor its effectiveness through audits (Due Diligence).",
+      "B": "The Board thoroughly investigates a third-party vendor before signing a contract (Due Care) but fails to mandate baseline security controls in the SLA (Due Diligence).",
+      "C": "The Board ensures the organization meets industry standards (Due Diligence) but ignores an active alert about an ongoing data breach (Due Care).",
+      "D": "The Board reviews the annual security posture report (Due Care) but refuses to fund the required remediation efforts (Due Diligence)."
+    },
+    "correct_answer": "A",
+    "exp": "Due Care is the action of doing the right thing (e.g., implementing policies, acting responsibly). Due Diligence is the continuous management and verification that Due Care is effective (e.g., auditing, monitoring, investigating). Option A correctly identifies implementing the policy as Due Care and the lack of auditing/monitoring as a failure of Due Diligence."
+  },
+  {
+    "id": 11007,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "An enterprise risk management (ERM) committee is defining Key Risk Indicators (KRIs) for their cybersecurity program. Which of the following is the BEST example of a leading KRI that aligns with a strategic governance objective of minimizing zero-day vulnerability exploitation?",
+    "options": {
+      "A": "The number of high-severity incidents resolved within the SLA over the last quarter.",
+      "B": "The percentage of systems lacking updated endpoint detection and response (EDR) agents.",
+      "C": "The total financial loss attributed to malware infections in the previous fiscal year.",
+      "D": "The mean time to remediate (MTTR) critical vulnerabilities on external-facing assets."
+    },
+    "correct_answer": "B",
+    "exp": "A leading KRI is predictive and helps indicate future risk realization before an incident occurs. The percentage of systems lacking EDR agents points to a current gap that increases the likelihood of a future successful zero-day exploit. Options A, C, and D are lagging indicators (metrics based on past events)."
+  },
+  {
+    "id": 11008,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "A company is integrating COBIT 2019 and ISO/IEC 27001 to improve its security governance. How do these two frameworks uniquely complement each other in this integration?",
+    "options": {
+      "A": "COBIT provides the technical security controls, while ISO 27001 provides the enterprise governance of IT (EGIT) structure.",
+      "B": "ISO 27001 defines the overarching IT business alignment, while COBIT focuses strictly on the Plan-Do-Check-Act cycle for the ISMS.",
+      "C": "COBIT establishes the high-level governance objectives and management processes, while ISO 27001 specifies the requirements and controls for the Information Security Management System (ISMS).",
+      "D": "Both frameworks are identical in scope; the integration merely serves to satisfy different regional compliance mandates (US vs. EU)."
+    },
+    "correct_answer": "C",
+    "exp": "COBIT is a comprehensive framework for Enterprise Governance of IT (EGIT), focusing on aligning IT with business goals and defining high-level processes. ISO 27001 provides a specific, prescriptive standard for building and maintaining an ISMS. They complement each other by providing governance (COBIT) and detailed security management (ISO 27001)."
+  },
+  {
+    "id": 11009,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "An organization relies heavily on a SaaS provider for core business operations. During contract negotiations, the legal team insists on a 'Right to Audit' clause, but the SaaS provider refuses, offering instead to provide an annual SOC 2 Type II report. From a risk governance perspective, what is the MOST significant residual risk the organization accepts by agreeing to the provider's terms?",
+    "options": {
+      "A": "The SOC 2 report may not cover the specific trust services criteria (e.g., Privacy or Processing Integrity) relevant to the organization's unique data types.",
+      "B": "A SOC 2 Type II report only assesses the design of controls at a specific point in time, not their operating effectiveness over a period.",
+      "C": "The SaaS provider might use a different framework, such as ISO 27001, making the SOC 2 report completely invalid for regulatory compliance.",
+      "D": "The organization cannot perform vulnerability scanning on the SaaS application's infrastructure."
+    },
+    "correct_answer": "A",
+    "exp": "A SOC 2 report evaluates controls relevant to Security, Availability, Processing Integrity, Confidentiality, or Privacy. A provider can choose which criteria to include. Relying solely on the report without a right to audit means the organization risks the report not covering the specific criteria critical to their unique risk profile."
+  },
+  {
+    "id": 11010,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "A global organization is conducting a Business Impact Analysis (BIA) and finds that two distinct business processes (Process X and Process Y) have the exact same Maximum Tolerable Downtime (MTD) of 24 hours. Process X generates $50,000 revenue per hour, while Process Y generates $10,000 revenue per hour but is legally mandated with a strict fine of $2M per day if offline. How should the governance committee prioritize the Recovery Time Objectives (RTOs)?",
+    "options": {
+      "A": "Process X should have a shorter RTO because its direct revenue generation over 24 hours ($1.2M) exceeds Process Y's hourly revenue.",
+      "B": "Process Y should have a shorter RTO because the compliance fine ($2M) exceeds the 24-hour revenue loss of Process X ($1.2M).",
+      "C": "Both processes must be assigned identical RTOs since their MTDs are exactly the same.",
+      "D": "RTO prioritization cannot be determined without knowing the Recovery Point Objective (RPO) for both processes."
+    },
+    "correct_answer": "B",
+    "exp": "While Process X has higher hourly revenue, the total financial impact of Process Y over the 24-hour MTD includes the massive $2M regulatory fine. $2M + ($10k * 24) = $2.24M impact for Process Y, compared to $50k * 24 = $1.2M for Process X. Therefore, Process Y poses a higher financial and legal risk and warrants a shorter/prioritized RTO."
+  },
+  {
+    "id": 11011,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "A company is considering purchasing cyber liability insurance. Their current ALE is $500,000. They can deploy a new security architecture for $200,000 annually that reduces the ALE to $100,000. Alternatively, an insurance policy costs $150,000 annually and covers losses up to $1,000,000 but requires a $50,000 deductible per incident (assume ARO is 1). From a purely financial quantitative perspective, which option represents the best risk treatment strategy?",
+    "options": {
+      "A": "Accept the risk, as the current ALE is a sunk cost.",
+      "B": "Implement the new security architecture (Mitigate), as the total annual cost is $300,000.",
+      "C": "Purchase the insurance (Transfer), as the total annual cost is $200,000.",
+      "D": "Implement both the architecture and the insurance to eliminate all residual risk."
+    },
+    "correct_answer": "C",
+    "exp": "Current Risk Acceptance cost: $500,000. Mitigation cost: $200,000 (control) + $100,000 (residual ALE) = $300,000. Transfer cost: $150,000 (premium) + $50,000 (deductible, since ARO=1) = $200,000. Purely financially, the insurance option results in the lowest annual expected cost ($200,000)."
+  },
+  {
+    "id": 11012,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "Under the GDPR, which of the following scenarios presents the MOST complex conflict of laws regarding cross-border data transfers for a multinational enterprise?",
+    "options": {
+      "A": "Transferring EU citizen data to a country with an adequacy decision established by the European Commission.",
+      "B": "Transferring EU citizen data to a US parent company utilizing Standard Contractual Clauses (SCCs) while subject to US FISA Section 702.",
+      "C": "Obtaining explicit, informed consent from an EU data subject to transfer their data to a server located in Asia.",
+      "D": "Processing EU citizen data entirely within the borders of the European Union by a company headquartered in the EU."
+    },
+    "correct_answer": "B",
+    "exp": "Post-Schrems II, relying on SCCs for transfers to the US requires a Transfer Impact Assessment (TIA). Because US intelligence laws like FISA 702 allow government access without equivalent EU privacy safeguards, a significant conflict exists, often requiring supplementary technical measures (like strong encryption with keys held in the EU) to validate the SCCs."
+  },
+  {
+    "id": 11013,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "A defense contractor must comply with ITAR (International Traffic in Arms Regulations). They are migrating their development environment to a public cloud infrastructure. Which governance requirement must be strictly enforced to avoid criminal penalties?",
+    "options": {
+      "A": "All data must be encrypted in transit and at rest using AES-256.",
+      "B": "The cloud provider must hold a current FedRAMP High authorization.",
+      "C": "Access to technical data must be restricted exclusively to 'U.S. Persons'.",
+      "D": "The cloud infrastructure must be physically located on U.S. military installations."
+    },
+    "correct_answer": "C",
+    "exp": "ITAR strictly controls the export of defense-related articles and services. Granting a foreign national (non-U.S. Person) access to ITAR-controlled technical data, even if the server is located within the U.S., is considered a 'deemed export' and is a violation of the regulation. Restricting access to U.S. Persons is paramount."
+  },
+  {
+    "id": 11014,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "An enterprise is establishing a data governance framework following a major acquisition. The acquired company operated in a highly decentralized manner. What is the FIRST step the governance steering committee should take to align data protection practices?",
+    "options": {
+      "A": "Deploy an enterprise-wide Data Loss Prevention (DLP) solution to monitor data exfiltration.",
+      "B": "Establish a unified Data Classification policy and identify data owners across both entities.",
+      "C": "Merge the active directory domains to enforce consistent access control policies.",
+      "D": "Perform a quantitative risk assessment on all acquired legacy systems."
+    },
+    "correct_answer": "B",
+    "exp": "Governance begins with policy and ownership. You cannot protect data effectively (DLP, Access Controls) or assess its risk accurately until you know what data you have, its value/classification, and who is responsible for it (Data Owner). Establishing the classification policy is the foundational first step."
+  },
+  {
+    "id": 11015,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "Two organizations are entering a joint venture to develop a proprietary AI algorithm. Company A wants to patent the algorithm, while Company B wants to protect it as a trade secret. What is the fundamental legal risk of Company B conceding to Company A's patent strategy?",
+    "options": {
+      "A": "Patents offer a shorter duration of protection compared to trade secrets, which can last indefinitely.",
+      "B": "Patents require full public disclosure of the algorithm's details, eliminating the secrecy required for trade secret protection.",
+      "C": "Trade secrets provide stronger international protection under the WIPO treaties than patents.",
+      "D": "Patents are strictly enforced by the government, whereas trade secrets require the company to fund their own litigation."
+    },
+    "correct_answer": "B",
+    "exp": "The fundamental trade-off of a patent is that the inventor is granted a temporary monopoly in exchange for the public disclosure of the invention. Once a patent application is published, the information is public, completely destroying any possibility of trade secret protection."
+  },
+  {
+    "id": 11016,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "An organization sets its risk appetite at '$1,000,000 maximum acceptable annual loss' and its risk tolerance at '+/- 10% of the risk appetite'. During an annual review, the aggregated ALE is calculated at $1,080,000. What is the MOST appropriate governance response?",
+    "options": {
+      "A": "Immediately implement new controls to reduce the ALE below $1,000,000.",
+      "B": "Accept the risk, as the ALE is within the established risk tolerance threshold.",
+      "C": "Revise the risk appetite to $1,100,000 to ensure compliance.",
+      "D": "Fire the CISO for exceeding the board-approved risk appetite."
+    },
+    "correct_answer": "B",
+    "exp": "Risk appetite is the target level of risk the organization wants to take. Risk tolerance is the acceptable variance around that target. Since the tolerance is +/- 10% ($900k to $1.1M), the calculated ALE of $1.08M falls within the acceptable tolerance range. Therefore, accepting the risk and continuing monitoring is the correct governance response."
+  },
+  {
+    "id": 11017,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "A hospital is subject to both HIPAA (Federal) and a state-level data breach notification law. A breach occurs involving 500 patient records. HIPAA requires notification within 60 days, but the state law mandates notification within 30 days. Furthermore, the state law defines 'Personal Information' more broadly than HIPAA's 'Protected Health Information' (PHI). How must the hospital respond?",
+    "options": {
+      "A": "Comply with HIPAA's 60-day rule, as Federal law preempts State law via the Supremacy Clause.",
+      "B": "Comply with the state's 30-day rule, as compliance must adhere to the most stringent applicable regulation.",
+      "C": "Notify the Federal government within 60 days and the state residents within 30 days to satisfy both separately.",
+      "D": "Invoke a legal exemption since the conflicting definitions of PHI and Personal Information create an undue burden."
+    },
+    "correct_answer": "B",
+    "exp": "In legal and regulatory compliance, when an organization is subject to multiple overlapping jurisdictions, they must adhere to the most stringent requirement to ensure compliance across all fronts. Federal laws often establish a baseline, allowing states to enact stricter regulations, which do not conflict but rather increase the standard."
+  },
+  {
+    "id": 11018,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "Within the STRIDE threat modeling framework, which element directly targets the 'Non-repudiation' aspect of the CIA+N triad, and what is the standard governance control to mitigate it?",
+    "options": {
+      "A": "Spoofing; mitigated by strong Multi-Factor Authentication (MFA).",
+      "B": "Tampering; mitigated by cryptographic hashing and digital signatures.",
+      "C": "Repudiation; mitigated by secure, immutable audit logging and digital signatures.",
+      "D": "Information Disclosure; mitigated by robust encryption at rest."
+    },
+    "correct_answer": "C",
+    "exp": "In STRIDE, Repudiation is the threat of a user denying performing an action. This directly targets Non-repudiation. The primary controls to enforce non-repudiation and mitigate this threat are digital signatures (proving origin) and comprehensive, tamper-proof audit trails/logging (proving actions)."
+  },
+  {
+    "id": 11019,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "An organization is divesting a subsidiary. The governance structure must handle the separation of IT assets. The subsidiary's data is heavily intertwined with the parent company in a shared database. What is the MOST critical risk management activity during the divestiture planning phase?",
+    "options": {
+      "A": "Establishing a Transition Service Agreement (TSA) to define data access and sanitization timelines.",
+      "B": "Immediately revoking all subsidiary employee access to the parent company's network.",
+      "C": "Encrypting the entire database to prevent unauthorized extraction during the split.",
+      "D": "Transferring the risk to a third-party managed service provider to handle the database migration."
+    },
+    "correct_answer": "A",
+    "exp": "A Transition Service Agreement (TSA) is a legally binding document that governs how services, data access, and infrastructure will be shared and eventually separated over a specific timeline post-divestiture. It is the critical governance mechanism to manage the risk of operational disruption and data leakage during the complex unwinding process."
+  },
+  {
+    "id": 11020,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "A Chief Information Security Officer (CISO) previously reported to the Chief Information Officer (CIO) but has now been moved to report directly to the Chief Risk Officer (CRO). What is the primary governance advantage of this organizational structure change?",
+    "options": {
+      "A": "It increases the IT budget by aligning security directly with enterprise risk funds.",
+      "B": "It eliminates the inherent conflict of interest where the CIO prioritizes system availability and project delivery over security controls.",
+      "C": "It ensures that the CISO assumes legal liability for all enterprise risk, shielding the CEO.",
+      "D": "It allows the CISO to bypass the Board of Directors and make autonomous risk decisions."
+    },
+    "correct_answer": "B",
+    "exp": "When the CISO reports to the CIO, a conflict of interest exists because the CIO is typically measured on uptime, performance, and budget, while the CISO must often slow down projects or increase costs to enforce security. Reporting to the CRO (or CEO) ensures security is treated as an independent business risk, not just an IT operational hurdle."
+  },
+  {
+    "id": 11021,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "An organization experiences a supply chain attack where a compromised open-source library used in their flagship software leads to a massive customer data breach. Customers sue the organization for damages. Under the concept of downstream liability, what is the organization's legal position?",
+    "options": {
+      "A": "The organization is immune from liability because the vulnerability originated from a third-party open-source component.",
+      "B": "The organization holds the liability to their customers because they failed to exercise due care in verifying the integrity of the components incorporated into their product.",
+      "C": "Liability is entirely transferred to the maintainers of the open-source library.",
+      "D": "Liability is split equally between the organization, the open-source maintainers, and the customers who accepted the EULA."
+    },
+    "correct_answer": "B",
+    "exp": "Downstream liability implies that an organization is responsible for the security of its product, regardless of the components used to build it. If a company incorporates a vulnerable third-party or open-source library and fails to identify/mitigate the risk (lack of due care/due diligence in supply chain risk management), they are liable to their customers."
+  },
+  {
+    "id": 11022,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "A quantitative risk assessment reveals the following about an e-commerce platform: AV = $1,000,000, EF = 50% (DDoS attack), ARO = 2. A WAF and anti-DDoS service will cost $1,500,000 annually and reduce the ARO to 0.1 and EF to 10%. What is the precise ROSI?",
+    "options": {
+      "A": "-$510,000",
+      "B": "-$500,000",
+      "C": "$510,000",
+      "D": "$990,000"
+    },
+    "correct_answer": "A",
+    "exp": "Current ALE = AV * EF * ARO = $1,000,000 * 0.50 * 2 = $1,000,000. Mitigated ALE = AV * EF * ARO = $1,000,000 * 0.10 * 0.1 = $10,000. Annual Savings = $1,000,000 - $10,000 = $990,000. ROSI = Savings - Cost = $990,000 - $1,500,000 = -$510,000."
+  },
+  {
+    "id": 11023,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "When defining an organization's security policy architecture, which of the following best describes the hierarchical relationship and enforcement mechanisms?",
+    "options": {
+      "A": "Procedures are highly structured, mandatory directives; Policies provide step-by-step instructions; Guidelines are overarching philosophies.",
+      "B": "Policies are high-level, mandatory directives driven by management; Standards specify mandatory technical parameters; Procedures detail step-by-step implementation.",
+      "C": "Standards are discretionary recommendations; Baselines establish minimum mandatory controls; Procedures dictate policy.",
+      "D": "Guidelines are mandatory industry requirements; Baselines are voluntary best practices; Policies define the technical configuration."
+    },
+    "correct_answer": "B",
+    "exp": "The standard security document hierarchy is: Policies (high-level, mandatory, management intent), Standards (mandatory specific requirements/parameters), Baselines (mandatory minimum consistent level of security), Procedures (mandatory step-by-step instructions), and Guidelines (discretionary recommendations)."
+  },
+  {
+    "id": 11024,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "A multi-national corporation operating in the EU, US, and Japan experiences a widespread ransomware attack. The legal team is struggling to determine the timeline for regulatory notification. What foundational risk management process, if properly executed prior to the incident, would have provided the immediate answers required by the legal team?",
+    "options": {
+      "A": "Quantitative Risk Assessment",
+      "B": "Penetration Testing",
+      "C": "Data Classification and Asset Inventory",
+      "D": "Disaster Recovery Testing"
+    },
+    "correct_answer": "C",
+    "exp": "Regulatory notification requirements depend heavily on *what* data was compromised and *whose* data it was. A robust Data Classification policy linked to a comprehensive Asset Inventory dictates exactly what type of data (e.g., PII, PHI) resides on which systems, allowing legal teams to immediately map the compromised assets to the corresponding jurisdictional compliance requirements."
+  },
+  {
+    "id": 11025,
+    "domain": "1",
+    "domain_name": "Security and Risk Management",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "An enterprise is adopting a Zero Trust Architecture (ZTA). How does this architectural shift impact the traditional risk management concept of the 'Exposure Factor' (EF)?",
+    "options": {
+      "A": "ZTA eliminates EF entirely because threats can no longer breach the perimeter.",
+      "B": "ZTA increases the EF for external assets while decreasing it for internal assets.",
+      "C": "ZTA generally reduces the EF for a given threat scenario by compartmentalizing access and limiting lateral movement, thereby reducing the percentage of value lost in a breach.",
+      "D": "ZTA makes EF calculations impossible because asset values are obfuscated by dynamic micro-segmentation."
+    },
+    "correct_answer": "C",
+    "exp": "Zero Trust relies on continuous verification and micro-segmentation, operating under the assumption of a breach. If a threat actor compromises an endpoint, ZTA limits their lateral movement. Therefore, the blast radius of a single incident is contained, significantly reducing the Exposure Factor (the percentage of the total asset value lost) compared to a flat, perimeter-based network."
+  }
+]

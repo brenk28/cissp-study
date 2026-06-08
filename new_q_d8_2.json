@@ -1,0 +1,562 @@
+[
+  {
+    "id": 11341,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "In a mature DevSecOps pipeline, which of the following mechanisms provides the MOST effective mitigation against the deployment of unauthorized or tampered container images into production while maintaining deployment velocity?",
+    "options": [
+      "Mandating manual code and configuration reviews by the security team prior to every deployment.",
+      "Utilizing cryptographic signatures and Kubernetes admission controllers to verify image provenance prior to execution.",
+      "Executing Dynamic Application Security Testing (DAST) on the production environment immediately after deployment.",
+      "Storing all container images in a centralized, internally hosted registry with strict Role-Based Access Control (RBAC)."
+    ],
+    "answer": "Utilizing cryptographic signatures and Kubernetes admission controllers to verify image provenance prior to execution.",
+    "exp": "Cryptographic signatures (e.g., using Cosign or Docker Content Trust) combined with admission controllers (like OPA Gatekeeper) ensure that only images signed by a trusted CI/CD pipeline can be instantiated in the cluster. This automated verification maintains high pipeline velocity while ensuring strong software supply chain security. Manual reviews hinder velocity, DAST is reactive post-deployment, and an RBAC registry does not prevent a compromised orchestrator from pulling malicious external images."
+  },
+  {
+    "id": 11342,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "An organization is relying heavily on Infrastructure as Code (IaC) to deploy cloud environments. To prevent 'configuration drift' that introduces security vulnerabilities, what is the MOST effective automated approach?",
+    "options": [
+      "Implementing a scheduled cron job that runs a vulnerability scanner against all active IP addresses in the cloud environment.",
+      "Using a GitOps model where an in-cluster agent continuously compares the live state against the Git repository and automatically reverts unauthorized changes.",
+      "Restricting administrative access to the cloud provider's web console to a small group of senior security engineers.",
+      "Configuring the CI/CD pipeline to destroy and recreate the entire infrastructure on a weekly basis to ensure a pristine state."
+    ],
+    "answer": "Using a GitOps model where an in-cluster agent continuously compares the live state against the Git repository and automatically reverts unauthorized changes.",
+    "exp": "A GitOps model (using tools like ArgoCD or Flux) employs a pull-based mechanism where a continuous reconciliation loop compares the live cluster state to the declarative configuration stored in Git. If unauthorized changes (drift) occur, the agent automatically reverts them, ensuring the infrastructure remains in its intended, secure state. Network scanning does not address IaC drift directly. Restricting console access is good but doesn't prevent drift from compromised API keys. Destroying infrastructure weekly is disruptive and leaves a large window for exploitation."
+  },
+  {
+    "id": 11343,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "When integrating security testing tools into a CI/CD pipeline, how should a DevSecOps engineer optimally orchestrate SAST, DAST, and SCA to minimize feedback loops and developer friction?",
+    "options": [
+      "Run DAST during the IDE coding phase, SAST during the integration testing phase, and SCA in production.",
+      "Run SAST and SCA asynchronously during the pull request (PR) phase, and execute DAST in an automated staging environment post-build.",
+      "Combine SAST, DAST, and SCA into a single massive job that runs nightly to avoid slowing down the daytime build process.",
+      "Execute SAST and DAST only on the main branch prior to release, while running SCA continuously in the background."
+    ],
+    "answer": "Run SAST and SCA asynchronously during the pull request (PR) phase, and execute DAST in an automated staging environment post-build.",
+    "exp": "To enable the 'shift-left' principle, Static Application Security Testing (SAST) and Software Composition Analysis (SCA) should run early and quickly during the PR phase, providing immediate feedback to developers on code and dependencies. Dynamic Application Security Testing (DAST) requires a compiled, running application, so it is optimally executed in an automated staging environment after the build. Nightly runs delay feedback, and running tests only on the main branch fails to catch issues early."
+  },
+  {
+    "id": 11344,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "A development team needs to secure database credentials used by a microservice in a CI/CD pipeline. Which approach represents the HIGHEST level of security maturity?",
+    "options": [
+      "Encrypting the credentials in the source code repository using a strong algorithm like AES-256.",
+      "Storing the credentials as masked environment variables within the CI/CD platform's settings.",
+      "Utilizing a centralized secrets manager to inject dynamic, short-lived database credentials directly into the microservice at runtime.",
+      "Hardcoding the credentials in a configuration file that is only accessible by the deployment service account."
+    ],
+    "answer": "Utilizing a centralized secrets manager to inject dynamic, short-lived database credentials directly into the microservice at runtime.",
+    "exp": "Dynamic secrets are generated on-demand by a secrets manager (e.g., HashiCorp Vault) and are highly ephemeral, expiring automatically after a short period. This eliminates the risk of long-term credential leakage and reduces the attack surface compared to static secrets, even if they are encrypted or stored in CI/CD environment variables. Encrypted source code or hardcoded credentials still pose significant risks if the keys or access controls are compromised."
+  },
+  {
+    "id": 11345,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "Immutable infrastructure is a core tenet of modern DevSecOps. How does this concept primarily enhance the security posture of production environments?",
+    "options": [
+      "By ensuring that infrastructure components can never be deleted, preserving forensic evidence indefinitely.",
+      "By preventing in-place patching or modifications, requiring components to be completely replaced, thus disrupting attacker persistence and rootkits.",
+      "By hardcoding all security policies into the hypervisor, preventing guest operating systems from modifying network rules.",
+      "By utilizing write-once-read-many (WORM) storage for all application databases to prevent data tampering."
+    ],
+    "answer": "By preventing in-place patching or modifications, requiring components to be completely replaced, thus disrupting attacker persistence and rootkits.",
+    "exp": "Immutable infrastructure dictates that once a server or container is deployed, it is never modified (no SSH, no in-place patching). If an update or patch is needed, a new image is built and deployed to replace the old one. This massively reduces the attack surface by eliminating configuration drift and disrupts attacker persistence, as any malware or rootkits installed on a compromised node will be destroyed when the infrastructure is rapidly cycled."
+  },
+  {
+    "id": 11346,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "Which of the following describes the fundamental security advantage of a 'pull-based' deployment model over a 'push-based' model in a CI/CD pipeline?",
+    "options": [
+      "Pull-based models do not require the CI/CD platform to store highly privileged credentials to access the production environment.",
+      "Pull-based models allow developers to push code directly to production without waiting for automated testing to complete.",
+      "Pull-based models rely exclusively on symmetric encryption, which is faster and less prone to key management errors.",
+      "Pull-based models automatically reverse engineer malicious code pushed by an attacker into a safe format."
+    ],
+    "answer": "Pull-based models do not require the CI/CD platform to store highly privileged credentials to access the production environment.",
+    "exp": "In a push-based model, the CI/CD server needs administrative credentials to connect to and deploy code into the production environment. If the CI/CD server is compromised, the attacker gains the keys to production. In a pull-based model (like GitOps), an agent sits inside the secure production environment and pulls changes from a repository. The CI/CD platform only needs access to update the repository, keeping production credentials safely inside the production boundary."
+  },
+  {
+    "id": 11347,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "To defend against software supply chain attacks, an organization requires a Software Bill of Materials (SBOM) for all third-party libraries. What is the MOST critical security function of maintaining an accurate SBOM?",
+    "options": [
+      "It automatically patches vulnerabilities in legacy source code.",
+      "It guarantees that no open-source software is used in the final product.",
+      "It enables rapid identification of applications affected by newly disclosed zero-day vulnerabilities in transitive dependencies.",
+      "It encrypts the communication channels between microservices to prevent dependency spoofing."
+    ],
+    "answer": "It enables rapid identification of applications affected by newly disclosed zero-day vulnerabilities in transitive dependencies.",
+    "exp": "An SBOM acts as an exhaustive inventory of all components, libraries, and transitive dependencies within an application. When a new vulnerability (like Log4Shell) is disclosed, an organization can query its SBOMs to immediately identify exactly which applications are vulnerable and require remediation. It does not automate patching, prevent open-source usage, or encrypt communications."
+  },
+  {
+    "id": 11348,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "When utilizing Runtime Application Self-Protection (RASP) in a cloud-native architecture, what primary advantage does it offer over a traditional Web Application Firewall (WAF)?",
+    "options": [
+      "RASP operates at the network edge and drops traffic before it reaches the application layer.",
+      "RASP relies on static IP reputation feeds to block known malicious actors globally.",
+      "RASP has contextual awareness of the application's execution flow and variables, reducing false positives and identifying zero-day logic flaws.",
+      "RASP automatically encrypts data at rest within the underlying cloud storage buckets."
+    ],
+    "answer": "RASP has contextual awareness of the application's execution flow and variables, reducing false positives and identifying zero-day logic flaws.",
+    "exp": "A WAF inspects HTTP traffic at the perimeter but lacks insight into how the application processes the data. RASP is embedded within the application runtime environment itself (e.g., as a Java agent or .NET module). This gives RASP deep contextual awareness of execution flow, allowing it to see exactly how data is being used by the application, significantly reducing false positives and allowing it to detect complex logic or zero-day attacks that a WAF might miss."
+  },
+  {
+    "id": 11349,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "An architecture team is mitigating Broken Object Level Authorization (BOLA/IDOR) vulnerabilities in their REST APIs. Which implementation provides the MOST robust defense?",
+    "options": [
+      "Encoding the object identifiers in the URL using Base64 so they cannot be guessed by attackers.",
+      "Implementing a centralized Attribute-Based Access Control (ABAC) mechanism that verifies user permissions against the requested resource ID on every request.",
+      "Using randomly generated UUIDs instead of sequential integers for database primary keys.",
+      "Configuring an API Gateway to strictly rate-limit the number of requests per user to prevent enumeration."
+    ],
+    "answer": "Implementing a centralized Attribute-Based Access Control (ABAC) mechanism that verifies user permissions against the requested resource ID on every request.",
+    "exp": "BOLA occurs when an application does not properly verify that the user requesting access to an object has the authorization to do so. The only definitive fix is enforcing access control checks (like ABAC or RBAC) on the server side for every request to ensure the user owns or has rights to the specific resource. Obfuscating IDs (Base64) or using UUIDs makes enumeration harder but does not fix the underlying authorization flaw. Rate limiting slows down attacks but doesn't prevent unauthorized access if the attacker knows the ID."
+  },
+  {
+    "id": 11350,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "An API utilizes JSON Web Tokens (JWT) for stateless authentication. Which of the following vulnerabilities is MOST likely to occur if the API server implicitly trusts the token's header parameters without validation?",
+    "options": [
+      "Cross-Site Request Forgery (CSRF) via session cookies.",
+      "The attacker altering the 'alg' header to 'none' and bypassing signature verification.",
+      "Server-Side Request Forgery (SSRF) by exploiting the token's expiration claim.",
+      "XML External Entity (XXE) injection through the JWT payload."
+    ],
+    "answer": "The attacker altering the 'alg' header to 'none' and bypassing signature verification.",
+    "exp": "A classic JWT vulnerability arises when a server strictly honors the algorithm ('alg') specified in the token's header. An attacker can manipulate the token, change the 'alg' to 'none', remove the signature, and submit it. If the server supports the 'none' algorithm and does not explicitly require cryptographic verification based on a predefined secure algorithm, it will accept the forged token, allowing full authentication bypass. JWTs are JSON, not XML (ruling out XXE), and SSRF/CSRF are separate vulnerability classes."
+  },
+  {
+    "id": 11351,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "A mobile application uses OAuth 2.0 to authenticate users and obtain access tokens. To mitigate the risk of authorization code interception by a malicious app installed on the same device, which extension MUST be implemented?",
+    "options": [
+      "Proof Key for Code Exchange (PKCE)",
+      "Mutual Transport Layer Security (mTLS)",
+      "Security Assertion Markup Language (SAML 2.0)",
+      "JSON Web Encryption (JWE)"
+    ],
+    "answer": "Proof Key for Code Exchange (PKCE)",
+    "exp": "In mobile and single-page applications (public clients), the authorization code can be intercepted by a malicious application registered with the same custom URI scheme. PKCE mitigates this by having the client generate a cryptographically random 'code verifier' and sending a hashed 'code challenge' during the initial request. When exchanging the authorization code for a token, the client must present the original verifier. The interception attacker cannot exchange the code because they do not have the original verifier."
+  },
+  {
+    "id": 11352,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "GraphQL APIs introduce unique security challenges compared to traditional REST APIs. Which of the following attacks is highly specific to GraphQL and can rapidly cause Denial of Service (DoS)?",
+    "options": [
+      "Deeply nested querying and query batching that exhaust server CPU and database resources.",
+      "HTTP parameter pollution by injecting duplicate keys in the URI query string.",
+      "Directory traversal attacks utilizing dot-dot-slash (../) sequences in the API endpoints.",
+      "Cross-Origin Resource Sharing (CORS) misconfigurations exposing internal headers."
+    ],
+    "answer": "Deeply nested querying and query batching that exhaust server CPU and database resources.",
+    "exp": "GraphQL allows clients to request exactly the data they need, but this flexibility allows malicious actors to craft deeply nested, recursive queries (e.g., requesting a user, their friends, their friends' friends, etc.) or send massive arrays of queries in a single request (batching). This forces the server to perform exponential database lookups, quickly exhausting resources and causing a DoS. Parameter pollution and directory traversal are common in REST/Web, not specifically unique to the architecture of GraphQL queries."
+  },
+  {
+    "id": 11353,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "During a penetration test, an analyst discovers that submitting a JSON payload with an unexpected administrative attribute (e.g., {\"username\":\"user1\", \"is_admin\":true}) to a user update API endpoint successfully elevates the user's privileges. What vulnerability does this represent?",
+    "options": [
+      "Insecure Direct Object Reference (IDOR)",
+      "Mass Assignment (Auto-Binding) vulnerability",
+      "Broken Function Level Authorization",
+      "Command Injection"
+    ],
+    "answer": "Mass Assignment (Auto-Binding) vulnerability",
+    "exp": "Mass Assignment occurs when software frameworks automatically bind HTTP request parameters (like a JSON payload) directly into program code variables or internal objects without proper filtering. If an attacker guesses and supplies an internal field (like 'is_admin' or 'role'), the framework blindly updates it, leading to privilege escalation. Mitigation involves using strict Data Transfer Objects (DTOs) to define exactly which fields are permitted to be updated."
+  },
+  {
+    "id": 11354,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "A microservices architecture relies heavily on API-to-API communication. To ensure that only authorized internal services can communicate with a sensitive backend payments API, which control provides the strongest cryptographic assurance of service identity?",
+    "options": [
+      "Implementing IP whitelisting on the payments API to only allow traffic from known internal subnets.",
+      "Requiring all microservices to pass a static API key in the HTTP authorization header.",
+      "Deploying Mutual TLS (mTLS) where both the client service and server service authenticate each other via X.509 certificates.",
+      "Using a Web Application Firewall (WAF) to filter out requests lacking a valid User-Agent string."
+    ],
+    "answer": "Deploying Mutual TLS (mTLS) where both the client service and server service authenticate each other via X.509 certificates.",
+    "exp": "Mutual TLS (mTLS) provides bidirectional authentication. The server proves its identity to the client, and crucially, the client service must present a valid X.509 certificate to prove its identity to the server. This provides strong cryptographic assurance of service identity, mitigating spoofing, credential theft, and unauthorized access. IP whitelisting is easily bypassed if an internal network is compromised. API keys can be stolen or leaked. User-Agent strings are trivial to spoof."
+  },
+  {
+    "id": 11355,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "An API webhook functionality allows users to specify a URL that the server will call when an event occurs. Which critical vulnerability is MOST likely to arise if the server does not strictly validate the provided URL?",
+    "options": [
+      "Cross-Site Scripting (XSS)",
+      "Server-Side Request Forgery (SSRF)",
+      "Cross-Site Request Forgery (CSRF)",
+      "Insecure Deserialization"
+    ],
+    "answer": "Server-Side Request Forgery (SSRF)",
+    "exp": "If an API allows a user to supply a URL (e.g., for a webhook) and fetches data from it without strict validation, it is vulnerable to SSRF. An attacker can supply internal URLs (e.g., `http://169.254.169.254/latest/meta-data/` on AWS) or addresses of internal systems behind the firewall. The server will make the request on behalf of the attacker, bypassing external firewalls and potentially exposing highly sensitive cloud metadata or internal administrative panels."
+  },
+  {
+    "id": 11356,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "A legacy REST API is vulnerable to replay attacks. To secure the API without converting it to a stateful protocol, which combination of cryptographic elements MUST be included in every API request?",
+    "options": [
+      "A digital signature combining the payload, a synchronized timestamp, and a unique cryptographic nonce.",
+      "A securely hashed password and a 2048-bit RSA public key.",
+      "A symmetric AES-256 encrypted payload and a static initialization vector (IV).",
+      "A Base64 encoded session identifier and a Cross-Origin Resource Sharing (CORS) header."
+    ],
+    "answer": "A digital signature combining the payload, a synchronized timestamp, and a unique cryptographic nonce.",
+    "exp": "To prevent replay attacks in a stateless API, each request must be provably unique and time-bound. This is achieved by including a timestamp (to limit the validity window) and a nonce (a number used once, to prevent exact duplication within the time window). The entire request, including these elements, must then be digitally signed (e.g., via HMAC) so an attacker cannot alter the timestamp or nonce without invalidating the signature."
+  },
+  {
+    "id": 11357,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "To effectively mitigate 'Improper Asset Management' (OWASP API9), often resulting in shadow or zombie APIs, which process should be integrated into the DevSecOps pipeline?",
+    "options": [
+      "Implementing continuous automated API discovery and enforcing OpenAPI Specification (OAS) validation for all deployed endpoints.",
+      "Manually reviewing network firewall logs on a quarterly basis to identify anomalous traffic patterns.",
+      "Deploying an intrusion detection system (IDS) on the database layer to monitor for unauthorized queries.",
+      "Obfuscating all API endpoints using randomized URL paths generated during the build process."
+    ],
+    "answer": "Implementing continuous automated API discovery and enforcing OpenAPI Specification (OAS) validation for all deployed endpoints.",
+    "exp": "Shadow APIs are undocumented, and zombie APIs are deprecated but still active. To prevent these, organizations must rely on automated API discovery tools that catalog all active endpoints and compare them against approved OpenAPI Specifications (Swagger). If an endpoint exists in production but not in the OAS, it is flagged. Manual log review is inefficient. IDS at the database doesn't manage API endpoints. Obfuscation is security through obscurity and does not solve the asset management problem."
+  },
+  {
+    "id": 11358,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "Under the OWASP Top 10 category 'Broken Access Control', an application allows standard users to navigate to '/admin/dashboard' simply by guessing the URL. What is the fundamental architectural failure?",
+    "options": [
+      "The application relies on client-side routing logic rather than server-side enforcement.",
+      "The web server is missing a Content Security Policy (CSP) header.",
+      "The application failed to implement proper input validation on the URL parameters.",
+      "The session identifier was vulnerable to fixation."
+    ],
+    "answer": "The application relies on client-side routing logic rather than server-side enforcement.",
+    "exp": "If a user can access a privileged page just by changing the URL, the application is failing to perform authorization checks on the server side before serving the resource or data. Often, modern Single Page Applications (SPAs) hide links in the UI based on roles (client-side routing), but if the backend API or server doesn't enforce the same policy, an attacker can simply bypass the UI and request the endpoint directly. CSP and Input Validation do not address authorization logic."
+  },
+  {
+    "id": 11359,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "To mitigate 'Cryptographic Failures' (OWASP Top 10), a developer is instructed to replace older encryption functions with Authenticated Encryption with Associated Data (AEAD). Which mode of operation should they select?",
+    "options": [
+      "Advanced Encryption Standard in Electronic Codebook mode (AES-ECB)",
+      "Advanced Encryption Standard in Cipher Block Chaining mode (AES-CBC)",
+      "Advanced Encryption Standard in Galois/Counter Mode (AES-GCM)",
+      "Rivest Cipher 4 (RC4) with a 256-bit key"
+    ],
+    "answer": "Advanced Encryption Standard in Galois/Counter Mode (AES-GCM)",
+    "exp": "AES-GCM is an Authenticated Encryption with Associated Data (AEAD) mode. It provides both confidentiality (encryption) and data authenticity/integrity (via a MAC) in one operation. This prevents attacks like padding oracles that affect AES-CBC. AES-ECB is insecure for blocks of data as it doesn't use an IV, exposing patterns. RC4 is completely broken and deprecated."
+  },
+  {
+    "id": 11360,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "A modern web application utilizes an Object-Relational Mapping (ORM) framework to interact with the database. How does this primarily mitigate the risk of SQL Injection (OWASP A03)?",
+    "options": [
+      "It automatically encrypts all data before writing it to the database tables.",
+      "It inherently utilizes parameterized queries and prepared statements, abstracting SQL syntax away from user input.",
+      "It acts as an application-layer firewall, blocking any input containing SQL keywords like SELECT or DROP.",
+      "It hashes all queries using SHA-256 to ensure query integrity in transit."
+    ],
+    "answer": "It inherently utilizes parameterized queries and prepared statements, abstracting SQL syntax away from user input.",
+    "exp": "ORMs (like Hibernate or Entity Framework) translate object-oriented code into database queries. By default, secure ORMs use parameterized queries (prepared statements). This strictly separates the SQL command logic from the user-provided data. Even if a user inputs malicious SQL syntax, the database treats it purely as a literal string value, completely neutralizing SQL injection attacks. ORMs do not automatically encrypt data or act as WAFs."
+  },
+  {
+    "id": 11361,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "The OWASP Top 10 category 'Insecure Design' emphasizes the need for 'shift-left' security practices. Which of the following activities is the BEST example of mitigating insecure design during the early stages of the SDLC?",
+    "options": [
+      "Conducting comprehensive penetration testing immediately before the software release.",
+      "Performing structured Threat Modeling (e.g., STRIDE) during the requirements and architecture phase.",
+      "Implementing a Web Application Firewall (WAF) to virtually patch discovered vulnerabilities.",
+      "Running an automated vulnerability scanner on the production subnet."
+    ],
+    "answer": "Performing structured Threat Modeling (e.g., STRIDE) during the requirements and architecture phase.",
+    "exp": "Insecure Design is a broad category representing flaws introduced before code is even written. Threat modeling is a proactive, design-phase activity that identifies structural flaws, missing security controls, and trust boundary issues early. Penetration testing, WAFs, and automated scanners are reactive, addressing implementation bugs or operational issues rather than fundamental architectural design flaws."
+  },
+  {
+    "id": 11362,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "To prevent XML External Entity (XXE) injection attacks, which configuration change MUST a developer implement in the application's XML parser?",
+    "options": [
+      "Enable Document Type Definitions (DTDs) and validate them against a trusted schema.",
+      "Completely disable the resolution of external entities and Document Type Definitions (DTDs).",
+      "Encrypt the XML payload using XML Encryption standard before parsing.",
+      "Ensure the XML file contains a deeply nested structure to trigger parser timeouts instead."
+    ],
+    "answer": "Completely disable the resolution of external entities and Document Type Definitions (DTDs).",
+    "exp": "XXE occurs when a weakly configured XML parser processes XML input containing a reference to an external entity. Attackers can use this to read local files on the server or conduct SSRF attacks. The absolute most effective mitigation is to instruct the XML parser to completely disable DTD processing and ignore external entities. Encrypting the payload doesn't help if the parser still resolves entities upon decryption."
+  },
+  {
+    "id": 11363,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "A continuous integration pipeline is designed to mitigate the risk of 'Vulnerable and Outdated Components' (OWASP A06). What automated policy enforces the highest standard of security?",
+    "options": [
+      "Generating an alert email to the security team whenever a High severity vulnerability is found.",
+      "Automatically updating all dependencies to their absolute latest versions prior to every compilation.",
+      "Implementing a Software Composition Analysis (SCA) tool that actively breaks the build if dependencies containing known 'Critical' vulnerabilities are detected.",
+      "Scanning the repository for hardcoded secrets and blocking the commit."
+    ],
+    "answer": "Implementing a Software Composition Analysis (SCA) tool that actively breaks the build if dependencies containing known 'Critical' vulnerabilities are detected.",
+    "exp": "To actively mitigate vulnerable components, the CI/CD pipeline must use SCA to scan libraries against known vulnerability databases (e.g., NVD). Enforcing a policy that 'breaks the build' (stops the deployment pipeline) if critical flaws are found ensures that insecure code cannot reach production. Sending an alert email is passive and easily ignored. Automatically updating all dependencies can break application functionality (compatibility issues). Scanning for secrets is important but addresses a different vulnerability category."
+  },
+  {
+    "id": 11364,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "An attacker intercepts a user's initial login request and steals their session ID before they authenticate. After the user logs in, the attacker uses the stolen ID to access the account. Which OWASP mitigation strategy prevents this 'Session Fixation' attack?",
+    "options": [
+      "Setting the 'Secure' and 'HttpOnly' flags on the session cookie.",
+      "Generating a completely new session identifier immediately upon successful authentication.",
+      "Implementing strict rate limiting on the login endpoint.",
+      "Encrypting the session identifier using AES-256 in transit."
+    ],
+    "answer": "Generating a completely new session identifier immediately upon successful authentication.",
+    "exp": "Session fixation relies on the application accepting an externally provided (or pre-authentication) session ID and elevating its privileges upon login without changing the ID. The primary defense is for the server to invalidate the pre-authentication session ID and issue a completely new, cryptographically random session ID the moment the user successfully authenticates. Secure/HttpOnly flags protect against interception and XSS, but do not fix the logic flaw of fixation."
+  },
+  {
+    "id": 11365,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "The 'Software and Data Integrity Failures' category (OWASP A08) highlights risks like compromised CI/CD pipelines. To assure the integrity of source code from developer to deployment, which mechanism is essential?",
+    "options": [
+      "Using self-signed certificates for the internal GitLab server.",
+      "Mandating cryptographic commit signing by developers and verifying signatures at the CI/CD orchestrator.",
+      "Relying exclusively on the cloud provider's default at-rest encryption for the code repository.",
+      "Disabling branch protections to allow rapid hotfixes to bypass the pipeline."
+    ],
+    "answer": "Mandating cryptographic commit signing by developers and verifying signatures at the CI/CD orchestrator.",
+    "exp": "Cryptographic commit signing (using GPG or SSH keys) proves that the code was authored by a specific, verified developer and has not been tampered with in transit. If the CI/CD orchestrator strictly verifies these signatures before building, it prevents an attacker who has compromised the repository infrastructure (but lacks the developer's private key) from silently injecting malicious code into the build process."
+  },
+  {
+    "id": 11366,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "To defend against 'Security Logging and Monitoring Failures' (OWASP A09), an organization centralizes its logs. What is the MOST critical control to prevent an attacker from covering their tracks after breaching the web server?",
+    "options": [
+      "Storing the logs in a highly available, locally attached SSD array on the web server.",
+      "Forwarding logs in real-time to an append-only, immutable remote logging server or WORM storage.",
+      "Encrypting the log files with a symmetric key stored in the web server's environment variables.",
+      "Filtering out application error stack traces to reduce log volume."
+    ],
+    "answer": "Forwarding logs in real-time to an append-only, immutable remote logging server or WORM storage.",
+    "exp": "If a server is compromised, an attacker's first move is often to delete or alter local logs to hide their activity. By continuously forwarding logs to an external, append-only system (where the web server has rights to write new logs, but zero rights to delete or modify existing ones), the integrity of the audit trail is preserved even if the source system is fully compromised."
+  },
+  {
+    "id": 11367,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "A cloud application allows users to submit URLs to fetch external profile pictures. To mitigate Server-Side Request Forgery (SSRF) against the cloud provider's Instance Metadata Service (IMDS), what is the MOST robust architectural defense?",
+    "options": [
+      "Implementing a regex filter to block the string '169.254.169.254'.",
+      "Upgrading the cloud environment to require IMDSv2, which mandates session tokens and specific HTTP headers.",
+      "Relying on DNS blacklisting to block resolution of internal domain names.",
+      "Enabling Cross-Origin Resource Sharing (CORS) on the profile picture upload endpoint."
+    ],
+    "answer": "Upgrading the cloud environment to require IMDSv2, which mandates session tokens and specific HTTP headers.",
+    "exp": "IMDSv1 is highly susceptible to SSRF because a simple HTTP GET to `169.254.169.254` returns sensitive metadata/credentials. Regex filters are notoriously easily bypassed (e.g., using octal, hex, or alternative IP representations). Upgrading to IMDSv2 requires the client to first make a PUT request to get a session token, and then include that token as a custom header in subsequent requests. A typical SSRF vulnerability cannot forge these multi-step interactions or custom headers, effectively neutralizing the threat."
+  },
+  {
+    "id": 11368,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "Modern Single Page Applications (SPAs) built with React or Angular heavily utilize client-side rendering. While this mitigates traditional Reflected XSS, they are highly susceptible to DOM-based XSS. Which HTTP response header provides the MOST effective defense-in-depth against DOM XSS?",
+    "options": [
+      "X-Frame-Options: DENY",
+      "Content-Security-Policy (CSP) with strict directives restricting inline scripts and requiring Trusted Types.",
+      "Strict-Transport-Security (HSTS) with includeSubDomains.",
+      "X-Content-Type-Options: nosniff"
+    ],
+    "answer": "Content-Security-Policy (CSP) with strict directives restricting inline scripts and requiring Trusted Types.",
+    "exp": "CSP allows server administrators to declare approved sources of content that the browser may load, effectively stopping the execution of unauthorized scripts injected by an attacker. Furthermore, 'Trusted Types' in a CSP forces developers to use secure APIs (like `textContent`) instead of dangerous ones (like `innerHTML`) when manipulating the DOM, neutralizing DOM-based XSS at the browser level."
+  },
+  {
+    "id": 11369,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "An attacker exploits an API pagination flaw by requesting 1,000,000 records per page (e.g., `?limit=1000000`). This causes a severe performance degradation on the backend database. How should a developer properly remediate this vulnerability?",
+    "options": [
+      "Implement a hardcoded maximum limit on the server-side, overriding any excessive client requests.",
+      "Block IP addresses that request more than 100 records using the API Gateway.",
+      "Change the API to use GraphQL, as it inherently prevents large data queries.",
+      "Require an administrative API key for any request containing a 'limit' parameter."
+    ],
+    "answer": "Implement a hardcoded maximum limit on the server-side, overriding any excessive client requests.",
+    "exp": "APIs that allow the client to specify the page size ('limit' or 'per_page') must strictly validate this input on the server. The server must enforce a hard maximum limit (e.g., max 100 records per page). If a client requests 1,000,000, the server should either reject the request with a 400 Bad Request or safely truncate it to the maximum allowed limit. Blocking IPs is reactive. GraphQL does not inherently prevent large queries (it can exacerbate them via batching). Restricting the parameter to admins breaks normal client functionality."
+  },
+  {
+    "id": 11370,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "A development team wants to adopt a 'Security as Code' philosophy. Which tool dynamically analyzes the behavior of a running application in a test environment to identify vulnerabilities like race conditions and memory leaks?",
+    "options": [
+      "Software Composition Analysis (SCA)",
+      "Dynamic Application Security Testing (DAST)",
+      "Static Application Security Testing (SAST)",
+      "Interactive Application Security Testing (IAST)"
+    ],
+    "answer": "Interactive Application Security Testing (IAST)",
+    "exp": "IAST instruments the application runtime (often via an agent) and analyzes the application from the inside while it is running and interacting with tests (like DAST or QA tests). This allows IAST to deeply monitor memory execution, variable state, and race conditions with low false positives. SAST analyzes static code. DAST analyzes the application externally (black box). SCA analyzes dependencies."
+  },
+  {
+    "id": 11371,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "Which of the following describes the core security principle behind using the 'Backend-for-Frontend' (BFF) pattern to secure Single Page Applications (SPAs) accessing OAuth 2.0 APIs?",
+    "options": [
+      "The BFF intercepts all API requests and encrypts them using a symmetric key known only to the browser.",
+      "The BFF architecture completely eliminates the need for any authentication mechanisms.",
+      "The BFF handles the OAuth flow and token storage securely on the server side, issuing an HttpOnly, secure cookie to the SPA instead of exposing tokens to the browser.",
+      "The BFF forces the SPA to store the JWT directly in HTML5 Local Storage to prevent Cross-Site Request Forgery (CSRF)."
+    ],
+    "answer": "The BFF handles the OAuth flow and token storage securely on the server side, issuing an HttpOnly, secure cookie to the SPA instead of exposing tokens to the browser.",
+    "exp": "Storing highly sensitive Access Tokens or Refresh Tokens in browser storage (Local Storage or Session Storage) makes them vulnerable to XSS attacks. The BFF pattern acts as a secure middleman. The backend server (BFF) performs the OAuth exchange, stores the tokens securely in memory or a backend database, and only issues a strongly secured (HttpOnly, Secure, SameSite) session cookie to the SPA. The SPA never sees or touches the actual tokens, neutralizing token theft via XSS."
+  },
+  {
+    "id": 11372,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "To secure communications between distributed microservices, a DevSecOps engineer proposes relying on the network perimeter firewall and operating the internal network as a trusted zone. What fundamental security architecture does this violate?",
+    "options": [
+      "Zero Trust Architecture",
+      "Defense in Depth",
+      "The Principle of Least Privilege",
+      "Fail-Safe Defaults"
+    ],
+    "answer": "Zero Trust Architecture",
+    "exp": "Relying on a trusted internal network behind a perimeter firewall is the obsolete 'castle-and-moat' model. Zero Trust Architecture dictates that no network, internal or external, is inherently trusted. Every request, even between internal microservices, must be authenticated, authorized, and continuously validated (e.g., via mTLS and identity-based access control). If an attacker breaches the perimeter, a Zero Trust model severely limits their lateral movement."
+  },
+  {
+    "id": 11373,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "During the design phase, the security team mandates that the application must fail securely. If the backend authorization service goes offline, what is the required behavior of the API Gateway to adhere to 'Fail-Safe Defaults'?",
+    "options": [
+      "Cache the last known authorization state of the user and permit access based on stale data.",
+      "Deny all access requests and return an HTTP 503 Service Unavailable error.",
+      "Fail open, allowing requests to pass through to the application to maintain business continuity.",
+      "Prompt the user to bypass the authorization check using a secondary CAPTCHA mechanism."
+    ],
+    "answer": "Deny all access requests and return an HTTP 503 Service Unavailable error.",
+    "exp": "The principle of Fail-Safe Defaults dictates that the default access level to any system should be 'deny'. If a security control (like an authorization service) fails, crashes, or is unreachable, the system must fail securely by denying access. Failing open or using unverified cached data prioritizes availability over confidentiality and integrity, potentially allowing unauthorized access during an outage or active attack."
+  },
+  {
+    "id": 11374,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "A developer is writing a REST API endpoint that reads a file name from user input and retrieves it from the server. To prevent Directory Traversal (Path Traversal) attacks, what is the MOST effective coding practice?",
+    "options": [
+      "Using a regex to remove all instances of '../' from the user input before file retrieval.",
+      "Validating that the user input strictly matches a predefined whitelist of allowed alphanumeric filenames.",
+      "Running the web server as the 'root' user to ensure it has proper file system permissions to resolve paths correctly.",
+      "Converting the user input to a canonical path and executing it directly."
+    ],
+    "answer": "Validating that the user input strictly matches a predefined whitelist of allowed alphanumeric filenames.",
+    "exp": "The strongest defense against directory traversal is avoiding direct mapping of user input to filesystem APIs entirely. If it must be done, strict whitelist validation is required. The application should only accept an exact match from an approved list of filenames, or enforce a strict regex (e.g., purely alphanumeric characters with no slashes or dots) before processing. Filtering out '../' is weak, as attackers can bypass it using URL encoding, double encoding, or alternative path separators. Canonicalization is a secondary step but validation is primary."
+  },
+  {
+    "id": 11375,
+    "domain": "8",
+    "domain_name": "Software Development Security",
+    "difficulty": 3,
+    "type": "mc",
+    "question": "An organization is migrating legacy applications to a containerized microservices architecture. To mitigate the risk of 'Security Misconfiguration' (OWASP A05) related to container privileges, which Kubernetes security context setting is MOST critical?",
+    "options": [
+      "Setting 'allowPrivilegeEscalation: true' to ensure applications can acquire necessary runtime permissions.",
+      "Enforcing 'runAsNonRoot: true' and ensuring containers do not run as the root user (UID 0).",
+      "Mounting the host node's root filesystem (/) into the container with read-only permissions.",
+      "Exposing all container ports by default to simplify internal service mesh routing."
+    ],
+    "answer": "Enforcing 'runAsNonRoot: true' and ensuring containers do not run as the root user (UID 0).",
+    "exp": "A severe security misconfiguration in containers is allowing the application process to run as root (UID 0). If a container runs as root and an attacker exploits an application vulnerability, they have root access within the container, drastically increasing the chances of escaping the container and compromising the host node. Enforcing 'runAsNonRoot: true' prevents the container from starting if it attempts to run as root. 'allowPrivilegeEscalation' should be false. Mounting the host filesystem is highly dangerous."
+  }
+]

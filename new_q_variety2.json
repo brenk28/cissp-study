@@ -1,0 +1,1024 @@
+[
+  {
+    "id": 11381,
+    "domain": "1",
+    "options": [
+      "Confidentiality",
+      "Integrity",
+      "Accountability",
+      "Availability",
+      "Authentication"
+    ],
+    "type": "ms",
+    "q": "Which of the following are components of the CIA triad? (Select THREE)",
+    "answer": [
+      "Confidentiality",
+      "Integrity",
+      "Availability"
+    ],
+    "exp": "The CIA triad consists of Confidentiality, Integrity, and Availability.",
+    "difficulty": 3
+  },
+  {
+    "id": 11382,
+    "domain": "1",
+    "options": [
+      "Spoofing",
+      "Tampering",
+      "Ransomware",
+      "Eavesdropping",
+      "Phishing"
+    ],
+    "type": "ms",
+    "q": "Which of the following are elements of the STRIDE threat model? (Select TWO)",
+    "answer": [
+      "Spoofing",
+      "Tampering"
+    ],
+    "exp": "STRIDE stands for Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, and Elevation of Privilege.",
+    "difficulty": 3
+  },
+  {
+    "id": 11383,
+    "domain": "1",
+    "options": [
+      "NIST SP 800-37",
+      "ISO 31000",
+      "OSI Model",
+      "TCP/IP",
+      "IEEE 802.11"
+    ],
+    "type": "ms",
+    "q": "Which of the following frameworks are primarily focused on risk management? (Select TWO)",
+    "answer": [
+      "NIST SP 800-37",
+      "ISO 31000"
+    ],
+    "exp": "NIST SP 800-37 and ISO 31000 are well-known risk management frameworks.",
+    "difficulty": 3
+  },
+  {
+    "id": 11384,
+    "domain": "1",
+    "options": [
+      "SLE",
+      "ALE",
+      "High/Medium/Low",
+      "Delphi method",
+      "Red/Yellow/Green"
+    ],
+    "type": "ms",
+    "q": "Which of the following are quantitative risk analysis metrics? (Select TWO)",
+    "answer": [
+      "SLE",
+      "ALE"
+    ],
+    "exp": "Single Loss Expectancy (SLE) and Annualized Loss Expectancy (ALE) are quantitative metrics.",
+    "difficulty": 3
+  },
+  {
+    "id": 11385,
+    "domain": "1",
+    "options": [
+      "Civil Law",
+      "Common Law",
+      "Customary Law",
+      "Code Law",
+      "Religious Law"
+    ],
+    "type": "ms",
+    "q": "Which of the following legal systems are based on rules created by legislative bodies rather than precedent? (Select TWO)",
+    "answer": [
+      "Civil Law",
+      "Code Law"
+    ],
+    "exp": "Civil Law (or Code Law) is rule-based, whereas Common Law relies on precedent.",
+    "difficulty": 3
+  },
+  {
+    "id": 11386,
+    "domain": "1",
+    "options": [
+      "Administrative",
+      "Technical",
+      "Physical",
+      "Mandatory",
+      "Discretionary"
+    ],
+    "type": "ms",
+    "q": "Which of the following are valid types of access control categories? (Select THREE)",
+    "answer": [
+      "Administrative",
+      "Technical",
+      "Physical"
+    ],
+    "exp": "Administrative, Technical (Logical), and Physical are categories of access controls.",
+    "difficulty": 3
+  },
+  {
+    "id": 11387,
+    "domain": "1",
+    "options": [
+      "Project Initiation",
+      "Business Impact Analysis (BIA)",
+      "Recovery Strategy Development",
+      "Plan Design and Development",
+      "Testing, Maintenance, and Updating"
+    ],
+    "type": "order",
+    "q": "Order the steps of the Business Continuity Planning (BCP) process.",
+    "answer": [
+      "Project Initiation",
+      "Business Impact Analysis (BIA)",
+      "Recovery Strategy Development",
+      "Plan Design and Development",
+      "Testing, Maintenance, and Updating"
+    ],
+    "exp": "The BCP process starts with initiation, follows with BIA, strategy development, plan design, and ends with testing/maintenance.",
+    "difficulty": 3
+  },
+  {
+    "id": 11388,
+    "domain": "1",
+    "options": [
+      "Categorize",
+      "Select",
+      "Implement",
+      "Assess",
+      "Authorize",
+      "Monitor"
+    ],
+    "type": "order",
+    "q": "Order the steps of the Risk Management Framework (RMF).",
+    "answer": [
+      "Categorize",
+      "Select",
+      "Implement",
+      "Assess",
+      "Authorize",
+      "Monitor"
+    ],
+    "exp": "The RMF steps are Categorize, Select, Implement, Assess, Authorize, and Monitor.",
+    "difficulty": 3
+  },
+  {
+    "id": 11389,
+    "domain": "1",
+    "options": [
+      "Detection",
+      "Triage",
+      "Analysis",
+      "Classification",
+      "Prioritization"
+    ],
+    "type": "order",
+    "q": "Order the standard stages of the incident classification process.",
+    "answer": [
+      "Detection",
+      "Triage",
+      "Analysis",
+      "Classification",
+      "Prioritization"
+    ],
+    "exp": "Events must be detected, triaged, analyzed, then classified and prioritized.",
+    "difficulty": 3
+  },
+  {
+    "id": 11390,
+    "domain": "1",
+    "options": [
+      "Assess Current State",
+      "Define Future State",
+      "Identify Gaps",
+      "Develop Action Plan",
+      "Execute and Monitor"
+    ],
+    "type": "order",
+    "q": "Order the steps of a typical Information Security Strategy planning process.",
+    "answer": [
+      "Assess Current State",
+      "Define Future State",
+      "Identify Gaps",
+      "Develop Action Plan",
+      "Execute and Monitor"
+    ],
+    "exp": "Strategy planning involves understanding the present, defining the future, finding gaps, planning actions, and executing.",
+    "difficulty": 3
+  },
+  {
+    "id": 11391,
+    "domain": "2",
+    "options": [
+      "Classifying data",
+      "Performing backups",
+      "Determining access rights",
+      "Configuring firewalls",
+      "Patching servers"
+    ],
+    "type": "ms",
+    "q": "Which of the following are responsibilities of a Data Owner? (Select TWO)",
+    "answer": [
+      "Classifying data",
+      "Determining access rights"
+    ],
+    "exp": "Data Owners classify data and determine who has access; Custodians perform technical implementation.",
+    "difficulty": 3
+  },
+  {
+    "id": 11392,
+    "domain": "2",
+    "options": [
+      "Degaussing",
+      "Incineration",
+      "Formatting",
+      "Shredding",
+      "Deleting"
+    ],
+    "type": "ms",
+    "q": "Which of the following are valid data destruction methods for magnetic media? (Select THREE)",
+    "answer": [
+      "Degaussing",
+      "Incineration",
+      "Shredding"
+    ],
+    "exp": "Formatting and deleting do not securely destroy data on magnetic media.",
+    "difficulty": 3
+  },
+  {
+    "id": 11393,
+    "domain": "2",
+    "options": [
+      "Right to be forgotten",
+      "Mandatory AES-256 encryption",
+      "Data portability",
+      "Use of biometric access",
+      "Annual penetration testing"
+    ],
+    "type": "ms",
+    "q": "Which of the following are core components of privacy regulations like GDPR? (Select TWO)",
+    "answer": [
+      "Right to be forgotten",
+      "Data portability"
+    ],
+    "exp": "The Right to be forgotten and Data portability are key privacy rights under GDPR.",
+    "difficulty": 3
+  },
+  {
+    "id": 11394,
+    "domain": "2",
+    "options": [
+      "It can lead to data leakage",
+      "It occurs when data is not fully erased",
+      "It is prevented by standard deletion",
+      "It only applies to cloud storage",
+      "It is desirable for data retention"
+    ],
+    "type": "ms",
+    "q": "Which of the following are characteristics of data remanence? (Select TWO)",
+    "answer": [
+      "It can lead to data leakage",
+      "It occurs when data is not fully erased"
+    ],
+    "exp": "Data remanence is the residual representation of digital data that remains even after attempts have been made to remove or erase it.",
+    "difficulty": 3
+  },
+  {
+    "id": 11395,
+    "domain": "2",
+    "options": [
+      "Data at rest",
+      "Data in transit",
+      "Data in use",
+      "Data in metadata",
+      "Data in cache"
+    ],
+    "type": "ms",
+    "q": "Which of the following are data states? (Select THREE)",
+    "answer": [
+      "Data at rest",
+      "Data in transit",
+      "Data in use"
+    ],
+    "exp": "The three primary states of data are at rest, in transit (motion), and in use.",
+    "difficulty": 3
+  },
+  {
+    "id": 11396,
+    "domain": "2",
+    "options": [
+      "Masking",
+      "Tokenization",
+      "Encryption",
+      "Hashing",
+      "Obfuscation"
+    ],
+    "type": "ms",
+    "q": "Which of the following terms refer to the anonymization of data? (Select TWO)",
+    "answer": [
+      "Masking",
+      "Tokenization"
+    ],
+    "exp": "Masking and tokenization are methods used to protect and anonymize data while retaining its format or utility.",
+    "difficulty": 3
+  },
+  {
+    "id": 11397,
+    "domain": "2",
+    "options": [
+      "Create",
+      "Store",
+      "Use",
+      "Share",
+      "Archive",
+      "Destroy"
+    ],
+    "type": "order",
+    "q": "Order the typical data lifecycle stages.",
+    "answer": [
+      "Create",
+      "Store",
+      "Use",
+      "Share",
+      "Archive",
+      "Destroy"
+    ],
+    "exp": "The standard data lifecycle is Create, Store, Use, Share, Archive, and Destroy.",
+    "difficulty": 3
+  },
+  {
+    "id": 11398,
+    "domain": "2",
+    "options": [
+      "Identify Data",
+      "Determine Ownership",
+      "Classify Data",
+      "Apply Security Controls",
+      "Review Classification"
+    ],
+    "type": "order",
+    "q": "Order the steps of a typical data classification process.",
+    "answer": [
+      "Identify Data",
+      "Determine Ownership",
+      "Classify Data",
+      "Apply Security Controls",
+      "Review Classification"
+    ],
+    "exp": "First data is identified, then an owner is determined, it is classified, controls are applied, and it is periodically reviewed.",
+    "difficulty": 3
+  },
+  {
+    "id": 11399,
+    "domain": "2",
+    "options": [
+      "Confidential",
+      "Private",
+      "Sensitive",
+      "Public"
+    ],
+    "type": "order",
+    "q": "Order the hierarchy of commercial data classification (from most to least sensitive).",
+    "answer": [
+      "Confidential",
+      "Private",
+      "Sensitive",
+      "Public"
+    ],
+    "exp": "A common commercial classification hierarchy is Confidential, Private, Sensitive, Public.",
+    "difficulty": 3
+  },
+  {
+    "id": 11400,
+    "domain": "2",
+    "options": [
+      "Top Secret",
+      "Secret",
+      "Confidential",
+      "Unclassified"
+    ],
+    "type": "order",
+    "q": "Order the hierarchy of government/military data classification (from most to least sensitive).",
+    "answer": [
+      "Top Secret",
+      "Secret",
+      "Confidential",
+      "Unclassified"
+    ],
+    "exp": "The government classification hierarchy is Top Secret, Secret, Confidential, Unclassified.",
+    "difficulty": 3
+  },
+  {
+    "id": 11401,
+    "domain": "4",
+    "options": [
+      "TCP",
+      "IP",
+      "UDP",
+      "HTTP",
+      "ICMP"
+    ],
+    "type": "ms",
+    "q": "Which of the following protocols operate at the Transport Layer of the OSI model? (Select TWO)",
+    "answer": [
+      "TCP",
+      "UDP"
+    ],
+    "exp": "TCP and UDP operate at Layer 4 (Transport). IP and ICMP are Layer 3, HTTP is Layer 7.",
+    "difficulty": 3
+  },
+  {
+    "id": 11402,
+    "domain": "4",
+    "options": [
+      "RIP",
+      "OSPF",
+      "EIGRP",
+      "BGP",
+      "IS-IS"
+    ],
+    "type": "ms",
+    "q": "Which of the following are distance-vector routing protocols? (Select TWO)",
+    "answer": [
+      "RIP",
+      "EIGRP"
+    ],
+    "exp": "RIP and EIGRP are distance-vector protocols, while OSPF and IS-IS are link-state.",
+    "difficulty": 3
+  },
+  {
+    "id": 11403,
+    "domain": "4",
+    "options": [
+      "Packet filtering",
+      "Stateful inspection",
+      "Application layer proxy",
+      "Distance-vector",
+      "Link-state"
+    ],
+    "type": "ms",
+    "q": "Which of the following are types of firewalls? (Select THREE)",
+    "answer": [
+      "Packet filtering",
+      "Stateful inspection",
+      "Application layer proxy"
+    ],
+    "exp": "Packet filtering, stateful inspection, and application layer proxy are common firewall types.",
+    "difficulty": 3
+  },
+  {
+    "id": 11404,
+    "domain": "4",
+    "options": [
+      "AH",
+      "ESP",
+      "SSL",
+      "TLS",
+      "IKE"
+    ],
+    "type": "ms",
+    "q": "Which of the following are valid IPsec sub-protocols? (Select TWO)",
+    "answer": [
+      "AH",
+      "ESP"
+    ],
+    "exp": "Authentication Header (AH) and Encapsulating Security Payload (ESP) are the core IPsec protocols. IKE is for key exchange.",
+    "difficulty": 3
+  },
+  {
+    "id": 11405,
+    "domain": "4",
+    "options": [
+      "Ping of Death",
+      "Smurf Attack",
+      "SYN Flood",
+      "SQL Injection",
+      "Cross-Site Scripting"
+    ],
+    "type": "ms",
+    "q": "Which of the following attacks target the Network layer (Layer 3)? (Select TWO)",
+    "answer": [
+      "Ping of Death",
+      "Smurf Attack"
+    ],
+    "exp": "Ping of Death and Smurf attacks use ICMP, which is at the Network layer. SYN Flood is Layer 4.",
+    "difficulty": 3
+  },
+  {
+    "id": 11406,
+    "domain": "4",
+    "options": [
+      "WEP",
+      "WPA",
+      "WPA2",
+      "WPA3",
+      "802.1X"
+    ],
+    "type": "ms",
+    "q": "Which of the following wireless encryption protocols are considered insecure and deprecated? (Select TWO)",
+    "answer": [
+      "WEP",
+      "WPA"
+    ],
+    "exp": "WEP and the original WPA (using TKIP) are deprecated and insecure.",
+    "difficulty": 3
+  },
+  {
+    "id": 11407,
+    "domain": "4",
+    "options": [
+      "Physical",
+      "Data Link",
+      "Network",
+      "Transport",
+      "Session",
+      "Presentation",
+      "Application"
+    ],
+    "type": "order",
+    "q": "Order the layers of the OSI model from Layer 1 to Layer 7.",
+    "answer": [
+      "Physical",
+      "Data Link",
+      "Network",
+      "Transport",
+      "Session",
+      "Presentation",
+      "Application"
+    ],
+    "exp": "The OSI model layers are Physical, Data Link, Network, Transport, Session, Presentation, Application.",
+    "difficulty": 3
+  },
+  {
+    "id": 11408,
+    "domain": "4",
+    "options": [
+      "SYN",
+      "SYN-ACK",
+      "ACK"
+    ],
+    "type": "order",
+    "q": "Order the steps of the TCP 3-way handshake.",
+    "answer": [
+      "SYN",
+      "SYN-ACK",
+      "ACK"
+    ],
+    "exp": "The TCP handshake consists of SYN, SYN-ACK, and ACK.",
+    "difficulty": 3
+  },
+  {
+    "id": 11409,
+    "domain": "4",
+    "options": [
+      "Network Access",
+      "Internet",
+      "Transport",
+      "Application"
+    ],
+    "type": "order",
+    "q": "Order the layers of the TCP/IP model from lowest to highest.",
+    "answer": [
+      "Network Access",
+      "Internet",
+      "Transport",
+      "Application"
+    ],
+    "exp": "The TCP/IP model layers are Network Access (Link), Internet, Transport, and Application.",
+    "difficulty": 3
+  },
+  {
+    "id": 11410,
+    "domain": "4",
+    "options": [
+      "Bits",
+      "Frames",
+      "Packets",
+      "Segments"
+    ],
+    "type": "order",
+    "q": "Order the data encapsulation units from OSI Layer 1 to Layer 4.",
+    "answer": [
+      "Bits",
+      "Frames",
+      "Packets",
+      "Segments"
+    ],
+    "exp": "Data is represented as Bits at L1, Frames at L2, Packets at L3, and Segments at L4.",
+    "difficulty": 3
+  },
+  {
+    "id": 11411,
+    "domain": "7",
+    "options": [
+      "Preparation",
+      "Detection and Analysis",
+      "Containment, Eradication, and Recovery",
+      "System Development",
+      "Risk Assessment"
+    ],
+    "type": "ms",
+    "q": "Which of the following are phases of the Incident Response lifecycle? (Select THREE)",
+    "answer": [
+      "Preparation",
+      "Detection and Analysis",
+      "Containment, Eradication, and Recovery"
+    ],
+    "exp": "The NIST IR lifecycle includes Preparation, Detection/Analysis, Containment/Eradication/Recovery, and Post-Incident Activity.",
+    "difficulty": 3
+  },
+  {
+    "id": 11412,
+    "domain": "7",
+    "options": [
+      "Hot site",
+      "Warm site",
+      "Cold site",
+      "Cloud site",
+      "Frozen site"
+    ],
+    "type": "ms",
+    "q": "Which of the following are types of Disaster Recovery sites? (Select THREE)",
+    "answer": [
+      "Hot site",
+      "Warm site",
+      "Cold site"
+    ],
+    "exp": "Hot, warm, and cold sites are standard physical DR site designations.",
+    "difficulty": 3
+  },
+  {
+    "id": 11413,
+    "domain": "7",
+    "options": [
+      "Intrusion Detection System (IDS)",
+      "Log monitoring",
+      "Firewall",
+      "Security Guard",
+      "Encryption"
+    ],
+    "type": "ms",
+    "q": "Which of the following are examples of detective controls? (Select TWO)",
+    "answer": [
+      "Intrusion Detection System (IDS)",
+      "Log monitoring"
+    ],
+    "exp": "IDS and log monitoring detect events after or as they occur, whereas firewalls and encryption are preventive.",
+    "difficulty": 3
+  },
+  {
+    "id": 11414,
+    "domain": "7",
+    "options": [
+      "Direct evidence",
+      "Circumstantial evidence",
+      "Corroborative evidence",
+      "Hearsay evidence",
+      "Fabricated evidence"
+    ],
+    "type": "ms",
+    "q": "Which of the following are valid evidence types in a forensic investigation? (Select THREE)",
+    "answer": [
+      "Direct evidence",
+      "Circumstantial evidence",
+      "Corroborative evidence"
+    ],
+    "exp": "Direct, circumstantial, and corroborative are recognized types of legal evidence.",
+    "difficulty": 3
+  },
+  {
+    "id": 11415,
+    "domain": "7",
+    "options": [
+      "Full backup",
+      "Incremental backup",
+      "Differential backup",
+      "Copy backup",
+      "Daily backup"
+    ],
+    "type": "ms",
+    "q": "Which of the following backup types clear the archive bit? (Select TWO)",
+    "answer": [
+      "Full backup",
+      "Incremental backup"
+    ],
+    "exp": "Full and incremental backups clear the archive bit. Differential backups do not.",
+    "difficulty": 3
+  },
+  {
+    "id": 11416,
+    "domain": "7",
+    "options": [
+      "Account creation",
+      "Privilege assignment",
+      "Vulnerability scanning",
+      "Penetration testing",
+      "Incident containment"
+    ],
+    "type": "ms",
+    "q": "Which of the following are components of Identity and Access Management (IAM) provisioning? (Select TWO)",
+    "answer": [
+      "Account creation",
+      "Privilege assignment"
+    ],
+    "exp": "Provisioning involves creating accounts and assigning appropriate privileges.",
+    "difficulty": 3
+  },
+  {
+    "id": 11417,
+    "domain": "7",
+    "options": [
+      "Identification",
+      "Collection",
+      "Examination",
+      "Analysis",
+      "Reporting"
+    ],
+    "type": "order",
+    "q": "Order the steps of the standard digital forensics process.",
+    "answer": [
+      "Identification",
+      "Collection",
+      "Examination",
+      "Analysis",
+      "Reporting"
+    ],
+    "exp": "The forensic process is Identification, Collection, Examination, Analysis, and Reporting.",
+    "difficulty": 3
+  },
+  {
+    "id": 11418,
+    "domain": "7",
+    "options": [
+      "Preparation",
+      "Detection & Analysis",
+      "Containment",
+      "Eradication",
+      "Recovery",
+      "Post-Incident Activity"
+    ],
+    "type": "order",
+    "q": "Order the steps of the Incident Response Process (NIST).",
+    "answer": [
+      "Preparation",
+      "Detection & Analysis",
+      "Containment",
+      "Eradication",
+      "Recovery",
+      "Post-Incident Activity"
+    ],
+    "exp": "The process is Preparation, Detection & Analysis, Containment, Eradication, Recovery, and Post-Incident Activity.",
+    "difficulty": 3
+  },
+  {
+    "id": 11419,
+    "domain": "7",
+    "options": [
+      "CPU Cache",
+      "RAM",
+      "Swap Space",
+      "Hard Drive",
+      "Archival Media"
+    ],
+    "type": "order",
+    "q": "Order the volatility of digital evidence from most volatile to least volatile.",
+    "answer": [
+      "CPU Cache",
+      "RAM",
+      "Swap Space",
+      "Hard Drive",
+      "Archival Media"
+    ],
+    "exp": "Evidence should be collected based on the order of volatility, starting with the most volatile.",
+    "difficulty": 3
+  },
+  {
+    "id": 11420,
+    "domain": "7",
+    "options": [
+      "Identification",
+      "Preservation",
+      "Collection",
+      "Processing",
+      "Review",
+      "Analysis",
+      "Production"
+    ],
+    "type": "order",
+    "q": "Order the steps involved in eDiscovery.",
+    "answer": [
+      "Identification",
+      "Preservation",
+      "Collection",
+      "Processing",
+      "Review",
+      "Analysis",
+      "Production"
+    ],
+    "exp": "The EDRM steps include Identification, Preservation, Collection, Processing, Review, Analysis, and Production.",
+    "difficulty": 3
+  },
+  {
+    "id": 11421,
+    "domain": "8",
+    "options": [
+      "Requirements Analysis",
+      "Design",
+      "Testing",
+      "Incident Response",
+      "Forensics"
+    ],
+    "type": "ms",
+    "q": "Which of the following are phases in the standard Software Development Life Cycle (SDLC)? (Select THREE)",
+    "answer": [
+      "Requirements Analysis",
+      "Design",
+      "Testing"
+    ],
+    "exp": "Requirements Analysis, Design, and Testing are standard SDLC phases.",
+    "difficulty": 3
+  },
+  {
+    "id": 11422,
+    "domain": "8",
+    "options": [
+      "Stored (Persistent)",
+      "Reflected (Non-Persistent)",
+      "SQL Injection",
+      "Buffer Overflow",
+      "Command Injection"
+    ],
+    "type": "ms",
+    "q": "Which of the following are common types of Cross-Site Scripting (XSS)? (Select TWO)",
+    "answer": [
+      "Stored (Persistent)",
+      "Reflected (Non-Persistent)"
+    ],
+    "exp": "Stored and Reflected are the two most common types of XSS (along with DOM-based).",
+    "difficulty": 3
+  },
+  {
+    "id": 11423,
+    "domain": "8",
+    "options": [
+      "SQL Injection",
+      "LDAP Injection",
+      "Cross-Site Scripting",
+      "Cross-Site Request Forgery",
+      "Buffer Overflow"
+    ],
+    "type": "ms",
+    "q": "Which of the following vulnerabilities are mitigated by using parameterized queries? (Select TWO)",
+    "answer": [
+      "SQL Injection",
+      "LDAP Injection"
+    ],
+    "exp": "Parameterized queries prevent injection attacks by separating code and data.",
+    "difficulty": 3
+  },
+  {
+    "id": 11424,
+    "domain": "8",
+    "options": [
+      "Scrum",
+      "Extreme Programming (XP)",
+      "Waterfall",
+      "Spiral",
+      "V-Model"
+    ],
+    "type": "ms",
+    "q": "Which of the following are Agile development methodologies? (Select TWO)",
+    "answer": [
+      "Scrum",
+      "Extreme Programming (XP)"
+    ],
+    "exp": "Scrum and XP are Agile methodologies. Waterfall, Spiral, and V-Model are not.",
+    "difficulty": 3
+  },
+  {
+    "id": 11425,
+    "domain": "8",
+    "options": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Interactive Application Security Testing (IAST)",
+      "Forensic Application Testing (FAST)",
+      "Cryptographic Application Testing (CAST)"
+    ],
+    "type": "ms",
+    "q": "Which of the following are valid forms of application testing? (Select THREE)",
+    "answer": [
+      "Static Application Security Testing (SAST)",
+      "Dynamic Application Security Testing (DAST)",
+      "Interactive Application Security Testing (IAST)"
+    ],
+    "exp": "SAST, DAST, and IAST are recognized forms of application security testing.",
+    "difficulty": 3
+  },
+  {
+    "id": 11426,
+    "domain": "8",
+    "options": [
+      "Injection",
+      "Broken Authentication",
+      "Denial of Service",
+      "Buffer Overflow",
+      "Zero-day Exploits"
+    ],
+    "type": "ms",
+    "q": "Which of the following principles belong to the OWASP Top 10? (Select TWO)",
+    "answer": [
+      "Injection",
+      "Broken Authentication"
+    ],
+    "exp": "Injection and Broken Authentication are consistently featured in the OWASP Top 10.",
+    "difficulty": 3
+  },
+  {
+    "id": 11427,
+    "domain": "8",
+    "options": [
+      "Requirements Gathering",
+      "Design",
+      "Development",
+      "Testing",
+      "Deployment",
+      "Maintenance"
+    ],
+    "type": "order",
+    "q": "Order the phases of the Software Development Life Cycle (SDLC).",
+    "answer": [
+      "Requirements Gathering",
+      "Design",
+      "Development",
+      "Testing",
+      "Deployment",
+      "Maintenance"
+    ],
+    "exp": "A typical SDLC moves from Requirements to Design, Development, Testing, Deployment, and Maintenance.",
+    "difficulty": 3
+  },
+  {
+    "id": 11428,
+    "domain": "8",
+    "options": [
+      "Initial",
+      "Managed",
+      "Defined",
+      "Quantitatively Managed",
+      "Optimizing"
+    ],
+    "type": "order",
+    "q": "Order the levels of the Capability Maturity Model Integration (CMMI).",
+    "answer": [
+      "Initial",
+      "Managed",
+      "Defined",
+      "Quantitatively Managed",
+      "Optimizing"
+    ],
+    "exp": "The CMMI levels are Initial (1), Managed (2), Defined (3), Quantitatively Managed (4), and Optimizing (5).",
+    "difficulty": 3
+  },
+  {
+    "id": 11429,
+    "domain": "8",
+    "options": [
+      "Receive Password",
+      "Generate Salt",
+      "Hash Password with Salt",
+      "Store Salt and Hash"
+    ],
+    "type": "order",
+    "q": "Order the steps for securely handling user passwords in an application.",
+    "answer": [
+      "Receive Password",
+      "Generate Salt",
+      "Hash Password with Salt",
+      "Store Salt and Hash"
+    ],
+    "exp": "Passwords should be securely hashed and salted before storage.",
+    "difficulty": 3
+  },
+  {
+    "id": 11430,
+    "domain": "8",
+    "options": [
+      "User requests access to Service Provider",
+      "Service Provider redirects to Identity Provider",
+      "Identity Provider authenticates user",
+      "Identity Provider sends token to Service Provider",
+      "Service Provider grants access"
+    ],
+    "type": "order",
+    "q": "Order the process of federated identity authentication (e.g., SAML).",
+    "answer": [
+      "User requests access to Service Provider",
+      "Service Provider redirects to Identity Provider",
+      "Identity Provider authenticates user",
+      "Identity Provider sends token to Service Provider",
+      "Service Provider grants access"
+    ],
+    "exp": "The SAML flow involves redirection to the IdP, authentication, token issuance, and subsequent access grant.",
+    "difficulty": 3
+  }
+]

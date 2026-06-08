@@ -1,0 +1,527 @@
+[
+  {
+    "id": 11101,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "A multinational corporation leverages a multi-tenant DBaaS in the public cloud. They must comply with GDPR's 'Right to Erasure' (Article 17) for European citizens. When a valid erasure request is received, what is the most technically complex challenge the organization faces regarding the data lifecycle?",
+    "options": [
+      "Ensuring the data is purged from immutable backups and secondary disaster recovery sites without corrupting the entire backup archive.",
+      "Updating the organization's privacy policy to reflect the specific user's erasure request.",
+      "Encrypting the user's data at rest using a customer-managed key (CMK) instead of deleting it.",
+      "Notifying the cloud service provider (CSP) to physically destroy the hard drives containing the user's data."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Ensuring the data is purged from immutable backups and secondary disaster recovery sites without corrupting the entire backup archive.' The most significant technical challenge for the Right to Erasure in modern IT environments is purging specific records from immutable backups, logs, and distributed DR systems without compromising the integrity of the backup sets. Often, organizations must wait for backups to age out or employ cryptographic erasure. Updating the policy is administrative, not technically complex. Encrypting instead of deleting does not satisfy erasure if the key is still available. Physical destruction of shared cloud drives is impossible for a single tenant's request."
+  },
+  {
+    "id": 11102,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "Under the California Privacy Rights Act (CPRA), which amends the CCPA, a new category of 'Sensitive Personal Information' (SPI) was introduced. If a company collects a consumer's precise geolocation and genetic data, what specific new right does the CPRA grant the consumer regarding this SPI that was not explicitly detailed for general PI under the original CCPA?",
+    "options": [
+      "The right to limit the use and disclosure of the SPI to only what is necessary to perform the services expected by an average consumer.",
+      "The right to request immediate physical destruction of the hardware storing the SPI.",
+      "The right to demand that the SPI be encrypted using homomorphic encryption.",
+      "The right to opt-in before any general personal information can be collected."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'The right to limit the use and disclosure of the SPI to only what is necessary to perform the services expected by an average consumer.' CPRA introduces the right for consumers to restrict businesses from using their Sensitive Personal Information (SPI) for purposes other than providing the requested goods or services. Physical destruction of hardware is not a consumer right. Homomorphic encryption is a technical control, not a privacy right. The original CCPA is generally opt-out for adults, and CPRA does not change general PI collection to strict opt-in for adults."
+  },
+  {
+    "id": 11103,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "An organization is processing highly sensitive intellectual property. They require the data to be operated on by a third-party analytics engine without ever exposing the plaintext data in the memory (RAM) of the third party's servers. Which technology addresses this 'data in use' security requirement?",
+    "options": [
+      "Fully Homomorphic Encryption (FHE)",
+      "Transport Layer Security (TLS) 1.3",
+      "Advanced Encryption Standard (AES) 256-bit in GCM mode",
+      "Format-Preserving Encryption (FPE)"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Fully Homomorphic Encryption (FHE)'. FHE allows computations to be performed on ciphertext. The analytics engine processes the encrypted data and generates an encrypted result, meaning the data is never exposed in plaintext in memory (data in use). TLS protects data in transit. AES-GCM protects data at rest or in transit. FPE encrypts data while maintaining its format but requires decryption to perform complex analytics."
+  },
+  {
+    "id": 11104,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "During the 'Share' phase of the cloud data lifecycle, data is exchanged between systems or organizations. To enforce strict Data Loss Prevention (DLP) and ensure that data is only accessible to authorized recipients even after it leaves the corporate perimeter, which technology is most effective?",
+    "options": [
+      "Digital Rights Management (DRM) / Information Rights Management (IRM)",
+      "Cloud Access Security Broker (CASB)",
+      "Virtual Private Network (VPN)",
+      "Data at Rest Encryption with a Cloud Provider Key (KMS)"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Digital Rights Management (DRM) / Information Rights Management (IRM)'. DRM/IRM embeds access controls and encryption directly into the document itself. Even if the file is shared outside the organization, only authenticated and authorized users can open it, effectively protecting data regardless of its location. A CASB monitors and controls data moving to/from the cloud but cannot protect a file once it is downloaded and emailed away. VPN protects data in transit. Data at Rest encryption protects the storage medium, not the shared file."
+  },
+  {
+    "id": 11105,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "According to the GDPR, a Data Protection Impact Assessment (DPIA) must be carried out before initiating processing. Which of the following scenarios is a mandatory trigger for conducting a DPIA?",
+    "options": [
+      "Systematic and extensive evaluation of personal aspects relating to natural persons based on automated processing, including profiling, on which decisions are based that produce legal effects.",
+      "The collection of standard business contact information (B2B) for the purpose of a one-time marketing email campaign.",
+      "The storage of encrypted employee payroll data on an internal, isolated, air-gapped server.",
+      "Processing personal data of EU citizens by a company with fewer than 250 employees, regardless of the data type."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Systematic and extensive evaluation of personal aspects relating to natural persons based on automated processing, including profiling, on which decisions are based that produce legal effects.' GDPR Article 35 mandates a DPIA for processing that is likely to result in a high risk to the rights and freedoms of natural persons, explicitly citing automated profiling with legal/significant effects, large-scale processing of special categories of data, and systematic monitoring of publicly accessible areas. B2B marketing, secure internal storage of payroll, and simply having fewer than 250 employees do not automatically trigger a DPIA unless high risk is present."
+  },
+  {
+    "id": 11106,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "A hospital needs to train a machine learning model using patient health records. To comply with HIPAA and GDPR, they must de-identify the data. They decide to replace direct identifiers with artificial identifiers (pseudonyms). What is the critical security characteristic of pseudonymization regarding data states and privacy?",
+    "options": [
+      "The data can no longer be attributed to a specific data subject without the use of additional information, which must be kept separately and securely.",
+      "The data is completely anonymized and falls outside the scope of GDPR and HIPAA regulations forever.",
+      "The data is encrypted using symmetric keys, ensuring it remains secure in transit but is easily readable in use.",
+      "The data is cryptographically hashed without a salt, ensuring irreversible anonymization."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'The data can no longer be attributed to a specific data subject without the use of additional information, which must be kept separately and securely.' Pseudonymization is a reversible process (unlike anonymization). Under GDPR, pseudonymized data is still considered personal data because the 'additional information' (the mapping key) exists to re-identify individuals. Anonymized data falls outside GDPR, but pseudonymized data does not. Symmetric encryption is a method, not the definition of pseudonymization. Hashing without a salt is susceptible to rainbow table attacks and is not secure anonymization."
+  },
+  {
+    "id": 11107,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "An enterprise relies on a SaaS provider for its CRM. The enterprise decides to implement a 'Hold Your Own Key' (HYOK) architecture to secure data at rest within the SaaS application. What is the most significant operational drawback of this approach regarding the 'data in use' state?",
+    "options": [
+      "The SaaS provider cannot perform server-side functions like indexing, searching, or sorting on the encrypted data.",
+      "The enterprise must physically transport hardware security modules (HSMs) to the SaaS provider's data center.",
+      "The data is completely vulnerable to interception during transit between the enterprise and the SaaS provider.",
+      "The SaaS provider gains absolute control over the encryption keys, violating the principle of least privilege."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'The SaaS provider cannot perform server-side functions like indexing, searching, or sorting on the encrypted data.' In a HYOK model, the enterprise encrypts the data before sending it to the cloud, and the cloud provider never has the keys. Because the provider only sees ciphertext, it cannot perform native application functions like searching or indexing (data in use operations) without specialized techniques like searchable encryption, severely limiting application functionality. HSM transport is not required. Data in transit is protected by TLS. The provider does not gain control of the keys; that is the point of HYOK."
+  },
+  {
+    "id": 11108,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "A US-based company transfers the personal data of EU citizens from its servers in Germany to its headquarters in California. Following the 'Schrems II' ruling by the CJEU, which invalidated the Privacy Shield, what is the primary requirement for the company to continue these transfers legally under GDPR?",
+    "options": [
+      "They must rely on Standard Contractual Clauses (SCCs) supplemented by a Transfer Impact Assessment (TIA) to ensure equivalent protection from US surveillance laws.",
+      "They must obtain a special waiver directly from the US National Security Agency (NSA) and the European Data Protection Board (EDPB).",
+      "They must encrypt all data in transit using TLS 1.3, which automatically satisfies all cross-border transfer requirements.",
+      "They must exclusively use Binding Corporate Rules (BCRs) approved by the US Federal Trade Commission (FTC)."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'They must rely on Standard Contractual Clauses (SCCs) supplemented by a Transfer Impact Assessment (TIA) to ensure equivalent protection from US surveillance laws.' Post-Schrems II, organizations relying on SCCs for transfers to countries without an adequacy decision (like the US) must perform a Transfer Impact Assessment to verify if local laws (e.g., FISA Section 702) undermine the SCCs, and implement supplementary measures if necessary. Waivers from the NSA/EDPB do not exist for this. TLS 1.3 is a technical control but does not address legal surveillance risks at rest. BCRs must be approved by EU DPAs, not the US FTC."
+  },
+  {
+    "id": 11109,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "During the 'Archive' phase of the data lifecycle, data is moved to long-term storage for regulatory compliance. An organization utilizes magnetic tape for archiving. To ensure data confidentiality and integrity against physical theft of the tapes, while maintaining long-term retrievability, what is the best practice?",
+    "options": [
+      "Implement hardware-based tape encryption and maintain a highly secure, offline key management lifecycle separate from the tapes.",
+      "Degauss the tapes immediately after the archive is written to prevent unauthorized access.",
+      "Rely solely on physical security controls at the offsite storage facility, as software encryption degrades tape media over time.",
+      "Store the encryption keys on the same physical tape as the archived data to prevent key loss over decades."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Implement hardware-based tape encryption and maintain a highly secure, offline key management lifecycle separate from the tapes.' Encrypting the tapes protects the data if stolen (data at rest). However, the critical challenge for archiving is key management; if the keys are lost over the 10-30 year retention period, the data is cryptographically shredded. Keys must be managed securely and separately. Degaussing destroys the data, defeating the purpose of archiving. Physical security is insufficient alone. Storing keys on the same tape defeats the purpose of encryption."
+  },
+  {
+    "id": 11110,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "A financial firm is classifying its data assets. They have a dataset that, if exposed, would cause a significant, though not catastrophic, negative financial impact and moderate reputational damage. According to standard commercial data classification models, how should this data be classified?",
+    "options": [
+      "Confidential / Private",
+      "Top Secret",
+      "Public",
+      "Unclassified"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Confidential / Private'. In a commercial classification scheme (Public, Internal/Sensitive, Confidential/Private, Restricted), 'Confidential' or 'Private' applies to data whose disclosure causes significant financial or reputational damage (e.g., PII, PHI, trade secrets). 'Top Secret' is a government/military classification for exceptionally grave damage. 'Public' causes no damage. 'Unclassified' is a government term for data not meeting national security classification criteria."
+  },
+  {
+    "id": 11111,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "When evaluating the data states, 'Data in Use' is traditionally the most vulnerable because it must be decrypted in system memory for processing. Which emerging hardware-level technology provides a Trusted Execution Environment (TEE) to protect data in use even if the host operating system is compromised?",
+    "options": [
+      "Secure Enclaves (e.g., Intel SGX, ARM TrustZone)",
+      "Self-Encrypting Drives (SEDs)",
+      "Hardware Security Modules (HSMs)",
+      "Trusted Platform Modules (TPMs)"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Secure Enclaves (e.g., Intel SGX, ARM TrustZone)'. Secure enclaves provide a Trusted Execution Environment (TEE) that isolates code and data in memory, protecting 'data in use' from other processes, the hypervisor, and even the host operating system. SEDs protect data at rest. HSMs are external devices for managing cryptographic keys and performing operations, not general-purpose application memory enclaves. TPMs are used for secure boot and key storage, not for isolating runtime application memory."
+  },
+  {
+    "id": 11112,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "A company acts as a 'Service Provider' under the CCPA. A 'Business' provides them with consumer PI to process. Under the CCPA, what restriction must be explicitly stated in the contract between the Business and the Service Provider to ensure the Business is not considered to be 'selling' the data?",
+    "options": [
+      "The Service Provider is prohibited from retaining, using, or disclosing the PI for any purpose other than performing the specific services outlined in the contract.",
+      "The Service Provider must pay the Business a standard monetary fee for the right to process the consumer data.",
+      "The Service Provider must assume full liability for notifying consumers directly in the event of a data breach.",
+      "The Service Provider is required to obtain explicit opt-in consent from every consumer before processing begins."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'The Service Provider is prohibited from retaining, using, or disclosing the PI for any purpose other than performing the specific services outlined in the contract.' To qualify as a Service Provider under CCPA (and thus exempt the transfer from being a 'sale'), the contract must explicitly prohibit the provider from selling the PI and from retaining, using, or disclosing it outside the direct business relationship. Paying a fee constitutes a sale. Breach notification liability and opt-in consent are not the contractual requirements that define a Service Provider exemption."
+  },
+  {
+    "id": 11113,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "During the 'Destroy' phase of the data lifecycle, an organization utilizes a cryptographic erasure (crypto-shredding) strategy for its cloud-hosted object storage. What is the absolute prerequisite for cryptographic erasure to be considered a valid sanitization method?",
+    "options": [
+      "The encryption keys used to encrypt the data must be irretrievably destroyed.",
+      "The underlying physical hard drives in the cloud data center must be degaussed.",
+      "The data must have been encrypted using an asymmetric algorithm (e.g., RSA).",
+      "A minimum of three overwriting passes must be performed on the ciphertext."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'The encryption keys used to encrypt the data must be irretrievably destroyed.' Cryptographic erasure involves deleting the cryptographic keys required to decrypt the data. If the keys are completely and permanently destroyed, the ciphertext becomes theoretically impossible to recover, rendering the data sanitized. This is crucial in cloud environments where physical drive destruction is impossible. Degaussing is physical destruction, not crypto-shredding. Symmetric encryption (like AES) is standard for data at rest, not asymmetric. Overwriting ciphertext is unnecessary if the key is destroyed."
+  },
+  {
+    "id": 11114,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "Under the GDPR, what is the role and primary responsibility of the Data Controller as opposed to the Data Processor?",
+    "options": [
+      "The Data Controller determines the purposes and means of the processing of personal data.",
+      "The Data Controller processes personal data strictly on behalf of and under the instructions of another entity.",
+      "The Data Controller is the national supervisory authority responsible for enforcing GDPR fines.",
+      "The Data Controller is the individual natural person whose data is being collected."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'The Data Controller determines the purposes and means of the processing of personal data.' According to GDPR Article 4, the Controller determines the 'why' and 'how' (purposes and means) of data processing. The entity processing data on behalf of the controller is the Data Processor. The national authority is the Supervisory Authority (DPA). The individual is the Data Subject."
+  },
+  {
+    "id": 11115,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "An organization is establishing a data classification program. They have defined the classifications (e.g., Public, Internal, Confidential) and assigned Data Owners. What is the most critical NEXT step to ensure the program is actually operationalized and enforceable?",
+    "options": [
+      "Define handling requirements and baseline security controls for each classification level.",
+      "Purchase and deploy an automated AI-driven data discovery and tagging tool.",
+      "Immediately encrypt all data classified as Confidential.",
+      "Report the classification matrix to the external regulatory compliance auditor."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Define handling requirements and baseline security controls for each classification level.' Simply labeling data is useless without defining how data at each level must be handled (storage, transmission, access, destruction). These handling standards dictate the security controls. Purchasing tools without defined standards leads to misconfiguration. Encrypting everything without a plan is disruptive. Auditing comes after implementation."
+  },
+  {
+    "id": 11116,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "When securing 'Data in Transit' across an untrusted network, an organization implements IPsec. Which IPsec protocol provides confidentiality, integrity, and authentication for the payload, and how does it protect the data state?",
+    "options": [
+      "Encapsulating Security Payload (ESP) encrypts the payload, ensuring that data moving through the network cannot be read or tampered with.",
+      "Authentication Header (AH) encrypts the payload and the IP header, providing complete confidentiality.",
+      "Internet Key Exchange (IKE) encrypts the payload during phase 2 of the tunnel establishment.",
+      "Generic Routing Encapsulation (GRE) provides the cryptographic algorithms to secure the data state."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Encapsulating Security Payload (ESP) encrypts the payload, ensuring that data moving through the network cannot be read or tampered with.' ESP provides confidentiality (encryption) as well as integrity and authentication for the payload in transit. AH provides integrity and authentication but NO confidentiality (no encryption). IKE is used for key exchange and SA negotiation, not bulk payload encryption. GRE is a tunneling protocol but does not provide inherent encryption."
+  },
+  {
+    "id": 11117,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "A retail company processes credit cards and must comply with PCI DSS. They need to store the Primary Account Number (PAN) for recurring billing but want to minimize their compliance scope. Which data security technique should they use to replace the PAN in their internal databases with a surrogate value that is mathematically unrelated to the original PAN?",
+    "options": [
+      "Tokenization",
+      "Format-Preserving Encryption (FPE)",
+      "Data Masking",
+      "Hashing"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Tokenization'. Tokenization replaces sensitive data (PAN) with a random, mathematically unrelated token. The actual PAN is stored in a highly secure, isolated token vault. Because the token cannot be reversed mathematically, systems storing only the token are largely removed from PCI DSS scope. Format-Preserving Encryption uses math, so the encrypted value is related to the plaintext. Data masking obscures data for display but doesn't solve backend storage scope. Hashing is one-way and cannot be reversed for recurring billing."
+  },
+  {
+    "id": 11118,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "Regarding the data lifecycle, what is the primary difference between data archiving and data backups?",
+    "options": [
+      "Backups are used for disaster recovery and operational restoration of active data, while archives are used for long-term retention of inactive data for regulatory compliance.",
+      "Archives use symmetric encryption, whereas backups use asymmetric encryption.",
+      "Backups are stored on immutable media like WORM drives, while archives are stored on rapidly accessible SSDs.",
+      "Archives are created daily to capture incremental changes, while backups are created annually for historical records."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Backups are used for disaster recovery and operational restoration of active data, while archives are used for long-term retention of inactive data for regulatory compliance.' Backups are short-term copies of active data meant to restore a system after failure. Archives are long-term storage of data that is no longer actively used but must be retained for legal/historical reasons. Encryption types are independent of this definition. Archives, not backups, are typically associated with WORM (Write Once Read Many) media. Backups are usually daily/frequent, while archives are less frequent."
+  },
+  {
+    "id": 11119,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "A European data subject requests a copy of their data under the GDPR's 'Right to Data Portability' (Article 20). What format must the data controller provide the data in?",
+    "options": [
+      "A structured, commonly used, and machine-readable format.",
+      "A printed, hard-copy paper format delivered via certified mail.",
+      "An encrypted proprietary format readable only by the controller's software.",
+      "A standard PDF document with watermarks indicating the subject's name."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'A structured, commonly used, and machine-readable format.' GDPR explicitly states that data portability requests must be fulfilled by providing the data in a structured, commonly used, and machine-readable format (e.g., CSV, JSON, XML) so the subject can easily transfer it to another controller. Paper copies, proprietary formats, or unstructured PDFs defeat the purpose of interoperability and portability."
+  },
+  {
+    "id": 11120,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "In the context of Asset Security and Data States, what is the primary purpose of memory scraping malware (like BlackPOS used in retail breaches)?",
+    "options": [
+      "To extract sensitive data while it is in the 'Data in Use' state, where it must exist in plaintext in RAM.",
+      "To intercept 'Data in Transit' across the corporate local area network.",
+      "To bypass full disk encryption and access 'Data at Rest' on the hard drive.",
+      "To automatically delete audit logs during the 'Destroy' phase of the data lifecycle."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'To extract sensitive data while it is in the 'Data in Use' state, where it must exist in plaintext in RAM.' Memory scraping targets data in use. Even if a system has full disk encryption (data at rest) and uses TLS (data in transit), the data (like a credit card track data) must be decrypted in the application's RAM to be processed. RAM scrapers read this plaintext memory space."
+  },
+  {
+    "id": 11121,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "A government agency is disposing of classified documents. They decide to use cross-cut shredders. To meet NSA/CSS specifications for Top Secret document destruction, what is the maximum allowable particle size for the shredded paper?",
+    "options": [
+      "1 mm x 5 mm",
+      "5 mm x 50 mm",
+      "1 cm x 1 cm",
+      "Strip-cut to 1/4 inch width"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is '1 mm x 5 mm'. High-security NSA/CSS specifications for destroying Top Secret paper documents require extreme cross-cut shredding, specifically resulting in particles no larger than 1 millimeter by 5 millimeters. This makes reconstruction impossible. 5mm x 50mm is for lower security. Strip-cut is entirely unacceptable for sensitive information."
+  },
+  {
+    "id": 11122,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "An organization is utilizing a Data Loss Prevention (DLP) solution to monitor 'Data in Motion'. To effectively inspect HTTPS traffic for sensitive data exfiltration, what architectural configuration is absolutely necessary?",
+    "options": [
+      "TLS/SSL Interception (Break and Inspect) using a trusted proxy certificate.",
+      "Deployment of endpoint DLP agents on every workstation.",
+      "Configuring SPAN/Mirror ports on the core network switches.",
+      "Implementing IPsec tunnels between the client and the DLP gateway."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'TLS/SSL Interception (Break and Inspect) using a trusted proxy certificate.' Because HTTPS (TLS) encrypts the payload, a network-based DLP cannot read the contents of 'Data in Motion' to check for sensitive data (like SSNs). The organization must deploy a proxy that decrypts the traffic, inspects it, and re-encrypts it (Break and Inspect). This requires deploying the proxy's root certificate to all client endpoints. Endpoint agents handle data in use/at rest primarily. SPAN ports only see encrypted traffic without a decryption mechanism. IPsec just adds another layer of encryption."
+  },
+  {
+    "id": 11123,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "Under the GDPR, which data privacy principle requires that personal data be processed in a manner that ensures appropriate security, including protection against unauthorized or unlawful processing and against accidental loss, destruction, or damage?",
+    "options": [
+      "Integrity and Confidentiality",
+      "Purpose Limitation",
+      "Data Minimization",
+      "Accuracy"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Integrity and Confidentiality'. Article 5(1)(f) of the GDPR defines the principle of 'Integrity and Confidentiality', which explicitly mandates appropriate technical and organizational measures to ensure data security. 'Purpose Limitation' restricts processing to specified purposes. 'Data Minimization' requires collecting only what is necessary. 'Accuracy' requires data to be kept up to date."
+  },
+  {
+    "id": 11124,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "A security architect is designing a system that collects user telemetry. To protect privacy, they want to inject a calibrated amount of statistical noise into the dataset. This allows the organization to query aggregate trends (e.g., average usage) accurately, but makes it mathematically impossible to identify the specific data of any individual user. Which privacy-enhancing technology does this describe?",
+    "options": [
+      "Differential Privacy",
+      "K-Anonymity",
+      "Homomorphic Encryption",
+      "Data Masking"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Differential Privacy'. Differential privacy works by adding cryptographic noise to a dataset or the results of queries. It provides a mathematical guarantee that the inclusion or exclusion of a single individual's data does not significantly affect the outcome of any query, thereby protecting individual privacy while allowing aggregate analysis. K-Anonymity groups individuals to hide them in a crowd but doesn't inject noise. Homomorphic encryption allows computation on ciphertext. Data masking just obscures specific fields."
+  },
+  {
+    "id": 11125,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "When assigning roles for Data Security, what is the defining responsibility of the 'Data Custodian' as opposed to the 'Data Owner'?",
+    "options": [
+      "Implementing the technical security controls, performing backups, and maintaining the systems as dictated by the Owner.",
+      "Determining the classification level of the data and authorizing access rights.",
+      "Defining the acceptable use policies and regulatory compliance frameworks for the organization.",
+      "Using the data for daily business operations and adhering to the security policies."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Implementing the technical security controls, performing backups, and maintaining the systems as dictated by the Owner.' The Data Custodian (usually IT or Security ops) implements the technical controls and maintains the data (storage, backups) based on the requirements set by the Data Owner. The Data Owner (usually a business unit manager) determines classification and access rights. The Security Steering Committee defines frameworks. The Data User uses the data."
+  },
+  {
+    "id": 11126,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "A software company operates globally. A user in California exercises their CCPA right to opt-out of the 'sale or sharing' of their personal information. Simultaneously, a user in France requests restriction of processing under GDPR. Which underlying asset security principle is fundamentally exercised in both scenarios?",
+    "options": [
+      "Data Subject Control and Consent Management",
+      "Cryptographic Non-Repudiation",
+      "High Availability and Fault Tolerance",
+      "Network Segmentation"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Data Subject Control and Consent Management'. Both the CCPA right to opt-out and the GDPR right to restriction of processing empower the data subject to control how their personal data is used, shared, and processed by the organization. This requires robust consent and preference management systems on the backend. Non-repudiation applies to digital signatures. High availability applies to uptime. Network segmentation is an infrastructure control."
+  },
+  {
+    "id": 11127,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "During the 'Create/Receive' phase of the data lifecycle, an application automatically scans incoming files for sensitive keywords and applies metadata tags (e.g., 'Confidential', 'PII'). What is the primary operational benefit of this automated data tagging?",
+    "options": [
+      "It enables downstream security controls, like DLP and IAM, to automatically enforce policies based on the file's classification.",
+      "It permanently encrypts the file before it is written to the storage medium.",
+      "It mathematically anonymizes the data to ensure compliance with privacy regulations.",
+      "It prevents the file from being deleted or modified during the 'Archive' phase."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'It enables downstream security controls, like DLP and IAM, to automatically enforce policies based on the file's classification.' Automated tagging inserts metadata into the file. Subsequent systems, like Data Loss Prevention (DLP) gateways or Cloud Access Security Brokers (CASBs), read these tags to apply rules (e.g., 'block email if tag=Confidential'). Tagging itself does not encrypt, anonymize, or make the file immutable (WORM)."
+  },
+  {
+    "id": 11128,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "Which data state is protected by configuring an AWS S3 bucket to use Server-Side Encryption with Key Management Service (SSE-KMS)?",
+    "options": [
+      "Data at Rest",
+      "Data in Transit",
+      "Data in Use",
+      "Data in Motion"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Data at Rest'. Server-Side Encryption (SSE) encrypts the data as it is written to the storage media (the physical disks in the AWS data center) and decrypts it when it is accessed. This protects data at rest. It does not protect data traveling over the network (Data in Transit/Motion) or data being processed in memory (Data in Use)."
+  },
+  {
+    "id": 11129,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "A company is disposing of a fleet of leased laptops. They utilize software to overwrite the entire hard drive with zeros, then ones, then random characters (e.g., DoD 5220.22-M standard). What is this process called, and what is its primary limitation regarding modern SSDs?",
+    "options": [
+      "Data Wiping / Clearing; It is ineffective on SSDs due to wear-leveling algorithms that prevent direct addressing of all physical memory blocks.",
+      "Degaussing; It destroys the magnetic polarity, rendering the SSD completely useless for the leasing company.",
+      "Cryptographic Erasure; It leaves the encryption keys vulnerable to extraction from the TPM chip.",
+      "Purging; It requires physically dismantling the drive platters, violating the lease agreement."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Data Wiping / Clearing; It is ineffective on SSDs due to wear-leveling algorithms that prevent direct addressing of all physical memory blocks.' Overwriting data is called wiping or clearing. On solid-state drives (SSDs), the firmware uses wear-leveling to distribute writes evenly across flash chips. The OS cannot force the SSD to overwrite a specific physical block, meaning older data may remain in over-provisioned or remapped sectors. Therefore, cryptographic erasure or physical destruction is preferred for SSDs. Degaussing is for magnetic drives, not SSDs. This is not cryptographic erasure or physical purging."
+  },
+  {
+    "id": 11130,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "Under the GDPR, what is the mandatory timeframe for a Data Controller to report a personal data breach to the competent supervisory authority, assuming the breach poses a risk to the rights and freedoms of natural persons?",
+    "options": [
+      "Without undue delay and, where feasible, not later than 72 hours after having become aware of it.",
+      "Within 30 calendar days of the initial compromise.",
+      "Immediately, but no later than 24 hours after the discovery.",
+      "Only in the annual compliance report submitted at the end of the fiscal year."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Without undue delay and, where feasible, not later than 72 hours after having become aware of it.' GDPR Article 33 strictly dictates that the controller must notify the supervisory authority without undue delay and no later than 72 hours after becoming aware of a reportable breach. 30 days, 24 hours, and annual reporting are incorrect under GDPR."
+  },
+  {
+    "id": 11131,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "An organization utilizes a scoping mechanism where credit card data is strictly confined to a specific network VLAN, effectively reducing the number of systems subject to PCI DSS compliance. Which asset security concept is being applied?",
+    "options": [
+      "Network Segmentation and Data Isolation",
+      "Data Masking",
+      "Hardware Security Module (HSM) deployment",
+      "Dynamic Data Anonymization"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Network Segmentation and Data Isolation'. By isolating the Cardholder Data Environment (CDE) into a strictly controlled VLAN, the organization segments the network. This prevents other, less secure systems from accessing the sensitive data, thereby isolating the asset and reducing the scope of compliance audits. Masking and anonymization change the data itself, not the network architecture. An HSM protects keys, not the network scope."
+  },
+  {
+    "id": 11132,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "In the context of protecting 'Data in Use', which attack technique actively seeks to exploit residual data left in RAM or CPU cache after a process has terminated or crashed?",
+    "options": [
+      "Object Reuse / Data Remanence attacks",
+      "Man-in-the-Middle (MitM) attacks",
+      "SQL Injection",
+      "Cross-Site Request Forgery (CSRF)"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Object Reuse / Data Remanence attacks'. If an operating system or application does not properly clear (zero out) memory space before reallocating it to a new process (object reuse), sensitive data in use (like decryption keys or passwords) from the previous process remains in RAM (data remanence) and can be read by the new process. MitM targets data in transit. SQLi targets databases. CSRF targets web application sessions."
+  },
+  {
+    "id": 11133,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "A US-based healthcare provider uses a cloud service to store patient records. The provider maintains the encryption keys on-premises and only sends ciphertext to the cloud. Regarding HIPAA compliance, how does this architecture impact the cloud provider's status?",
+    "options": [
+      "The cloud provider may fall under the HIPAA Conduit Exception or be considered a 'no-view' Business Associate, simplifying compliance requirements.",
+      "The cloud provider becomes the primary Covered Entity, assuming all HIPAA liability.",
+      "The architecture completely exempts the healthcare provider from HIPAA breach notification rules.",
+      "The cloud provider is strictly prohibited from storing the data for more than 30 days."
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'The cloud provider may fall under the HIPAA Conduit Exception or be considered a 'no-view' Business Associate, simplifying compliance requirements.' Under HHS guidance, a cloud provider that only stores encrypted ePHI and does not have the decryption key is a 'no-view' service. While they are still a Business Associate and require a BAA, their liability and security obligations are significantly reduced because they cannot access the ePHI. The provider remains the Covered Entity. It does not exempt the CE from breach rules if the key is lost. There is no 30-day storage limit."
+  },
+  {
+    "id": 11134,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "A security analyst discovers that an internal employee has been sending company trade secrets to a personal email address using a technique that hides the text files within the binary code of image files (.jpg). What data security concept was violated, and what technique was used?",
+    "options": [
+      "Data in Motion; Steganography",
+      "Data at Rest; Cryptography",
+      "Data in Use; Obfuscation",
+      "Data Lifecycle; Tokenization"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Data in Motion; Steganography'. The data is being transmitted out of the network, making it an issue of Data in Motion (Data in Transit). The technique used to hide the existence of the data within another file (the image) is Steganography. Cryptography scrambles data but doesn't hide its existence. Obfuscation makes code difficult to read. Tokenization replaces data with a surrogate."
+  },
+  {
+    "id": 11135,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Domain 2: Asset Security",
+    "q": "Which data destruction method relies on raising the temperature of a hard drive to its Curie temperature, thereby completely destroying its magnetic properties?",
+    "options": [
+      "Incineration / Thermal Destruction",
+      "Degaussing",
+      "Pulverizing",
+      "Cryptographic Erasure"
+    ],
+    "answer": 0,
+    "exp": "The correct answer is 'Incineration / Thermal Destruction'. Heating magnetic media to its Curie temperature changes its magnetic properties permanently, resulting in complete data loss and physical destruction. This is a form of thermal destruction or incineration. Degaussing uses a magnetic field, not heat. Pulverizing uses physical force to smash the drive. Cryptographic erasure uses logical key destruction."
+  }
+]
