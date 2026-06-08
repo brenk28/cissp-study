@@ -1,0 +1,296 @@
+[
+    {
+        "id": 271,
+        "type": "scenario",
+        "difficulty": 3,
+        "domain": "Software Development Security",
+        "scenario": "A fintech company discovers that a third-party payment library they depend on has a known vulnerability (CVE published 6 months ago). The library maintainer has not released a patch. The vulnerability allows authentication bypass.",
+        "questions": [
+            {
+                "q": "What is the MOST appropriate immediate action?",
+                "options": [
+                    "Initiate a complete rewrite of the payment service",
+                    "Implement compensating controls around the vulnerability",
+                    "Decompile the library and manually patch the vulnerable code",
+                    "File a legal injunction against the library maintainer"
+                ],
+                "answer": 1,
+                "exp": "Compensating controls (like WAF rules or input validation) provide immediate risk reduction while a permanent fix is evaluated. Initiating a complete rewrite or decompiling the library are too slow or risky for an immediate response. Filing a legal injunction does not address the immediate technical risk of the vulnerability."
+            },
+            {
+                "q": "What medium-term strategy should the team pursue?",
+                "options": [
+                    "Accept the risk formally via the risk management committee",
+                    "Fork the library and apply the fix internally",
+                    "Migrate all dependent systems to a new payment processor",
+                    "Deploy an air-gapped network for the payment processing servers"
+                ],
+                "answer": 1,
+                "exp": "Forking allows the team to apply a targeted fix while maintaining functionality until an official patch is released. Formally accepting the risk is inappropriate for an authentication bypass. Migrating to a new processor or air-gapping the network are extreme, disruptive measures that overreact to a fixable library issue."
+            },
+            {
+                "q": "What process should prevent this situation in future?",
+                "options": [
+                    "Require legal review for all open-source libraries",
+                    "Conduct weekly manual penetration tests on the application",
+                    "Implement automated dependency scanning in CI/CD",
+                    "Mandate that developers read the source code of all dependencies"
+                ],
+                "answer": 2,
+                "exp": "Automated Software Composition Analysis (SCA) in CI/CD catches known CVEs in dependencies before deployment. Legal review focuses on licenses, not CVEs. Manual penetration tests and reading source code do not scale and cannot continuously monitor for newly published vulnerabilities in existing dependencies."
+            }
+        ]
+    },
+    {
+        "id": 272,
+        "type": "scenario",
+        "difficulty": 3,
+        "domain": "Security Operations",
+        "scenario": "A SOC analyst notices a spike in failed authentication attempts against the VPN gateway from 500 different IP addresses over 2 hours. Each IP attempts only 3 logins before moving to the next account. No single account has more than 5 failures.",
+        "questions": [
+            {
+                "q": "What attack technique is being used?",
+                "options": [
+                    "Distributed denial-of-service (DDoS) against the identity provider",
+                    "Targeted brute force attack on administrative accounts",
+                    "Password spraying across multiple accounts",
+                    "Botnet-driven volumetric network disruption"
+                ],
+                "answer": 2,
+                "exp": "Low attempts per account distributed across many accounts is characteristic of password spraying, which aims to evade per-account lockout thresholds. It is not a targeted brute force since no single account is heavily attacked. While it involves many IPs like a botnet or DDoS, the goal is credential compromise, not service disruption."
+            },
+            {
+                "q": "Why didn't existing account lockout policies trigger?",
+                "options": [
+                    "The firewall failed to block the malicious IP addresses",
+                    "The authentication server was overwhelmed and failed open",
+                    "Attempts per account stayed below the lockout threshold",
+                    "The intrusion prevention system (IPS) dropped the lockout alerts"
+                ],
+                "answer": 2,
+                "exp": "Password spraying is designed to deliberately stay under lockout thresholds by distributing a small number of attempts across many accounts. The firewall and IPS do not manage identity lockouts, and the server did not fail open since it correctly logged the failed authentication attempts."
+            },
+            {
+                "q": "What detection improvement would catch this earlier?",
+                "options": [
+                    "Implement a geographic block list for all foreign IP addresses",
+                    "Correlate failed logins across accounts by time window",
+                    "Decrease the account lockout threshold to two failed attempts",
+                    "Deploy an endpoint detection and response (EDR) agent to the VPN gateway"
+                ],
+                "answer": 1,
+                "exp": "Correlating failed logins across accounts over a specific time window reveals distributed patterns that are invisible to per-account rules. Geographic blocking is easily bypassed using domestic proxies. Decreasing the lockout threshold to two attempts creates a high risk of self-inflicted denial of service. EDR is for host-level threats, not authentication log correlation."
+            }
+        ]
+    },
+    {
+        "id": 273,
+        "type": "scenario",
+        "difficulty": 3,
+        "domain": "Security and Risk Management",
+        "scenario": "An organization's BIA identifies the payment processing system as the most critical function with an RTO of 1 hour and RPO of 5 minutes. Current DR capabilities provide RTO of 6 hours and RPO of 1 hour. Budget allows improvement to only one metric.",
+        "questions": [
+            {
+                "q": "Which metric gap poses the GREATER business risk?",
+                "options": [
+                    "RTO gap (6 hours vs 1 hour required)",
+                    "The maximum tolerable downtime (MTD) exceeding the RPO",
+                    "The lack of an updated disaster recovery policy document",
+                    "RPO gap (1 hour vs 5 minutes required)"
+                ],
+                "answer": 0,
+                "exp": "The RTO gap results in 5 extra hours of complete payment system outage, severely impacting revenue and operations. The RPO gap means losing 55 minutes of transactions, which can often be recovered or reconstructed from other logs. The RTO gap therefore poses a more immediate and severe threat to business survival."
+            },
+            {
+                "q": "What technology BEST addresses the RTO gap for payment processing?",
+                "options": [
+                    "Synchronous storage replication to a warm site",
+                    "Cloud-based continuous data protection (CDP)",
+                    "Deploying load balancers across multiple availability zones",
+                    "Active-active clustering with automatic failover"
+                ],
+                "answer": 3,
+                "exp": "Active-active clustering provides near-instant automatic failover, achieving the sub-hour RTO requirement. Synchronous replication and CDP primarily improve RPO (data loss) rather than the time to restore service (RTO). A warm site would require manual intervention, missing the 1-hour RTO window."
+            },
+            {
+                "q": "How should the remaining gap be communicated to leadership?",
+                "options": [
+                    "Request an immediate emergency budget override from the CEO",
+                    "Downgrade the system's criticality in the BIA to match current capabilities",
+                    "Formally document as accepted risk with business impact",
+                    "Purchase cyber insurance to fully transfer the remaining risk"
+                ],
+                "answer": 2,
+                "exp": "The remaining gap must be formally documented as an accepted risk with clear business impacts, ensuring leadership owns the decision and the budget constraints. Downgrading the BIA merely hides the problem, while cyber insurance cannot transfer the operational risk of downtime, only the financial loss."
+            }
+        ]
+    },
+    {
+        "id": 274,
+        "type": "scenario",
+        "difficulty": 3,
+        "domain": "Asset Security",
+        "scenario": "A data classification review reveals that 40% of documents marked 'Internal' actually contain customer PII that should be classified 'Confidential.' The misclassification has persisted for 2 years across 3 million documents.",
+        "questions": [
+            {
+                "q": "What is the MOST significant risk created by this misclassification?",
+                "options": [
+                    "Regulatory fines for failing to update the data retention policy",
+                    "PII may lack appropriate access controls and handling procedures",
+                    "The automated backup system may skip backing up internal documents",
+                    "Cryptographic keys used for encryption may expire prematurely"
+                ],
+                "answer": 1,
+                "exp": "Lower classification means weaker controls, leading to PII being accessible to unauthorized personnel and lacking proper handling procedures. Regulatory fines are a secondary consequence of the access failure. Backups and cryptographic keys operate independently of document-level classification tags."
+            },
+            {
+                "q": "What is the MOST practical remediation approach?",
+                "options": [
+                    "Deploy automated DLP to scan and reclassify based on content",
+                    "Temporarily revoke all employee access until the data is sorted",
+                    "Require the original document creators to manually verify each file",
+                    "Migrate all 'Internal' documents to a highly restricted 'Confidential' enclave"
+                ],
+                "answer": 0,
+                "exp": "Automated content-based classification using DLP is the only practical way to scale remediation across millions of documents. Manual verification by document owners is impossible at this scale. Revoking access or blanket-migrating all 'Internal' documents would cause unacceptable business disruption and over-secure harmless data."
+            },
+            {
+                "q": "What preventive control should be implemented?",
+                "options": [
+                    "Automated classification at creation based on content analysis",
+                    "Mandatory annual security awareness training on data handling",
+                    "Implement digital rights management (DRM) for all external emails",
+                    "Require managerial sign-off before saving any document to the network share"
+                ],
+                "answer": 0,
+                "exp": "Automated classification at creation acts as a technical control to detect PII patterns and apply the correct label without relying on user judgment. Security training is a helpful administrative control but fails against human error. DRM protects data but does not classify it, and managerial sign-offs are operationally unscalable."
+            }
+        ]
+    },
+    {
+        "id": 275,
+        "type": "scenario",
+        "difficulty": 3,
+        "domain": "Security Architecture and Engineering",
+        "scenario": "A zero-day vulnerability is published for the organization's edge firewall. The vendor estimates a patch in 7 days. The vulnerability allows unauthenticated remote code execution. Taking the firewall offline is not operationally viable.",
+        "questions": [
+            {
+                "q": "What is the BEST immediate compensating control?",
+                "options": [
+                    "Deploy a honeypot to distract potential attackers from the firewall",
+                    "Place an additional filtering device in front of the firewall",
+                    "Change the default administrative credentials on the firewall",
+                    "Perform a full penetration test to verify the vulnerability's impact"
+                ],
+                "answer": 1,
+                "exp": "An upstream filter (such as an IPS or ACLs on a border router) can block known exploit patterns while the firewall remains operational. Changing administrative credentials does not mitigate unauthenticated remote code execution. Deploying a honeypot or running a penetration test delays immediate mitigation and leaves the firewall exposed."
+            },
+            {
+                "q": "What additional monitoring should be implemented?",
+                "options": [
+                    "Increase the retention period for endpoint antivirus logs",
+                    "Enable full packet capture on the internal switching fabric",
+                    "Enhanced monitoring of firewall management interfaces",
+                    "Audit all user authentication events in the Active Directory environment"
+                ],
+                "answer": 2,
+                "exp": "RCE exploits often target firewall management interfaces or specific edge services; enhanced monitoring here detects exploitation attempts. Active Directory logs, internal switching fabric captures, and endpoint AV logs focus on post-exploitation or internal movements rather than the initial edge attack vector."
+            },
+            {
+                "q": "After patching, what validation is required?",
+                "options": [
+                    "Conduct a disaster recovery failover test",
+                    "Review the vendor's patch release notes for confirmation",
+                    "Update the asset inventory with the new firmware version number",
+                    "Verify the patch applied correctly and test for the vulnerability"
+                ],
+                "answer": 3,
+                "exp": "The organization must verify that the patch was installed correctly and perform targeted vulnerability scanning to ensure the RCE is no longer exploitable. Reviewing release notes or updating asset inventory are administrative tasks that do not confirm technical mitigation. A disaster recovery test evaluates availability, not vulnerability remediation."
+            }
+        ]
+    },
+    {
+        "id": 276,
+        "type": "scenario",
+        "difficulty": 3,
+        "domain": "Communication and Network Security",
+        "scenario": "A retail company processes card payments across 200 stores connected via IPSec VPN to headquarters. PCI DSS assessment reveals that flat store networks allow POS terminals, employee workstations, and security cameras to communicate freely.",
+        "questions": [
+            {
+                "q": "What PCI DSS requirement does this flat network violate?",
+                "options": [
+                    "Network segmentation to isolate cardholder data",
+                    "Requirement to encrypt cardholder data in transit across public networks",
+                    "Requirement to restrict physical access to cardholder data",
+                    "Requirement to develop and maintain secure systems and applications"
+                ],
+                "answer": 0,
+                "exp": "PCI DSS requires segmentation to isolate the Cardholder Data Environment (CDE) from out-of-scope systems. A flat network brings workstations and cameras into scope, violating this principle. The IPSec VPN already encrypts data in transit, and the issue relates to logical network isolation rather than physical access or generic secure development."
+            },
+            {
+                "q": "What is the MOST effective segmentation approach for 200 stores?",
+                "options": [
+                    "VLAN segmentation with ACLs managed via centralized template",
+                    "Deploying dedicated hardware firewalls for every individual POS terminal",
+                    "Implementing zero-trust microsegmentation agents on the security cameras",
+                    "Physically rewiring all 200 stores to use separate network switches"
+                ],
+                "answer": 0,
+                "exp": "VLANs with centralized ACL templates scale effectively across 200 stores, logically isolating CDE traffic without requiring physical changes. Deploying individual firewalls or physically rewiring 200 stores is cost-prohibitive and operationally impractical. Security cameras (IoT) typically cannot support complex microsegmentation agents."
+            },
+            {
+                "q": "What does proper segmentation achieve for PCI scope?",
+                "options": [
+                    "Expands the assessment to include the centralized management server",
+                    "Shifts the liability of PCI compliance to the network equipment vendor",
+                    "Downgrades the organization to a lower merchant compliance level",
+                    "Reduces scope to only the CDE segment per store"
+                ],
+                "answer": 3,
+                "exp": "Validated network segmentation reduces the assessment scope strictly to the Cardholder Data Environment (CDE) segments, excluding workstations and cameras. Merchant compliance levels are dictated by transaction volume, not segmentation. Liability for compliance always rests with the organization processing the payments, not the vendor."
+            }
+        ]
+    },
+    {
+        "id": 277,
+        "type": "scenario",
+        "difficulty": 3,
+        "domain": "Identity and Access Management",
+        "scenario": "A cloud-native company uses OAuth 2.0 for API authorization. A security audit reveals that access tokens have a 24-hour lifetime, refresh tokens never expire, and token revocation is not implemented. An employee's laptop is stolen.",
+        "questions": [
+            {
+                "q": "What is the MOST immediate risk from the stolen laptop?",
+                "options": [
+                    "Cached tokens provide API access until they expire or are revoked",
+                    "The attacker can reverse-engineer the OAuth 2.0 source code",
+                    "The underlying TLS certificates on the laptop can be exported",
+                    "The attacker can perform an SQL injection attack via the cached credentials"
+                ],
+                "answer": 0,
+                "exp": "Long-lived tokens cached on the device grant direct, authenticated API access without requiring the attacker to re-authenticate or use complex exploits like SQL injection. OAuth 2.0 is an open standard, so source code secrecy is irrelevant. While TLS certificates could be compromised, the active tokens are the immediate authorization mechanism at risk."
+            },
+            {
+                "q": "What is the MOST critical gap in the token architecture?",
+                "options": [
+                    "Use of asymmetric encryption for token signing",
+                    "Failure to bind tokens to a specific IP address",
+                    "Lack of token revocation capability",
+                    "Reliance on standard JSON Web Tokens (JWT) instead of SAML assertions"
+                ],
+                "answer": 2,
+                "exp": "Without a revocation mechanism, compromised tokens (especially long-lived ones) cannot be invalidated, allowing access to persist for their full lifetime. IP binding is often impractical in dynamic cloud environments. JWTs and asymmetric encryption are industry standards for OAuth, not architectural flaws."
+            },
+            {
+                "q": "What token policy changes are MOST appropriate?",
+                "options": [
+                    "Implement basic authentication for all API endpoints",
+                    "Encrypt all access tokens using AES-256 before transmission",
+                    "Shorten token lifetime, add revocation, expire refresh tokens",
+                    "Migrate the identity provider to an on-premises active directory"
+                ],
+                "answer": 2,
+                "exp": "Implementing short-lived access tokens, revocable refresh tokens, and strict expiration policies directly limits the utility of stolen credentials. Basic authentication is a regression in security. Encrypting tokens in transit is already handled by TLS, and moving the IdP on-premises does not inherently fix token lifecycle configurations."
+            }
+        ]
+    }
+]

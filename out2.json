@@ -1,0 +1,307 @@
+[
+  {
+    "id": 34,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Asset Security",
+    "q": "Your organization is moving sensitive data to a cloud provider that offers encryption at rest. What should you verify FIRST?",
+    "options": [
+      "The specific block cipher and key length used by the provider",
+      "The provider's alignment with ISO 27001 physical security standards",
+      "Perform an independent vulnerability scan of the provider's infrastructure",
+      "Who manages and controls the encryption keys"
+    ],
+    "answer": 3,
+    "exp": "Who manages and controls the encryption keys is correct because if the cloud provider controls the keys, they can decrypt your data regardless of the algorithm. 'The specific block cipher and key length' is a technical trap; while AES-256 is strong, the best algorithm is useless if you don't control the keys. 'The provider's alignment with ISO 27001' is a management trap; physical security is important, but logical access to keys is the primary vulnerability in cloud encryption. 'Perform an independent vulnerability scan' is the right action but wrong time/context; it's rarely permitted by cloud providers and doesn't address the immediate data confidentiality risk of key ownership."
+  },
+  {
+    "id": 35,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Asset Security",
+    "q": "PII is stored in a database shared with non-sensitive marketing data. An auditor flags this. What principle is being violated?",
+    "options": [
+      "Data minimization and proper data segregation",
+      "Transparent Data Encryption (TDE) for data at rest",
+      "Mandatory Access Control (MAC) for database administrators",
+      "Data retention and secure disposal life-cycle policies"
+    ],
+    "answer": 0,
+    "exp": "Data minimization and proper data segregation is correct because sensitive PII should be isolated from non-sensitive data to minimize attack surfaces. 'Transparent Data Encryption (TDE)' is a technical trap; TDE encrypts the data at rest but doesn't solve the architectural flaw of mixing data classifications. 'Mandatory Access Control' is also a technical trap; while strict access control is good, it doesn't address the fundamental lack of segregation. 'Data retention and secure disposal' is the right action at the wrong time; it's a critical phase of the data lifecycle, but the auditor is flagging the current storage architecture, not how long it's kept."
+  },
+  {
+    "id": 36,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Asset Security",
+    "q": "A SaaS vendor's contract allows them to use anonymized customer data for analytics. What is your PRIMARY concern?",
+    "options": [
+      "Insecure API endpoints transmitting the analytical data",
+      "Failing to conduct a vendor risk assessment prior to signing",
+      "Re-identification through data correlation",
+      "Non-compliance with internal acceptable use policies"
+    ],
+    "answer": 2,
+    "exp": "Re-identification through data correlation is correct because anonymized data can often be cross-referenced with other datasets to identify individuals. 'Insecure API endpoints' is a technical trap; while API security is important, the core issue is the privacy implication of the data usage itself. 'Failing to conduct a vendor risk assessment' is the right action at the wrong time; this should have occurred before the contract was finalized, but the immediate concern now is the privacy risk. 'Non-compliance with internal acceptable use policies' is a management trap; AUPs govern employee behavior, not third-party SaaS vendor data usage."
+  },
+  {
+    "id": 37,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Asset Security",
+    "q": "An employee's laptop with FDE and login required was stolen. What should be your FIRST action?",
+    "options": [
+      "Remotely wipe the device via MDM",
+      "Analyze the MDM logs to determine the device's geolocation",
+      "Initiate the formal incident response reporting matrix",
+      "Revoke the user's enterprise identity and access tokens"
+    ],
+    "answer": 0,
+    "exp": "Remotely wipe the device via MDM is correct because immediate containment is required to destroy the data before an attacker bypasses the OS login. 'Analyze the MDM logs for geolocation' is a technical trap; tracking the device is secondary to securing the data on it. 'Initiate the formal incident response reporting matrix' is a management trap; administrative reporting must not delay urgent technical containment. 'Revoke the user's enterprise identity' is the right action at the wrong time; it is a critical immediate next step, but neutralizing the stolen physical asset itself must happen first."
+  },
+  {
+    "id": 47,
+    "type": "ms",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "Which of the following are symmetric encryption algorithms? (Select ALL that apply)",
+    "options": [
+      "AES",
+      "Diffie-Hellman Key Exchange",
+      "3DES",
+      "HMAC (Hash-based Message Authentication Code)",
+      "Blowfish"
+    ],
+    "answers": [
+      0,
+      2,
+      4
+    ],
+    "exp": "AES, 3DES, and Blowfish are correct because they all use a single shared key for both encryption and decryption. 'Diffie-Hellman Key Exchange' is a technical trap; it is used to securely establish a symmetric key over an insecure channel, but it is an asymmetric protocol itself. 'HMAC' is also a technical trap; while it often uses a symmetric key for message integrity and authentication, it is a hashing construct, not a symmetric encryption algorithm."
+  },
+  {
+    "id": 49,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "You need past encrypted sessions protected even if the server's private key is later compromised. What feature is required?",
+    "options": [
+      "AES-GCM for authenticated encryption",
+      "Implementation of a strict key rotation policy",
+      "Revoking the compromised certificate via CRL/OCSP",
+      "Perfect Forward Secrecy (PFS)"
+    ],
+    "answer": 3,
+    "exp": "Perfect Forward Secrecy (PFS) is correct because it uses ephemeral key exchanges to ensure past sessions cannot be decrypted even if the long-term private key is compromised. 'AES-GCM' is a technical trap; it provides confidentiality and integrity for the current session, but relies on the key exchange mechanism, offering no protection if the main key is compromised. 'Implementation of a strict key rotation policy' is a management trap; while good practice, it doesn't protect sessions that occurred before the rotation if the key is exposed. 'Revoking the compromised certificate' is the right action at the wrong time; it stops future trust in the compromised key, but does nothing to protect the past sessions that were already captured."
+  },
+  {
+    "id": 50,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "A facility has a reception area, offices, a data center, and a loading dock. Which areas should have mantrap access?",
+    "options": [
+      "All areas designated as 'Restricted' by the internal security policy",
+      "Any security zone utilizing biometric multifactor authentication",
+      "The main reception area, to establish a secure perimeter immediately",
+      "Data center and loading dock entrances"
+    ],
+    "answer": 3,
+    "exp": "Data center and loading dock entrances is correct because mantraps prevent tailgating in highly sensitive or high-risk entry points. 'All areas designated as Restricted' is a management trap; policies dictate classifications, but deploying mantraps for every restricted area (like generic offices) is operationally unfeasible. 'Any security zone utilizing biometric authentication' is a technical trap; biometrics authenticate the user, but a mantrap is still needed to enforce physical single-entry. 'The main reception area' is the right action in the wrong context; securing the perimeter is good, but a mantrap at the public reception chokes normal business flow and is overly restrictive."
+  },
+  {
+    "id": 51,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "What is the PRIMARY security benefit TPM provides over software-based encryption?",
+    "options": [
+      "Offloading cryptographic processing to increase CPU performance",
+      "Hardware-based key storage resistant to extraction",
+      "Enabling full disk encryption before the operating system boots",
+      "Ensuring compliance with FIPS 140-2 cryptographic standards"
+    ],
+    "answer": 1,
+    "exp": "Hardware-based key storage resistant to extraction is correct because a TPM is a dedicated physical chip that prevents memory dumping or OS-level attacks from stealing keys. 'Offloading cryptographic processing' is a technical trap; modern CPUs use instruction sets like AES-NI for speed, TPMs are actually relatively slow and focus on secure storage, not processing speed. 'Enabling full disk encryption before the OS boots' is the right action but wrong focus; while a TPM facilitates secure boot, the primary security benefit is the unextractable key storage. 'Ensuring compliance with FIPS 140-2' is a management trap; while a TPM might be FIPS certified, the technical capability of hardware protection is the primary security benefit."
+  },
+  {
+    "id": 52,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security Architecture and Engineering",
+    "q": "A WAF, network firewall, and IDS protect a web app. SQL injection still succeeds. What does this MOST likely indicate?",
+    "options": [
+      "Lack of mandatory secure coding training for the development team",
+      "Encrypted traffic bypassed network inspection",
+      "The IDS relied on signature-based rather than anomaly-based detection",
+      "Failure to perform dynamic application security testing (DAST) before deployment"
+    ],
+    "answer": 1,
+    "exp": "Encrypted traffic bypassed network inspection is correct because network controls (WAF, IDS) cannot inspect payloads within an HTTPS tunnel unless TLS inspection is configured. 'Lack of mandatory secure coding training' is a management trap; while a root cause of the vulnerability, it doesn't explain why the deployed technical controls missed the attack payload in transit. 'The IDS relied on signature-based detection' is a technical trap; even the best anomaly detection cannot read encrypted traffic. 'Failure to perform DAST before deployment' is the right action at the wrong time; DAST might have found the vulnerability during development, but the current issue is a failure of the operational detective/preventative controls."
+  },
+  {
+    "id": 53,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "You are selecting a hash algorithm for software download integrity. Which should you choose?",
+    "options": [
+      "RSA-2048 with optimal asymmetric encryption padding",
+      "SHA-256 secure hash",
+      "A proprietary algorithm approved by the Change Advisory Board (CAB)",
+      "Implementing a mandatory code signing policy for all releases"
+    ],
+    "answer": 1,
+    "exp": "SHA-256 secure hash is correct because it provides strong cryptographic integrity without known practical collision vulnerabilities. 'RSA-2048' is a technical trap; it is an asymmetric encryption algorithm, not a hashing algorithm used for simple integrity checks. 'A proprietary algorithm approved by the CAB' is a management trap; in cryptography, proprietary (untested) algorithms are fundamentally insecure regardless of management approval. 'Implementing a mandatory code signing policy' is the right action but wrong focus; code signing uses hashing under the hood, but the question explicitly asks which *hash algorithm* to select."
+  },
+  {
+    "id": 54,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "A team proposes ECB mode for AES encryption of customer images. What is your PRIMARY concern?",
+    "options": [
+      "Identical blocks produce identical ciphertext",
+      "ECB mode requires the transmission of a complex initialization vector (IV)",
+      "The lack of formal approval from the enterprise architecture board",
+      "Proceeding with encryption before conducting a data privacy impact assessment"
+    ],
+    "answer": 0,
+    "exp": "Identical blocks produce identical ciphertext is correct because ECB encrypts each block independently without an initialization vector, meaning repeating patterns in the plaintext (common in images) will expose the data's structural footprint. 'ECB mode requires a complex IV' is a technical trap; it's factually wrong because ECB is the only mode that specifically does *not* use an IV. 'Lack of formal approval from the architecture board' is a management trap; governance is important, but the core issue is the mathematical flaw of ECB for this use case. 'Proceeding before a privacy assessment' is the right action at the wrong time; assessing privacy is crucial, but it doesn't mitigate the catastrophic technical flaw of selecting ECB."
+  },
+  {
+    "id": 55,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security Architecture and Engineering",
+    "q": "You need encryption for data at rest and in transit with automatic key rotation. Which approach is BEST?",
+    "options": [
+      "Implementing TLS 1.3 coupled with AES-256 full disk encryption",
+      "HSM with automated key lifecycle management",
+      "Enforcing strict access control policies via a unified identity provider",
+      "Performing a comprehensive audit of existing cryptographic assets"
+    ],
+    "answer": 1,
+    "exp": "HSM with automated key lifecycle management is correct because Hardware Security Modules provide secure key storage and automate the generation, rotation, and destruction of keys. 'Implementing TLS 1.3 with AES-256' is a technical trap; while these provide in-transit and at-rest encryption, they do not inherently solve the complex requirement of *automatic key rotation*. 'Enforcing strict access control policies' is a management trap; IAM is critical for security but does not perform cryptographic key rotation. 'Performing a comprehensive audit' is the right action at the wrong time; an audit is a necessary preliminary step, but it is not the architectural solution to providing automated rotation."
+  },
+  {
+    "id": 67,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Communication and Network Security",
+    "q": "Internal DNS servers are responding to external queries. What should you do FIRST?",
+    "options": [
+      "Configure split-horizon DNS views",
+      "Implement DNS over HTTPS (DoH) for all external queries",
+      "Update the incident response plan to address DNS data leaks",
+      "Conduct a root-cause analysis on the misconfiguration"
+    ],
+    "answer": 0,
+    "exp": "Configure split-horizon DNS views is correct because it immediately stops the information disclosure by serving a restricted public zone to external queries while keeping the internal zone private. 'Implement DNS over HTTPS' is a technical trap; DoH encrypts the queries in transit but does absolutely nothing to prevent the server from handing out internal records to external attackers. 'Update the incident response plan' is a management trap; administrative updates do not fix the actively bleeding technical vulnerability. 'Conduct a root-cause analysis' is the right action at the wrong time; you must first contain the leak (split-horizon) before investigating how the firewall or server was misconfigured."
+  },
+  {
+    "id": 68,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Communication and Network Security",
+    "q": "An attacker sends ICMP echo requests with a spoofed victim source to a broadcast address. What attack is this?",
+    "options": [
+      "Fraggle attack",
+      "SYN Flood",
+      "DNS Amplification",
+      "Smurf attack"
+    ],
+    "answer": 3,
+    "exp": "Smurf attack is correct because it explicitly leverages ICMP Echo requests sent to a broadcast address with a spoofed victim IP, causing all hosts to reply and flood the victim. 'Fraggle attack' is a technical trap; it is nearly identical to a Smurf attack but utilizes UDP (typically port 7) instead of ICMP. 'SYN Flood' is a technical trap; it exhausts server resources via half-open TCP connections, not ICMP amplification. 'DNS Amplification' is also a technical trap; it uses spoofed source IPs for reflection, but exploits vulnerable DNS servers with large TXT records, not ICMP broadcast addresses."
+  },
+  {
+    "id": 69,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Communication and Network Security",
+    "q": "You need site-to-site encryption with confidentiality, integrity, and authentication. What is the BEST solution?",
+    "options": [
+      "Mutual TLS (mTLS) configured via a reverse proxy",
+      "Drafting an Interconnection Security Agreement (ISA)",
+      "IPSec VPN connection",
+      "Deploying endpoint detection and response (EDR) across both sites"
+    ],
+    "answer": 2,
+    "exp": "IPSec VPN connection is correct because it operates at the network layer (Layer 3) to transparently encrypt and authenticate all traffic between two physical sites. 'Mutual TLS (mTLS) via reverse proxy' is a technical trap; mTLS provides strong authentication and encryption, but it operates at the application layer and is suited for specific service-to-service communication, not routing entire site networks. 'Drafting an Interconnection Security Agreement (ISA)' is a management trap; an ISA governs the policy and terms of the connection, but is not a technical encryption solution. 'Deploying EDR' is the right action at the wrong time; host-based security is essential, but it does not address the core requirement of encrypting in-transit network traffic between sites."
+  },
+  {
+    "id": 70,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Communication and Network Security",
+    "q": "Database servers on VLAN 10, app servers on VLAN 20, workstations on VLAN 30. What firewall approach is MOST secure?",
+    "options": [
+      "Stateful packet inspection strictly limited to required TCP ports",
+      "Default deny all; explicit allow per business need",
+      "Aligning the firewall ruleset entirely with the organizational compliance matrix",
+      "Conducting a formal risk assessment of the inter-VLAN routing topology"
+    ],
+    "answer": 1,
+    "exp": "Default deny all; explicit allow per business need is correct because it enforces the foundational principle of least privilege, blocking all traffic unless explicitly required. 'Stateful packet inspection on required ports' is a technical trap; while stateful inspection is good, it is merely a firewall feature and doesn't represent the comprehensive 'default deny' strategy needed for overall security. 'Aligning rules with the compliance matrix' is a management trap; compliance drives baseline requirements, but technical rule configuration must be driven by explicit operational business needs, not just a checkbox. 'Conducting a risk assessment' is the right action at the wrong time; assessing risk is a prerequisite to network design, but the question asks for the operational firewall approach to secure the already-designed VLANs."
+  },
+  {
+    "id": 71,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Communication and Network Security",
+    "q": "You need secure guest Wi-Fi without corporate network exposure. What is BEST?",
+    "options": [
+      "Guest SSID on an isolated VLAN, internet only",
+      "WPA3-Enterprise with 802.1X certificate-based authentication",
+      "Requiring guests to electronically sign an Acceptable Use Policy (AUP)",
+      "Deploying a captive portal to log guest identity and connection metadata"
+    ],
+    "answer": 0,
+    "exp": "Guest SSID on an isolated VLAN, internet only is correct because network segmentation physically or logically prevents guest traffic from routing to the corporate network, neutralizing lateral movement risks. 'WPA3-Enterprise with 802.1X' is a technical trap; it provides extremely strong encryption and authentication, but if the SSID drops users onto the corporate VLAN, internal assets are still fully exposed. 'Requiring an AUP signature' is a management trap; a legal agreement provides administrative cover but zero technical isolation. 'Deploying a captive portal' is the right action for visibility, but the wrong time/focus; logging who is on the network is useless if they are actively pivoting into your corporate servers due to lack of isolation."
+  },
+  {
+    "id": 73,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Communication and Network Security",
+    "q": "You see DNS queries with very long subdomain strings to one external domain. What attack is MOST likely?",
+    "options": [
+      "A decentralized distributed denial of service (DDoS) reflection",
+      "DNS tunneling for data exfiltration",
+      "A violation of the corporate data loss prevention (DLP) policy",
+      "Immediately sinkholing the suspicious external domain"
+    ],
+    "answer": 1,
+    "exp": "DNS tunneling for data exfiltration is correct because attackers encode stolen data (like base64) into the subdomain portion of a DNS query to bypass firewalls. 'DDoS reflection' is a technical trap; while DNS is used for reflection attacks, those rely on high volumes of queries with spoofed sources, not highly unique, long subdomain strings. 'A violation of the DLP policy' is a management trap; while true that exfiltration violates DLP, it describes the business impact, not the specific technical attack occurring. 'Immediately sinkholing the domain' is the right action at the wrong time; it is the correct incident response step, but the question asks to identify the attack itself, not the remediation."
+  },
+  {
+    "id": 86,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Identity and Access Management",
+    "q": "Which OAuth 2.0 grant type is MOST appropriate for a mobile app?",
+    "options": [
+      "SAML 2.0 Web Browser SSO Profile",
+      "Authorization Code with PKCE",
+      "A heavily audited Zero Trust federated identity model",
+      "Proactively revoking any previously issued static client secrets"
+    ],
+    "answer": 1,
+    "exp": "Authorization Code with PKCE is correct because mobile apps cannot securely store a static client secret. PKCE dynamically generates a secret for each request, preventing interception by malicious apps on the device. 'SAML 2.0' is a technical trap; SAML is excellent for enterprise SSO in web browsers, but OAuth/OIDC is the modern standard for API authorization in mobile applications. 'Zero Trust federated identity' is a management trap; Zero Trust is an overarching strategic architecture, not a specific protocol grant type. 'Revoking static client secrets' is the right action at the wrong time; you must secure the new implementation with PKCE first before deprecating legacy insecure secrets."
+  },
+  {
+    "id": 87,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Identity and Access Management",
+    "q": "A former contractor still has VPN access 3 months after termination. What does this indicate?",
+    "options": [
+      "Failure of the IPsec tunnel's cryptographic key rotation mechanism",
+      "Inadequate offboarding procedures",
+      "A high probability of a sophisticated insider threat campaign",
+      "Executing an emergency suspension of the contractor's Active Directory account"
+    ],
+    "answer": 1,
+    "exp": "Inadequate offboarding procedures is correct because the failure to revoke access for terminated personnel directly indicates a breakdown in identity lifecycle management and administrative processes. 'Failure of the IPsec cryptographic key rotation' is a technical trap; the VPN tunnel itself is functioning perfectly, the issue is the identity system allowing the user to authenticate. 'A high probability of an insider threat' is a management trap; while risk is elevated, the immediate fact indicated is a process failure, not a guaranteed malicious campaign. 'Executing an emergency suspension' is the right action at the wrong time; you must definitely kill the account, but the question asks what the prolonged access *indicates* about the current security posture."
+  }
+]

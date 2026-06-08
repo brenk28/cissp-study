@@ -1,0 +1,1835 @@
+[
+  {
+    "id": 1,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "Which element of the CIA triad ensures that data is not altered by unauthorized people?",
+    "options": [
+      "Integrity",
+      "Availability",
+      "Confidentiality",
+      "Authorization"
+    ],
+    "answer": 0,
+    "exp": "Integrity is correct because it ensures that data remains unchanged, authentic, and protected from unauthorized modification. Availability is incorrect as it ensures data is accessible when needed, not that it is unaltered. Confidentiality is incorrect because it focuses on preventing unauthorized disclosure of information. Authorization is incorrect because it is the process of granting access rights, not the specific triad element protecting data alteration."
+  },
+  {
+    "id": 6,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "You are implementing a control to fix a broken server after a crash. What type of control function is this?",
+    "options": [
+      "Corrective",
+      "Preventive",
+      "Detective",
+      "Deterrent"
+    ],
+    "answer": 0,
+    "exp": "Corrective is correct because corrective controls are specifically designed to restore systems or processes to their normal state after an incident has occurred. Preventive is incorrect because it aims to stop an incident from occurring in the first place. Detective is incorrect because it is designed to identify and alert on incidents during or after they happen, not fix them. Deterrent is incorrect because its purpose is to discourage attackers from attempting an exploit."
+  },
+  {
+    "id": 8,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "Which risk response involves shifting the financial burden of a loss to another party?",
+    "options": [
+      "Risk transfer",
+      "Risk avoidance",
+      "Risk mitigation",
+      "Risk acceptance"
+    ],
+    "answer": 0,
+    "exp": "Risk transfer is correct because it involves passing the financial impact of a risk to a third party, such as purchasing insurance or outsourcing a service. Risk avoidance is incorrect because it involves stopping the activity that causes the risk entirely. Risk mitigation is incorrect because it focuses on reducing the likelihood or impact of the risk through controls. Risk acceptance is incorrect because it means the organization absorbs the financial burden of the risk without taking action to reduce or transfer it."
+  },
+  {
+    "id": 9,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "Under GDPR, what is the maximum time allowed to notify the supervisory authority after a data breach?",
+    "options": [
+      "48 hours",
+      "7 business days",
+      "72 hours",
+      "24 hours"
+    ],
+    "answer": 2,
+    "exp": "72 hours is correct because GDPR Article 33 explicitly mandates that data controllers notify the appropriate supervisory authority within 72 hours of becoming aware of a breach. 48 hours and 24 hours are incorrect because they are shorter than the mandated GDPR timeline. 7 business days is incorrect as it represents a much longer window and is not the standard defined by GDPR."
+  },
+  {
+    "id": 10,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "Which security framework was specifically designed for federal information systems in the United States?",
+    "options": [
+      "COBIT 2019",
+      "NIST RMF (SP 800-37)",
+      "ISO 27001",
+      "ITIL v4"
+    ],
+    "answer": 1,
+    "exp": "NIST RMF (SP 800-37) is correct because the National Institute of Standards and Technology created the Risk Management Framework specifically to guide U.S. federal agencies in securing their information systems, as mandated by FISMA. COBIT 2019 is incorrect as it is a broader IT governance framework. ISO 27001 is incorrect because it is an international standard for information security management, not specific to U.S. federal systems. ITIL v4 is incorrect as it focuses on IT service management rather than federal security systems."
+  },
+  {
+    "id": 11,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "What is the primary difference between qualitative and quantitative risk analysis?",
+    "options": [
+      "Quantitative relies on expert judgment rather than formulas",
+      "Qualitative provides more precise results than quantitative",
+      "Qualitative uses subjective ratings; quantitative uses dollar values",
+      "Qualitative is always faster than quantitative to complete"
+    ],
+    "answer": 2,
+    "exp": "Qualitative uses subjective ratings; quantitative uses dollar values is correct because qualitative analysis relies on descriptive scales (e.g., High, Medium, Low) based on judgment, whereas quantitative assigns objective monetary values (e.g., SLE, ALE) to risks. Quantitative relies on expert judgment is incorrect; it relies on hard data and formulas. Qualitative provides more precise results is incorrect because quantitative analysis is inherently more mathematically precise. Qualitative is always faster is incorrect because while it is often faster, 'always' makes it an absolute statement that ignores complex qualitative scenario analysis."
+  },
+  {
+    "id": 12,
+    "type": "ms",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "Which of the following are valid risk treatment options? (Select ALL that apply)",
+    "options": [
+      "Avoid",
+      "Transfer",
+      "Mitigate",
+      "Ignore",
+      "Accept"
+    ],
+    "answers": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "exp": "Avoid, Transfer, Mitigate, and Accept are correct as they represent the four standard methods of responding to risk within risk management frameworks. Ignore is incorrect because burying one's head in the sand without formal evaluation and decision-making is considered negligence and is never a valid risk treatment strategy."
+  },
+  {
+    "id": 14,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security and Risk Management",
+    "q": "A company accepts the risk of legacy software because upgrading is too expensive. However, they place the legacy server on an isolated VLAN with strict firewall rules. What type of control is the VLAN?",
+    "options": [
+      "A corrective control measure",
+      "A compensating control",
+      "A risk avoidance strategy",
+      "A risk transfer mechanism"
+    ],
+    "answer": 1,
+    "exp": "A compensating control is correct because it is an alternative measure implemented to mitigate the risk when the primary control (upgrading the software) is not feasible or too costly. A corrective control measure is incorrect because the VLAN prevents an attack rather than fixing the system post-incident. A risk avoidance strategy is incorrect because they are still using the legacy software, not avoiding the activity. A risk transfer mechanism is incorrect because the financial risk has not been shifted to a third party."
+  },
+  {
+    "id": 15,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security and Risk Management",
+    "q": "A new regulation requires specific security controls. Management states the cost is prohibitive. As the CISO, what is the BEST course of action?",
+    "options": [
+      "Implement the controls you can afford now",
+      "Document the gap and formally accept the risk",
+      "Defer implementation until the next budget cycle",
+      "Present a cost-benefit analysis with alternatives"
+    ],
+    "answer": 3,
+    "exp": "Present a cost-benefit analysis with alternatives is correct because the CISO's role is to advise leadership on security risks and compliance impacts so management can make informed business decisions. Implement the controls you can afford now is incorrect as partial implementation without business alignment is ineffective. Document the gap and formally accept the risk is incorrect because you cannot legally 'accept' non-compliance with a regulation without potential legal penalties. Defer implementation is incorrect because ignoring a legal regulation exposes the organization to immediate legal risk."
+  },
+  {
+    "id": 16,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "GDPR requires data deletion within 30 days of request, but local law in Country X requires 7-year retention. How should you handle this conflict?",
+    "options": [
+      "Follow GDPR as the stricter standard globally",
+      "Apply local law since it takes jurisdictional precedence",
+      "Seek legal counsel on jurisdiction-specific requirements",
+      "Store data outside Country X to avoid the local law"
+    ],
+    "answer": 2,
+    "exp": "Seek legal counsel on jurisdiction-specific requirements is correct because conflicts of law require specialized legal expertise to navigate safely; security professionals should not make complex legal determinations. Follow GDPR is incorrect because ignoring local law could lead to immediate sanctions in that jurisdiction. Apply local law is incorrect because ignoring GDPR could result in massive global fines. Store data outside Country X is incorrect because it may violate data sovereignty laws or fail to exempt the organization from legal jurisdiction."
+  },
+  {
+    "id": 17,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security and Risk Management",
+    "q": "Due diligence on an acquisition target reveals major security deficiencies. Senior management wants to close quickly. What is your BEST action as CISO?",
+    "options": [
+      "Present quantified risks and mitigation options to the board",
+      "Recommend delaying the acquisition until remediation",
+      "Recommend terminating the acquisition over the findings",
+      "Accept the risks to meet the stated business timelines"
+    ],
+    "answer": 0,
+    "exp": "Present quantified risks and mitigation options to the board is correct because the CISO's role is to ensure leadership understands the risk exposure before making business decisions. Recommend delaying or terminating is incorrect because while those may be ultimate outcomes, the CISO alone shouldn't mandate business strategy without presenting the facts first. Accept the risks is incorrect because the CISO cannot accept massive business risks on behalf of the company without senior leadership's formal approval."
+  },
+  {
+    "id": 18,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "A security review finds a moderate vulnerability in a mobile app requiring 6 months to fix. Marketing wants to launch in 1 month. What should you recommend?",
+    "options": [
+      "Deploy compensating controls and launch with monitoring",
+      "Delay the launch until the fix is complete",
+      "Remove the affected feature from the release",
+      "Launch as planned and patch it post-release"
+    ],
+    "answer": 0,
+    "exp": "Deploy compensating controls and launch with monitoring is correct as it balances the business need (launch) with risk mitigation until a permanent fix is ready. Delay the launch is incorrect because a moderate risk typically does not justify stopping the business outright when workarounds exist. Remove the affected feature is incorrect as it may cripple the app's business value prematurely. Launch as planned is incorrect as it accepts the risk without implementing necessary mitigations, violating due care."
+  },
+  {
+    "id": 19,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "ALE for a threat is $50,000. A countermeasure costs $35,000/year and reduces ALE to $5,000. Should it be implemented?",
+    "options": [
+      "No, the $5,000 residual risk is still unacceptable",
+      "No, it fails to fully eliminate the remaining risk",
+      "Yes, the net safeguard value of $10,000 justifies it",
+      "Yes, the cost is less than the original ALE amount"
+    ],
+    "answer": 2,
+    "exp": "Yes, the net safeguard value of $10,000 justifies it is correct. The math is: Original ALE ($50,000) - Mitigated ALE ($5,000) - Cost of Countermeasure ($35,000) = Net Benefit of $10,000. The options stating 'No' are incorrect because a positive net benefit means the control is financially sound. 'Yes, the cost is less than the original ALE' is incorrect because it ignores the residual risk ($5,000); if residual risk were $20,000, the cost ($35k) + residual ($20k) would exceed the original ALE ($50k), making it a bad investment."
+  },
+  {
+    "id": 20,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "A BIA identifies the order processing system with RTO of 4 hours and RPO of 1 hour. What does this mean?",
+    "options": [
+      "Maximum 4 hours downtime and maximum 1 hour data loss",
+      "Four redundant system copies updated on an hourly basis",
+      "Backups every 4 hours with 1-hour test restore windows",
+      "The system needs 4 hours for full and 1 hour for partial recovery"
+    ],
+    "answer": 0,
+    "exp": "Maximum 4 hours downtime and maximum 1 hour data loss is correct. Recovery Time Objective (RTO) dictates how long a system can be down before unacceptable impact occurs, and Recovery Point Objective (RPO) dictates the maximum allowable data loss measured in time. The other options misinterpret the definitions of RTO and RPO, confusing them with redundancy configurations, backup schedules, or staged recovery phases."
+  },
+  {
+    "id": 22,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security and Risk Management",
+    "q": "An employee has been selling proprietary data to a competitor. Which type of law is MOST likely to apply?",
+    "options": [
+      "Federal criminal computer fraud statutes",
+      "International intellectual property treaties",
+      "Civil law for trade secret misappropriation",
+      "Administrative regulatory law"
+    ],
+    "answer": 2,
+    "exp": "Civil law for trade secret misappropriation is correct because selling proprietary data constitutes theft of trade secrets, which is primarily pursued via civil litigation (e.g., Uniform Trade Secrets Act) to recover damages. Federal criminal statutes are incorrect because while fraud may be involved, the core issue is intellectual property theft between private parties. International treaties are incorrect unless crossing borders is explicitly mentioned. Administrative regulatory law is incorrect as it governs compliance with government agencies, not private corporate espionage."
+  },
+  {
+    "id": 27,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Asset Security",
+    "q": "Which method is most appropriate for sanitizing a hard drive that will be reused within the same organization?",
+    "options": [
+      "Physical destruction by shredding",
+      "Overwriting with approved patterns",
+      "Quick format of the file system",
+      "Degaussing the magnetic media"
+    ],
+    "answer": 1,
+    "exp": "Overwriting with approved patterns (clearing) is correct because it ensures data cannot be easily recovered while leaving the drive functional for reuse internally. Physical destruction is incorrect because it destroys the asset, making reuse impossible. Quick format is incorrect as it only deletes file pointers, leaving the actual data easily recoverable. Degaussing is incorrect because it destroys the magnetic platters and servomechanisms, rendering modern hard drives unusable."
+  },
+  {
+    "id": 28,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Asset Security",
+    "q": "Which is the MOST secure method of ensuring data cannot be recovered from media?",
+    "options": [
+      "Degaussing with a certified degausser",
+      "Single-pass overwrite of all sectors",
+      "Cryptographic erasure of the volume",
+      "Physical destruction of the media"
+    ],
+    "answer": 3,
+    "exp": "Physical destruction is correct because incineration or shredding into tiny fragments completely guarantees the data can never be recovered by any means. Degaussing is incorrect because it may not be fully effective on modern high-density drives or SSDs. Single-pass overwrite is incorrect because advanced forensic techniques might recover traces of old data. Cryptographic erasure is incorrect because if the key was ever compromised or the algorithm is broken in the future, the data could be retrieved."
+  },
+  {
+    "id": 30,
+    "type": "ms",
+    "difficulty": 2,
+    "domain": "Asset Security",
+    "q": "Which of the following are valid methods for media sanitization? (Select ALL that apply)",
+    "options": [
+      "Clearing (overwriting)",
+      "Purging (degaussing)",
+      "Physical destruction",
+      "Quick format",
+      "Cryptographic erasure"
+    ],
+    "answers": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "exp": "Clearing, Purging, Physical destruction, and Cryptographic erasure are correct because they are recognized by NIST SP 800-88 as valid methods to sanitize media depending on confidentiality requirements. Quick format is incorrect because it merely removes the file system pointers; the raw data remains completely intact and easily recoverable using basic tools."
+  },
+  {
+    "id": 32,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Asset Security",
+    "q": "PHI is classified as 'Confidential' while PCI data is classified as 'Restricted' (higher). Both coexist in one system. What should you recommend?",
+    "options": [
+      "Create a new unified classification category",
+      "Apply the highest classification to both",
+      "Classify both at the lower Confidential level",
+      "Maintain separate classification labels as-is"
+    ],
+    "answer": 1,
+    "exp": "Apply the highest classification to both is correct (high water mark principle) because when mixed data cannot be separated, the entire system must meet the security standards of the most sensitive data to prevent unauthorized access. Creating a new category is incorrect as it introduces unnecessary complexity. Classifying at the lower level is incorrect because it leaves the higher-tier PCI data inadequately protected. Maintaining separate labels as-is is incorrect because it is technically infeasible to enforce different protections on data thoroughly mixed within a single system boundary."
+  },
+  {
+    "id": 33,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Asset Security",
+    "q": "A terminated employee had access to proprietary source code. The departure was contentious. What should be your FIRST priority?",
+    "options": [
+      "Disable all accounts and revoke access immediately",
+      "Conduct a data exfiltration investigation",
+      "Initiate legal proceedings for NDA violations",
+      "File a report with local law enforcement"
+    ],
+    "answer": 0,
+    "exp": "Disable all accounts and revoke access immediately is correct because immediate containment prevents the former employee from causing harm, stealing data, or planting logic bombs. Conducting an investigation is incorrect as a first step; investigation happens after the threat is contained. Initiating legal proceedings is incorrect because lawyers cannot act until evidence is gathered. Filing a police report is incorrect as it is premature without evidence of a crime."
+  },
+  {
+    "id": 34,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Asset Security",
+    "q": "Your organization is moving sensitive data to a cloud provider that offers encryption at rest. What should you verify FIRST?",
+    "options": [
+      "The provider's compliance certifications",
+      "The data center's physical security controls",
+      "The encryption algorithm and key length",
+      "Who manages and controls the encryption keys"
+    ],
+    "answer": 3,
+    "exp": "Who manages and controls the encryption keys is correct because if the cloud provider controls the keys, they (or a malicious insider) can decrypt your data, regardless of the algorithm used. Provider compliance certifications are incorrect as a first step because certifications do not prevent a provider from having technical access to your data. Physical security and encryption algorithms are incorrect because while important, they are secondary to the fundamental issue of key ownership in a cloud environment."
+  },
+  {
+    "id": 35,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Asset Security",
+    "q": "PII is stored in a database shared with non-sensitive marketing data. An auditor flags this. What principle is being violated?",
+    "options": [
+      "Data minimization and proper data segregation",
+      "Least privilege for database access control",
+      "Need-to-know for the marketing team members",
+      "Separation of duties between data handlers"
+    ],
+    "answer": 0,
+    "exp": "Data minimization and proper data segregation is correct because sensitive PII should be isolated from non-sensitive data to ensure appropriate controls are applied and attack surfaces are minimized. Least privilege and Need-to-know are incorrect because while they apply to user access, the question focuses on the storage architecture itself. Separation of duties is incorrect as it relates to requiring multiple people to complete a critical task, not data storage."
+  },
+  {
+    "id": 36,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Asset Security",
+    "q": "A SaaS vendor's contract allows them to use anonymized customer data for analytics. What is your PRIMARY concern?",
+    "options": [
+      "Degraded application performance for users",
+      "Potential for vendor lock-in over contract terms",
+      "Re-identification through data correlation",
+      "Increased bandwidth consumption for analytics"
+    ],
+    "answer": 2,
+    "exp": "Re-identification through data correlation is correct because anonymized data can often be cross-referenced with other publicly available datasets to re-identify individuals, turning benign analytics into a privacy breach. Degraded performance and bandwidth consumption are incorrect because backend analytics run on the vendor's infrastructure. Vendor lock-in is incorrect as data usage rights do not inherently restrict you from switching vendors."
+  },
+  {
+    "id": 37,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Asset Security",
+    "q": "An employee's laptop with FDE and login required was stolen. What should be your FIRST action?",
+    "options": [
+      "Remotely wipe the device via MDM",
+      "Assess what data was stored on the device",
+      "Change all of the user's credentials",
+      "File a police report for the theft"
+    ],
+    "answer": 0,
+    "exp": "Remotely wipe the device via MDM is correct because taking immediate action to destroy the data prevents compromise in case the attacker bypasses the OS login or leverages a cold-boot attack against the FDE. Assessing data is incorrect as the first step; containment must happen before analysis. Changing credentials is a vital second step, but wiping the physical asset takes precedence to protect offline data. Filing a police report is administrative and should happen later."
+  },
+  {
+    "id": 47,
+    "type": "ms",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "Which of the following are symmetric encryption algorithms? (Select ALL that apply)",
+    "options": [
+      "AES",
+      "RSA",
+      "3DES",
+      "ECC",
+      "Blowfish"
+    ],
+    "answers": [
+      0,
+      2,
+      4
+    ],
+    "exp": "AES, 3DES, and Blowfish are correct because they all use a single shared key for both encryption and decryption, defining them as symmetric algorithms. RSA and ECC are incorrect because they use a mathematically linked public-private key pair, making them asymmetric algorithms."
+  },
+  {
+    "id": 49,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "You need past encrypted sessions protected even if the server's private key is later compromised. What feature is required?",
+    "options": [
+      "Hash-based message authentication",
+      "Certificate-based digital signatures",
+      "Extended validation certificates",
+      "Perfect Forward Secrecy (PFS)"
+    ],
+    "answer": 3,
+    "exp": "Perfect Forward Secrecy (PFS) is correct because it uses ephemeral key exchanges (like ECDHE) to generate unique session keys that are independent of the server's long-term private key, ensuring past sessions cannot be decrypted. Hash-based message authentication provides integrity, not confidentiality. Digital signatures and extended validation certificates provide authentication and non-repudiation, but do not protect session confidentiality post-compromise."
+  },
+  {
+    "id": 50,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "A facility has a reception area, offices, a data center, and a loading dock. Which areas should have mantrap access?",
+    "options": [
+      "Reception area and main office entrance",
+      "Office space and reception area only",
+      "All four areas throughout the building",
+      "Data center and loading dock entrances"
+    ],
+    "answer": 3,
+    "exp": "Data center and loading dock entrances is correct because mantraps are high-security physical controls designed to prevent tailgating, which is critical for highly sensitive areas like data centers or high-risk entry points like loading docks. Reception areas and main offices are incorrect because placing a mantrap there would severely impede normal business flow and is overkill for low-security zones. All four areas is incorrect due to cost and operational friction."
+  },
+  {
+    "id": 51,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "What is the PRIMARY security benefit TPM provides over software-based encryption?",
+    "options": [
+      "Faster encryption and decryption speeds",
+      "Hardware-based key storage resistant to extraction",
+      "Support for larger encryption key sizes",
+      "Broader cryptographic algorithm compatibility"
+    ],
+    "answer": 1,
+    "exp": "Hardware-based key storage resistant to extraction is correct because a Trusted Platform Module (TPM) is a dedicated physical chip that securely stores cryptographic keys, making them immune to software-based memory dumping or OS-level attacks. Faster speeds are incorrect as software encryption leveraging modern CPU instructions (like AES-NI) is often faster. Larger key sizes and broader compatibility are incorrect because software can easily support any algorithm or key size."
+  },
+  {
+    "id": 52,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security Architecture and Engineering",
+    "q": "A WAF, network firewall, and IDS protect a web app. SQL injection still succeeds. What does this MOST likely indicate?",
+    "options": [
+      "Defense-in-depth is fundamentally ineffective",
+      "Encrypted traffic bypassed network inspection",
+      "Every deployed security control failed",
+      "The security tools were improperly licensed"
+    ],
+    "answer": 1,
+    "exp": "Encrypted traffic bypassed network inspection is correct because network-based controls (IDS/firewalls) cannot inspect payloads within an encrypted HTTPS tunnel unless TLS termination/inspection is configured, allowing the SQLi payload to reach the app. Defense-in-depth being ineffective is incorrect; the layered strategy is sound, but implementation lacked visibility. Every control failing is incorrect as the network controls may have been functioning properly but lacked decryption keys. Improper licensing is a distractor."
+  },
+  {
+    "id": 53,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "You are selecting a hash algorithm for software download integrity. Which should you choose?",
+    "options": [
+      "MD5 message digest",
+      "SHA-256 secure hash",
+      "SHA-1 secure hash",
+      "CRC32 error check"
+    ],
+    "answer": 1,
+    "exp": "SHA-256 secure hash is correct because it provides strong cryptographic integrity without known practical collision vulnerabilities. MD5 and SHA-1 are incorrect because they have been cryptographically broken and are vulnerable to collision attacks, meaning malicious files could be crafted to match the original hash. CRC32 is incorrect because it is an error-detecting code meant for accidental corruption, not a cryptographic hash to prevent intentional tampering."
+  },
+  {
+    "id": 54,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "A team proposes ECB mode for AES encryption of customer images. What is your PRIMARY concern?",
+    "options": [
+      "Identical blocks produce identical ciphertext",
+      "ECB is incompatible with AES algorithm",
+      "ECB mode is too slow for large files",
+      "ECB requires significantly larger keys"
+    ],
+    "answer": 0,
+    "exp": "Identical blocks produce identical ciphertext is correct because Electronic Codebook (ECB) encrypts each block independently without an initialization vector. This means repeating patterns in the plaintext (like a solid color in an image) will result in repeating patterns in the ciphertext, exposing the data's structure. ECB incompatibility is incorrect; AES does support ECB, it is just insecure for most uses. ECB being too slow is incorrect; ECB can be processed in parallel and is actually very fast. ECB requiring larger keys is incorrect; key sizes are dictated by AES, not the mode of operation."
+  },
+  {
+    "id": 55,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security Architecture and Engineering",
+    "q": "You need encryption for data at rest and in transit with automatic key rotation. Which approach is BEST?",
+    "options": [
+      "A single master key for all encryption operations",
+      "HSM with automated key lifecycle management",
+      "Manual key management with documented procedures",
+      "Keys stored in application environment variables"
+    ],
+    "answer": 1,
+    "exp": "HSM with automated key lifecycle management is correct because Hardware Security Modules provide secure, tamper-resistant key storage and can automate the generation, rotation, and destruction of keys, fulfilling all requirements securely. A single master key is incorrect because it lacks granularity, violates least privilege, and does not address the need for key rotation. Manual management is incorrect because it is error-prone, doesn't scale, and cannot reliably provide 'automatic' rotation. Storing keys in environment variables is incorrect because it exposes keys to memory dumping and lacks lifecycle management."
+  },
+  {
+    "id": 67,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Communication and Network Security",
+    "q": "Internal DNS servers are responding to external queries. What should you do FIRST?",
+    "options": [
+      "Configure split-horizon DNS views",
+      "Conduct a full network vulnerability scan",
+      "Enable comprehensive DNS query logging",
+      "Deploy DNSSEC across all zones"
+    ],
+    "answer": 0,
+    "exp": "Configure split-horizon DNS views is correct because split-horizon DNS allows you to serve a restricted, public-facing zone file to external queries while keeping the internal zone private, effectively stopping the information disclosure. A vulnerability scan is incorrect as a first step; the vulnerability (zone exposure) is already known. DNS query logging is incorrect because while it provides visibility, it does not stop the unauthorized external responses. Deploying DNSSEC is incorrect because DNSSEC provides integrity and non-repudiation, not confidentiality of the zone data."
+  },
+  {
+    "id": 68,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Communication and Network Security",
+    "q": "An attacker sends ICMP echo requests with a spoofed victim source to a broadcast address. What attack is this?",
+    "options": [
+      "Fraggle attack",
+      "SYN flood",
+      "Ping of Death",
+      "Smurf attack"
+    ],
+    "answer": 3,
+    "exp": "Smurf attack is correct because it explicitly leverages ICMP Echo requests sent to a network's broadcast address with the victim's spoofed source IP, causing all hosts to reply to the victim, flooding them. Fraggle attack is incorrect because it uses UDP packets (typically port 7 or 19) rather than ICMP. SYN flood is incorrect because it involves sending TCP SYN packets to exhaust server connection queues, not ICMP broadcasts. Ping of Death is incorrect because it involves sending malformed, oversized ICMP packets to crash a system, rather than reflecting traffic via broadcasts."
+  },
+  {
+    "id": 69,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Communication and Network Security",
+    "q": "You need site-to-site encryption with confidentiality, integrity, and authentication. What is the BEST solution?",
+    "options": [
+      "TLS encrypted tunnel",
+      "SSH port forwarding tunnel",
+      "IPSec VPN connection",
+      "HTTPS reverse proxy setup"
+    ],
+    "answer": 2,
+    "exp": "IPSec VPN connection is correct because it operates at the network layer (Layer 3), naturally linking two physical networks (site-to-site) transparently, and provides the required confidentiality (ESP), integrity, and mutual authentication. TLS is incorrect because it primarily secures client-to-server application layer traffic rather than routing entire site networks. SSH port forwarding is incorrect because it is designed for ad-hoc, point-to-point application tunneling, not robust site-to-site connectivity. HTTPS reverse proxy is incorrect as it exposes specific web applications to the outside rather than securely connecting two internal networks."
+  },
+  {
+    "id": 70,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Communication and Network Security",
+    "q": "Database servers on VLAN 10, app servers on VLAN 20, workstations on VLAN 30. What firewall approach is MOST secure?",
+    "options": [
+      "Allow sequential flow: VLAN 30 to 20 to 10",
+      "Default deny all; explicit allow per business need",
+      "Allow VLAN 20 to 10 only; deny all other inter-VLAN",
+      "Allow VLAN 20 to 10 on required ports; deny all else"
+    ],
+    "answer": 1,
+    "exp": "Default deny all; explicit allow per business need is correct because it enforces the principle of least privilege comprehensively. All traffic is blocked by default, and only specifically requested, approved, and required traffic is permitted. Sequential flow is incorrect because it is vague and does not restrict ports. 'Allow VLAN 20 to 10 only' is incorrect because it fails to address how workstations (VLAN 30) legitimately connect to apps (VLAN 20). 'Allow VLAN 20 to 10 on required ports' is a good rule, but as an overall approach, 'Default deny all' is the foundational security principle."
+  },
+  {
+    "id": 71,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Communication and Network Security",
+    "q": "You need secure guest Wi-Fi without corporate network exposure. What is BEST?",
+    "options": [
+      "Guest SSID on an isolated VLAN, internet only",
+      "WPA2-PSK with a complex passphrase",
+      "Open network with a captive portal login",
+      "Guest SSID on the same corporate VLAN"
+    ],
+    "answer": 0,
+    "exp": "Guest SSID on an isolated VLAN, internet only is correct because network segmentation via an isolated VLAN physically or logically separates guest traffic from corporate assets, mitigating the risk of lateral movement. WPA2-PSK is incorrect because encryption protects the airwaves but does not prevent a guest from reaching internal servers once connected. Open network with a captive portal is incorrect because it provides zero encryption and the portal only controls initial internet access, not internal network isolation. Guest SSID on corporate VLAN is incorrect as it directly exposes internal assets."
+  },
+  {
+    "id": 73,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Communication and Network Security",
+    "q": "You see DNS queries with very long subdomain strings to one external domain. What attack is MOST likely?",
+    "options": [
+      "DNS zone transfer enumeration",
+      "DNS tunneling for data exfiltration",
+      "DNS cache poisoning attempt",
+      "DNS amplification attack"
+    ],
+    "answer": 1,
+    "exp": "DNS tunneling for data exfiltration is correct because attackers encode stolen data into long, randomly generated subdomain strings (e.g., base64 encoded data) and send it as DNS queries to a domain they control. Zone transfer enumeration is incorrect because it involves requesting a full zone transfer (AXFR), not making individual subdomain queries. DNS cache poisoning is incorrect as it involves spoofing DNS replies to misdirect traffic, not sending long queries. DNS amplification is incorrect because it involves sending small queries with spoofed IPs to elicit massive responses to flood a target."
+  },
+  {
+    "id": 86,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Identity and Access Management",
+    "q": "Which OAuth 2.0 grant type is MOST appropriate for a mobile app?",
+    "options": [
+      "Client Credentials grant",
+      "Authorization Code with PKCE",
+      "Implicit grant flow",
+      "Resource Owner Password grant"
+    ],
+    "answer": 1,
+    "exp": "Authorization Code with PKCE (Proof Key for Code Exchange) is correct because mobile apps cannot securely store a static client secret. PKCE dynamically generates a secret for each authorization request, preventing malicious apps on the same device from intercepting the code. Client Credentials grant is incorrect because it is for machine-to-machine server communication where secrets can be stored safely. Implicit grant is incorrect because it returns the token directly in the URL, making it vulnerable to interception. Resource Owner Password grant is incorrect because it requires the app to handle the user's actual password, violating modern identity principles."
+  },
+  {
+    "id": 87,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Identity and Access Management",
+    "q": "A former contractor still has VPN access 3 months after termination. What does this indicate?",
+    "options": [
+      "A deliberate insider threat",
+      "Inadequate offboarding procedures",
+      "A compromised VPN gateway",
+      "A social engineering attack"
+    ],
+    "answer": 1,
+    "exp": "Inadequate offboarding procedures is correct because failure to revoke access for terminated personnel points directly to broken identity lifecycle management and poor administrative processes. A deliberate insider threat is incorrect because while the contractor *could* become a threat, the root cause of the prolonged access is the procedural failure. A compromised VPN gateway is incorrect because the gateway is functioning normally, it simply hasn't been told to deny the user. A social engineering attack is incorrect because the access was legitimately granted originally and merely never revoked."
+  },
+  {
+    "id": 89,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Identity and Access Management",
+    "q": "A DBA needs daily maintenance access and emergency production access. How should you structure this?",
+    "options": [
+      "Grant permanent full DBA privileges",
+      "Configure time-based access that rotates daily",
+      "Provide standard and break-glass accounts with logging",
+      "Require manager approval for every database access"
+    ],
+    "answer": 2,
+    "exp": "Provide standard and break-glass accounts with logging is correct because it enforces least privilege for daily tasks while providing a heavily monitored, separate, elevated account (break-glass) for emergencies. Granting permanent full DBA privileges is incorrect because it violates least privilege and increases risk if the account is compromised. Time-based access is incorrect because emergencies do not follow a predictable schedule. Requiring manager approval for every access is incorrect because it creates an unacceptable operational bottleneck for routine daily maintenance."
+  },
+  {
+    "id": 91,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Identity and Access Management",
+    "q": "A privileged account accessed systems at 3 AM from an unusual location. The owner denies it. What should you do FIRST?",
+    "options": [
+      "Notify law enforcement of the activity",
+      "Reset the password and enforce re-enrollment",
+      "Review authentication logs and session details",
+      "Disable the account immediately"
+    ],
+    "answer": 2,
+    "exp": "Review authentication logs and session details is correct because before taking disruptive administrative action, you must verify the event's context to determine if it is a false positive (e.g., an automated scheduled script running under that account). Disabling the account immediately is incorrect because it could cause a critical production outage if the activity was a legitimate automated process. Resetting the password is incorrect for the same reason. Notifying law enforcement is incorrect because you do not yet have evidence of a crime, only an anomaly."
+  },
+  {
+    "id": 100,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Assessment and Testing",
+    "q": "An organization tests incident response on isolated systems without interrupting production. What test type is this?",
+    "options": [
+      "Simulation exercise",
+      "Parallel processing test",
+      "Tabletop exercise",
+      "Full interruption test"
+    ],
+    "answer": 0,
+    "exp": "Simulation exercise is correct because it involves physically executing procedures on isolated or non-production systems to simulate a real event without causing actual downtime. Tabletop exercise is incorrect because it is entirely discussion-based and involves no actual system interaction. Parallel processing test is incorrect because it involves running recovery systems alongside production to ensure they process data correctly, typically for BCP/DR, not specifically isolated IR testing. Full interruption is incorrect because it explicitly shuts down production systems."
+  },
+  {
+    "id": 101,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Assessment and Testing",
+    "q": "Developers have sudo on production servers. Management says it's necessary. What should you recommend?",
+    "options": [
+      "Require temporary access requests each time",
+      "Revoke all developer sudo access now",
+      "Implement PAM with session recording",
+      "Accept and document the risk formally"
+    ],
+    "answer": 2,
+    "exp": "Implement PAM with session recording is correct because Privileged Access Management meets the business need for access while providing strict controls, credential vaulting, and irrefutable audit trails (recording). Revoking all access is incorrect because it actively breaks the management-mandated business requirement. Requiring temporary requests is incorrect as it introduces heavy friction and doesn't solve the underlying lack of accountability when the access is active. Accepting the risk is incorrect because viable technical mitigations (PAM) exist."
+  },
+  {
+    "id": 102,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Assessment and Testing",
+    "q": "After exploiting SQL injection and extracting data, management asks if the system is now 'secure.' What should you say?",
+    "options": [
+      "Additional vulnerabilities may exist beyond this test",
+      "Yes, the tested vulnerability was remediated",
+      "It achieved a passing score on the assessment",
+      "The system meets all compliance requirements now"
+    ],
+    "answer": 0,
+    "exp": "Additional vulnerabilities may exist beyond this test is correct because a penetration test is a point-in-time assessment focused on specific attack paths; finding one flaw does not guarantee the absence of others. Saying 'Yes' is incorrect because the flaw was only exploited, not remediated by the test itself. Achieving a passing score is incorrect because finding a data-extracting SQLi typically constitutes a failing grade. Meeting compliance is incorrect because security testing is only one facet of overall compliance."
+  },
+  {
+    "id": 103,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Assessment and Testing",
+    "q": "Heartbleed is found on a server scheduled for decommissioning in 2 weeks. What should you do?",
+    "options": [
+      "Accelerate decommissioning to this week",
+      "Accept the risk given the imminent decommission",
+      "Patch it immediately regardless of timeline",
+      "Isolate the server on a restricted segment"
+    ],
+    "answer": 3,
+    "exp": "Isolate the server on a restricted segment is correct because it mitigates the severe risk of Heartbleed immediately while allowing the planned business decommissioning timeline to proceed with minimal disruption. Accelerating decommissioning is incorrect because it may not be technically feasible to migrate services faster. Accepting the risk is incorrect because Heartbleed allows immediate, silent extraction of memory (including private keys) making 2 weeks an unacceptable exposure window. Patching immediately is incorrect because applying major patches to a dying system is inefficient and could cause unexpected downtime during its final days."
+  },
+  {
+    "id": 105,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Assessment and Testing",
+    "q": "What testing combination provides BEST coverage for a CI/CD pipeline?",
+    "options": [
+      "DAST scanning in the staging environment only",
+      "SAST scanning in the build phase only",
+      "SAST in build, DAST in staging, periodic pen tests",
+      "Manual code review for all committed changes"
+    ],
+    "answer": 2,
+    "exp": "SAST in build, DAST in staging, periodic pen tests is correct because it represents a layered, defense-in-depth approach. SAST catches code-level logic flaws early, DAST catches runtime configuration issues in staging, and pen testing catches complex, chained human-logic vulnerabilities. The options proposing 'only' SAST or 'only' DAST are incorrect because they provide incomplete coverage. Manual code review is incorrect because it is unscalable in a rapid CI/CD environment and prone to human fatigue."
+  },
+  {
+    "id": 117,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security Operations",
+    "q": "Ransomware encrypts backups. You find one air-gapped backup from 3 weeks ago. What should you do FIRST?",
+    "options": [
+      "Verify integrity of the air-gapped backup",
+      "Report the incident to law enforcement",
+      "Engage a ransom negotiation specialist",
+      "Rebuild all systems from scratch immediately"
+    ],
+    "answer": 0,
+    "exp": "Verify integrity of the air-gapped backup is correct because before making major strategic decisions (like deciding whether to pay a ransom or rebuild), you must confirm that your only lifeline is actually viable and not corrupted. Reporting to law enforcement is incorrect as a first step; assessing technical recovery viability takes precedence during an active crisis. Engaging a negotiator is incorrect until you prove the backup is unusable. Rebuilding immediately is incorrect because if the backup fails during restoration, you have destroyed evidence and wasted critical time."
+  },
+  {
+    "id": 118,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Operations",
+    "q": "SIEM alerts on lateral movement via stolen credentials. You isolate the account. What NEXT?",
+    "options": [
+      "Hunt for persistence mechanisms in the environment",
+      "Conduct a comprehensive security audit",
+      "Restore affected systems from backup images",
+      "Reset all enterprise user passwords"
+    ],
+    "answer": 0,
+    "exp": "Hunt for persistence mechanisms in the environment is correct because once an attacker has moved laterally with stolen credentials, they almost certainly deployed backdoors, created new rogue accounts, or installed scheduled tasks to maintain access after the initial compromised account is burned. Conducting a security audit is incorrect as it is a long-term administrative task, not a real-time incident response action. Restoring systems is incorrect until the full scope of the compromise is known. Resetting all enterprise passwords is an extreme overreaction that disrupts business before understanding the scope."
+  },
+  {
+    "id": 119,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Operations",
+    "q": "You discover an APT has been in your network for 8 months. What should be your PRIMARY focus?",
+    "options": [
+      "Comprehensive scoping of compromised systems",
+      "Immediate eradication of all access points",
+      "System restoration from clean backups",
+      "Full forensic evidence preservation"
+    ],
+    "answer": 0,
+    "exp": "Comprehensive scoping of compromised systems is correct because Advanced Persistent Threats (APTs) embed themselves deeply. If you eradicate the first backdoor you find without scoping the rest, the APT will notice, activate their hidden fallback access, and burrow deeper. Immediate eradication is therefore incorrect and actively dangerous. System restoration is incorrect because you do not yet know which backups are 'clean' or what systems to restore. Full forensic evidence preservation is important, but secondary to understanding the operational threat landscape to plan a coordinated eradication."
+  },
+  {
+    "id": 121,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Operations",
+    "q": "Post-incident review shows MTTD was 45 days. What should be your PRIMARY recommendation?",
+    "options": [
+      "Improve detection capabilities and rules",
+      "Expand the incident response team size",
+      "Conduct more frequent penetration tests",
+      "Increase the security analyst headcount"
+    ],
+    "answer": 0,
+    "exp": "Improve detection capabilities and rules is correct because a high Mean Time To Detect (MTTD) directly indicates that monitoring tools (SIEM/EDR) lack visibility or have ineffective alert logic. Expanding the IR team or analyst headcount is incorrect because adding humans does not fix broken automated detection engines. Penetration tests are incorrect because while they test defenses, they do not fundamentally build the real-time detection infrastructure needed to catch live attackers faster."
+  },
+  {
+    "id": 122,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security Operations",
+    "q": "A forensic investigator needs evidence from a running compromised server. What to capture FIRST?",
+    "options": [
+      "Volatile memory contents (RAM)",
+      "Full hard drive forensic image",
+      "System configuration files",
+      "Network connection log records"
+    ],
+    "answer": 0,
+    "exp": "Volatile memory contents (RAM) is correct because it follows the order of volatility. RAM is the most volatile evidence and will be permanently lost if the machine loses power or is rebooted; it contains critical data like running malware processes, network connections, and encryption keys. Hard drive images, configuration files, and network logs are incorrect as first choices because they reside on non-volatile storage (disk) and will remain intact while you capture the RAM."
+  },
+  {
+    "id": 123,
+    "type": "order",
+    "difficulty": 2,
+    "domain": "Security Operations",
+    "q": "Order by volatility, MOST volatile first:",
+    "items": [
+      "CPU registers and cache",
+      "RAM",
+      "Disk (temporary files)",
+      "Disk (permanent files)",
+      "Remote logging data"
+    ],
+    "correctOrder": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "exp": "CPU registers and cache are inside the processor and change in nanoseconds. RAM holds running state and is lost on power off. Disk (temporary) like swap/pagefiles change frequently during operation. Disk (permanent) holds static files. Remote logging data is the least volatile as it is stored off-device on separate servers specifically for long-term retention."
+  },
+  {
+    "id": 124,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Operations",
+    "q": "RPO is 1 hour, RTO is 4 hours for a critical database. Current strategy is nightly full backups. Is this adequate?",
+    "options": [
+      "Yes, nightly backups suffice for any RPO",
+      "No, RPO requires replication at least hourly",
+      "RTO determines backup frequency, not RPO",
+      "It depends primarily on the database size"
+    ],
+    "answer": 1,
+    "exp": "No, RPO requires replication at least hourly is correct. Recovery Point Objective (RPO) dictates the maximum tolerable data loss. An RPO of 1 hour means the organization cannot lose more than 1 hour of data. A nightly backup could result in up to 24 hours of data loss if the system fails right before the next backup. The option stating nightly backups suffice is therefore mathematically incorrect. The option stating RTO determines backup frequency is conceptually backward. Database size affects RTO (how long it takes to restore), not the frequency required by RPO."
+  },
+  {
+    "id": 135,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Software Development Security",
+    "q": "SAST checks in CI/CD create a deployment bottleneck. What is the BEST approach?",
+    "options": [
+      "Switch to DAST-only in the pipeline",
+      "Tune SAST to fail only on critical findings",
+      "Replace automated scans with manual review",
+      "Bypass SAST for minor updates"
+    ],
+    "answer": 1,
+    "exp": "Tune SAST to fail only on critical findings is correct because it balances development speed with security. Developers are blocked only for high-risk vulnerabilities, while lower-severity issues can be logged for future remediation without stopping the pipeline. Switching to DAST-only is incorrect because DAST cannot identify specific lines of vulnerable source code. Replacing automation with manual review is incorrect because human review is significantly slower and creates a worse bottleneck. Bypassing SAST for minor updates is incorrect because a 'minor' update could still introduce a critical flaw."
+  },
+  {
+    "id": 137,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Software Development Security",
+    "q": "A web app allows profile picture uploads. What is the MOST critical security control?",
+    "options": [
+      "Validate file type by extension",
+      "Restrict maximum file size",
+      "Validate file type by content (magic bytes)",
+      "Scan for malware signatures"
+    ],
+    "answer": 2,
+    "exp": "Validate file type by content (magic bytes) is correct because attackers can easily rename a malicious executable (e.g., shell.php) to look like an image (e.g., shell.jpg). Verifying the file's internal magic numbers ensures it is truly an image format. Validating by extension is incorrect because it is trivial to bypass. Restricting file size is incorrect as it only prevents denial of service, not execution. Scanning for malware is important but incorrect as the MOST critical control, because a custom PHP web shell might not trigger signature-based antivirus scanners."
+  },
+  {
+    "id": 138,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Software Development Security",
+    "q": "Microservices need to authenticate to each other. What is the BEST approach?",
+    "options": [
+      "Mutual TLS with certificates",
+      "No auth needed for internal services",
+      "Shared API keys in config files",
+      "Username/password per service"
+    ],
+    "answer": 0,
+    "exp": "Mutual TLS with certificates is correct because mTLS provides robust two-way authentication and encrypts the transit tunnel, which is foundational for modern Zero Trust microservice architectures. 'No auth needed' is fundamentally incorrect and violates Zero Trust, assuming the internal network is safe. Shared API keys in config files is incorrect because keys are easily leaked, hard to rotate, and often shared too broadly. Username/password is incorrect as it is legacy, highly vulnerable to interception, and difficult to manage at microservice scale."
+  },
+  {
+    "id": 140,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Software Development Security",
+    "q": "A third-party library has a High-severity CVE with no patch available. What is BEST?",
+    "options": [
+      "Fork the library and fix it yourself",
+      "Wait for the maintainer to patch",
+      "Find an alternative library to replace it",
+      "Accept the risk as a third-party issue"
+    ],
+    "answer": 2,
+    "exp": "Find an alternative library to replace it is correct because mitigating the risk permanently by swapping dependencies is the safest architectural move when upstream maintainers abandon or delay security fixes. Forking and fixing it is incorrect because it assumes you have the deep expertise in that codebase to fix it correctly, and it permanently saddles your team with maintaining someone else's code. Waiting for a patch is incorrect because attackers will exploit the known CVE while you wait. Accepting the risk is incorrect because a High-severity CVE poses immediate danger to the business."
+  },
+  {
+    "id": 141,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Software Development Security",
+    "q": "An API endpoint deserializes user-supplied JSON server-side. What attack vector is MOST concerning?",
+    "options": [
+      "Denial of service via large payloads",
+      "Insecure deserialization leading to RCE",
+      "Cross-site scripting in responses",
+      "SQL injection via JSON fields"
+    ],
+    "answer": 1,
+    "exp": "Insecure deserialization leading to RCE is correct because if an application takes serialized data from an untrusted source and deserializes it without strict type checking, an attacker can manipulate the data structure to inject malicious objects that execute arbitrary code on the server (Remote Code Execution). Denial of service is incorrect because while large payloads are annoying, RCE results in total system compromise. Cross-site scripting is incorrect because XSS attacks the client browser, not the server-side deserialization engine. SQL injection is incorrect; while JSON can carry SQLi payloads, the deserialization mechanism itself is uniquely vulnerable to object injection leading to RCE."
+  },
+  {
+    "id": 142,
+    "type": "order",
+    "difficulty": 2,
+    "domain": "Software Development Security",
+    "q": "Order Secure SDLC phases from FIRST to LAST:",
+    "items": [
+      "Requirements (security requirements, threat modeling)",
+      "Design (security architecture, design review)",
+      "Implementation (secure coding, SAST)",
+      "Testing (DAST, pen testing)",
+      "Deployment (configuration, hardening)",
+      "Maintenance (patching, monitoring)"
+    ],
+    "correctOrder": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "exp": "The Secure SDLC follows a logical progression: First, gather Requirements and perform initial threat modeling. Second, create the Design and review the architecture. Third, Implement the code securely using SAST. Fourth, Test the running application with DAST and pen testing. Fifth, Deploy the hardened system. Finally, proceed to ongoing Maintenance via patching and monitoring."
+  },
+  {
+    "id": 144,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "PCI requires 90-day password rotation. Your HIPAA system uses non-expiring passphrases. How do you resolve this?",
+    "options": [
+      "Apply 90-day rotation to all systems uniformly",
+      "Request formal exemptions from both standards",
+      "Follow HIPAA since it is a federal requirement",
+      "Apply each standard to its respective data scope"
+    ],
+    "answer": 3,
+    "exp": "Apply each standard to its respective data scope is correct because compliance requirements should be scoped precisely to the systems processing that specific regulated data (cardholder data for PCI, PHI for HIPAA) to avoid unnecessary operational burden. Applying 90-day rotation uniformly is incorrect because while compliant, it forces a restrictive PCI control onto non-PCI systems, violating modern NIST guidelines which recommend against arbitrary rotation. Requesting exemptions is incorrect because there is no conflict if scopes are properly segmented. Following HIPAA over PCI is incorrect because federal law does not invalidate contractual PCI obligations for card environments."
+  },
+  {
+    "id": 145,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security and Risk Management",
+    "q": "A hurricane is forecast to hit your primary data center in 48 hours. Your BCP has never been tested. What should you do FIRST?",
+    "options": [
+      "Activate the full BCP immediately",
+      "Wait until impact to assess actual damage",
+      "Shut down all systems to protect the hardware",
+      "Prioritize systems by BIA criticality for staged failover"
+    ],
+    "answer": 3,
+    "exp": "Prioritize systems by BIA criticality for staged failover is correct because executing an untested BCP in full carries massive operational risk; you must rely on the Business Impact Analysis to carefully migrate the most critical systems first. Activating the full BCP immediately is incorrect because a blind, untested full failover will likely cause a self-inflicted disaster. Waiting until impact is incorrect because it ignores the 48-hour warning window, violating due care. Shutting down all systems is incorrect because it guarantees a complete business outage prematurely."
+  },
+  {
+    "id": 147,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "Which principle is MOST fundamental to zero trust architecture?",
+    "options": [
+      "Verify continuously regardless of network location",
+      "Strong perimeter-based defense",
+      "VPN access establishes sufficient trust",
+      "Trust all internal network traffic by default"
+    ],
+    "answer": 0,
+    "exp": "Verify continuously regardless of network location is correct because Zero Trust fundamentally assumes the network is already hostile, requiring every request to be authenticated and authorized dynamically. Strong perimeter-based defense is incorrect because Zero Trust explicitly moves away from the 'castle-and-moat' perimeter model. VPN access establishing trust is incorrect because VPNs typically grant broad internal access based on a single point-in-time check, which Zero Trust opposes. Trusting all internal traffic is incorrect because it is the exact opposite of Zero Trust."
+  },
+  {
+    "id": 150,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Communication and Network Security",
+    "q": "You detect a BGP hijacking attempt redirecting your AS traffic. What is the BEST long-term mitigation?",
+    "options": [
+      "Implement RPKI for route validation",
+      "Deploy additional firewall rules",
+      "Implement DNSSEC on your domains",
+      "Switch to a different ISP provider"
+    ],
+    "answer": 0,
+    "exp": "Implement RPKI for route validation is correct because Resource Public Key Infrastructure uses cryptographic certificates to verify that an Autonomous System (AS) is authorized to announce specific IP prefixes, effectively neutralizing BGP route hijacking. Deploying firewall rules is incorrect because BGP hijacking occurs at the global routing layer, far beyond local firewall control. Implementing DNSSEC is incorrect because it secures domain name resolution, not IP routing paths. Switching ISPs is incorrect because BGP hijacking is a global protocol flaw that affects all providers."
+  },
+  {
+    "id": 153,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Assessment and Testing",
+    "q": "A red team finds the SIEM doesn't correlate VPN logs with internal network logs. What type of finding is this?",
+    "options": [
+      "A detection gap in monitoring",
+      "A threat actor indicator",
+      "A software vulnerability",
+      "A compliance policy violation"
+    ],
+    "answer": 0,
+    "exp": "A detection gap in monitoring is correct because failing to correlate external access (VPN) with internal movement means attackers can pivot without triggering alerts, representing a blind spot in the SOC's visibility. A threat actor indicator is incorrect because it is an architectural flaw, not evidence of an actual attack (like an IOC). A software vulnerability is incorrect because the SIEM software is likely functioning, just poorly configured. A compliance violation is incorrect because while poor practice, it does not necessarily violate a specific compliance mandate directly."
+  },
+  {
+    "id": 156,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security Operations",
+    "q": "SOC receives 10,000 alerts/day but only 50 are true positives. Analysts miss real threats. What should you implement FIRST?",
+    "options": [
+      "Tune SIEM rules to reduce false positives",
+      "Hire additional SOC analysts",
+      "Outsource SOC operations to a MSSP",
+      "Ignore all low-severity alert categories"
+    ],
+    "answer": 0,
+    "exp": "Tune SIEM rules to reduce false positives is correct because 'alert fatigue' is a technical configuration problem; adjusting thresholds and logic filters out the noise so analysts can focus on actual threats. Hiring more analysts is incorrect because throwing human labor at a broken, noisy system is inefficient and leads to burnout. Outsourcing to an MSSP is incorrect because an MSSP will face the exact same noise if the rules are not tuned. Ignoring low-severity alerts is incorrect because advanced threats often hide within low-severity events."
+  },
+  {
+    "id": 158,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Software Development Security",
+    "q": "JWT tokens are signed with HS256 using a weak secret. What is the MOST critical risk?",
+    "options": [
+      "An attacker could forge valid tokens",
+      "JWT doesn't support HS256 signing",
+      "Token expiration will malfunction",
+      "Tokens will be too large for headers"
+    ],
+    "answer": 0,
+    "exp": "An attacker could forge valid tokens is correct because HS256 is a symmetric signing algorithm; if an attacker cracks the weak secret offline, they can sign their own arbitrary JWTs, impersonating any user (including admins) with perfect validity. JWT not supporting HS256 is mathematically incorrect; HS256 is a standard. Token expiration malfunctioning is incorrect because the signature protects the payload (including expiration); the logic doesn't break, it just gets bypassed. Tokens being too large is incorrect as secret strength doesn't affect the token's byte size."
+  },
+  {
+    "id": 159,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "An employee discovers a colleague stealing data and reports it. Under which (ISC)2 ethical canon should you act?",
+    "options": [
+      "Provide diligent service to principals",
+      "Advance and protect the profession",
+      "Protect society and the common good",
+      "Act honorably, honestly, and responsibly"
+    ],
+    "answer": 3,
+    "exp": "Act honorably, honestly, and responsibly is correct because this canon dictates reporting illegal or unethical behavior (like data theft) through the proper authorities and channels, maintaining integrity. Providing diligent service is incorrect as it relates to doing a competent job for your employer. Advancing the profession is incorrect as it relates to mentoring and avoiding conflicts of interest. Protecting society is incorrect as it typically applies to broader public safety, whereas internal data theft is primarily an integrity issue."
+  },
+  {
+    "id": 160,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security Architecture and Engineering",
+    "q": "Transactions require both confidentiality and integrity. Which cryptographic approach is MOST appropriate?",
+    "options": [
+      "AES-GCM (authenticated encryption)",
+      "Symmetric encryption only",
+      "Hashing algorithms only",
+      "Digital signatures only"
+    ],
+    "answer": 0,
+    "exp": "AES-GCM (authenticated encryption) is correct because Galois/Counter Mode provides both symmetric encryption (confidentiality) and a GMAC tag (integrity/authentication) simultaneously and efficiently. Symmetric encryption only is incorrect because standard modes (like CBC) provide confidentiality but no integrity check. Hashing algorithms only is incorrect because they provide integrity but no confidentiality (data remains readable). Digital signatures only is incorrect because they provide integrity and non-repudiation, but do not encrypt the payload."
+  },
+  {
+    "id": 161,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Communication and Network Security",
+    "q": "Your team proposes implementing SDN. What is the PRIMARY security consideration?",
+    "options": [
+      "SDN eliminates the need for firewalls",
+      "The centralized controller is a high-value target",
+      "SDN is inherently insecure by design",
+      "SDN only works in cloud environments"
+    ],
+    "answer": 1,
+    "exp": "The centralized controller is a high-value target is correct because Software-Defined Networking separates the control plane from the data plane. The SDN controller dictates routing for the entire network; compromising it gives an attacker total control over traffic flow. SDN eliminating firewalls is incorrect; firewalls are still required, often implemented virtually. SDN being inherently insecure is incorrect; it offers micro-segmentation benefits. SDN only working in cloud is incorrect; it is widely used in on-premise data centers."
+  },
+  {
+    "id": 163,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Operations",
+    "q": "During forensics, you need to prove a disk image is an exact copy. What technique should you use?",
+    "options": [
+      "Use a visual file comparison tool",
+      "Encrypt the forensic image",
+      "Compare the file sizes of both",
+      "Create SHA-256 hashes of original and copy"
+    ],
+    "answer": 3,
+    "exp": "Create SHA-256 hashes of original and copy is correct because cryptographic hashing provides mathematical proof of integrity; if the hash of the original drive matches the hash of the forensic image, they are identical down to the bit. Visual file comparison is incorrect because it only looks at logical files, ignoring deleted space, slack space, and hidden data. Encrypting the image is incorrect because it secures the copy but does not prove its equivalence to the original. Comparing file sizes is incorrect because two different drives can easily have the identical byte count but completely different contents."
+  },
+  {
+    "id": 168,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Communication and Network Security",
+    "q": "An attacker forces your server to downgrade to TLS 1.0. What is the BEST mitigation?",
+    "options": [
+      "Deploy a WAF in front of the server",
+      "Configure the server for TLS 1.2 and 1.3 only",
+      "Disable all TLS versions entirely",
+      "Switch from TLS to IPSec encryption"
+    ],
+    "answer": 1,
+    "exp": "Configure the server for TLS 1.2 and 1.3 only is correct because a downgrade attack (like POODLE) relies on the server being willing to negotiate weaker, obsolete protocols. Disabling legacy versions (TLS 1.0, 1.1) server-side completely neutralizes the attack. Deploying a WAF is incorrect because the WAF itself would negotiate the TLS connection and might still be vulnerable to the downgrade. Disabling all TLS is incorrect because it forces the application to use plaintext HTTP. Switching to IPSec is incorrect because it secures network routing, not public web application sessions."
+  },
+  {
+    "id": 170,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Assessment and Testing",
+    "q": "Which approach BEST achieves continuous monitoring of security controls?",
+    "options": [
+      "Automated assessments integrated with SIEM/GRC",
+      "Quarterly compliance audit reviews",
+      "Annual penetration testing engagements",
+      "Monthly vulnerability scan schedules"
+    ],
+    "answer": 0,
+    "exp": "Automated assessments integrated with SIEM/GRC is correct because continuous monitoring requires real-time or near-real-time data feeds, which is only achievable through automated technical integration. Quarterly compliance audits, annual pen tests, and monthly scans are all incorrect because they are point-in-time assessments; they leave long periods (weeks to months) where controls could fail undetected."
+  },
+  {
+    "id": 171,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "The CEO gets a convincing wire transfer email from what appears to be the CFO. It passes DKIM and SPF. What attack is this?",
+    "options": [
+      "Standard phishing email campaign",
+      "Business Email Compromise via account takeover",
+      "Active man-in-the-middle interception",
+      "Unsolicited bulk spam message"
+    ],
+    "answer": 1,
+    "exp": "Business Email Compromise via account takeover is correct because DKIM and SPF validate that the email genuinely originated from the organization's authorized mail servers. Therefore, the attacker likely has legitimate access to the CFO's actual account. Standard phishing is incorrect because simple spoofing would fail SPF/DKIM checks. Man-in-the-middle is incorrect as it intercepts traffic, not generates authenticated email. Bulk spam is incorrect as this is a highly targeted spear-phishing scenario."
+  },
+  {
+    "id": 172,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Operations",
+    "q": "A honeypot in production receives interaction. Any contact is suspicious by definition. What detection type is this?",
+    "options": [
+      "High-fidelity indicator of compromise",
+      "Signature-based detection",
+      "Heuristic analysis technique",
+      "Anomaly-based detection"
+    ],
+    "answer": 0,
+    "exp": "High-fidelity indicator of compromise is correct because honeypots have no legitimate business function; therefore, absolutely any interaction with them represents an extremely reliable (high-fidelity) alert of unauthorized scanning or lateral movement with near-zero false positives. Signature-based is incorrect because honeypots don't rely on known malware hashes. Heuristic is incorrect because it doesn't analyze code behavior. Anomaly-based is incorrect because while it is anomalous, honeypots are specifically deployed as definitive traps, not statistical baseline monitors."
+  },
+  {
+    "id": 173,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "Your team wants to use homomorphic encryption for cloud processing. What is the PRIMARY limitation?",
+    "options": [
+      "Lack of algorithm standardization",
+      "Incompatibility with symmetric encryption",
+      "Massive computational overhead for operations",
+      "No cloud provider platform support"
+    ],
+    "answer": 2,
+    "exp": "Massive computational overhead for operations is correct because Fully Homomorphic Encryption (FHE) allows processing on ciphertext without decrypting it, but the mathematical operations are currently orders of magnitude slower than plaintext operations, making it impractical for most real-time systems. Lack of standardization is a concern but secondary to the physics of the overhead. Incompatibility with symmetric is incorrect; they serve different purposes. No cloud support is incorrect; major providers are actively researching and offering experimental FHE tools."
+  },
+  {
+    "id": 174,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Identity and Access Management",
+    "q": "Which passwordless technology provides the STRONGEST phishing-resistant security?",
+    "options": [
+      "FIDO2/WebAuthn with hardware keys",
+      "Push notification approvals",
+      "SMS one-time passwords",
+      "Magic email login links"
+    ],
+    "answer": 0,
+    "exp": "FIDO2/WebAuthn with hardware keys is correct because it uses public key cryptography that cryptographically binds the authentication attempt to the specific origin domain (URL). If a user is tricked onto a phishing site, the hardware key will silently refuse to authenticate because the domain doesn't match. Push notifications are incorrect due to 'MFA fatigue' attacks. SMS is incorrect due to SIM swapping and interception. Magic links are incorrect because they rely solely on the security of the email inbox, which may be compromised."
+  },
+  {
+    "id": 175,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Communication and Network Security",
+    "q": "Your domain is being spoofed in flood of forged emails. What technology BEST prevents this?",
+    "options": [
+      "Additional email server capacity",
+      "Network intrusion detection system",
+      "DMARC with a reject policy",
+      "VPN for all email traffic"
+    ],
+    "answer": 2,
+    "exp": "DMARC with a reject policy is correct because Domain-based Message Authentication, Reporting, and Conformance instructs receiving mail servers to explicitly reject any email claiming to be from your domain that fails SPF and DKIM checks, effectively stopping spoofing. Additional capacity is incorrect because the attacker is sending from their own servers, not yours. NIDS is incorrect because it monitors internal network traffic, not global email routing. VPN is incorrect because public email delivery fundamentally requires open Internet routing via SMTP."
+  },
+  {
+    "id": 179,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "Your organization must comply with ISO 27001, SOC 2, and NIST CSF. What minimizes redundant effort?",
+    "options": [
+      "Hire separate dedicated teams per framework",
+      "Map a unified control framework to all standards",
+      "Choose one framework and ignore the others",
+      "Comply with each framework independently"
+    ],
+    "answer": 1,
+    "exp": "Map a unified control framework to all standards is correct because many frameworks overlap (e.g., they all require access control). A unified framework (like SCF or UCF) allows you to implement a control once and map it to the requirements of multiple standards, drastically reducing audit fatigue. Hiring separate teams is incorrect because it creates massive duplication of effort and silos. Choosing one and ignoring others is incorrect because compliance is often legally or contractually mandatory. Complying independently is incorrect as it guarantees redundant work."
+  },
+  {
+    "id": 180,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "What is the MOST critical security configuration for a Kubernetes deployment?",
+    "options": [
+      "Network policies between pod namespaces",
+      "Resource quotas and limit ranges",
+      "RBAC for the Kubernetes API server",
+      "Container image vulnerability scanning"
+    ],
+    "answer": 2,
+    "exp": "RBAC for the Kubernetes API server is correct because the API server is the brain of the cluster. If an attacker gains unauthenticated or overly-permissive access to the API server, they have total root compromise of the entire infrastructure. Network policies, resource quotas, and image scanning are important defense-in-depth controls, but they are all secondary to protecting the control plane itself. If the API falls, all other controls can be bypassed."
+  },
+  {
+    "id": 181,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Operations",
+    "q": "A trusted vendor's software update contains malware (supply chain attack). What should IR prioritize?",
+    "options": [
+      "Identify all systems with the compromised update",
+      "Issue a press release about the incident",
+      "Immediately terminate the vendor relationship",
+      "Switch to a competitor's product immediately"
+    ],
+    "answer": 0,
+    "exp": "Identify all systems with the compromised update is correct because the first technical phase of incident response is Detection and Analysis. You must determine the exact scope of the compromise before you can effectively contain it. Issuing a press release is incorrect as a first step; you need facts before public disclosure. Terminating the vendor and switching products are incorrect because they are long-term business decisions that do absolutely nothing to contain the active malware running on your internal systems right now."
+  },
+  {
+    "id": 183,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Identity and Access Management",
+    "q": "A cloud app supports SAML and OIDC for SSO. You need mobile native app and SPA support. Which protocol?",
+    "options": [
+      "OIDC (OpenID Connect)",
+      "SAML",
+      "Kerberos",
+      "LDAP"
+    ],
+    "answer": 0,
+    "exp": "OIDC (OpenID Connect) is correct because it is built on top of OAuth 2.0, utilizes lightweight JSON/REST APIs, and is explicitly designed for modern web applications, Single Page Apps (SPAs), and mobile ecosystems. SAML is incorrect because it relies on heavy XML payloads and browser redirects, making it clunky and difficult to implement securely in native mobile apps. Kerberos and LDAP are incorrect because they are legacy on-premise authentication protocols, not suited for federated cloud or mobile environments."
+  },
+  {
+    "id": 184,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Software Development Security",
+    "q": "What is the MOST important security control at the API gateway level?",
+    "options": [
+      "Code formatting standardization",
+      "Rate limiting and authentication enforcement",
+      "Syntax highlighting for requests",
+      "Database connection pool management"
+    ],
+    "answer": 1,
+    "exp": "Rate limiting and authentication enforcement is correct because the API Gateway serves as the front door to microservices. Enforcing authentication ensures only authorized clients enter, and rate limiting (throttling) prevents volumetric attacks (DDoS) and brute-force credential stuffing. Code formatting and syntax highlighting are incorrect because they are developer IDE features, not runtime gateway controls. Database connection pooling is incorrect because it is handled by the backend application servers, not the edge gateway."
+  },
+  {
+    "id": 189,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "The board wants a single metric for cyber risk posture. What should you recommend?",
+    "options": [
+      "Composite risk score based on likelihood and impact",
+      "Number of security incidents last quarter",
+      "Total count of open vulnerabilities",
+      "Compliance percentage against one framework"
+    ],
+    "answer": 0,
+    "exp": "Composite risk score based on likelihood and impact is correct because the board requires high-level business context. A composite score aggregates complex technical data into a single, understandable metric that reflects potential financial and operational impact. Number of incidents is incorrect because it doesn't measure posture or future risk. Open vulnerabilities is incorrect because it lacks context (1 critical is worse than 1,000 lows). Compliance percentage is incorrect because compliance does not equal actual security risk posture."
+  },
+  {
+    "id": 199,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Software Development Security",
+    "q": "Your application processes user-uploaded XML files. What attack is MOST concerning?",
+    "options": [
+      "Buffer overflow from XML parsing",
+      "SQL injection via XML data",
+      "XML External Entity (XXE) injection",
+      "Cross-site scripting in XML output"
+    ],
+    "answer": 2,
+    "exp": "XML External Entity (XXE) injection is correct because it uniquely targets the way weakly configured XML parsers process external entities. An attacker can use XXE to force the server to read local files (like /etc/passwd), interact with internal network resources (SSRF), or cause denial of service. Buffer overflows are rare in modern managed parsers. SQLi and XSS are generic application flaws that might use XML as a transport, but XXE exploits the core functionality of the XML parser itself."
+  },
+  {
+    "id": 211,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "Cyber insurance excludes 'acts of war.' A nation-state attack occurs and the insurer invokes the exclusion. What should you have done during policy review?",
+    "options": [
+      "Purchased a cheaper alternative policy",
+      "Relied on self-insurance reserves exclusively",
+      "Negotiated clear definitions for cyber warfare coverage",
+      "Accepted the exclusion as standard practice"
+    ],
+    "answer": 2,
+    "exp": "Negotiated clear definitions for cyber warfare coverage is correct because the attribution of cyberattacks to nation-states is highly complex. If 'act of war' is left vague, insurers may deny claims for major ransomware attacks (like NotPetya). Organizations must negotiate precise language to ensure coverage against state-sponsored criminal actors. Purchasing a cheaper policy is incorrect as it likely has worse exclusions. Self-insurance is incorrect because the point of insurance is risk transfer. Accepting it is incorrect as it leaves a massive financial vulnerability."
+  },
+  {
+    "id": 212,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Asset Security",
+    "q": "Data must remain within national borders. Which cloud consideration is MOST critical?",
+    "options": [
+      "Cloud provider uptime SLA terms",
+      "Data residency and geographic storage location",
+      "Migration timeline and project plan",
+      "Cloud provider pricing structures"
+    ],
+    "answer": 1,
+    "exp": "Data residency and geographic storage location is correct because to comply with national data sovereignty laws, the organization must explicitly dictate and verify exactly which physical data centers the provider uses for primary storage, backups, and failover replicas. Uptime SLAs, migration timelines, and pricing structures are all standard business considerations, but they are entirely irrelevant to satisfying strict geopolitical legal requirements regarding data location."
+  },
+  {
+    "id": 221,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Communication and Network Security",
+    "q": "Your org implements DNS over HTTPS (DoH). What legitimate concern should security raise?",
+    "options": [
+      "DoH provides weaker security than plain DNS",
+      "DoH bypasses network-level DNS monitoring and filtering",
+      "DoH is significantly slower than traditional DNS",
+      "DoH is unsupported by modern web browsers"
+    ],
+    "answer": 1,
+    "exp": "DoH bypasses network-level DNS monitoring and filtering is correct because DoH encrypts DNS queries inside standard HTTPS (port 443) traffic. This blinds enterprise security tools (like firewalls and DNS sinkholes) that rely on inspecting plaintext DNS (port 53) to block malicious domains or detect malware beacons. DoH providing weaker security is incorrect; it provides stronger confidentiality. DoH being slower is incorrect; performance is comparable. DoH being unsupported is incorrect; it is heavily supported and often enabled by default in modern browsers."
+  },
+  {
+    "id": 223,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Assessment and Testing",
+    "q": "A red team achieves domain admin but hasn't been detected after 72 hours. What should they do?",
+    "options": [
+      "Continue testing additional objectives and detection",
+      "Notify the blue team of their current presence",
+      "Stop immediately and report findings",
+      "Cause disruption to force the blue team to detect"
+    ],
+    "answer": 0,
+    "exp": "Continue testing additional objectives and detection is correct because a red team engagement is designed to test the full spectrum of defensive capabilities. Achieving domain admin is a milestone, but the team must continue to map out attack paths, exfiltration routes, and push the limits to see exactly what it takes to finally trigger blue team detection. Notifying the blue team ruins the realistic simulation. Stopping immediately wastes the engagement window. Causing disruption is strictly forbidden as red teams must never impact business availability."
+  },
+  {
+    "id": 230,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Identity and Access Management",
+    "q": "A service account has domain admin privileges and its password hasn't changed in 3 years. What is the MOST appropriate remediation?",
+    "options": [
+      "Change only the password and leave permissions",
+      "Delete the account immediately",
+      "Leave it unchanged since it works correctly",
+      "Rotate credentials, reduce privileges, implement PAM"
+    ],
+    "answer": 3,
+    "exp": "Rotate credentials, reduce privileges, implement PAM is correct because it addresses all flaws: rotating the stale password eliminates immediate risk, reducing privileges enforces least privilege (service accounts rarely need domain admin), and Privileged Access Management automates future rotations. Changing only the password is incorrect because it ignores the excessive privilege risk. Deleting immediately is incorrect as it will break whatever production service relies on it. Leaving it unchanged is negligent and guarantees a critical vulnerability."
+  },
+  {
+    "id": 232,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Operations",
+    "q": "PowerShell downloads and executes a script from an external URL on a finance workstation. This is abnormal. What attack?",
+    "options": [
+      "Physical security breach attempt",
+      "Network denial of service attack",
+      "Living off the land / fileless malware",
+      "Brute force password attack"
+    ],
+    "answer": 2,
+    "exp": "Living off the land / fileless malware is correct because attackers are using built-in, legitimate administrative tools (like PowerShell, WMI, or PsExec) to execute malicious commands directly in memory. This evades traditional signature-based antivirus which looks for malicious files written to disk. Physical breach is incorrect because this is a software/network execution. Denial of service is incorrect because downloading a script implies command execution or payload delivery, not flooding a network. Brute force is incorrect because execution has already been achieved."
+  },
+  {
+    "id": 233,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Software Development Security",
+    "q": "What is the MOST important element of a bug bounty program?",
+    "options": [
+      "The highest possible payout amounts",
+      "NDA requirements before any testing begins",
+      "Clear scope, rules of engagement, and legal safe harbor",
+      "Restriction to internal employees only"
+    ],
+    "answer": 2,
+    "exp": "Clear scope, rules of engagement, and legal safe harbor is correct because without these, ethical hackers risk facing criminal charges for testing systems, and organizations risk out-of-scope production outages. Safe harbor protects the researchers, and clear scope protects the organization. High payouts are incorrect because money doesn't matter if researchers fear prosecution. NDA requirements are incorrect because many bug bounty platforms operate publicly without upfront NDAs. Restriction to internal employees is incorrect; bug bounties are specifically designed to crowdsource external talent."
+  },
+  {
+    "id": 235,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Asset Security",
+    "q": "GDPR right to erasure is requested, but data is in production, backups, and analytics. What is the MOST practical approach?",
+    "options": [
+      "Only delete from the primary production database",
+      "Delete from production; document backup retention schedules",
+      "Delete from all systems including every backup set",
+      "Inform the user the request cannot be fulfilled"
+    ],
+    "answer": 1,
+    "exp": "Delete from production; document backup retention schedules is correct because it is technically infeasible to surgically remove one record from immutable backup tapes or compressed archives. Regulators accept removing data from active systems and ensuring it is not restored from backups, letting backups age out naturally based on documented retention schedules. Deleting only from production without addressing backups is incomplete. Deleting from all backups is incorrect due to technical impossibility and risk to disaster recovery. Informing the user it cannot be fulfilled violates GDPR."
+  },
+  {
+    "id": 240,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Operations",
+    "q": "Zero-trust rollout reveals 40% of internal traffic is unencrypted. What should you prioritize?",
+    "options": [
+      "Inventory and encrypt critical paths first, then expand",
+      "Block all unencrypted traffic immediately",
+      "Only encrypt traffic exiting the network perimeter",
+      "Accept the risk since traffic is internal only"
+    ],
+    "answer": 0,
+    "exp": "Inventory and encrypt critical paths first, then expand is correct because a phased, risk-based approach ensures business continuity while securing the highest-value data (e.g., authentication flows, database links) first. Blocking all unencrypted traffic immediately is incorrect because it will cause a massive operational outage, breaking legacy systems. Encrypting only exiting traffic is incorrect because it violates the Zero Trust principle of securing internal lateral traffic. Accepting the risk is incorrect because Zero Trust explicitly requires encryption everywhere."
+  },
+  {
+    "id": 242,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "MTPD for e-commerce is 8 hours. Current RTO is 12 hours. What does this gap indicate?",
+    "options": [
+      "RTO and MTPD are unrelated metrics",
+      "The MTPD needs to be increased to 12 hours",
+      "The DR strategy is inadequate—business cannot survive 12-hour outage",
+      "The current DR strategy is fully adequate"
+    ],
+    "answer": 2,
+    "exp": "The DR strategy is inadequate is correct because Maximum Tolerable Period of Disruption (MTPD) is the absolute limit before the business fails (8 hours). If the Recovery Time Objective (RTO) takes 12 hours, the business will fail before recovery completes. Therefore, the strategy is broken. MTPD and RTO are directly related. Increasing MTPD is incorrect because MTPD is a fixed business reality, not a variable you change to make IT look better. Stating the strategy is adequate is mathematically incorrect."
+  },
+  {
+    "id": 245,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Communication and Network Security",
+    "q": "An internal app exfiltrates data over DNS (port 53). Firewalls allow DNS. What control detects this?",
+    "options": [
+      "Upgrade to a next-generation firewall",
+      "Deploy DNS query analysis and anomaly detection",
+      "Add another IDS sensor to the network",
+      "Block all DNS traffic entirely"
+    ],
+    "answer": 1,
+    "exp": "Deploy DNS query analysis and anomaly detection is correct because DNS tunneling hides data within legitimate protocol requests. Specialized DNS analysis detects this by identifying anomalous patterns like exceptionally long subdomains, high query volumes to a single domain, or unusual TXT record payloads. Upgrading to an NGFW is incorrect unless it specifically includes DNS tunneling detection features. Adding an IDS sensor is incorrect if the IDS lacks DNS anomaly rules. Blocking all DNS is incorrect because it will break internet connectivity for the entire organization."
+  },
+  {
+    "id": 249,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Software Development Security",
+    "q": "SSRF protection blocks private IPs, but an attacker uses DNS rebinding to bypass it. What additional control is needed?",
+    "options": [
+      "Block all outbound HTTP requests",
+      "Require HTTPS for all outbound requests",
+      "Validate the resolved IP after DNS resolution, not just hostname",
+      "Deploy a web application firewall"
+    ],
+    "answer": 2,
+    "exp": "Validate the resolved IP after DNS resolution, not just hostname is correct because DNS rebinding works by resolving a benign external IP during the validation check, but serving an internal private IP (like 127.0.0.1) when the application actually makes the HTTP request a moment later. Validating the final resolved IP at connection time prevents this TOCTOU (Time of Check to Time of Use) flaw. Blocking all outbound requests is incorrect as it breaks legitimate webhooks. Requiring HTTPS doesn't prevent SSRF. A WAF is incorrect as it typically cannot see backend DNS resolution logic."
+  },
+  {
+    "id": 253,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Communication and Network Security",
+    "q": "What is the MOST effective architectural approach against DDoS?",
+    "options": [
+      "CDN with DDoS mitigation, anycast, and rate limiting",
+      "More bandwidth from the upstream ISP",
+      "A larger capacity firewall appliance",
+      "An additional intrusion detection sensor"
+    ],
+    "answer": 0,
+    "exp": "CDN with DDoS mitigation, anycast, and rate limiting is correct because Content Delivery Networks use distributed global scrubbing centers to absorb massive volumetric attacks before they ever reach the origin servers. More bandwidth is incorrect because an attacker with a botnet can easily saturate any single ISP link. A larger firewall is incorrect because a volumetric attack will simply overwhelm the firewall's state table or the pipe leading to it. An IDS is incorrect because it only detects attacks; it cannot absorb or mitigate volumetric traffic."
+  },
+  {
+    "id": 254,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Identity and Access Management",
+    "q": "Employees use unauthorized SaaS apps with corporate credentials (shadow IT). What is the MOST comprehensive fix?",
+    "options": [
+      "Restrict all internet access for users",
+      "Implement CASB for visibility combined with SSO",
+      "Send a warning email to all employees",
+      "Block all SaaS applications entirely"
+    ],
+    "answer": 1,
+    "exp": "Implement CASB for visibility combined with SSO is correct because a Cloud Access Security Broker (CASB) discovers and monitors shadow IT usage, allowing security teams to bring those apps under management. Integrating them with Single Sign-On (SSO) then enforces strong authentication (MFA) and allows central revocation. Restricting internet or blocking all SaaS is incorrect because it cripples business productivity. Sending a warning email is a weak administrative control that will not technically prevent the behavior."
+  },
+  {
+    "id": 256,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Software Development Security",
+    "q": "WebSockets are used for real-time communication. What is the MOST important security control?",
+    "options": [
+      "Use HTTP polling instead",
+      "Disable real-time features entirely",
+      "Only allow WebSocket during business hours",
+      "Authenticate at connection and authorize each message"
+    ],
+    "answer": 3,
+    "exp": "Authenticate at connection and authorize each message is correct because WebSockets maintain a persistent, stateful connection. If you only authenticate the initial handshake, an attacker might hijack the session or exploit the lack of authorization on subsequent individual messages. Therefore, every message must be independently authorized. HTTP polling is incorrect as it is a less efficient architectural alternative, not a security control. Disabling features is incorrect as it breaks business functionality. Restricting by business hours is an arbitrary administrative control, not a technical safeguard against exploitation."
+  },
+  {
+    "id": 286,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security and Risk Management",
+    "q": "An organization must comply with conflicting regulations in two jurisdictions. What approach is MOST appropriate?",
+    "options": [
+      "Comply with the stricter regulation in both",
+      "Apply whichever regulation is cheaper to implement",
+      "Ignore the less profitable jurisdiction's rules",
+      "Request an exemption from both regulators"
+    ],
+    "answer": 0,
+    "exp": "Comply with the stricter regulation in both is correct because meeting the highest standard ensures compliance with all lower standards simultaneously, reducing legal risk globally and simplifying architectural design. Applying the cheaper regulation is incorrect because it guarantees non-compliance fines in the stricter jurisdiction. Ignoring the less profitable jurisdiction is incorrect as it exposes the company to legal sanctions. Requesting an exemption is incorrect because regulators rarely grant exemptions simply because another jurisdiction exists."
+  },
+  {
+    "id": 311,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Assessment and Testing",
+    "q": "What is the difference between authenticated and unauthenticated vulnerability scans?",
+    "options": [
+      "Authenticated scans log in to find more vulnerabilities; unauthenticated scan externally",
+      "Both produce identical scan results",
+      "Authenticated scans only check passwords",
+      "Unauthenticated scans are always more thorough"
+    ],
+    "answer": 0,
+    "exp": "Authenticated scans log in to find more vulnerabilities; unauthenticated scan externally is correct. Authenticated (credentialed) scans provide the scanner with system-level access to read the registry, verify installed patch versions, and check internal configurations, vastly reducing false positives. Unauthenticated scans only see what an external attacker sees (open ports, service banners). The other options are incorrect because authenticated scans are objectively more thorough, do not produce identical results, and check much more than just passwords."
+  },
+  {
+    "id": 326,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security and Risk Management",
+    "q": "What is the MOST important factor when selecting a risk framework (NIST RMF, ISO 27005, FAIR)?",
+    "options": [
+      "Which framework is cheapest to implement",
+      "Alignment with organizational risk appetite and regulatory requirements",
+      "Which framework has the shortest documentation",
+      "The framework most popular on social media"
+    ],
+    "answer": 1,
+    "exp": "Alignment with organizational risk appetite and regulatory requirements is correct because a framework must support the business's specific legal obligations (e.g., NIST for federal contractors) and its culture of risk management (e.g., FAIR for financial quantification). Cost, documentation length, and popularity are incorrect because choosing a framework based on these superficial factors will lead to a security program that fails to protect the business or meet legal mandates."
+  },
+  {
+    "id": 345,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security and Risk Management",
+    "q": "What is the MOST important consideration when outsourcing security functions to an MSSP?",
+    "options": [
+      "Clear SLA definitions with measurable security outcomes",
+      "Whether the MSSP uses the same brand of firewall",
+      "The MSSP's office location relative to yours",
+      "The MSSP's employee count and revenue"
+    ],
+    "answer": 0,
+    "exp": "Clear SLA definitions with measurable security outcomes is correct because when you outsource operations, you still retain the risk. Service Level Agreements dictate response times, escalation paths, and accountability, ensuring the MSSP actually performs the required security duties. Firewall brand is incorrect because the MSSP should be capable of managing diverse environments or providing their own stack. Office location and employee count are secondary operational details compared to legally binding performance outcomes."
+  },
+  {
+    "id": 361,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security and Risk Management",
+    "q": "What is the MOST effective way to ensure security is considered in business decisions?",
+    "options": [
+      "Give the CISO veto power over all decisions",
+      "Require all employees to become CISSP certified",
+      "Block all new projects until security approves",
+      "Include security representation in enterprise risk governance"
+    ],
+    "answer": 3,
+    "exp": "Include security representation in enterprise risk governance is correct because security must be embedded into the strategic steering committees and governance boards where overall business risk is discussed, ensuring security is an enabler rather than an afterthought. Giving the CISO absolute veto power or blocking all projects is incorrect because it positions security as the 'Department of No', creating friction and incentivizing shadow IT. Requiring CISSP for everyone is an absurd and unachievable administrative burden."
+  },
+  {
+    "id": 377,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "What is the MOST critical element of a third-party risk management program?",
+    "options": [
+      "Only using vendors headquartered in your country",
+      "Requiring all vendors to use the same cloud provider",
+      "Continuous assessment proportional to data access and criticality",
+      "Annual holiday gifts for vendor contacts"
+    ],
+    "answer": 2,
+    "exp": "Continuous assessment proportional to data access and criticality is correct because vendor risk management must be a lifecycle (continuous) and prioritized (proportional). A vendor holding full PII requires intense scrutiny, while a landscaping vendor does not. Using vendors only in your country is incorrect as global supply chains are necessary and geography doesn't guarantee security. Forcing a specific cloud provider is anti-competitive and impractical. Holiday gifts are irrelevant to security posture."
+  },
+  {
+    "id": 378,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Asset Security",
+    "q": "What is the difference between a privacy impact assessment and a risk assessment?",
+    "options": [
+      "PIA focuses on personal data protection; risk assessment covers all security risks",
+      "They are identical assessments with different names",
+      "PIA only applies to government organizations",
+      "Risk assessments never consider personal data"
+    ],
+    "answer": 0,
+    "exp": "PIA focuses on personal data protection; risk assessment covers all security risks is correct. A Privacy Impact Assessment specifically evaluates how a system collects, uses, and stores Personally Identifiable Information (PII) to ensure compliance with privacy laws. A general Risk Assessment evaluates threats to overall business operations, including availability and integrity of non-personal data. Claiming they are identical or that risk assessments never consider personal data is factually incorrect. Claiming PIAs only apply to government is incorrect; GDPR mandates them for private companies."
+  },
+  {
+    "id": 379,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Asset Security",
+    "q": "How should an organization handle data subject access requests (DSARs) at scale?",
+    "options": [
+      "Implement automated discovery and response workflows",
+      "Delete all customer data preemptively",
+      "Ignore requests that seem difficult to fulfill",
+      "Respond only to requests from lawyers"
+    ],
+    "answer": 0,
+    "exp": "Implement automated discovery and response workflows is correct because manual retrieval of scattered user data across hundreds of databases takes too long to meet strict regulatory deadlines (e.g., GDPR's 30 days). Automation ensures timely, accurate, and scalable compliance. Deleting data preemptively ruins the business. Ignoring difficult requests or responding only to lawyers guarantees massive regulatory fines for non-compliance."
+  },
+  {
+    "id": 408,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "What is the MOST important factor in determining security budget?",
+    "options": [
+      "Minimizing all security expenditure",
+      "Spending the maximum amount available",
+      "Matching competitor spending exactly",
+      "Alignment with organizational risk tolerance and business objectives"
+    ],
+    "answer": 3,
+    "exp": "Alignment with organizational risk tolerance and business objectives is correct because security exists to support the business. The budget should be based on a quantified risk assessment—spending appropriately to reduce risk to a level acceptable to management. Minimizing expenditure is incorrect because it ignores unacceptable risks. Spending the maximum or matching competitors is incorrect because it ignores the unique threat profile and actual needs of your specific organization."
+  },
+  {
+    "id": 418,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Assessment and Testing",
+    "q": "What is the difference between a vulnerability assessment and a risk assessment?",
+    "options": [
+      "Risk assessments are purely technical",
+      "Vulnerability: finds technical flaws; Risk: evaluates likelihood and business impact",
+      "Vulnerability assessments include business impact",
+      "They are identical assessments"
+    ],
+    "answer": 1,
+    "exp": "Vulnerability: finds technical flaws; Risk: evaluates likelihood and business impact is correct. A vulnerability assessment uses scanners to spit out a list of technical weaknesses (e.g., missing patches). A risk assessment takes that list and applies business context (e.g., 'This missing patch is on an isolated test server, so the business risk is low'). Risk assessments are not purely technical, vulnerability assessments do not dictate business impact, and they are distinctly different exercises."
+  },
+  {
+    "id": 425,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "How should an organization handle a zero-day exploit against a critical production system?",
+    "options": [
+      "Immediately shut down the affected system permanently",
+      "Implement compensating controls while monitoring for exploitation",
+      "Ignore it since zero-days are rare",
+      "Wait for the vendor patch regardless of timeline"
+    ],
+    "answer": 1,
+    "exp": "Implement compensating controls while monitoring for exploitation is correct. Because a zero-day has no immediate vendor patch, you must deploy alternative mitigations (e.g., WAF rules, network isolation, strict IPS signatures) to reduce the attack surface and heavily monitor the asset until the vendor releases a fix. Shutting down the system permanently destroys the business. Ignoring it is negligent. Waiting for the patch without taking intermediate action leaves the system fully exposed to active attacks."
+  },
+  {
+    "id": 437,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Operations",
+    "q": "What is the difference between BCDR testing types (tabletop, walkthrough, simulation, full interruption)?",
+    "options": [
+      "Increasing realism: tabletop discusses; walkthrough steps through; simulation tests components; full interruption fails over",
+      "Tabletop is the most realistic test type",
+      "They are all identical exercises",
+      "Only full interruption tests have value"
+    ],
+    "answer": 0,
+    "exp": "Increasing realism: tabletop discusses; walkthrough steps through; simulation tests components; full interruption fails over is correct. This represents the spectrum of Disaster Recovery testing. Tabletop is a theoretical discussion. Walkthrough involves reviewing the physical plan steps. Simulation involves actively running recovery processes on non-production gear. Full interruption actually shuts down primary production to force failover. Stating tabletop is the most realistic, or that they are identical, is factually wrong. Stating only full interruption has value ignores the vital preparation and training the lesser tests provide."
+  },
+  {
+    "id": 441,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security and Risk Management",
+    "q": "What is the MOST effective metric for communicating security program value to the board?",
+    "options": [
+      "Count of security tools purchased this year",
+      "Number of patches applied this quarter",
+      "Total number of firewall rules configured",
+      "Risk reduction in financial terms relative to security investment"
+    ],
+    "answer": 3,
+    "exp": "Risk reduction in financial terms relative to security investment is correct because executive boards speak the language of business and finance. Showing that a $500k security investment reduced ALE (Annualized Loss Expectancy) by $5 million clearly demonstrates ROI. Tool counts, patch numbers, and firewall rules are operational, highly technical metrics that provide zero context to a board regarding whether the business is actually safer."
+  },
+  {
+    "id": 445,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "What is the security risk of speculative execution vulnerabilities (Spectre/Meltdown)?",
+    "options": [
+      "CPU optimization features leak data across security boundaries through side channels",
+      "They only affect obsolete hardware",
+      "Only server CPUs are affected by these vulnerabilities",
+      "They are easily patched with no performance impact"
+    ],
+    "answer": 0,
+    "exp": "CPU optimization features leak data across security boundaries through side channels is correct. Modern CPUs 'guess' future instructions to speed up processing (speculative execution). Flaws like Spectre allow attackers to read the memory footprint of these guesses via timing side-channels, extracting passwords or keys from other processes or the OS kernel. They affect modern hardware, not just obsolete ones. They affect mobile, desktop, and server CPUs alike. Patches for these hardware-level flaws often introduce significant performance degradation."
+  },
+  {
+    "id": 449,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Identity and Access Management",
+    "q": "What is the difference between RBAC and ReBAC (Relationship-Based Access Control)?",
+    "options": [
+      "They are the same model with different abbreviations",
+      "RBAC is newer than ReBAC",
+      "ReBAC only works for social media platforms",
+      "RBAC uses job roles; ReBAC uses object relationships and graph-based policies"
+    ],
+    "answer": 3,
+    "exp": "RBAC uses job roles; ReBAC uses object relationships and graph-based policies is correct. Role-Based Access Control assigns permissions based on a static job function (e.g., 'HR Manager'). Relationship-Based Access Control derives permissions based on dynamic relationships between entities (e.g., 'User A can edit Document B because User A is in a Group that Owns Folder C where Document B resides'), common in modern graph databases and platforms like Google Drive. The other options misrepresent the definitions and history of the models."
+  },
+  {
+    "id": 457,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "What is the MOST important consideration for cross-border incident response?",
+    "options": [
+      "Language translation of security alerts",
+      "Jurisdictional authority, data sovereignty, and evidence handling laws",
+      "Time zone differences between offices",
+      "International shipping costs for hardware"
+    ],
+    "answer": 1,
+    "exp": "Jurisdictional authority, data sovereignty, and evidence handling laws is correct because legal frameworks change drastically across borders. Transferring a forensic image containing PII out of the EU might violate GDPR, and collecting evidence improperly in a foreign jurisdiction might render it inadmissible in court or invite local criminal charges. Language, time zones, and shipping costs are logistical hurdles, but legal and sovereign compliance dictates whether the response effort is even lawful."
+  },
+  {
+    "id": 461,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "What is the difference between a trusted computing base (TCB) and a security perimeter?",
+    "options": [
+      "They are the same concept",
+      "TCB only applies to cloud environments",
+      "TCB is all hardware/software enforcing policy; security perimeter is its boundary",
+      "Security perimeter is always a physical wall"
+    ],
+    "answer": 2,
+    "exp": "TCB is all hardware/software enforcing policy; security perimeter is its boundary is correct. The Trusted Computing Base comprises the total combination of protection mechanisms (hardware, firmware, software) responsible for enforcing the security policy. The security perimeter is the logical (or physical) boundary that separates the trusted mechanisms of the TCB from the untrusted elements outside it. The other options conflate these precise architectural definitions or inaccurately limit them to physical walls or the cloud."
+  },
+  {
+    "id": 483,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Assessment and Testing",
+    "q": "What is the MOST important output of a penetration test?",
+    "options": [
+      "Prioritized findings with business impact and remediation guidance",
+      "Proof the tester is skilled",
+      "A list of tools used during testing",
+      "The number of vulnerabilities found"
+    ],
+    "answer": 0,
+    "exp": "Prioritized findings with business impact and remediation guidance is correct because the ultimate goal of a pen test is to improve the organization's security posture. Management needs a roadmap of what to fix first based on actual risk to the business, along with instructions on how to fix it. Proving the tester's skill or listing tools used is irrelevant to the business outcome. A sheer number of vulnerabilities lacks the context needed to prioritize remediation efforts."
+  },
+  {
+    "id": 491,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Asset Security",
+    "q": "What is the MOST effective control for preventing unauthorized USB data exfiltration?",
+    "options": [
+      "A strongly worded acceptable use policy alone",
+      "Removing all USB ports with hot glue",
+      "Verbal reminders at weekly team meetings",
+      "Endpoint DLP with USB device control and encryption enforcement"
+    ],
+    "answer": 3,
+    "exp": "Endpoint DLP with USB device control and encryption enforcement is correct because it provides granular technical enforcement. It can block unauthorized mass storage devices entirely, or allow authorized devices while forcing encryption, perfectly balancing security with business needs. An AUP or verbal reminders are administrative controls easily bypassed by malicious or careless users. Removing USB ports physically with glue is an archaic, destructive brute-force method that breaks legitimate hardware use (like authorized keyboards or mice)."
+  },
+  {
+    "id": 499,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Operations",
+    "q": "What is the difference between containment and eradication in incident response?",
+    "options": [
+      "They are the same phase of response",
+      "Containment is optional if eradication is fast",
+      "Eradication always comes before containment",
+      "Containment stops the spread; eradication removes the root cause"
+    ],
+    "answer": 3,
+    "exp": "Containment stops the spread; eradication removes the root cause is correct. In the NIST IR lifecycle, Containment (e.g., isolating a server on a VLAN) stops the bleeding and prevents lateral movement. Eradication happens later, involving the surgical removal of the malware, deleting backdoor accounts, and patching the vulnerabilities the attacker used. They are distinctly different phases. Containment is never optional, and eradication must follow containment, not precede it."
+  }
+]

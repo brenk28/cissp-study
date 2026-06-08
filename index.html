@@ -141,6 +141,26 @@
         .badge-mc { background: var(--accent); }
         .badge-ms { background: #8e44ad; }
         .badge-order { background: #e67e22; }
+        .badge-scenario { background: #16a085; }
+
+        /* ── Scenario Context ── */
+        .scenario-box {
+            background: #fef9e7;
+            border: 1px solid #f9e79f;
+            border-left: 4px solid #f39c12;
+            border-radius: 4px;
+            padding: 14px 16px;
+            margin-bottom: 16px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .scenario-box .scenario-label {
+            font-weight: bold;
+            color: #b7950b;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
 
         .options {
             display: flex;
@@ -441,6 +461,11 @@
             <span class="question-type-badge badge-mc" id="type-badge">Multiple Choice</span>
         </div>
 
+        <div id="scenario-box" class="scenario-box hidden">
+            <div class="scenario-label">Scenario</div>
+            <div id="scenario-text"></div>
+        </div>
+
         <div id="question-container">
             <div class="question-text" id="question-text">Loading...</div>
             <div id="options-container"></div>
@@ -496,6 +521,36 @@
 </div>
 
 <script src="questions.js"></script>
+<script>
+// Flatten nested scenario questions to match engine format
+const flatBank = [];
+let scenarioCounter = 1;
+questionBank.forEach(q => {
+    if (q.type === 'scenario' && q.questions) {
+        const sid = "s_" + scenarioCounter++;
+        q.questions.forEach((subQ, idx) => {
+            flatBank.push({
+                id: (q.id * 100) + idx, // ensure unique ID
+                type: 'scenario',
+                scenarioId: sid,
+                scenarioIndex: idx,
+                difficulty: q.difficulty || 3,
+                domain: q.domain,
+                scenarioText: q.scenario,
+                q: subQ.q,
+                options: subQ.options,
+                answer: subQ.answer,
+                exp: subQ.exp
+            });
+        });
+    } else {
+        flatBank.push(q);
+    }
+});
+// Modify the const array in place
+questionBank.length = 0;
+questionBank.push(...flatBank);
+</script>
 <script>
 // ═══════════════════════════════════════════════════════════
 //  CAT ENGINE
@@ -558,6 +613,10 @@ let passConfidence = 0.5;
 // Review mode: track missed questions
 let missedQuestions = [];
 
+// Scenario tracking: queue of remaining sub-questions in current scenario
+let scenarioQueue = [];
+let currentScenarioId = null;
+
 // ── Init ──
 document.getElementById('pool-size').textContent = questionBank.length;
 
@@ -586,24 +645,49 @@ function getDomainWeaknesses() {
 }
 
 function selectQuestion() {
+    // If mid-scenario, serve the next queued sub-question
+    if (scenarioQueue.length > 0) {
+        return scenarioQueue.shift();
+    }
+    currentScenarioId = null;
+
     const domainWeights = getDomainWeaknesses();
+    // Exclude scenario sub-questions from random selection (they get queued as a group)
     const candidates = questionBank.filter(q =>
-        q.difficulty === currentDifficulty && !questionHistory.includes(q.id)
+        q.difficulty === currentDifficulty &&
+        !questionHistory.includes(q.id) &&
+        !(q.type === 'scenario' && q.scenarioId && q.scenarioIndex > 0)
     );
 
     if (candidates.length === 0) {
-        // Try adjacent difficulties
         let alt = questionBank.filter(q =>
-            Math.abs(q.difficulty - currentDifficulty) === 1 && !questionHistory.includes(q.id)
+            Math.abs(q.difficulty - currentDifficulty) === 1 &&
+            !questionHistory.includes(q.id) &&
+            !(q.type === 'scenario' && q.scenarioId && q.scenarioIndex > 0)
         );
         if (alt.length === 0) {
-            alt = questionBank.filter(q => !questionHistory.includes(q.id));
+            alt = questionBank.filter(q =>
+                !questionHistory.includes(q.id) &&
+                !(q.type === 'scenario' && q.scenarioId && q.scenarioIndex > 0)
+            );
         }
         if (alt.length === 0) return null;
-        return weightedPick(alt, domainWeights);
+        return pickAndQueueScenario(weightedPick(alt, domainWeights));
     }
 
-    return weightedPick(candidates, domainWeights);
+    return pickAndQueueScenario(weightedPick(candidates, domainWeights));
+}
+
+function pickAndQueueScenario(q) {
+    if (q.type === 'scenario' && q.scenarioId) {
+        currentScenarioId = q.scenarioId;
+        // Queue the remaining sub-questions for this scenario
+        const siblings = questionBank.filter(
+            s => s.scenarioId === q.scenarioId && s.id !== q.id && !questionHistory.includes(s.id)
+        ).sort((a, b) => (a.scenarioIndex || 0) - (b.scenarioIndex || 0));
+        scenarioQueue = siblings;
+    }
+    return q;
 }
 
 function weightedPick(candidates, domainWeights) {
@@ -665,7 +749,12 @@ function loadQuestion() {
     // Type badge
     const typeBadge = document.getElementById('type-badge');
     const qType = currentQuestion.type || 'mc';
-    if (qType === 'ms') {
+    if (qType === 'scenario') {
+        const total = questionBank.filter(q => q.scenarioId === currentQuestion.scenarioId).length;
+        const idx = (currentQuestion.scenarioIndex || 0) + 1;
+        typeBadge.textContent = `Scenario (${idx} of ${total})`;
+        typeBadge.className = 'question-type-badge badge-scenario';
+    } else if (qType === 'ms') {
         typeBadge.textContent = 'Select All That Apply';
         typeBadge.className = 'question-type-badge badge-ms';
     } else if (qType === 'order') {
@@ -674,6 +763,15 @@ function loadQuestion() {
     } else {
         typeBadge.textContent = 'Multiple Choice';
         typeBadge.className = 'question-type-badge badge-mc';
+    }
+
+    // Scenario context box
+    const scenarioBox = document.getElementById('scenario-box');
+    if (qType === 'scenario' && currentQuestion.scenarioText) {
+        document.getElementById('scenario-text').textContent = currentQuestion.scenarioText;
+        scenarioBox.classList.remove('hidden');
+    } else {
+        scenarioBox.classList.add('hidden');
     }
 
     // Render question
@@ -687,6 +785,7 @@ function loadQuestion() {
     } else if (qType === 'ms') {
         renderMultiSelectQuestion(container);
     } else {
+        // mc and scenario both use standard MC rendering
         renderMCQuestion(container);
     }
 
@@ -853,7 +952,7 @@ function handleTouchEnd(e) {
 function submitAnswer() {
     const qType = currentQuestion.type || 'mc';
 
-    if (qType === 'mc') {
+    if (qType === 'mc' || qType === 'scenario') {
         if (selectedIndices.length === 0) return;
     } else if (qType === 'ms') {
         if (selectedIndices.length === 0) return;
@@ -863,7 +962,7 @@ function submitAnswer() {
     isAnswered = true;
     let isCorrect = false;
 
-    if (qType === 'mc') {
+    if (qType === 'mc' || qType === 'scenario') {
         isCorrect = selectedIndices[0] === currentQuestion.answer;
         document.getElementById(`opt-${currentQuestion.answer}`).classList.add('correct');
         if (!isCorrect) {
@@ -1152,7 +1251,7 @@ function renderReview() {
         let yourAnswerText = '';
         let correctAnswerText = '';
 
-        if (qType === 'mc') {
+        if (qType === 'mc' || qType === 'scenario') {
             yourAnswerText = q.options[entry.userAnswer[0]] || 'None selected';
             correctAnswerText = q.options[q.answer];
         } else if (qType === 'ms') {

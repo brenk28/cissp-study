@@ -1,0 +1,318 @@
+[
+  {
+    "id": 89,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Identity and Access Management",
+    "q": "A DBA needs daily maintenance access and emergency production access. How should you structure this?",
+    "options": [
+      "Implement a fully automated Just-In-Time (JIT) privilege escalation script via API",
+      "Update the database security policy to define emergency procedures",
+      "Provide standard and break-glass accounts with logging",
+      "Perform a forensic review of the database logs to identify access patterns"
+    ],
+    "answer": 2,
+    "exp": "Provide standard and break-glass accounts with logging is correct because it enforces least privilege for daily tasks while providing a heavily monitored, separate, elevated account (break-glass) for emergencies. 'Implement a fully automated JIT script' is a technology-specific distraction; CISSP focuses on the architectural concept of break-glass rather than a specific script. 'Update the database security policy' is a management trap; while policy is necessary, it does not answer how to technically structure the access. 'Perform a forensic review' is a right action, wrong time trap; it is a reactive measure rather than a proactive access structure."
+  },
+  {
+    "id": 91,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Identity and Access Management",
+    "q": "A privileged account accessed systems at 3 AM from an unusual location. The owner denies it. What should you do FIRST?",
+    "options": [
+      "Deploy an automated behavioral analytics tool to block future anomalies",
+      "Draft a formal incident report for executive management",
+      "Review authentication logs and session details",
+      "Isolate the affected systems from the production network"
+    ],
+    "answer": 2,
+    "exp": "Review authentication logs and session details is correct because you must verify the event's context before taking disruptive administrative action. 'Deploy an automated behavioral analytics tool' is a tech trap; it is a long-term engineering task, not an immediate first response to an incident. 'Draft a formal incident report' is a management trap; right action, but the wrong time, as you have not yet gathered the basic facts. 'Isolate the affected systems' is a right action, wrong time trap; containment is critical, but isolating prematurely without verifying the log details could cause unnecessary production outages."
+  },
+  {
+    "id": 100,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Assessment and Testing",
+    "q": "An organization tests incident response on isolated systems without interrupting production. What test type is this?",
+    "options": [
+      "Simulation exercise",
+      "Deploy a digital twin using containerized microservices",
+      "Update the business continuity plan based on recent threat intelligence",
+      "Perform a full system restore from the latest immutable backups"
+    ],
+    "answer": 0,
+    "exp": "Simulation exercise is correct because it involves physically executing procedures on isolated or non-production systems to simulate a real event without causing actual downtime. 'Deploy a digital twin' is a tech trap; while a digital twin could be used, the CISSP term for this testing methodology is a simulation exercise. 'Update the business continuity plan' is a management trap; it's a good administrative action but doesn't identify the test type. 'Perform a full system restore' is a right action, wrong time trap; it describes a specific technical task rather than the overarching methodology of a simulation exercise."
+  },
+  {
+    "id": 101,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Assessment and Testing",
+    "q": "Developers have sudo on production servers. Management says it's necessary. What should you recommend?",
+    "options": [
+      "Migrate all production workloads to a serverless architecture",
+      "Conduct a formal risk assessment and update the risk register",
+      "Implement PAM with session recording",
+      "Immediately revoke sudo access to comply with least privilege"
+    ],
+    "answer": 2,
+    "exp": "Implement PAM with session recording is correct because Privileged Access Management meets the business need while providing strict controls and irrefutable audit trails. 'Migrate all production workloads to a serverless architecture' is a tech trap; it's a massive, disruptive engineering project rather than a targeted security control. 'Conduct a formal risk assessment' is a management trap; while assessing risk is good, it doesn't solve the immediate technical deficiency. 'Immediately revoke sudo access' is a right action, wrong context trap; least privilege is important, but directly violating a management-mandated business requirement is incorrect."
+  },
+  {
+    "id": 102,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Assessment and Testing",
+    "q": "After exploiting SQL injection and extracting data, management asks if the system is now 'secure.' What should you say?",
+    "options": [
+      "Additional vulnerabilities may exist beyond this test",
+      "Implement a Web Application Firewall to block future SQL payloads",
+      "Present a comprehensive executive summary of the penetration test",
+      "Begin patching the identified SQL injection vulnerability immediately"
+    ],
+    "answer": 0,
+    "exp": "Additional vulnerabilities may exist beyond this test is correct because a penetration test is a point-in-time assessment focused on specific attack paths; finding one flaw does not guarantee the absence of others. 'Implement a Web Application Firewall' is a tech trap; it is a good technical control, but it fails to communicate the limited scope of the test to management. 'Present a comprehensive executive summary' is a management trap; it's a procedural step that avoids directly answering management's question. 'Begin patching immediately' is a right action, wrong time trap; remediation follows, but first management must understand that the system is not entirely 'secure'."
+  },
+  {
+    "id": 103,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Assessment and Testing",
+    "q": "Heartbleed is found on a server scheduled for decommissioning in 2 weeks. What should you do?",
+    "options": [
+      "Deploy a custom IPS signature to drop all malformed OpenSSL traffic",
+      "Formally document a risk exception and obtain executive sign-off",
+      "Initiate the formal incident response and forensics process",
+      "Isolate the server on a restricted segment"
+    ],
+    "answer": 3,
+    "exp": "Isolate the server on a restricted segment is correct because it mitigates the severe risk immediately while allowing the planned decommissioning timeline to proceed. 'Deploy a custom IPS signature' is a tech trap; writing custom signatures is error-prone and overly complex compared to network isolation. 'Formally document a risk exception' is a management trap; paperwork alone does not stop a critical, actively exploitable memory leak. 'Initiate the formal incident response process' is a right action, wrong time trap; unless exploitation is confirmed, immediate containment of the vulnerability is the priority over full forensics."
+  },
+  {
+    "id": 105,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Assessment and Testing",
+    "q": "What testing combination provides BEST coverage for a CI/CD pipeline?",
+    "options": [
+      "Integrate fully automated fuzzing and interactive application security testing (IAST)",
+      "Establish a security steering committee to review all major releases",
+      "SAST in build, DAST in staging, periodic pen tests",
+      "Halt the CI/CD pipeline until a comprehensive threat model is completed"
+    ],
+    "answer": 2,
+    "exp": "SAST in build, DAST in staging, periodic pen tests is correct because it represents a layered, defense-in-depth approach covering code, runtime, and complex logic flaws. 'Integrate fully automated fuzzing and IAST' is a tech trap; while advanced, it doesn't provide the complete lifecycle coverage that the SAST/DAST/Pen-test triad does. 'Establish a security steering committee' is a management trap; it provides governance but does not perform the actual testing required by the pipeline. 'Halt the pipeline for threat modeling' is a right action, wrong time trap; threat modeling belongs in the design phase, not as an interruption to the CI/CD deployment phase."
+  },
+  {
+    "id": 117,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security Operations",
+    "q": "Ransomware encrypts backups. You find one air-gapped backup from 3 weeks ago. What should you do FIRST?",
+    "options": [
+      "Verify integrity of the air-gapped backup",
+      "Deploy an advanced Endpoint Detection and Response (EDR) agent to all hosts",
+      "Convene the crisis management team to declare a formal disaster",
+      "Isolate the remaining unaffected network segments"
+    ],
+    "answer": 0,
+    "exp": "Verify integrity of the air-gapped backup is correct because before making strategic recovery decisions, you must confirm that your only lifeline is viable and uncorrupted. 'Deploy an advanced EDR agent' is a tech trap; rolling out new tools is a post-incident remediation task, not an immediate crisis response step. 'Convene the crisis management team' is a management trap; it's a necessary administrative step, but evaluating the technical viability of the backup provides the critical information the team will need. 'Isolate the remaining segments' is a right action, wrong time trap; containment is crucial, but the specific scenario asks how to handle the newly discovered backup resource."
+  },
+  {
+    "id": 118,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Operations",
+    "q": "SIEM alerts on lateral movement via stolen credentials. You isolate the account. What NEXT?",
+    "options": [
+      "Hunt for persistence mechanisms in the environment",
+      "Implement a zero-trust network architecture across the enterprise",
+      "Update the incident response plan to include credential theft scenarios",
+      "Perform a full forensic image of the domain controller"
+    ],
+    "answer": 0,
+    "exp": "Hunt for persistence mechanisms in the environment is correct because attackers who move laterally often deploy backdoors to maintain access after their initial compromised account is burned. 'Implement a zero-trust network architecture' is a tech trap; it is a multi-year engineering project, not an immediate incident response step. 'Update the incident response plan' is a management trap; this is a post-incident 'lessons learned' activity, not something to do while the attacker is active. 'Perform a full forensic image of the domain controller' is a right action, wrong time trap; it is a heavy-handed forensic step that may not be necessary until scoping is complete."
+  },
+  {
+    "id": 119,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Operations",
+    "q": "You discover an APT has been in your network for 8 months. What should be your PRIMARY focus?",
+    "options": [
+      "Comprehensive scoping of compromised systems",
+      "Deploy AI-driven network traffic analysis to detect beaconing",
+      "Notify regulatory bodies and key stakeholders of the breach",
+      "Immediately block all known command and control (C2) IP addresses"
+    ],
+    "answer": 0,
+    "exp": "Comprehensive scoping of compromised systems is correct because APTs embed deeply; eradicating early without scoping alerts them and causes them to use hidden fallbacks. 'Deploy AI-driven network traffic analysis' is a tech trap; introducing new tools delays the immediate need for disciplined manual and systemic scoping. 'Notify regulatory bodies' is a management trap; it is required eventually, but you cannot accurately report anything without first scoping the breach. 'Immediately block all known C2 IPs' is a right action, wrong time trap; premature containment tips off the attacker before you understand their entire footprint."
+  },
+  {
+    "id": 121,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Operations",
+    "q": "Post-incident review shows MTTD was 45 days. What should be your PRIMARY recommendation?",
+    "options": [
+      "Improve detection capabilities and rules",
+      "Implement an automated SOAR playbook for rapid containment",
+      "Revise the corporate security policy to mandate faster reporting",
+      "Conduct a post-mortem meeting with executive leadership"
+    ],
+    "answer": 0,
+    "exp": "Improve detection capabilities and rules is correct because a high Mean Time To Detect (MTTD) directly indicates that monitoring tools lack visibility or effective alert logic. 'Implement an automated SOAR playbook' is a tech trap; SOAR improves response time (MTTR), but cannot respond to what hasn't been detected yet. 'Revise the corporate security policy' is a management trap; writing a policy mandating faster detection does not provide the technical capability to do so. 'Conduct a post-mortem meeting' is a right action, wrong time trap; it is a procedural step, whereas the question asks for the substantive recommendation to fix the metric."
+  },
+  {
+    "id": 122,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security Operations",
+    "q": "A forensic investigator needs evidence from a running compromised server. What to capture FIRST?",
+    "options": [
+      "Volatile memory contents (RAM)",
+      "Extract the master boot record and file allocation tables",
+      "Establish a documented chain of custody form",
+      "Disconnect the server from the network to prevent data exfiltration"
+    ],
+    "answer": 0,
+    "exp": "Volatile memory contents (RAM) is correct because it follows the order of volatility; it contains critical ephemeral data and will be lost if power is lost. 'Extract the master boot record' is a tech trap; it sounds complex but is non-volatile disk data that should be captured later. 'Establish a documented chain of custody form' is a management trap; while administrative procedures are vital, the question specifically asks which physical or logical evidence to capture first. 'Disconnect the server from the network' is a right action, wrong time trap; pulling the plug too early destroys volatile network state evidence in RAM."
+  },
+  {
+    "id": 123,
+    "type": "order",
+    "difficulty": 2,
+    "domain": "Security Operations",
+    "q": "Order by volatility, MOST volatile first:",
+    "items": [
+      "CPU registers and cache",
+      "RAM",
+      "Disk (temporary files)",
+      "Disk (permanent files)",
+      "Remote logging data"
+    ],
+    "correctOrder": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "exp": "CPU registers and cache are inside the processor and change in nanoseconds. RAM holds running state and is lost on power off. Disk (temporary) like swap/pagefiles change frequently during operation. Disk (permanent) holds static files. Remote logging data is the least volatile as it is stored off-device on separate servers specifically for long-term retention."
+  },
+  {
+    "id": 124,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Operations",
+    "q": "RPO is 1 hour, RTO is 4 hours for a critical database. Current strategy is nightly full backups. Is this adequate?",
+    "options": [
+      "Yes, provided the database utilizes continuous data protection (CDP)",
+      "No, RPO requires replication at least hourly",
+      "No, a business impact analysis must be conducted first",
+      "Yes, assuming the recovery process can be completed within 4 hours"
+    ],
+    "answer": 1,
+    "exp": "No, RPO requires replication at least hourly is correct. RPO dictates the maximum tolerable data loss (1 hour), which nightly backups violate. 'Yes, provided the database utilizes continuous data protection' is a tech trap; CDP is a great technology, but the scenario explicitly states the current strategy is nightly backups. 'No, a BIA must be conducted first' is a management trap; the BIA has already been completed, as evidenced by the established RPO and RTO metrics. 'Yes, assuming the recovery process can be completed within 4 hours' is a right action, wrong focus trap; it correctly addresses the RTO but completely ignores the massive RPO failure."
+  },
+  {
+    "id": 135,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Software Development Security",
+    "q": "SAST checks in CI/CD create a deployment bottleneck. What is the BEST approach?",
+    "options": [
+      "Implement an asynchronous micro-scanning architecture using Kubernetes",
+      "Tune SAST to fail only on critical findings",
+      "Draft a formal service level agreement (SLA) for deployment times",
+      "Perform a root cause analysis on the CI/CD pipeline performance"
+    ],
+    "answer": 1,
+    "exp": "Tune SAST to fail only on critical findings is correct because it balances development speed with security, blocking only for high-risk vulnerabilities. 'Implement an asynchronous micro-scanning architecture' is a tech trap; it represents a massively complex engineering effort when simple policy tuning is required. 'Draft a formal SLA for deployment times' is a management trap; creating an administrative SLA does not resolve the technical deployment blocker. 'Perform a root cause analysis' is a right action, wrong time trap; the root cause (SAST checks) is already known, making this an unnecessary administrative delay."
+  },
+  {
+    "id": 137,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Software Development Security",
+    "q": "A web app allows profile picture uploads. What is the MOST critical security control?",
+    "options": [
+      "Implement client-side JavaScript validation for rapid feedback",
+      "Publish an acceptable use policy outlining prohibited content",
+      "Validate file type by content (magic bytes)",
+      "Store uploaded files in a dedicated cloud storage bucket"
+    ],
+    "answer": 2,
+    "exp": "Validate file type by content (magic bytes) is correct because verifying the file's internal magic numbers ensures it is truly an image, preventing attackers from disguising executables. 'Implement client-side JavaScript validation' is a tech trap; it improves user experience but provides zero actual security, as attackers bypass the browser entirely. 'Publish an acceptable use policy' is a management trap; administrative rules do not stop technical exploits like web shells. 'Store uploaded files in a dedicated cloud storage bucket' is a right action, wrong time trap; isolation is a good secondary defense, but primary input validation must occur first."
+  },
+  {
+    "id": 138,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Software Development Security",
+    "q": "Microservices need to authenticate to each other. What is the BEST approach?",
+    "options": [
+      "Mutual TLS with certificates",
+      "Deploy a centralized API gateway with GraphQL introspection",
+      "Develop a data classification matrix for all microservice communications",
+      "Implement OAuth 2.0 authorization codes for all internal traffic"
+    ],
+    "answer": 0,
+    "exp": "Mutual TLS with certificates is correct because mTLS provides robust two-way authentication and encrypts the transit tunnel, foundational for Zero Trust. 'Deploy a centralized API gateway with GraphQL introspection' is a tech trap; it throws advanced buzzwords at the problem but fails to provide the required service-to-service identity validation. 'Develop a data classification matrix' is a management trap; it categorizes risk but implements zero technical security controls. 'Implement OAuth 2.0 authorization codes' is a right action, wrong context trap; OAuth authorization codes are designed for human user delegation, whereas mTLS or client credentials are used for machine-to-machine authentication."
+  },
+  {
+    "id": 140,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Software Development Security",
+    "q": "A third-party library has a High-severity CVE with no patch available. What is BEST?",
+    "options": [
+      "Implement a runtime application self-protection (RASP) agent",
+      "Update the vendor risk management register to reflect the CVE",
+      "Find an alternative library to replace it",
+      "Conduct a detailed code review of the vulnerable library"
+    ],
+    "answer": 2,
+    "exp": "Find an alternative library to replace it is correct because mitigating the risk by swapping dependencies is the safest architectural move when upstream maintainers fail to provide security fixes. 'Implement a RASP agent' is a tech trap; it is an expensive, complex mitigation that attempts to band-aid over a fundamentally broken component. 'Update the vendor risk management register' is a management trap; while required for compliance, administrative paperwork does not stop an active high-severity exploit. 'Conduct a detailed code review' is a right action, wrong time trap; analyzing a third party's broken code wastes critical time during an active threat window when replacement is safer."
+  },
+  {
+    "id": 141,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Software Development Security",
+    "q": "An API endpoint deserializes user-supplied JSON server-side. What attack vector is MOST concerning?",
+    "options": [
+      "Buffer overflow caused by missing bounds checking",
+      "Insecure deserialization leading to RCE",
+      "Failure to comply with data privacy regulations",
+      "Implementing an outdated hashing algorithm for data integrity"
+    ],
+    "answer": 1,
+    "exp": "Insecure deserialization leading to RCE is correct because if an application deserializes untrusted data, an attacker can manipulate the structure to inject malicious objects that execute arbitrary code (Remote Code Execution). 'Buffer overflow' is a tech trap; while a valid vulnerability, it is typically associated with lower-level memory mismanagement, whereas deserialization exploits object instantiation logic. 'Failure to comply with data privacy regulations' is a management trap; it describes the business consequence of a breach, not the technical attack vector. 'Implementing an outdated hashing algorithm' is a right action, wrong context trap; while weak crypto is bad, it has nothing to do with the execution threat posed by deserialization."
+  },
+  {
+    "id": 142,
+    "type": "order",
+    "difficulty": 2,
+    "domain": "Software Development Security",
+    "q": "Order Secure SDLC phases from FIRST to LAST:",
+    "items": [
+      "Requirements (security requirements, threat modeling)",
+      "Design (security architecture, design review)",
+      "Implementation (secure coding, SAST)",
+      "Testing (DAST, pen testing)",
+      "Deployment (configuration, hardening)",
+      "Maintenance (patching, monitoring)"
+    ],
+    "correctOrder": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "exp": "The Secure SDLC follows a logical progression: First, gather Requirements and perform initial threat modeling. Second, create the Design and review the architecture. Third, Implement the code securely using SAST. Fourth, Test the running application with DAST and pen testing. Fifth, Deploy the hardened system. Finally, proceed to ongoing Maintenance via patching and monitoring."
+  }
+]

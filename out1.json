@@ -1,0 +1,314 @@
+[
+  {
+    "id": 1,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "Which element of the CIA triad ensures that data is not altered by unauthorized people?",
+    "options": [
+      "Integrity",
+      "Deploying cryptographic hashing algorithms",
+      "Establishing a data governance policy",
+      "Verifying user authorization credentials"
+    ],
+    "answer": 0,
+    "exp": "Integrity is correct because it ensures that data remains unchanged, authentic, and protected from unauthorized modification. 'Deploying cryptographic hashing algorithms' is a technical trap; it is a mechanism to enforce integrity, not the triad element itself. 'Establishing a data governance policy' is a management trap representing a preventive action, not the foundational element. 'Verifying user authorization credentials' is a technical action related to access control and confidentiality, not integrity."
+  },
+  {
+    "id": 6,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "You are implementing a control to fix a broken server after a crash. What type of control function is this?",
+    "options": [
+      "Corrective",
+      "Restoring the server from the latest nightly backup",
+      "Updating the disaster recovery plan",
+      "Installing redundancy to prevent future crashes"
+    ],
+    "answer": 0,
+    "exp": "Corrective is correct because corrective controls are specifically designed to restore systems or processes to their normal state after an incident has occurred. 'Restoring the server from the latest nightly backup' is a technical trap; it describes the specific technical action rather than the control category. 'Updating the disaster recovery plan' is a management trap and a right action at the wrong time (done after recovery). 'Installing redundancy to prevent future crashes' is a right action but represents a preventive control, not a corrective one."
+  },
+  {
+    "id": 8,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "Which risk response involves shifting the financial burden of a loss to another party?",
+    "options": [
+      "Risk transfer",
+      "Purchasing cybersecurity insurance",
+      "Outsourcing the vulnerable service to a cloud provider",
+      "Conducting a quantitative risk assessment"
+    ],
+    "answer": 0,
+    "exp": "Risk transfer is correct because it involves passing the financial impact of a risk to a third party, such as purchasing insurance or outsourcing a service. 'Purchasing cybersecurity insurance' and 'Outsourcing the vulnerable service to a cloud provider' are technical/specific implementation traps; they are examples of risk transfer, not the category itself. 'Conducting a quantitative risk assessment' is a management trap (right action, wrong time) performed before deciding on a risk response."
+  },
+  {
+    "id": 9,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "Under GDPR, what is the maximum time allowed to notify the supervisory authority after a data breach?",
+    "options": [
+      "Notify the data subjects immediately to prevent harm",
+      "Drafting an incident response report for legal review",
+      "72 hours",
+      "Isolate the affected servers to contain the breach"
+    ],
+    "answer": 2,
+    "exp": "72 hours is correct because GDPR Article 33 explicitly mandates that data controllers notify the appropriate supervisory authority within 72 hours of becoming aware of a breach. 'Notify the data subjects immediately to prevent harm' is a right action/wrong target trap; communication to subjects is distinct from the supervisory authority deadline. 'Drafting an incident response report for legal review' is a management trap that doesn't answer the timeline. 'Isolate the affected servers to contain the breach' is a technical trap that is part of incident response, not regulatory reporting."
+  },
+  {
+    "id": 10,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "Which security framework was specifically designed for federal information systems in the United States?",
+    "options": [
+      "Enforcing mandatory access controls (MAC) across the agency",
+      "NIST RMF (SP 800-37)",
+      "Conducting a Federal Information Security Modernization Act (FISMA) audit",
+      "Implementing FIPS 140-2 validated cryptography"
+    ],
+    "answer": 1,
+    "exp": "NIST RMF (SP 800-37) is correct because the National Institute of Standards and Technology created the Risk Management Framework specifically to guide U.S. federal agencies in securing their information systems, as mandated by FISMA. 'Enforcing mandatory access controls' and 'Implementing FIPS 140-2 validated cryptography' are technical traps representing specific controls, not the overarching framework. 'Conducting a FISMA audit' is a management trap (right action, wrong time) representing the assessment process rather than the framework itself."
+  },
+  {
+    "id": 11,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "What is the primary difference between qualitative and quantitative risk analysis?",
+    "options": [
+      "Deploying automated vulnerability scanners versus manual penetration testing",
+      "Creating a risk register before calculating the Annualized Loss Expectancy (ALE)",
+      "Qualitative uses subjective ratings; quantitative uses dollar values",
+      "Presenting the findings to senior management for formal risk acceptance"
+    ],
+    "answer": 2,
+    "exp": "Qualitative uses subjective ratings; quantitative uses dollar values is correct because qualitative analysis relies on descriptive scales (e.g., High, Medium, Low) based on judgment, whereas quantitative assigns objective monetary values (e.g., SLE, ALE) to risks. 'Deploying automated vulnerability scanners versus manual penetration testing' is a technical trap confusing assessment tools with risk analysis types. 'Creating a risk register' and 'Presenting findings to senior management' are management traps representing correct actions at different stages of the risk management lifecycle, not the difference between the two analysis types."
+  },
+  {
+    "id": 12,
+    "type": "ms",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "Which of the following are valid risk treatment options? (Select ALL that apply)",
+    "options": [
+      "Avoid",
+      "Transfer",
+      "Mitigate",
+      "Deploying technical countermeasures",
+      "Accept"
+    ],
+    "answers": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "exp": "Avoid, Transfer, Mitigate, and Accept are correct as they represent the four standard methods of responding to risk within risk management frameworks. 'Deploying technical countermeasures' is a technical trap; while it is a method to achieve mitigation, it is a specific technical action rather than a high-level risk treatment option."
+  },
+  {
+    "id": 14,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security and Risk Management",
+    "q": "A company accepts the risk of legacy software because upgrading is too expensive. However, they place the legacy server on an isolated VLAN with strict firewall rules. What type of control is the VLAN?",
+    "options": [
+      "Configuring the firewall to block all inbound traffic to the VLAN",
+      "A compensating control",
+      "Conducting a formal risk acceptance review with senior management",
+      "Upgrading the legacy software during the next budget cycle"
+    ],
+    "answer": 1,
+    "exp": "A compensating control is correct because it is an alternative measure implemented to mitigate the risk when the primary control (upgrading the software) is not feasible or too costly. 'Configuring the firewall to block all inbound traffic' is a technical trap describing the mechanism rather than the control type. 'Conducting a formal risk acceptance review' is a management trap that should have already occurred. 'Upgrading the legacy software during the next budget cycle' is a right action/wrong time trap representing a future plan, not the current control type."
+  },
+  {
+    "id": 15,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security and Risk Management",
+    "q": "A new regulation requires specific security controls. Management states the cost is prohibitive. As the CISO, what is the BEST course of action?",
+    "options": [
+      "Deploy open-source alternatives to meet the technical requirements cheaply",
+      "Update the risk register and schedule a compliance audit",
+      "Revoke network access for non-compliant systems immediately",
+      "Present a cost-benefit analysis with alternatives"
+    ],
+    "answer": 3,
+    "exp": "Present a cost-benefit analysis with alternatives is correct because the CISO's role is to advise leadership on security risks and compliance impacts so management can make informed business decisions. 'Deploy open-source alternatives' and 'Revoke network access' are technical traps that bypass necessary business alignment and management decision-making. 'Update the risk register and schedule a compliance audit' is a management trap (right action, wrong time) that is premature before a strategy is decided."
+  },
+  {
+    "id": 16,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "GDPR requires data deletion within 30 days of request, but local law in Country X requires 7-year retention. How should you handle this conflict?",
+    "options": [
+      "Configure the database to automatically purge records after 30 days",
+      "Draft a localized privacy policy acknowledging both timelines",
+      "Seek legal counsel on jurisdiction-specific requirements",
+      "Encrypt the data at rest so it cannot be read during the 7-year period"
+    ],
+    "answer": 2,
+    "exp": "Seek legal counsel on jurisdiction-specific requirements is correct because conflicts of law require specialized legal expertise to navigate safely; security professionals should not make complex legal determinations. 'Configure the database to automatically purge records' and 'Encrypt the data at rest' are technical traps attempting to use technical mechanisms to bypass a legal contradiction. 'Draft a localized privacy policy' is a management trap representing a right action at the wrong time, as legal counsel must first determine the strategy."
+  },
+  {
+    "id": 17,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security and Risk Management",
+    "q": "Due diligence on an acquisition target reveals major security deficiencies. Senior management wants to close quickly. What is your BEST action as CISO?",
+    "options": [
+      "Present quantified risks and mitigation options to the board",
+      "Immediately deploy endpoint detection and response (EDR) to the target's assets",
+      "Update the corporate incident response plan to include the new assets",
+      "Conduct a full penetration test on the target's infrastructure"
+    ],
+    "answer": 0,
+    "exp": "Present quantified risks and mitigation options to the board is correct because the CISO's role is to ensure leadership understands the risk exposure before making business decisions. 'Immediately deploy endpoint detection and response' is a technical trap, jumping to implementation before risks are accepted or the deal is closed. 'Update the corporate incident response plan' and 'Conduct a full penetration test' are right action/wrong time traps that should occur post-acquisition or earlier in due diligence."
+  },
+  {
+    "id": 18,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "A security review finds a moderate vulnerability in a mobile app requiring 6 months to fix. Marketing wants to launch in 1 month. What should you recommend?",
+    "options": [
+      "Deploy compensating controls and launch with monitoring",
+      "Rewrite the vulnerable code using a secure software development lifecycle (SSDLC)",
+      "Perform a web application firewall (WAF) rule update",
+      "Require senior management to sign a formal risk acceptance letter"
+    ],
+    "answer": 0,
+    "exp": "Deploy compensating controls and launch with monitoring is correct as it balances the business need (launch) with risk mitigation until a permanent fix is ready. 'Rewrite the vulnerable code using an SSDLC' is a technical trap (right action, wrong time) that ignores the business timeline constraint. 'Perform a WAF rule update' is a specific technical trap that assumes a single solution fits without knowing the exact architecture. 'Require senior management to sign a formal risk acceptance letter' is a management trap; while risk must be accepted, the CISO must first recommend mitigations."
+  },
+  {
+    "id": 19,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "ALE for a threat is $50,000. A countermeasure costs $35,000/year and reduces ALE to $5,000. Should it be implemented?",
+    "options": [
+      "Yes, because deploying the countermeasure reduces the attack surface",
+      "No, management must first update the risk register and business impact analysis",
+      "Yes, the net safeguard value of $10,000 justifies it",
+      "No, a quantitative risk assessment must be performed on the residual $5,000"
+    ],
+    "answer": 2,
+    "exp": "Yes, the net safeguard value of $10,000 justifies it is correct. The math is: Original ALE ($50,000) - Mitigated ALE ($5,000) - Cost of Countermeasure ($35,000) = Net Benefit of $10,000. 'Yes, because deploying the countermeasure reduces the attack surface' is a technical trap; it is factually true but ignores the financial justification required by quantitative analysis. 'Management must first update the risk register' and 'A quantitative risk assessment must be performed on the residual' are management traps introducing unnecessary administrative delays (right action, wrong time)."
+  },
+  {
+    "id": 20,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security and Risk Management",
+    "q": "A BIA identifies the order processing system with RTO of 4 hours and RPO of 1 hour. What does this mean?",
+    "options": [
+      "Maximum 4 hours downtime and maximum 1 hour data loss",
+      "Configuring synchronous replication to a hot site within 1 hour",
+      "Initiating the disaster recovery plan within 4 hours of the incident",
+      "Purchasing backup software capable of taking hourly snapshots"
+    ],
+    "answer": 0,
+    "exp": "Maximum 4 hours downtime and maximum 1 hour data loss is correct. Recovery Time Objective (RTO) dictates how long a system can be down before unacceptable impact occurs, and Recovery Point Objective (RPO) dictates the maximum allowable data loss measured in time. 'Configuring synchronous replication' and 'Purchasing backup software' are technical traps that describe methods to meet the requirements, not the definition of the metrics themselves. 'Initiating the disaster recovery plan' is a management trap describing an operational step."
+  },
+  {
+    "id": 22,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security and Risk Management",
+    "q": "An employee has been selling proprietary data to a competitor. Which type of law is MOST likely to apply?",
+    "options": [
+      "Implementing Data Loss Prevention (DLP) controls to block the transfer",
+      "Terminating the employee and revoking all logical access",
+      "Civil law for trade secret misappropriation",
+      "Updating the acceptable use policy (AUP) to forbid data theft"
+    ],
+    "answer": 2,
+    "exp": "Civil law for trade secret misappropriation is correct because selling proprietary data constitutes theft of trade secrets, which is primarily pursued via civil litigation to recover damages. 'Implementing Data Loss Prevention (DLP) controls' is a technical trap (right action, wrong time/concept) that attempts to solve a legal classification question with a preventative control. 'Terminating the employee and revoking all logical access' and 'Updating the acceptable use policy' are management traps representing administrative responses rather than identifying the applicable law."
+  },
+  {
+    "id": 27,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Asset Security",
+    "q": "Which method is most appropriate for sanitizing a hard drive that will be reused within the same organization?",
+    "options": [
+      "Updating the asset inventory to reflect the new owner",
+      "Overwriting with approved patterns",
+      "Physically shredding the drive to guarantee data destruction",
+      "Running a standard operating system quick format"
+    ],
+    "answer": 1,
+    "exp": "Overwriting with approved patterns (clearing) is correct because it ensures data cannot be easily recovered while leaving the drive functional for reuse internally. 'Updating the asset inventory' is a management trap (right action, wrong time) done after sanitization. 'Physically shredding the drive' is a technical trap; while highly secure, it violates the business requirement to reuse the drive. 'Running a standard operating system quick format' is a technical trap as it only removes file pointers and is insufficient for true sanitization."
+  },
+  {
+    "id": 28,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Asset Security",
+    "q": "Which is the MOST secure method of ensuring data cannot be recovered from media?",
+    "options": [
+      "Encrypting the entire volume with AES-256 before disposal",
+      "Obtaining a certificate of destruction from senior management",
+      "Implementing a multi-pass overwrite using DoD 5220.22-M standards",
+      "Physical destruction of the media"
+    ],
+    "answer": 3,
+    "exp": "Physical destruction is correct because incineration or shredding into tiny fragments completely guarantees the data can never be recovered by any means. 'Encrypting the entire volume with AES-256' and 'Implementing a multi-pass overwrite' are technical traps representing highly secure methods, but they are still inferior to physical destruction in terms of absolute irrecoverability. 'Obtaining a certificate of destruction' is a management trap (right action, wrong time) that provides administrative proof but does not actually destroy the data."
+  },
+  {
+    "id": 30,
+    "type": "ms",
+    "difficulty": 2,
+    "domain": "Asset Security",
+    "q": "Which of the following are valid methods for media sanitization? (Select ALL that apply)",
+    "options": [
+      "Clearing (overwriting)",
+      "Purging (degaussing)",
+      "Physical destruction",
+      "Removing the file system pointers from the Master File Table (MFT)",
+      "Cryptographic erasure"
+    ],
+    "answers": [
+      0,
+      1,
+      2,
+      4
+    ],
+    "exp": "Clearing, Purging, Physical destruction, and Cryptographic erasure are correct because they are recognized by NIST SP 800-88 as valid methods to sanitize media. 'Removing the file system pointers from the Master File Table (MFT)' is a technical trap; it is a description of a quick format, which leaves raw data intact and is not considered a valid sanitization method."
+  },
+  {
+    "id": 32,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Asset Security",
+    "q": "PHI is classified as 'Confidential' while PCI data is classified as 'Restricted' (higher). Both coexist in one system. What should you recommend?",
+    "options": [
+      "Deploying a Virtual Local Area Network (VLAN) to segment the database",
+      "Apply the highest classification to both",
+      "Conducting a formal risk assessment before altering labels",
+      "Encrypting the PHI data to lower its overall risk profile"
+    ],
+    "answer": 1,
+    "exp": "Apply the highest classification to both is correct (high water mark principle) because when mixed data cannot be separated, the entire system must meet the security standards of the most sensitive data. 'Deploying a VLAN' and 'Encrypting the PHI data' are technical traps; they are good security practices but do not answer how to classify the system under mixed data scenarios. 'Conducting a formal risk assessment before altering labels' is a management trap (right action, wrong time) that avoids resolving the immediate classification conflict."
+  },
+  {
+    "id": 33,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Asset Security",
+    "q": "A terminated employee had access to proprietary source code. The departure was contentious. What should be your FIRST priority?",
+    "options": [
+      "Disable all accounts and revoke access immediately",
+      "Review firewall and VPN logs for unauthorized data exfiltration",
+      "Schedule an emergency meeting with the legal and HR departments",
+      "Enforce a mandatory password reset for the remaining development team"
+    ],
+    "answer": 0,
+    "exp": "Disable all accounts and revoke access immediately is correct because immediate containment prevents the former employee from causing harm, stealing data, or planting logic bombs. 'Review firewall and VPN logs' is a technical trap (right action, wrong time) representing investigation, which occurs after containment. 'Schedule an emergency meeting with legal and HR' is a management trap that delays critical containment. 'Enforce a mandatory password reset for the remaining development team' is a technical trap that is secondary to securing the terminated employee's direct access."
+  }
+]

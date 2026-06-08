@@ -1,0 +1,307 @@
+[
+  {
+    "id": 34,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Asset Security",
+    "q": "Your organization is moving sensitive data to a cloud provider that offers encryption at rest. What should you verify FIRST?",
+    "options": [
+      "The provider's compliance certifications",
+      "The data center's physical security controls",
+      "The encryption algorithm and key length",
+      "Who manages and controls the encryption keys"
+    ],
+    "answer": 3,
+    "exp": "Who manages and controls the encryption keys is correct because if the cloud provider controls the keys, they (or a malicious insider) can decrypt your data, regardless of the algorithm used. Provider compliance certifications are incorrect as a first step because certifications do not prevent a provider from having technical access to your data. Physical security and encryption algorithms are incorrect because while important, they are secondary to the fundamental issue of key ownership in a cloud environment."
+  },
+  {
+    "id": 35,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Asset Security",
+    "q": "PII is stored in a database shared with non-sensitive marketing data. An auditor flags this. What principle is being violated?",
+    "options": [
+      "Data minimization and proper data segregation",
+      "Least privilege for database access control",
+      "Need-to-know for the marketing team members",
+      "Separation of duties between data handlers"
+    ],
+    "answer": 0,
+    "exp": "Data minimization and proper data segregation is correct because sensitive PII should be isolated from non-sensitive data to ensure appropriate controls are applied and attack surfaces are minimized. Least privilege and Need-to-know are incorrect because while they apply to user access, the question focuses on the storage architecture itself. Separation of duties is incorrect as it relates to requiring multiple people to complete a critical task, not data storage."
+  },
+  {
+    "id": 36,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Asset Security",
+    "q": "A SaaS vendor's contract allows them to use anonymized customer data for analytics. What is your PRIMARY concern?",
+    "options": [
+      "Degraded application performance for users",
+      "Potential for vendor lock-in over contract terms",
+      "Re-identification through data correlation",
+      "Increased bandwidth consumption for analytics"
+    ],
+    "answer": 2,
+    "exp": "Re-identification through data correlation is correct because anonymized data can often be cross-referenced with other publicly available datasets to re-identify individuals, turning benign analytics into a privacy breach. Degraded performance and bandwidth consumption are incorrect because backend analytics run on the vendor's infrastructure. Vendor lock-in is incorrect as data usage rights do not inherently restrict you from switching vendors."
+  },
+  {
+    "id": 37,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Asset Security",
+    "q": "An employee's laptop with FDE and login required was stolen. What should be your FIRST action?",
+    "options": [
+      "Remotely wipe the device via MDM",
+      "Assess what data was stored on the device",
+      "Change all of the user's credentials",
+      "File a police report for the theft"
+    ],
+    "answer": 0,
+    "exp": "Remotely wipe the device via MDM is correct because taking immediate action to destroy the data prevents compromise in case the attacker bypasses the OS login or leverages a cold-boot attack against the FDE. Assessing data is incorrect as the first step; containment must happen before analysis. Changing credentials is a vital second step, but wiping the physical asset takes precedence to protect offline data. Filing a police report is administrative and should happen later."
+  },
+  {
+    "id": 47,
+    "type": "ms",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "Which of the following are symmetric encryption algorithms? (Select ALL that apply)",
+    "options": [
+      "AES",
+      "RSA",
+      "3DES",
+      "ECC",
+      "Blowfish"
+    ],
+    "answers": [
+      0,
+      2,
+      4
+    ],
+    "exp": "AES, 3DES, and Blowfish are correct because they all use a single shared key for both encryption and decryption, defining them as symmetric algorithms. RSA and ECC are incorrect because they use a mathematically linked public-private key pair, making them asymmetric algorithms."
+  },
+  {
+    "id": 49,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "You need past encrypted sessions protected even if the server's private key is later compromised. What feature is required?",
+    "options": [
+      "Hash-based message authentication",
+      "Certificate-based digital signatures",
+      "Extended validation certificates",
+      "Perfect Forward Secrecy (PFS)"
+    ],
+    "answer": 3,
+    "exp": "Perfect Forward Secrecy (PFS) is correct because it uses ephemeral key exchanges (like ECDHE) to generate unique session keys that are independent of the server's long-term private key, ensuring past sessions cannot be decrypted. Hash-based message authentication provides integrity, not confidentiality. Digital signatures and extended validation certificates provide authentication and non-repudiation, but do not protect session confidentiality post-compromise."
+  },
+  {
+    "id": 50,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "A facility has a reception area, offices, a data center, and a loading dock. Which areas should have mantrap access?",
+    "options": [
+      "Reception area and main office entrance",
+      "Office space and reception area only",
+      "All four areas throughout the building",
+      "Data center and loading dock entrances"
+    ],
+    "answer": 3,
+    "exp": "Data center and loading dock entrances is correct because mantraps are high-security physical controls designed to prevent tailgating, which is critical for highly sensitive areas like data centers or high-risk entry points like loading docks. Reception areas and main offices are incorrect because placing a mantrap there would severely impede normal business flow and is overkill for low-security zones. All four areas is incorrect due to cost and operational friction."
+  },
+  {
+    "id": 51,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "What is the PRIMARY security benefit TPM provides over software-based encryption?",
+    "options": [
+      "Faster encryption and decryption speeds",
+      "Hardware-based key storage resistant to extraction",
+      "Support for larger encryption key sizes",
+      "Broader cryptographic algorithm compatibility"
+    ],
+    "answer": 1,
+    "exp": "Hardware-based key storage resistant to extraction is correct because a Trusted Platform Module (TPM) is a dedicated physical chip that securely stores cryptographic keys, making them immune to software-based memory dumping or OS-level attacks. Faster speeds are incorrect as software encryption leveraging modern CPU instructions (like AES-NI) is often faster. Larger key sizes and broader compatibility are incorrect because software can easily support any algorithm or key size."
+  },
+  {
+    "id": 52,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security Architecture and Engineering",
+    "q": "A WAF, network firewall, and IDS protect a web app. SQL injection still succeeds. What does this MOST likely indicate?",
+    "options": [
+      "Defense-in-depth is fundamentally ineffective",
+      "Encrypted traffic bypassed network inspection",
+      "Every deployed security control failed",
+      "The security tools were improperly licensed"
+    ],
+    "answer": 1,
+    "exp": "Encrypted traffic bypassed network inspection is correct because network-based controls (IDS/firewalls) cannot inspect payloads within an encrypted HTTPS tunnel unless TLS termination/inspection is configured, allowing the SQLi payload to reach the app. Defense-in-depth being ineffective is incorrect; the layered strategy is sound, but implementation lacked visibility. Every control failing is incorrect as the network controls may have been functioning properly but lacked decryption keys. Improper licensing is a distractor."
+  },
+  {
+    "id": 53,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "You are selecting a hash algorithm for software download integrity. Which should you choose?",
+    "options": [
+      "MD5 message digest",
+      "SHA-256 secure hash",
+      "SHA-1 secure hash",
+      "CRC32 error check"
+    ],
+    "answer": 1,
+    "exp": "SHA-256 secure hash is correct because it provides strong cryptographic integrity without known practical collision vulnerabilities. MD5 and SHA-1 are incorrect because they have been cryptographically broken and are vulnerable to collision attacks, meaning malicious files could be crafted to match the original hash. CRC32 is incorrect because it is an error-detecting code meant for accidental corruption, not a cryptographic hash to prevent intentional tampering."
+  },
+  {
+    "id": 54,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Security Architecture and Engineering",
+    "q": "A team proposes ECB mode for AES encryption of customer images. What is your PRIMARY concern?",
+    "options": [
+      "Identical blocks produce identical ciphertext",
+      "ECB is incompatible with AES algorithm",
+      "ECB mode is too slow for large files",
+      "ECB requires significantly larger keys"
+    ],
+    "answer": 0,
+    "exp": "Identical blocks produce identical ciphertext is correct because Electronic Codebook (ECB) encrypts each block independently without an initialization vector. This means repeating patterns in the plaintext (like a solid color in an image) will result in repeating patterns in the ciphertext, exposing the data's structure. ECB incompatibility is incorrect; AES does support ECB, it is just insecure for most uses. ECB being too slow is incorrect; ECB can be processed in parallel and is actually very fast. ECB requiring larger keys is incorrect; key sizes are dictated by AES, not the mode of operation."
+  },
+  {
+    "id": 55,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Security Architecture and Engineering",
+    "q": "You need encryption for data at rest and in transit with automatic key rotation. Which approach is BEST?",
+    "options": [
+      "A single master key for all encryption operations",
+      "HSM with automated key lifecycle management",
+      "Manual key management with documented procedures",
+      "Keys stored in application environment variables"
+    ],
+    "answer": 1,
+    "exp": "HSM with automated key lifecycle management is correct because Hardware Security Modules provide secure, tamper-resistant key storage and can automate the generation, rotation, and destruction of keys, fulfilling all requirements securely. A single master key is incorrect because it lacks granularity, violates least privilege, and does not address the need for key rotation. Manual management is incorrect because it is error-prone, doesn't scale, and cannot reliably provide 'automatic' rotation. Storing keys in environment variables is incorrect because it exposes keys to memory dumping and lacks lifecycle management."
+  },
+  {
+    "id": 67,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Communication and Network Security",
+    "q": "Internal DNS servers are responding to external queries. What should you do FIRST?",
+    "options": [
+      "Configure split-horizon DNS views",
+      "Conduct a full network vulnerability scan",
+      "Enable comprehensive DNS query logging",
+      "Deploy DNSSEC across all zones"
+    ],
+    "answer": 0,
+    "exp": "Configure split-horizon DNS views is correct because split-horizon DNS allows you to serve a restricted, public-facing zone file to external queries while keeping the internal zone private, effectively stopping the information disclosure. A vulnerability scan is incorrect as a first step; the vulnerability (zone exposure) is already known. DNS query logging is incorrect because while it provides visibility, it does not stop the unauthorized external responses. Deploying DNSSEC is incorrect because DNSSEC provides integrity and non-repudiation, not confidentiality of the zone data."
+  },
+  {
+    "id": 68,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Communication and Network Security",
+    "q": "An attacker sends ICMP echo requests with a spoofed victim source to a broadcast address. What attack is this?",
+    "options": [
+      "Fraggle attack",
+      "SYN flood",
+      "Ping of Death",
+      "Smurf attack"
+    ],
+    "answer": 3,
+    "exp": "Smurf attack is correct because it explicitly leverages ICMP Echo requests sent to a network's broadcast address with the victim's spoofed source IP, causing all hosts to reply to the victim, flooding them. Fraggle attack is incorrect because it uses UDP packets (typically port 7 or 19) rather than ICMP. SYN flood is incorrect because it involves sending TCP SYN packets to exhaust server connection queues, not ICMP broadcasts. Ping of Death is incorrect because it involves sending malformed, oversized ICMP packets to crash a system, rather than reflecting traffic via broadcasts."
+  },
+  {
+    "id": 69,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Communication and Network Security",
+    "q": "You need site-to-site encryption with confidentiality, integrity, and authentication. What is the BEST solution?",
+    "options": [
+      "TLS encrypted tunnel",
+      "SSH port forwarding tunnel",
+      "IPSec VPN connection",
+      "HTTPS reverse proxy setup"
+    ],
+    "answer": 2,
+    "exp": "IPSec VPN connection is correct because it operates at the network layer (Layer 3), naturally linking two physical networks (site-to-site) transparently, and provides the required confidentiality (ESP), integrity, and mutual authentication. TLS is incorrect because it primarily secures client-to-server application layer traffic rather than routing entire site networks. SSH port forwarding is incorrect because it is designed for ad-hoc, point-to-point application tunneling, not robust site-to-site connectivity. HTTPS reverse proxy is incorrect as it exposes specific web applications to the outside rather than securely connecting two internal networks."
+  },
+  {
+    "id": 70,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Communication and Network Security",
+    "q": "Database servers on VLAN 10, app servers on VLAN 20, workstations on VLAN 30. What firewall approach is MOST secure?",
+    "options": [
+      "Allow sequential flow: VLAN 30 to 20 to 10",
+      "Default deny all; explicit allow per business need",
+      "Allow VLAN 20 to 10 only; deny all other inter-VLAN",
+      "Allow VLAN 20 to 10 on required ports; deny all else"
+    ],
+    "answer": 1,
+    "exp": "Default deny all; explicit allow per business need is correct because it enforces the principle of least privilege comprehensively. All traffic is blocked by default, and only specifically requested, approved, and required traffic is permitted. Sequential flow is incorrect because it is vague and does not restrict ports. 'Allow VLAN 20 to 10 only' is incorrect because it fails to address how workstations (VLAN 30) legitimately connect to apps (VLAN 20). 'Allow VLAN 20 to 10 on required ports' is a good rule, but as an overall approach, 'Default deny all' is the foundational security principle."
+  },
+  {
+    "id": 71,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Communication and Network Security",
+    "q": "You need secure guest Wi-Fi without corporate network exposure. What is BEST?",
+    "options": [
+      "Guest SSID on an isolated VLAN, internet only",
+      "WPA2-PSK with a complex passphrase",
+      "Open network with a captive portal login",
+      "Guest SSID on the same corporate VLAN"
+    ],
+    "answer": 0,
+    "exp": "Guest SSID on an isolated VLAN, internet only is correct because network segmentation via an isolated VLAN physically or logically separates guest traffic from corporate assets, mitigating the risk of lateral movement. WPA2-PSK is incorrect because encryption protects the airwaves but does not prevent a guest from reaching internal servers once connected. Open network with a captive portal is incorrect because it provides zero encryption and the portal only controls initial internet access, not internal network isolation. Guest SSID on corporate VLAN is incorrect as it directly exposes internal assets."
+  },
+  {
+    "id": 73,
+    "type": "mc",
+    "difficulty": 3,
+    "domain": "Communication and Network Security",
+    "q": "You see DNS queries with very long subdomain strings to one external domain. What attack is MOST likely?",
+    "options": [
+      "DNS zone transfer enumeration",
+      "DNS tunneling for data exfiltration",
+      "DNS cache poisoning attempt",
+      "DNS amplification attack"
+    ],
+    "answer": 1,
+    "exp": "DNS tunneling for data exfiltration is correct because attackers encode stolen data into long, randomly generated subdomain strings (e.g., base64 encoded data) and send it as DNS queries to a domain they control. Zone transfer enumeration is incorrect because it involves requesting a full zone transfer (AXFR), not making individual subdomain queries. DNS cache poisoning is incorrect as it involves spoofing DNS replies to misdirect traffic, not sending long queries. DNS amplification is incorrect because it involves sending small queries with spoofed IPs to elicit massive responses to flood a target."
+  },
+  {
+    "id": 86,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Identity and Access Management",
+    "q": "Which OAuth 2.0 grant type is MOST appropriate for a mobile app?",
+    "options": [
+      "Client Credentials grant",
+      "Authorization Code with PKCE",
+      "Implicit grant flow",
+      "Resource Owner Password grant"
+    ],
+    "answer": 1,
+    "exp": "Authorization Code with PKCE (Proof Key for Code Exchange) is correct because mobile apps cannot securely store a static client secret. PKCE dynamically generates a secret for each authorization request, preventing malicious apps on the same device from intercepting the code. Client Credentials grant is incorrect because it is for machine-to-machine server communication where secrets can be stored safely. Implicit grant is incorrect because it returns the token directly in the URL, making it vulnerable to interception. Resource Owner Password grant is incorrect because it requires the app to handle the user's actual password, violating modern identity principles."
+  },
+  {
+    "id": 87,
+    "type": "mc",
+    "difficulty": 2,
+    "domain": "Identity and Access Management",
+    "q": "A former contractor still has VPN access 3 months after termination. What does this indicate?",
+    "options": [
+      "A deliberate insider threat",
+      "Inadequate offboarding procedures",
+      "A compromised VPN gateway",
+      "A social engineering attack"
+    ],
+    "answer": 1,
+    "exp": "Inadequate offboarding procedures is correct because failure to revoke access for terminated personnel points directly to broken identity lifecycle management and poor administrative processes. A deliberate insider threat is incorrect because while the contractor *could* become a threat, the root cause of the prolonged access is the procedural failure. A compromised VPN gateway is incorrect because the gateway is functioning normally, it simply hasn't been told to deny the user. A social engineering attack is incorrect because the access was legitimately granted originally and merely never revoked."
+  }
+]
