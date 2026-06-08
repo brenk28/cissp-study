@@ -550,6 +550,75 @@ questionBank.forEach(q => {
 // Modify the const array in place
 questionBank.length = 0;
 questionBank.push(...flatBank);
+
+// ── Normalize heterogeneous question formats ──
+const DOMAIN_ALIASES = {
+    "Identity and Access Management (IAM)": "Identity and Access Management",
+    "Professional Ethics": "Security and Risk Management"
+};
+
+questionBank.forEach(q => {
+    // 0. Normalize domain names
+    if (DOMAIN_ALIASES[q.domain]) q.domain = DOMAIN_ALIASES[q.domain];
+
+    // 1. question → q
+    if (!q.q && q.question) {
+        q.q = q.question;
+    }
+
+    // 2. options as object {A:"...", B:"...", ...} → array
+    if (q.options && !Array.isArray(q.options)) {
+        const keys = Object.keys(q.options).sort();
+        const optArr = keys.map(k => q.options[k]);
+        // Map letter answer to index
+        if (typeof q.correct_answer === 'string') {
+            q.answer = keys.indexOf(q.correct_answer);
+        } else if (typeof q.answer === 'string' && q.answer.length === 1) {
+            q.answer = keys.indexOf(q.answer);
+        }
+        q.options = optArr;
+    }
+
+    // 3. options array with "A. " / "A) " prefix → strip prefix, map letter answer
+    if (Array.isArray(q.options) && q.options.length > 0 &&
+        typeof q.options[0] === 'string' && /^[A-Z][.)]\s/.test(q.options[0])) {
+        q.options = q.options.map(o => o.replace(/^[A-Z][.)]\s*/, ''));
+        if (typeof q.answer === 'string' && q.answer.length === 1) {
+            q.answer = q.answer.charCodeAt(0) - 65; // A=0, B=1, ...
+        }
+    }
+
+    // 4. mc/scenario answer is full text string → find matching index
+    if ((q.type === 'mc' || q.type === 'scenario') &&
+        typeof q.answer === 'string' && q.answer.length > 1 && Array.isArray(q.options)) {
+        const idx = q.options.indexOf(q.answer);
+        if (idx !== -1) q.answer = idx;
+    }
+
+    // 5. ms: answer array of strings → convert to indices, rename to answers
+    if (q.type === 'ms' && Array.isArray(q.answer)) {
+        if (typeof q.answer[0] === 'string') {
+            q.answers = q.answer.map(a => q.options.indexOf(a)).filter(i => i !== -1);
+        } else {
+            q.answers = q.answer;
+        }
+        delete q.answer;
+    }
+
+    // 6. order: no items/correctOrder → build from options/answer
+    if (q.type === 'order' && !q.items && Array.isArray(q.options)) {
+        q.items = q.options;
+        if (Array.isArray(q.answer) && typeof q.answer[0] === 'string') {
+            q.correctOrder = q.answer.map(a => q.items.indexOf(a)).filter(i => i !== -1);
+        } else if (Array.isArray(q.answer)) {
+            q.correctOrder = q.answer;
+        } else {
+            q.correctOrder = q.items.map((_, i) => i);
+        }
+        delete q.options;
+        delete q.answer;
+    }
+});
 </script>
 <script>
 // ═══════════════════════════════════════════════════════════
@@ -618,7 +687,7 @@ let scenarioQueue = [];
 let currentScenarioId = null;
 
 // ── Init ──
-document.getElementById('pool-size').textContent = questionBank.length;
+document.getElementById('pool-size').textContent = questionBank.filter(isValidQuestion).length;
 
 function selectMode(m) {
     selectedMode = m;
@@ -644,6 +713,14 @@ function getDomainWeaknesses() {
     return weights;
 }
 
+function isValidQuestion(q) {
+    if (!q.q) return false;
+    if ((q.type === 'mc' || q.type === 'scenario') && (!Array.isArray(q.options) || typeof q.answer !== 'number')) return false;
+    if (q.type === 'ms' && (!Array.isArray(q.answers) || !Array.isArray(q.options))) return false;
+    if (q.type === 'order' && (!q.items || !q.correctOrder)) return false;
+    return true;
+}
+
 function selectQuestion() {
     // If mid-scenario, serve the next queued sub-question
     if (scenarioQueue.length > 0) {
@@ -656,6 +733,7 @@ function selectQuestion() {
     const candidates = questionBank.filter(q =>
         q.difficulty === currentDifficulty &&
         !questionHistory.includes(q.id) &&
+        isValidQuestion(q) &&
         !(q.type === 'scenario' && q.scenarioId && q.scenarioIndex > 0)
     );
 
@@ -663,11 +741,13 @@ function selectQuestion() {
         let alt = questionBank.filter(q =>
             Math.abs(q.difficulty - currentDifficulty) === 1 &&
             !questionHistory.includes(q.id) &&
+            isValidQuestion(q) &&
             !(q.type === 'scenario' && q.scenarioId && q.scenarioIndex > 0)
         );
         if (alt.length === 0) {
             alt = questionBank.filter(q =>
                 !questionHistory.includes(q.id) &&
+                isValidQuestion(q) &&
                 !(q.type === 'scenario' && q.scenarioId && q.scenarioIndex > 0)
             );
         }
